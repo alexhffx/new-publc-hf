@@ -1,86 +1,301 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.astro';
-import PageSections from '../components/PageSections.astro';
-import TeamCard from '../components/TeamCard.astro';
 import CTASection from '../components/CTASection.astro';
-import { getPage, getTeamMembers, urlFor } from '../lib/sanity';
 
-const page = await getPage('about');
+/* ── Team data ─────────────────────────────────────────────── */
+const team = [
+  {
+    name: 'Neh Thaker',
+    role: 'Managing Director',
+    photo: '/assets/images/team/neh.png',
+    linkedinUrl: 'https://www.linkedin.com/in/neh-thaker',
+    background: [
+      'Apple', 'Google', 'Volkswagen', 'Standard Chartered',
+    ],
+  },
+  {
+    name: 'Alex Axentiev',
+    role: 'Managing Director',
+    photo: '/assets/images/team/alex.png',
+    linkedinUrl: 'https://www.linkedin.com/in/axentiev',
+    background: [
+      'Bank of America', 'Merrill Lynch', 'ArcelorMittal',
+    ],
+  },
+  {
+    name: 'Arnar Jonsson',
+    role: 'CTO',
+    photo: '/assets/images/team/arnar.png',
+    linkedinUrl: 'https://www.linkedin.com/in/arnarjonsson',
+    background: [
+      'Adidas', 'Jaguar Land Rover',
+    ],
+  },
+];
 
-// Fallback: fetch team members directly if no sections defined
-let teamMembers: any[] = [];
-if (!page?.sections || page.sections.length === 0) {
-  try {
-    teamMembers = await getTeamMembers() || [];
-  } catch (e) { /* empty */ }
-}
+/* ── Partner logos ─────────────────────────────────────────── */
+const partners = [
+  { name: 'startupCFO', src: '/assets/logos/partners/startupcfo.png' },
+  { name: 'GenCFO',     src: '/assets/logos/partners/gencfo.png' },
+  { name: 'growCFO',    src: '/assets/logos/partners/growcfo.png' },
+  { name: 'Oxford Foundry', src: '/assets/logos/partners/oxford-foundry.png' },
+  { name: 'RGA',        src: '/assets/logos/partners/rga.png' },
+  { name: 'Grow London Global', src: '/assets/logos/partners/grow-london.png' },
+];
+
+/* ── Values ─────────────────────────────────────────────────── */
+const values = [
+  {
+    icon: 'shield',
+    title: 'Fair vision',
+    description: 'Every business deserves a fair chance to trade safely and grow internationally — not just the corporations with dedicated treasury teams.',
+  },
+  {
+    icon: 'sparkles',
+    title: 'Easy-to-use tools',
+    description: 'Transparent fees, streamlined payments, and visible FX costs. No hidden margins, no unpleasant surprises.',
+  },
+  {
+    icon: 'bolt',
+    title: 'Technology edge',
+    description: 'We empower finance teams with institutional-grade technology — the same tools large corporates rely on, built for growing businesses.',
+  },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'About'}
-  description={page?.seoDescription || 'Built by treasury professionals, for businesses that trade internationally.'}
+  title="About HedgeFlows | Treasury Technology for International Businesses"
+  description="Meet the team behind HedgeFlows. 20+ years of institutional FX and treasury experience from Apple, Google, Bank of America, and more — now working for SMEs."
 >
   <Hero
-    title={page?.heroTitle || 'Built by treasury professionals, for businesses that trade internationally'}
-    subtitle={page?.heroSubtitle || 'Meet the team behind HedgeFlows and learn about our mission to democratise treasury.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Making international growth easy & fair"
+    subtitle="Managing trade and finances can be painful for any business that buys or sells in global markets. Volatile exchange rates, hidden costs, and complex cross-border payments hold businesses back. We built HedgeFlows to change that."
   />
 
-  {page?.sections && page.sections.length > 0 ? (
-    <PageSections sections={page.sections} />
-  ) : (
-    <>
-      {/* Fallback mission section */}
-      <section class="section-padding">
-        <div class="container-content max-w-3xl mx-auto text-center">
-          <h2 class="section-heading mb-6">Our mission</h2>
-          <p class="text-[1.125rem] text-text-body leading-relaxed">
-            Most growing international businesses can't justify a full-time treasury team — but they face the same FX risks,
-            banking challenges, and cash management complexities as large corporates. HedgeFlows exists to bridge that gap,
-            combining institutional-grade treasury expertise with modern technology so every international business can
-            protect and optimise their finances.
+  {/* ── Our Story ──────────────────────────────────────────── */}
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+        <div>
+          <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-6">
+            Built by treasury professionals, for international businesses
+          </h2>
+          <div class="space-y-4 text-[1.0625rem] text-text-body leading-relaxed">
+            <p>
+              Before HedgeFlows, our founders spent 20+ years managing finances for hundreds of global businesses at leading banks and corporations — names like Apple, Google, Bank of America, Standard Chartered, and Volkswagen.
+            </p>
+            <p>
+              They saw first-hand how smaller businesses were underserved: paying hidden FX margins, manually chasing payments, and flying blind on currency risk. Large corporates had entire treasury departments and sophisticated tools. Growing international businesses had spreadsheets and guesswork.
+            </p>
+            <p>
+              HedgeFlows was founded to extend that same modern, affordable financial toolkit to every business that trades across borders — so they can compete internationally on a level playing field.
+            </p>
+          </div>
+        </div>
+        <div class="relative">
+          <img
+            src="/assets/images/team/founders.jpg"
+            alt="HedgeFlows founding team"
+            class="rounded-2xl shadow-lg w-full"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-brand-green/10 rounded-2xl -z-10" aria-hidden="true"></div>
+          <div class="absolute -top-4 -left-4 w-16 h-16 bg-brand-green/5 rounded-xl -z-10" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── Our Values ─────────────────────────────────────────── */}
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">What drives us</h2>
+        <p class="section-subheading mx-auto">
+          Three beliefs that shape everything we build
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {values.map((v) => (
+          <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              {v.icon === 'shield' && (
+                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              )}
+              {v.icon === 'sparkles' && (
+                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              )}
+              {v.icon === 'bolt' && (
+                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{v.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Meet the Team ──────────────────────────────────────── */}
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Meet the founders</h2>
+        <p class="section-subheading mx-auto">
+          Decades of institutional treasury experience, now working for you
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {team.map((member) => (
+          <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)] text-center">
+            <img
+              src={member.photo}
+              alt={member.name}
+              class="w-36 h-36 rounded-full mx-auto mb-5 object-cover"
+              loading="lazy"
+            />
+            <h3 class="text-[1.25rem] font-semibold text-text-heading">{member.name}</h3>
+            <p class="text-[0.9375rem] text-brand-green font-medium mt-1">{member.role}</p>
+            <p class="text-[0.8125rem] text-text-muted mt-3 leading-relaxed">
+              Previously at {member.background.join(', ')}
+            </p>
+            {member.linkedinUrl && (
+              <a
+                href={member.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center mt-4 text-brand-green hover:text-brand-green-dark transition-colors"
+                aria-label={`${member.name} on LinkedIn`}
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Institutional background logos ─────────────────────── */}
+  <section class="py-12 bg-[#F8FAFB]">
+    <div class="container-content">
+      <p class="text-center text-[0.875rem] text-text-muted font-medium uppercase tracking-wider mb-8">
+        Where our team previously managed finances
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 grayscale">
+        <img src="/assets/logos/institutional/apple.png" alt="Apple" class="h-8 md:h-10 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/google.png" alt="Google" class="h-6 md:h-8 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/standard-chartered.png" alt="Standard Chartered" class="h-6 md:h-8 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/bank-of-america.jpg" alt="Bank of America" class="h-6 md:h-8 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/merrill-lynch.png" alt="Merrill Lynch" class="h-6 md:h-8 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/volkswagen.jpg" alt="Volkswagen" class="h-10 md:h-12 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/arcelormittal.png" alt="ArcelorMittal" class="h-5 md:h-7 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/adidas.png" alt="Adidas" class="h-7 md:h-9 object-contain" loading="lazy" />
+        <img src="/assets/logos/institutional/jlr.png" alt="Jaguar Land Rover" class="h-6 md:h-8 object-contain" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  {/* ── Awards & Recognition ──────────────────────────────── */}
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Awards & recognition</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-center">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="/assets/logos/awards/tmi-photo.jpg"
+            alt="HedgeFlows team at TMI Awards ceremony"
+            class="w-full"
+            loading="lazy"
+          />
+        </div>
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <img
+            src="/assets/logos/awards/tmi-awards-2025.png"
+            alt="TMI Awards logo"
+            class="h-16 mb-6"
+            loading="lazy"
+          />
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-text-heading text-[1.0625rem]">Best Risk Management Solution</p>
+                <p class="text-[0.875rem] text-text-muted">TMI Awards 2025</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-text-heading text-[1.0625rem]">Highly Commended for Innovation</p>
+                <p class="text-[0.875rem] text-text-muted">TMI Awards 2024</p>
+              </div>
+            </div>
+          </div>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mt-6">
+            TMI (Treasury Management International) is one of the leading publications in corporate treasury and finance, recognising excellence across the industry.
           </p>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      {/* Fallback team section */}
-      {teamMembers.length > 0 && (
-        <section class="section-padding bg-[#F8FAFB]">
-          <div class="container-content">
-            <div class="text-center mb-14">
-              <h2 class="section-heading">Meet the team</h2>
-              <p class="section-subheading mx-auto">
-                Decades of institutional treasury experience, now working for you
-              </p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {teamMembers.map((member: any) => (
-                <TeamCard
-                  name={member.name}
-                  role={member.role}
-                  photo={member.photo ? urlFor(member.photo).width(256).height(256).auto('format').url() : undefined}
-                  background={member.institutionalBackground}
-                  linkedinUrl={member.linkedinUrl}
-                  bio={member.bio}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+  {/* ── Ecosystem & Partners ──────────────────────────────── */}
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Our ecosystem</h2>
+        <p class="section-subheading mx-auto">
+          Trusted by CFO communities, accelerators, and business networks
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-10 md:gap-14 max-w-4xl mx-auto">
+        {partners.map((p) => (
+          <img
+            src={p.src}
+            alt={p.name}
+            class="h-10 md:h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
 
-      {teamMembers.length === 0 && (
-        <section class="section-padding bg-[#F8FAFB]">
-          <div class="container-content text-center py-12">
-            <h2 class="section-heading mb-4">Meet the team</h2>
-            <p class="text-text-muted text-lg">Team profiles coming soon.</p>
-          </div>
-        </section>
-      )}
-    </>
-  )}
+  {/* ── Regulatory ─────────────────────────────────────────── */}
+  <section class="py-12">
+    <div class="container-content max-w-3xl mx-auto text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        <h3 class="text-[1.125rem] font-bold text-text-heading">FCA Regulated</h3>
+      </div>
+      <p class="text-[0.9375rem] text-text-muted leading-relaxed">
+        HedgeFlows Ltd is authorised and regulated by the Financial Conduct Authority as an Authorised Payment Institution under the Payment Service Regulations 2017 (Firm Reference Number: 1008699). UK registered company number 12689184.
+      </p>
+    </div>
+  </section>
 
   <CTASection
     headline="Ready to work with us?"
