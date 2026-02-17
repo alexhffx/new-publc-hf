@@ -1,31 +1,23 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/Hero.astro';
-import PageSections from '../components/PageSections.astro';
 import { getPage } from '../lib/sanity';
 
 const page = await getPage('treasury-health-check');
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Treasury Health Check'}
-  description={page?.seoDescription || 'See what your international finances are really costing you.'}
+  title={page?.seoTitle || page?.title || 'Book a Treasury Health Check | HedgeFlows'}
+  description={page?.seoDescription || 'Book a free treasury health check and uncover hidden costs in your FX, banking, and cash management.'}
 >
-  <Hero
-    title={page?.heroTitle || 'See what your international finances are really costing you'}
-    subtitle={page?.heroSubtitle || 'Book a free treasury health check and uncover hidden costs in your FX, banking, and cash management.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
-  />
-  <PageSections sections={page?.sections || []} />
-
-  {/* ── Calendly Booking Widget ──────────────────────────────── */}
-  <section class="section-padding" id="book">
-    <div class="container-content max-w-4xl mx-auto">
+  {/* ── Heading + Calendly Widget ────────────────────────────── */}
+  <section class="pt-16 pb-20 md:pt-20 md:pb-28" id="book">
+    <div class="container-content max-w-6xl mx-auto">
       <div class="text-center mb-10">
-        <h2 class="section-heading">Book your free treasury review</h2>
-        <p class="section-subheading mx-auto">
-          Pick a time that works for you. We'll review your international finances and show you exactly where you can save.
+        <h1 class="text-[2rem] md:text-[2.75rem] font-bold text-text-heading leading-tight mb-4">
+          Book your free treasury review
+        </h1>
+        <p class="text-[1.125rem] md:text-[1.25rem] text-text-body leading-relaxed max-w-2xl mx-auto">
+          See what your international finances are really costing you. Pick a time and we'll show you exactly where you can save.
         </p>
       </div>
       <div class="bg-white rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)] overflow-hidden">
