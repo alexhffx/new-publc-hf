@@ -18,8 +18,25 @@ const page = await getPage('treasury-health-check');
     secondaryCta={page?.secondaryCta}
   />
   <PageSections sections={page?.sections || []} />
-  <!-- Calendly booking widget -->
-  <div id="calendly-embed" class="mt-12 container-content bg-bg-light rounded-card p-12 text-center text-text-muted">
-    Calendly booking widget will be embedded here
-  </div>
+
+  {/* ── Calendly Booking Widget ──────────────────────────────── */}
+  <section class="section-padding" id="book">
+    <div class="container-content max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Book your free treasury review</h2>
+        <p class="section-subheading mx-auto">
+          Pick a time that works for you. We'll review your international finances and show you exactly where you can save.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)] overflow-hidden">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/hedgeflows-aa/30min?hide_gdpr_banner=1"
+          style="min-width:320px;height:700px;"
+        ></div>
+      </div>
+    </div>
+  </section>
 </PageLayout>
+
+<script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>

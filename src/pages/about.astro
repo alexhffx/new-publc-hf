@@ -10,27 +10,21 @@ const team = [
     role: 'Managing Director',
     photo: '/assets/images/team/neh.png',
     linkedinUrl: 'https://www.linkedin.com/in/neh-thaker',
-    background: [
-      'Apple', 'Google', 'Volkswagen', 'Standard Chartered',
-    ],
+    background: 'Standard Chartered Bank, Bank of America Merrill Lynch, ISDA Board Director',
   },
   {
     name: 'Alex Axentiev',
     role: 'Managing Director',
     photo: '/assets/images/team/alex.png',
     linkedinUrl: 'https://www.linkedin.com/in/axentiev',
-    background: [
-      'Bank of America', 'Merrill Lynch', 'ArcelorMittal',
-    ],
+    background: 'Standard Chartered, Bank of America Merrill Lynch',
   },
   {
     name: 'Arnar Jonsson',
     role: 'CTO',
     photo: '/assets/images/team/arnar.png',
     linkedinUrl: 'https://www.linkedin.com/in/arnarjonsson',
-    background: [
-      'Adidas', 'Jaguar Land Rover',
-    ],
+    background: 'Engineering & large-scale financial technology systems',
   },
 ];
 
@@ -66,7 +60,7 @@ const values = [
 
 <PageLayout
   title="About HedgeFlows | Treasury Technology for International Businesses"
-  description="Meet the team behind HedgeFlows. 20+ years of institutional FX and treasury experience from Apple, Google, Bank of America, and more — now working for SMEs."
+  description="Meet the team behind HedgeFlows. 20+ years of institutional FX and treasury experience from Standard Chartered, Bank of America Merrill Lynch, and more — now working for SMEs."
 >
   <Hero
     title="Making international growth easy & fair"
@@ -83,7 +77,7 @@ const values = [
           </h2>
           <div class="space-y-4 text-[1.0625rem] text-text-body leading-relaxed">
             <p>
-              Before HedgeFlows, our founders spent 20+ years managing finances for hundreds of global businesses at leading banks and corporations — names like Apple, Google, Bank of America, Standard Chartered, and Volkswagen.
+              Before HedgeFlows, our founders spent 20+ years at leading global banks — Standard Chartered and Bank of America Merrill Lynch — where they managed trading desks, built financial technology, and helped hundreds of the world's largest corporations manage their international finances.
             </p>
             <p>
               They saw first-hand how smaller businesses were underserved: paying hidden FX margins, manually chasing payments, and flying blind on currency risk. Large corporates had entire treasury departments and sophisticated tools. Growing international businesses had spreadsheets and guesswork.
@@ -165,7 +159,7 @@ const values = [
             <h3 class="text-[1.25rem] font-semibold text-text-heading">{member.name}</h3>
             <p class="text-[0.9375rem] text-brand-green font-medium mt-1">{member.role}</p>
             <p class="text-[0.8125rem] text-text-muted mt-3 leading-relaxed">
-              Previously at {member.background.join(', ')}
+              Previously: {member.background}
             </p>
             {member.linkedinUrl && (
               <a
@@ -190,7 +184,7 @@ const values = [
   <section class="py-12 bg-[#F8FAFB]">
     <div class="container-content">
       <p class="text-center text-[0.875rem] text-text-muted font-medium uppercase tracking-wider mb-8">
-        Where our team previously managed finances
+        Clients our team managed finances for
       </p>
       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 grayscale">
         <img src="/assets/logos/institutional/apple.png" alt="Apple" class="h-8 md:h-10 object-contain" loading="lazy" />
