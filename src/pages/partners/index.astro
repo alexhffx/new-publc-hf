@@ -1,0 +1,115 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const partnerPrograms = [
+  {
+    title: 'Accountants Partner Programme',
+    description: 'Designed for accountancy firms advising clients on foreign finances. A balanced programme of rewards for your clients and your firm.',
+    href: '/partners/accountants',
+    linkLabel: 'Learn More',
+    icon: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z',
+  },
+  {
+    title: 'Bespoke Partnership Programmes',
+    description: "We don't believe in one size fits all, so we're happy to discuss bespoke partnership opportunities with you and your business.",
+    href: '/contact',
+    linkLabel: 'Get in Touch',
+    icon: 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Commission & Rewards',
+    description: 'Generous tiered commission scheme, subscription discounts for clients and partners.',
+    icon: 'M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z',
+  },
+  {
+    title: 'Dedicated Expert Access',
+    description: 'Direct access to our FX expert team for risk management discussions.',
+    icon: 'M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155',
+  },
+  {
+    title: 'Marketing Support',
+    description: 'Exclusive event invites and co-branded promotional materials.',
+    icon: 'M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605',
+  },
+  {
+    title: 'Training & Resources',
+    description: 'Comprehensive onboarding and ongoing training materials.',
+    icon: 'M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5',
+  },
+];
+---
+
+<PageLayout
+  title="Partner with HedgeFlows"
+  description="Help us make the world of foreign trade fairer and simpler. Partner programmes for accountants and businesses with generous rewards and dedicated support."
+>
+  <Hero
+    title="Partner with HedgeFlows"
+    subtitle="Help us make the world of foreign trade fairer and simpler for other businesses. We'll provide you with all the support you need to introduce our platform to your customers."
+    primaryCta={{ label: 'Book a Call', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Email Us', href: '/contact' }}
+  />
+
+  <!-- Partnership Programmes -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Partnership programmes</h2>
+        <p class="section-subheading mx-auto">Choose the programme that fits your business</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {partnerPrograms.map((p) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={p.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{p.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 flex-1">{p.description}</p>
+            <a href={p.href} class="inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-brand-green hover:text-brand-green-dark transition-colors">
+              {p.linkLabel}
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Why partner with us</h2>
+        <p class="section-subheading mx-auto">Benefits designed to help you and your clients succeed</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {benefits.map((b) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={b.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{b.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Ready to grow together?"
+    primaryCta={{ label: 'Book a Call', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Email Us', href: '/contact' }}
+  />
+</PageLayout>

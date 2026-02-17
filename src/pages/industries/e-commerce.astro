@@ -1,26 +1,160 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
 
-const page = await getPage('industries/e-commerce');
+const painPoints = [
+  {
+    title: 'AP automation in 35 currencies',
+    description: 'Import, approve and pay invoices in one streamlined workflow. Automatic reconciliation back to your accounting system removes days of manual effort.',
+    icon: 'M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z',
+  },
+  {
+    title: 'Multi-currency cash management dashboard',
+    description: 'Real-time visibility across all your bank accounts, currencies and entities. Intuitive dashboards that help you plan ahead instead of firefighting.',
+    icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  },
+  {
+    title: 'Integrated currency management with analytics',
+    description: 'See your FX exposures early and protect your margins with our Currency Co-pilot. Get expert guidance and analytics without needing a full treasury team.',
+    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'HedgeFlows is a real game changer for us. It\'s saved us loads of time and effort, completely revolutionizing how we handle payments.',
+    name: 'Mohammad',
+    role: 'Finance Director',
+    company: 'VogaCloset',
+  },
+  {
+    quote: 'HedgeFlows is more methodical around our hedging process - before they helped us, our process was just kind of opportunist.',
+    name: 'Nick',
+    role: 'Finance Director',
+    company: 'Pact Coffee',
+  },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'E-Commerce'}
-  description={page?.seoDescription || 'Treasury solutions for international e-commerce businesses.'}
+  title="E-Commerce, Fashion & Beauty | HedgeFlows"
+  description="Global payments platform for busy e-commerce finance teams. Save days with AP automation, multi-currency cash management and seamless currency management in one place."
 >
   <Hero
-    title={page?.heroTitle || 'Treasury solutions for international e-commerce'}
-    subtitle={page?.heroSubtitle || 'Manage multi-currency payments, optimise FX costs, and streamline treasury for your online business.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Manage all invoices, payments and currency needs in one place"
+    subtitle="Global payments platform for busy finance teams to save days with AP automation and seamless currency management."
+    primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <TrustBar />
+
+  <!-- Pain Points -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">One platform for all your international finance needs</h2>
+        <p class="section-subheading mx-auto">Streamline payments, cash management and currency risk</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {painPoints.map((s) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={s.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section-padding">
+    <div class="container-content space-y-24">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Payment & Bookkeeping Automation</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Process payments 5x faster with end-to-end automation
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Import invoices from your accounting system, approve and pay in one workflow. Auto-sync invoices, make same-day payments in 30+ currencies, and let auto-reconciliation close the loop back to your ledgers.
+          </p>
+          <ul class="space-y-3">
+            {['Auto-sync invoices from Xero, QuickBooks and other systems', 'Same-day payments in 30+ currencies via SWIFT, SEPA and local rails', 'Automatic reconciliation back to your accounting system', 'Batch payments for efficient supplier payment runs'].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden">
+          <img src="/assets/images/platform/payments-hero.png" alt="Payment automation for e-commerce" class="w-full h-auto" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
+          <img src="/assets/images/platform/fx-risk-hero.png" alt="Currency management for e-commerce" class="w-full h-auto" loading="lazy" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Currency Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Protect your margins from currency volatility
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            See your FX exposures early, prebook guaranteed FX rates for future payments, and use our award-winning risk management tools. Get expert support without needing an in-house treasury team.
+          </p>
+          <ul class="space-y-3">
+            {['Prebook guaranteed FX rates for upcoming supplier payments', 'Award-winning currency risk management platform', 'Real-time analytics and exposure dashboards', 'Expert treasury support when you need it'].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Trusted by e-commerce businesses globally</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {testimonials.map((t) => (
+          <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+            <svg class="w-8 h-8 text-brand-green/20 mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/>
+            </svg>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed mb-4 italic">"{t.quote}"</p>
+            <div>
+              <p class="font-semibold text-text-heading text-[0.9375rem]">{t.name}</p>
+              <p class="text-[0.8125rem] text-text-muted">{t.role}, {t.company}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to streamline your international finances?"
+    primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'See Pricing', href: '/pricing' }}
   />
 </PageLayout>
