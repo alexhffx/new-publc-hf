@@ -1,0 +1,458 @@
+---
+/* ─────────────────────────── Icon SVG paths (Heroicons outline) ─────────────────────────── */
+const iconPaths: Record<string, string> = {
+  bank: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z',
+  coins: 'M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125',
+  shield: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  'trending-up': 'M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941',
+  bolt: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  desktop: 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25',
+  wallet: 'M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 110-6h5.25A2.25 2.25 0 0121 6v6zm0 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18V6a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6v6zm-3 0h.008v.008H18V12z',
+  send: 'M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5',
+  'bar-chart': 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  plug: 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244',
+  'shopping-cart': 'M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z',
+  globe: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+  truck: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12',
+  users: 'M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z',
+  rocket: 'M15.59 14.37a48.414 48.414 0 01-6.18 0c.19.63.44 1.24.74 1.81l.22.39c1.3 2.3 2.35 3.45 3.17 3.45s1.87-1.15 3.17-3.45l.22-.39c.3-.57.55-1.18.74-1.81zM12 2.25c-2.3 0-4.81 2.76-6.4 7.31a47.726 47.726 0 000 4.88c1.59 4.55 4.1 7.31 6.4 7.31s4.81-2.76 6.4-7.31a47.73 47.73 0 000-4.88C16.81 5.01 14.3 2.25 12 2.25z',
+  briefcase: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z',
+  'file-text': 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+  'graduation-cap': 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5',
+  book: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  star: 'M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z',
+  video: 'm15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25z',
+  building: 'M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21',
+  calculator: 'M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z',
+  'chart-pie': 'M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z',
+  'arrow-up-circle': 'M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z',
+  'building-office': 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21',
+  handshake: 'M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0l.075 5.925m3.075-5.925v3m0-3a1.575 1.575 0 013.15 0m-3.15 0l.075 5.925M14.1 4.575v3m0 0a1.575 1.575 0 013.15 0m-3.15 0l.075 5.925m3.075-8.925v5.25c0 .621-.504 1.125-1.125 1.125h-.2a1.125 1.125 0 01-1.125-1.125V4.575m3.15 0a1.575 1.575 0 013.15 0V15M6.9 7.575a1.575 1.575 0 10-3.15 0v8.175a6.075 6.075 0 006.075 6.075h2.1a6.075 6.075 0 006.075-6.075V4.575',
+};
+
+/* ─────────────────────────── Nav data ─────────────────────────── */
+const navItems = [
+  {
+    label: 'Advisory',
+    footerLink: { label: 'See all advisory services', href: '/treasury-advisory' },
+    children: [
+      { label: 'Bank Management', href: '/advisory/bank-management', description: 'Right banking relationships for international ops', icon: 'bank' },
+      { label: 'Cash Management', href: '/advisory/cash-management', description: 'Optimise balances and meet audit requirements', icon: 'coins' },
+      { label: 'Risk Management', href: '/advisory/risk-management', description: 'FX hedging and counterparty management', icon: 'shield' },
+      { label: 'Working Capital', href: '/advisory/working-capital', description: 'Facilities structured for international growth', icon: 'trending-up' },
+      { label: 'Digitalisation', href: '/advisory/digitalisation', description: 'Automate treasury with proper controls', icon: 'bolt' },
+    ],
+  },
+  {
+    label: 'Platform',
+    footerLink: { label: 'See all platform features', href: '/platform' },
+    children: [
+      { label: 'Platform Overview', href: '/platform', description: 'Your complete treasury command centre', icon: 'desktop' },
+      { label: 'Connected Account', href: '/platform/connected-account', description: 'Multi-currency account with local IBANs', icon: 'wallet' },
+      { label: 'Payments & AP Automation', href: '/platform/payments', description: 'Pay globally with accounting sync', icon: 'send' },
+      { label: 'Cash Management', href: '/platform/cash-management', description: 'Real-time visibility across all accounts', icon: 'bar-chart' },
+      { label: 'FX Risk Management', href: '/platform/fx-risk-management', description: 'Exposure tracking and automated hedging', icon: 'shield' },
+      { label: 'Integrations', href: '/platform/integrations', description: 'Xero, NetSuite, QuickBooks, Business Central', icon: 'plug' },
+    ],
+  },
+  {
+    label: 'Solutions',
+    grouped: true,
+    groups: [
+      {
+        heading: 'By Industry',
+        items: [
+          { label: 'E-Commerce', href: '/industries/e-commerce', description: 'Multi-currency revenue streams', icon: 'shopping-cart' },
+          { label: 'Travel', href: '/industries/travel', description: 'Protect margins from FX volatility', icon: 'globe' },
+          { label: 'Logistics & Wholesale', href: '/industries/logistics', description: 'Cross-border supplier payments', icon: 'truck' },
+          { label: 'Staffing & Recruitment', href: '/industries/staffing', description: 'International contractor payments', icon: 'users' },
+          { label: 'Professional Services', href: '/industries/professional-services', description: 'Multi-currency billing & cash', icon: 'briefcase' },
+        ],
+      },
+      {
+        heading: 'By Size',
+        items: [
+          { label: 'Startups & Scaleups', href: '/solutions/startups', description: 'Treasury infrastructure as you grow', icon: 'rocket' },
+          { label: 'SMEs', href: '/solutions/smes', description: 'Institutional tools without the overhead', icon: 'arrow-up-circle' },
+          { label: 'Mid-Market', href: '/solutions/mid-market', description: 'Scale treasury with your business', icon: 'building-office' },
+        ],
+      },
+      {
+        heading: 'By Partner',
+        items: [
+          { label: 'Financial Institutions', href: '/partners/financial-institutions', description: 'Treasury tech for your clients', icon: 'building' },
+          { label: 'Accountants', href: '/partners/accountants', description: 'Integrated FX & cash management', icon: 'calculator' },
+          { label: 'Advisors', href: '/partners/advisors', description: 'White-label treasury solutions', icon: 'chart-pie' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Resources',
+    children: [
+      { label: 'Blog', href: '/blog', description: 'Insights on FX, treasury, and international finance', icon: 'file-text' },
+      { label: 'FX Academy', href: '/fx-academy', description: 'Structured learning for currency management', icon: 'graduation-cap' },
+      { label: 'Glossary', href: '/glossary', description: 'Plain-English treasury and FX definitions', icon: 'book' },
+      { label: 'Case Studies', href: '/case-studies', description: 'How businesses transformed their treasury', icon: 'star' },
+      { label: 'Webinars & Events', href: '/webinars', description: 'Live and on-demand expert sessions', icon: 'video' },
+    ],
+  },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-border-light">
+  <nav class="container-content flex items-center justify-between h-[72px]" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="/" class="flex-shrink-0" aria-label="HedgeFlows home">
+      <img src="/assets/logos/HF-logo-gr.svg" alt="HedgeFlows" class="h-8 w-auto" />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden lg:flex items-center gap-0.5">
+      {navItems.map((item) =>
+        (item.children || item.grouped) ? (
+          <div class="mega-trigger relative" data-mega>
+            <button
+              class="flex items-center gap-1 px-2.5 py-2 text-[0.875rem] font-medium text-text-heading hover:text-brand-green rounded-md transition-colors whitespace-nowrap"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              {item.label}
+              <svg class="w-3.5 h-3.5 transition-transform mega-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {/* Mega panel — grouped layout (Solutions) */}
+            {item.grouped && item.groups ? (
+              <div class="mega-panel absolute top-full left-1/2 pt-3 opacity-0 invisible transition-all duration-200 pointer-events-none"
+                   style="width: min(calc(100vw - 2rem), 960px); transform: translateX(-50%);">
+                <div class="bg-white border border-border-light rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-6">
+                  <div class="grid grid-cols-3 gap-8">
+                    {item.groups.map((group: any) => (
+                      <div>
+                        <p class="text-[0.6875rem] font-semibold text-text-muted uppercase tracking-wider mb-3 px-3">{group.heading}</p>
+                        <div class="space-y-0.5">
+                          {group.items.map((child: any) => (
+                            <a
+                              href={child.href}
+                              class:list={[
+                                'group/item flex items-start gap-3 p-3 rounded-lg hover:bg-brand-green-pale transition-colors',
+                                { 'bg-brand-green-pale': currentPath === child.href },
+                              ]}
+                            >
+                              <div class="w-9 h-9 rounded-lg bg-[#F8FAFB] group-hover/item:bg-white flex items-center justify-center flex-shrink-0 transition-colors">
+                                <svg class="w-[1.125rem] h-[1.125rem] text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[child.icon] || iconPaths['desktop']} />
+                                </svg>
+                              </div>
+                              <div class="min-w-0">
+                                <p class:list={[
+                                  'text-[0.8125rem] font-semibold text-text-heading group-hover/item:text-brand-green transition-colors leading-snug',
+                                  { 'text-brand-green': currentPath === child.href },
+                                ]}>
+                                  {child.label}
+                                </p>
+                                <p class="text-[0.75rem] text-text-muted leading-snug mt-0.5">{child.description}</p>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Mega panel — flat layout (Services, Platform, Resources) */
+              <div class="mega-panel absolute top-full left-1/2 pt-3 opacity-0 invisible transition-all duration-200 pointer-events-none"
+                   style="width: min(calc(100vw - 2rem), 900px); transform: translateX(-50%);">
+                <div class="bg-white border border-border-light rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] p-6">
+                  <div class:list={[
+                    'grid gap-1',
+                    (item.children?.length || 0) <= 5 ? 'grid-cols-2 lg:grid-cols-3' : 'grid-cols-2 lg:grid-cols-3',
+                  ]}>
+                    {item.children?.map((child: any) => (
+                      <a
+                        href={child.href}
+                        class:list={[
+                          'group/item flex items-start gap-3.5 p-3 rounded-lg hover:bg-brand-green-pale transition-colors',
+                          { 'bg-brand-green-pale': currentPath === child.href },
+                        ]}
+                      >
+                        <div class="w-10 h-10 rounded-lg bg-[#F8FAFB] group-hover/item:bg-white flex items-center justify-center flex-shrink-0 transition-colors">
+                          <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[child.icon] || iconPaths['desktop']} />
+                          </svg>
+                        </div>
+                        <div class="min-w-0">
+                          <p class:list={[
+                            'text-[0.875rem] font-semibold text-text-heading group-hover/item:text-brand-green transition-colors leading-snug',
+                            { 'text-brand-green': currentPath === child.href },
+                          ]}>
+                            {child.label}
+                          </p>
+                          <p class="text-[0.8125rem] text-text-muted leading-snug mt-0.5">{child.description}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                  {item.footerLink && (
+                    <div class="mt-4 pt-4 border-t border-border-light">
+                      <a
+                        href={item.footerLink.href}
+                        class="inline-flex items-center gap-1.5 text-[0.8125rem] font-semibold text-brand-green hover:text-brand-green-dark transition-colors"
+                      >
+                        {item.footerLink.label}
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class:list={[
+              'px-2.5 py-2 text-[0.875rem] font-medium text-text-heading hover:text-brand-green rounded-md transition-colors whitespace-nowrap',
+              { 'text-brand-green': currentPath === item.href },
+            ]}
+          >
+            {item.label}
+          </a>
+        )
+      )}
+    </div>
+
+    <!-- Desktop CTAs -->
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="/treasury-health-check" class="inline-flex items-center gap-1.5 whitespace-nowrap bg-brand-green text-white font-semibold px-5 py-2.5 rounded-full text-[0.875rem] shadow-sm shadow-brand-green/20 hover:bg-brand-green-dark hover:shadow-md transition-all duration-200">
+        Book a Treasury Review
+        <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+      <a
+        href="https://app.hedgeflows.com"
+        class="text-[0.875rem] font-medium text-text-heading hover:text-brand-green transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Login
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      id="mobile-menu-toggle"
+      class="lg:hidden p-2 text-text-heading"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg id="menu-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden fixed inset-0 top-[72px] bg-white z-40 overflow-y-auto">
+    <div class="p-6">
+      <!-- Mobile CTA -->
+      <a href="/treasury-health-check" class="btn-primary w-full justify-center mb-6">
+        Book a Treasury Review <span aria-hidden="true">&rarr;</span>
+      </a>
+
+      <!-- Mobile Nav Items -->
+      <div class="space-y-1">
+        {navItems.map((item) =>
+          (item.children || item.grouped) ? (
+            <div class="mobile-accordion">
+              <button
+                class="flex items-center justify-between w-full px-3 py-3 text-nav text-text-heading border-b border-border-light"
+                aria-expanded="false"
+              >
+                {item.label}
+                <svg class="w-5 h-5 transition-transform accordion-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="accordion-content hidden pl-2">
+                {/* Grouped layout (Solutions) */}
+                {item.grouped && item.groups ? (
+                  item.groups.map((group: any) => (
+                    <div class="mt-3 first:mt-1">
+                      <p class="text-[0.6875rem] font-semibold text-text-muted uppercase tracking-wider px-3 mb-1">{group.heading}</p>
+                      {group.items.map((child: any) => (
+                        <a
+                          href={child.href}
+                          class="flex items-start gap-3 px-3 py-2.5 hover:bg-brand-green-pale rounded-lg transition-colors"
+                        >
+                          <div class="w-9 h-9 rounded-lg bg-[#F8FAFB] flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4.5 h-4.5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[child.icon] || iconPaths['desktop']} />
+                            </svg>
+                          </div>
+                          <div>
+                            <p class="text-[0.9375rem] font-medium text-text-heading leading-snug">{child.label}</p>
+                            <p class="text-[0.8125rem] text-text-muted leading-snug mt-0.5">{child.description}</p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  ))
+                ) : (
+                  /* Flat layout (Services, Platform, Resources) */
+                  <>
+                    {item.children?.map((child: any) => (
+                      <a
+                        href={child.href}
+                        class="flex items-start gap-3 px-3 py-3 hover:bg-brand-green-pale rounded-lg transition-colors"
+                      >
+                        <div class="w-9 h-9 rounded-lg bg-[#F8FAFB] flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <svg class="w-4.5 h-4.5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[child.icon] || iconPaths['desktop']} />
+                          </svg>
+                        </div>
+                        <div>
+                          <p class="text-[0.9375rem] font-medium text-text-heading leading-snug">{child.label}</p>
+                          <p class="text-[0.8125rem] text-text-muted leading-snug mt-0.5">{child.description}</p>
+                        </div>
+                      </a>
+                    ))}
+                    {item.footerLink && (
+                      <a
+                        href={item.footerLink.href}
+                        class="flex items-center gap-1.5 px-3 py-2.5 text-[0.8125rem] font-semibold text-brand-green"
+                      >
+                        {item.footerLink.label}
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </a>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class="block px-3 py-3 text-nav text-text-heading border-b border-border-light hover:text-brand-green transition-colors"
+            >
+              {item.label}
+            </a>
+          )
+        )}
+      </div>
+
+      <!-- Mobile Login -->
+      <div class="mt-6 pt-6 border-t border-border-light">
+        <a
+          href="https://app.hedgeflows.com"
+          class="block text-center text-nav text-text-heading hover:text-brand-green transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // ── Mobile menu toggle ──
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // ── Mobile accordion ──
+  document.querySelectorAll('.mobile-accordion button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const arrow = btn.querySelector('.accordion-arrow');
+      const isOpen = content?.classList.contains('hidden');
+
+      content?.classList.toggle('hidden');
+      arrow?.classList.toggle('rotate-180');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+
+  // ── Desktop mega menu hover with delay ──
+  let closeTimeout: ReturnType<typeof setTimeout> | null = null;
+  let currentOpen: HTMLElement | null = null;
+
+  document.querySelectorAll<HTMLElement>('[data-mega]').forEach((trigger) => {
+    const panel = trigger.querySelector<HTMLElement>('.mega-panel');
+    const chevron = trigger.querySelector<HTMLElement>('.mega-chevron');
+    if (!panel) return;
+
+    function open() {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+        closeTimeout = null;
+      }
+      // Close any other open panel
+      if (currentOpen && currentOpen !== trigger) {
+        const otherPanel = currentOpen.querySelector<HTMLElement>('.mega-panel');
+        const otherChevron = currentOpen.querySelector<HTMLElement>('.mega-chevron');
+        otherPanel?.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+        otherPanel?.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+        otherChevron?.classList.remove('rotate-180');
+        currentOpen.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      }
+      panel.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+      panel.classList.add('opacity-100', 'visible', 'pointer-events-auto');
+      chevron?.classList.add('rotate-180');
+      trigger.querySelector('button')?.setAttribute('aria-expanded', 'true');
+      currentOpen = trigger;
+    }
+
+    function scheduleClose() {
+      closeTimeout = setTimeout(() => {
+        panel.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+        panel.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+        chevron?.classList.remove('rotate-180');
+        trigger.querySelector('button')?.setAttribute('aria-expanded', 'false');
+        if (currentOpen === trigger) currentOpen = null;
+      }, 150);
+    }
+
+    trigger.addEventListener('mouseenter', open);
+    trigger.addEventListener('mouseleave', scheduleClose);
+
+    // Keep panel open while cursor is inside it
+    panel.addEventListener('mouseenter', () => {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+        closeTimeout = null;
+      }
+    });
+    panel.addEventListener('mouseleave', scheduleClose);
+  });
+</script>

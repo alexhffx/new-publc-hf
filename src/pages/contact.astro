@@ -1,0 +1,26 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import PageSections from '../components/PageSections.astro';
+import { getPage } from '../lib/sanity';
+
+const page = await getPage('contact');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Contact'}
+  description={page?.seoDescription || 'Get in touch with the HedgeFlows team.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Get in touch'}
+    subtitle={page?.heroSubtitle || "Have a question or want to learn more? We'd love to hear from you."}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <!-- Contact form embed -->
+  <div class="container-content bg-bg-light rounded-card p-12 text-center text-text-muted mb-16">
+    <p class="text-h3 text-text-heading mb-4">Contact Form</p>
+    <p class="text-text-muted">Contact form will be embedded here.</p>
+  </div>
+</PageLayout>

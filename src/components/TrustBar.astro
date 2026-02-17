@@ -1,0 +1,76 @@
+---
+import { getClientLogos, urlFor } from '../lib/sanity';
+
+interface Props {
+  label?: string;
+  logos?: any[];
+}
+
+const {
+  label = 'Trusted by international businesses:',
+  logos: logosFromProps,
+} = Astro.props;
+
+// Use provided logos (curated for this page), or fetch all from CMS
+let logos: any[] = [];
+if (logosFromProps && logosFromProps.length > 0) {
+  logos = logosFromProps;
+} else {
+  try {
+    logos = (await getClientLogos()) || [];
+  } catch (e) {
+    /* graceful fallback — empty state */
+  }
+}
+---
+
+<section class="py-12 md:py-16 bg-white border-y border-gray-100">
+  <div class="container-content">
+    <p class="text-[0.8125rem] font-medium text-text-muted text-center uppercase tracking-wider mb-8">
+      {label}
+    </p>
+    {logos.length > 0 ? (
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
+        {logos.map((item: any) => {
+          const imgUrl = item.logo
+            ? urlFor(item.logo).height(32).auto('format').url()
+            : null;
+
+          const inner = imgUrl ? (
+            <img
+              src={imgUrl}
+              alt={item.name}
+              class="h-7 md:h-8 w-auto object-contain"
+              loading="lazy"
+            />
+          ) : (
+            <div class="bg-gray-300 rounded h-7 flex items-center justify-center px-4">
+              <span class="text-[0.6875rem] font-semibold text-gray-500 whitespace-nowrap">{item.name}</span>
+            </div>
+          );
+
+          return item.url ? (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="h-8 px-1 flex items-center justify-center opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+              title={item.name}
+            >
+              {inner}
+            </a>
+          ) : (
+            <div
+              class="h-8 px-1 flex items-center justify-center opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+              title={item.name}
+            >
+              {inner}
+            </div>
+          );
+        })}
+      </div>
+    ) : (
+      <p class="text-center text-text-muted text-sm">Client logos coming soon.</p>
+    )}
+  </div>
+</section>

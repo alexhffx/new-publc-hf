@@ -1,0 +1,90 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import PageSections from '../components/PageSections.astro';
+import TeamCard from '../components/TeamCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { getPage, getTeamMembers, urlFor } from '../lib/sanity';
+
+const page = await getPage('about');
+
+// Fallback: fetch team members directly if no sections defined
+let teamMembers: any[] = [];
+if (!page?.sections || page.sections.length === 0) {
+  try {
+    teamMembers = await getTeamMembers() || [];
+  } catch (e) { /* empty */ }
+}
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'About'}
+  description={page?.seoDescription || 'Built by treasury professionals, for businesses that trade internationally.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Built by treasury professionals, for businesses that trade internationally'}
+    subtitle={page?.heroSubtitle || 'Meet the team behind HedgeFlows and learn about our mission to democratise treasury.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+
+  {page?.sections && page.sections.length > 0 ? (
+    <PageSections sections={page.sections} />
+  ) : (
+    <>
+      {/* Fallback mission section */}
+      <section class="section-padding">
+        <div class="container-content max-w-3xl mx-auto text-center">
+          <h2 class="section-heading mb-6">Our mission</h2>
+          <p class="text-[1.125rem] text-text-body leading-relaxed">
+            Most growing international businesses can't justify a full-time treasury team — but they face the same FX risks,
+            banking challenges, and cash management complexities as large corporates. HedgeFlows exists to bridge that gap,
+            combining institutional-grade treasury expertise with modern technology so every international business can
+            protect and optimise their finances.
+          </p>
+        </div>
+      </section>
+
+      {/* Fallback team section */}
+      {teamMembers.length > 0 && (
+        <section class="section-padding bg-[#F8FAFB]">
+          <div class="container-content">
+            <div class="text-center mb-14">
+              <h2 class="section-heading">Meet the team</h2>
+              <p class="section-subheading mx-auto">
+                Decades of institutional treasury experience, now working for you
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {teamMembers.map((member: any) => (
+                <TeamCard
+                  name={member.name}
+                  role={member.role}
+                  photo={member.photo ? urlFor(member.photo).width(256).height(256).auto('format').url() : undefined}
+                  background={member.institutionalBackground}
+                  linkedinUrl={member.linkedinUrl}
+                  bio={member.bio}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {teamMembers.length === 0 && (
+        <section class="section-padding bg-[#F8FAFB]">
+          <div class="container-content text-center py-12">
+            <h2 class="section-heading mb-4">Meet the team</h2>
+            <p class="text-text-muted text-lg">Team profiles coming soon.</p>
+          </div>
+        </section>
+      )}
+    </>
+  )}
+
+  <CTASection
+    headline="Ready to work with us?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Learn what we do', href: '/advisory' }}
+  />
+</PageLayout>

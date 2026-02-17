@@ -1,0 +1,26 @@
+---
+import { PortableText as PortableTextRenderer } from 'astro-portabletext';
+
+interface Props {
+  value: any;
+  class?: string;
+}
+
+const { value, class: className = '' } = Astro.props;
+---
+
+{value && value.length > 0 ? (
+  <div class:list={['prose prose-lg max-w-none', className,
+    'prose-headings:text-text-heading prose-headings:font-semibold',
+    'prose-h2:text-[1.5rem] prose-h2:mt-10 prose-h2:mb-4',
+    'prose-h3:text-[1.25rem] prose-h3:mt-8 prose-h3:mb-3',
+    'prose-p:text-text-body prose-p:leading-relaxed',
+    'prose-a:text-brand-green prose-a:font-medium prose-a:no-underline hover:prose-a:underline',
+    'prose-strong:text-text-heading prose-strong:font-semibold',
+    'prose-blockquote:border-brand-green prose-blockquote:text-text-body prose-blockquote:not-italic',
+    'prose-img:rounded-xl prose-img:shadow-md',
+    'prose-li:text-text-body',
+  ]}>
+    <PortableTextRenderer value={value} />
+  </div>
+) : null}

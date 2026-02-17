@@ -1,0 +1,53 @@
+---
+import PortableText from './PortableText.astro';
+import { urlFor } from '../lib/sanity';
+
+interface Props {
+  leftColumn: any;
+  rightColumn: any;
+  verticalAlign?: string;
+  columnGap?: string;
+  bgClass?: string;
+}
+
+const {
+  leftColumn,
+  rightColumn,
+  verticalAlign = 'items-center',
+  columnGap = 'gap-12',
+  bgClass = '',
+} = Astro.props;
+---
+
+<section class:list={['section-padding', bgClass]}>
+  <div class="container-content">
+    <div class:list={['grid md:grid-cols-2', verticalAlign, columnGap]}>
+      <div>
+        {leftColumn?.contentType === 'text' && leftColumn.richText && (
+          <PortableText value={leftColumn.richText} />
+        )}
+        {leftColumn?.contentType === 'image' && leftColumn.image && (
+          <img
+            src={urlFor(leftColumn.image).width(800).auto('format').url()}
+            alt={leftColumn.imageAlt || ''}
+            class="w-full h-auto rounded-xl shadow-md"
+            loading="lazy"
+          />
+        )}
+      </div>
+      <div>
+        {rightColumn?.contentType === 'text' && rightColumn.richText && (
+          <PortableText value={rightColumn.richText} />
+        )}
+        {rightColumn?.contentType === 'image' && rightColumn.image && (
+          <img
+            src={urlFor(rightColumn.image).width(800).auto('format').url()}
+            alt={rightColumn.imageAlt || ''}
+            class="w-full h-auto rounded-xl shadow-md"
+            loading="lazy"
+          />
+        )}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,228 @@
+---
+import PortableText from './PortableText.astro';
+import PillarCard from './PillarCard.astro';
+import StepProcess from './StepProcess.astro';
+import TestimonialCard from './TestimonialCard.astro';
+import BlogCard from './BlogCard.astro';
+import TeamCard from './TeamCard.astro';
+import TrustBar from './TrustBar.astro';
+import CTASection from './CTASection.astro';
+import ImageSection from './ImageSection.astro';
+import TwoColumnSection from './TwoColumnSection.astro';
+import { getBlogPosts, getTeamMembers, getClientLogos, urlFor } from '../lib/sanity';
+
+interface Props {
+  sections: any[];
+}
+
+const { sections = [] } = Astro.props;
+
+// Pre-fetch data for sections that need it
+const hasLatestPosts = sections.some((s: any) => s._type === 'sectionLatestPosts');
+const hasTeamGrid = sections.some((s: any) => s._type === 'sectionTeamGrid' && (!s.teamMembers || s.teamMembers.length === 0));
+const hasTrustBarAll = sections.some((s: any) => s._type === 'sectionTrustBar' && (!s.logos || s.logos.length === 0));
+
+const [blogPosts, allTeamMembers, allClientLogos] = await Promise.all([
+  hasLatestPosts ? getBlogPosts(12) : Promise.resolve([]),
+  hasTeamGrid ? getTeamMembers() : Promise.resolve([]),
+  hasTrustBarAll ? getClientLogos() : Promise.resolve([]),
+]);
+
+// Column class mapping for feature grid
+const columnClasses: Record<string, string> = {
+  '2': 'md:grid-cols-2',
+  '3': 'md:grid-cols-2 lg:grid-cols-3',
+  '4': 'md:grid-cols-2 lg:grid-cols-4',
+};
+---
+
+{sections.map((section: any) => {
+  const { _type } = section;
+
+  /* ─── Rich Text ─── */
+  if (_type === 'sectionRichText') {
+    return (
+      <section class:list={['section-padding', section.bgClass || '']}>
+        <div class:list={['container-content mx-auto', section.maxWidth || 'max-w-3xl']}>
+          <PortableText value={section.content} />
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── Feature Grid ─── */
+  if (_type === 'sectionFeatureGrid') {
+    const cols = columnClasses[section.columns || '3'] || columnClasses['3'];
+    return (
+      <section class:list={['section-padding', section.bgClass || '']}>
+        <div class="container-content">
+          {(section.heading || section.subheading) && (
+            <div class="text-center mb-14">
+              {section.heading && <h2 class="section-heading">{section.heading}</h2>}
+              {section.subheading && <p class="section-subheading mx-auto">{section.subheading}</p>}
+            </div>
+          )}
+          <div class:list={['grid gap-6 lg:gap-7', cols]}>
+            {section.features?.map((f: any) => (
+              <PillarCard
+                title={f.title}
+                description={f.description}
+                href={f.href}
+                icon={f.icon}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── Step Process ─── */
+  if (_type === 'sectionStepProcess') {
+    const steps = section.steps?.map((s: any, i: number) => ({
+      number: i + 1,
+      title: s.title,
+      description: s.description,
+    })) || [];
+    return (
+      <section class:list={['section-padding', section.bgClass || '']}>
+        <div class="container-content">
+          {(section.heading || section.subheading) && (
+            <div class="text-center mb-14">
+              {section.heading && <h2 class="section-heading">{section.heading}</h2>}
+              {section.subheading && <p class="section-subheading mx-auto">{section.subheading}</p>}
+            </div>
+          )}
+          <StepProcess steps={steps} />
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── Testimonials ─── */
+  if (_type === 'sectionTestimonials') {
+    const testimonials = section.testimonialSource === 'reference'
+      ? (section.referencedTestimonials || [])
+      : (section.inlineTestimonials || []);
+    return (
+      <section class:list={['section-padding', section.bgClass || '']}>
+        <div class="container-content">
+          {(section.heading || section.subheading) && (
+            <div class="text-center mb-14">
+              {section.heading && <h2 class="section-heading">{section.heading}</h2>}
+              {section.subheading && <p class="section-subheading mx-auto">{section.subheading}</p>}
+            </div>
+          )}
+          <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {testimonials.map((t: any) => (
+              <TestimonialCard
+                quote={t.quote}
+                personName={t.personName}
+                personRole={t.personRole}
+                companyName={t.companyName}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── CTA ─── */
+  if (_type === 'sectionCta') {
+    return (
+      <CTASection
+        headline={section.headline}
+        primaryCta={section.primaryCta}
+        secondaryCta={section.secondaryCta}
+        bgClass={section.bgClass}
+      />
+    );
+  }
+
+  /* ─── Latest Posts ─── */
+  if (_type === 'sectionLatestPosts') {
+    const count = section.numberOfPosts || 3;
+    const posts = (blogPosts || []).slice(0, count);
+    return (
+      <section class:list={['section-padding', section.bgClass || '']}>
+        <div class="container-content">
+          <div class="flex items-end justify-between mb-12">
+            <div>
+              {section.heading && <h2 class="section-heading">{section.heading}</h2>}
+              {section.subheading && <p class="section-subheading">{section.subheading}</p>}
+            </div>
+            {section.showViewAllLink && (
+              <a href="/blog" class="hidden md:inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+                View all
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            )}
+          </div>
+          <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {posts.map((post: any) => (
+              <BlogCard
+                title={post.title}
+                excerpt={post.excerpt || ''}
+                date={post.publishedAt}
+                href={`/blog/${post.slug?.current}`}
+                image={post.featuredImage ? urlFor(post.featuredImage).width(600).height(375).auto('format').url() : undefined}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── Team Grid ─── */
+  if (_type === 'sectionTeamGrid') {
+    const members = section.teamMembers?.length > 0
+      ? section.teamMembers
+      : allTeamMembers || [];
+    return (
+      <section class:list={['section-padding', section.bgClass || '']}>
+        <div class="container-content">
+          {(section.heading || section.subheading) && (
+            <div class="text-center mb-14">
+              {section.heading && <h2 class="section-heading">{section.heading}</h2>}
+              {section.subheading && <p class="section-subheading mx-auto">{section.subheading}</p>}
+            </div>
+          )}
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {members.map((m: any) => (
+              <TeamCard
+                name={m.name}
+                role={m.role}
+                photo={m.photo ? urlFor(m.photo).width(256).height(256).auto('format').url() : undefined}
+                background={m.institutionalBackground}
+                linkedinUrl={m.linkedinUrl}
+                bio={m.bio}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── Trust Bar ─── */
+  if (_type === 'sectionTrustBar') {
+    const trustLogos = section.logos?.length > 0 ? section.logos : allClientLogos || [];
+    return <TrustBar label={section.label} logos={trustLogos} />;
+  }
+
+  /* ─── Image ─── */
+  if (_type === 'sectionImage') {
+    return <ImageSection image={section.image} alt={section.alt} caption={section.caption} layout={section.layout} bgClass={section.bgClass} />;
+  }
+
+  /* ─── Two Column ─── */
+  if (_type === 'sectionTwoColumn') {
+    return <TwoColumnSection leftColumn={section.leftColumn} rightColumn={section.rightColumn} verticalAlign={section.verticalAlign} columnGap={section.columnGap} bgClass={section.bgClass} />;
+  }
+
+  return null;
+})}

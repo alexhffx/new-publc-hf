@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gilroy Font Face Declarations */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans text-[1.0625rem] leading-relaxed text-text-body bg-white antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-heading leading-tight;
+  }
+
+  h1 {
+    @apply text-[2rem] md:text-[3rem] font-bold;
+  }
+
+  h2 {
+    @apply text-[1.75rem] md:text-[2.25rem] font-semibold;
+  }
+
+  h3 {
+    @apply text-[1.25rem] font-semibold;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Better default focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-green;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply max-w-content mx-auto px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  .section-padding-sm {
+    @apply py-10 md:py-16;
+  }
+
+  /* Primary CTA button — bold green pill */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-brand-green text-white font-semibold
+           px-7 py-3.5 rounded-full text-[1rem]
+           shadow-md shadow-brand-green/20
+           hover:bg-brand-green-dark hover:shadow-lg hover:shadow-brand-green/30
+           active:scale-[0.98]
+           transition-all duration-200;
+  }
+
+  /* Secondary CTA button — outlined green pill */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           border-2 border-brand-green text-brand-green
+           bg-white font-semibold
+           px-7 py-3.5 rounded-full text-[1rem]
+           hover:bg-brand-green hover:text-white
+           active:scale-[0.98]
+           transition-all duration-200;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-white rounded-xl border border-gray-100
+           shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
+           hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
+           transition-all duration-300;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight;
+  }
+
+  /* Section subheading */
+  .section-subheading {
+    @apply text-[1.125rem] text-text-body mt-4 max-w-2xl;
+  }
+}
+
+/* Decorative wave SVG for hero backgrounds */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}

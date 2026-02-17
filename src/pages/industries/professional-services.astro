@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('industries/professional-services');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Professional Services'}
+  description={page?.seoDescription || 'Treasury solutions for professional services firms.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Treasury solutions for professional services'}
+    subtitle={page?.heroSubtitle || 'Simplify international invoicing, manage multi-currency receivables, and optimise treasury operations.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <CTASection
+    headline="Ready to take control of your international finances?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>

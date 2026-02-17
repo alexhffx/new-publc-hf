@@ -1,0 +1,19 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('legal/cookies');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Cookie Policy'}
+  description={page?.seoDescription || 'HedgeFlows cookie policy and tracking information.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Cookie Policy'}
+    subtitle={page?.heroSubtitle || 'How we use cookies and similar technologies on our website.'}
+  />
+  <PageSections sections={page?.sections || []} />
+</PageLayout>

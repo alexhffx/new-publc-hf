@@ -1,0 +1,122 @@
+---
+export const prerender = false;
+
+import PageLayout from '../../layouts/PageLayout.astro';
+import PortableText from '../../components/PortableText.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getCaseStudy, urlFor } from '../../lib/sanity';
+
+const { slug } = Astro.params;
+const cs = await getCaseStudy(slug || '');
+
+if (!cs) {
+  return Astro.redirect('/404');
+}
+
+const industryLabels: Record<string, string> = {
+  'e-commerce': 'E-Commerce',
+  'travel': 'Travel',
+  'logistics': 'Logistics & Wholesale',
+  'staffing': 'Staffing & Recruitment',
+  'startups': 'Startups & Scaleups',
+  'professional-services': 'Professional Services',
+};
+
+const pillarLabels: Record<string, string> = {
+  'bank-management': 'Bank Management',
+  'cash-management': 'Cash Management',
+  'risk-management': 'Risk Management',
+  'working-capital': 'Working Capital',
+  'digitalisation': 'Digitalisation',
+};
+
+const sections = [
+  { key: 'challenge', title: 'The Challenge', data: cs.challenge },
+  { key: 'advisoryEngagement', title: 'The Advisory Engagement', data: cs.advisoryEngagement },
+  { key: 'strategy', title: 'The Strategy', data: cs.strategy },
+  { key: 'platformImplementation', title: 'Platform Implementation', data: cs.platformImplementation },
+  { key: 'results', title: 'Measurable Results', data: cs.results },
+].filter(s => s.data && s.data.length > 0);
+---
+
+<PageLayout
+  title={cs.seoTitle || `${cs.clientName} — Case Study`}
+  description={cs.seoDescription || `See how HedgeFlows helped ${cs.clientName} optimise their treasury and FX operations.`}
+>
+  <section class="section-padding">
+    <div class="container-content max-w-3xl mx-auto">
+      {/* Breadcrumb */}
+      <nav class="mb-8 text-[0.875rem] text-text-muted">
+        <a href="/case-studies" class="hover:text-brand-green transition-colors">Case Studies</a>
+        <span class="mx-2">/</span>
+        <span class="text-text-heading font-medium">{cs.clientName}</span>
+      </nav>
+
+      {/* Tags */}
+      <div class="flex flex-wrap gap-2 mb-4">
+        {cs.industry && (
+          <span class="px-3 py-1 bg-brand-green-pale text-brand-green text-[0.8125rem] font-semibold rounded-full">
+            {industryLabels[cs.industry] || cs.industry}
+          </span>
+        )}
+        {cs.advisoryPillars?.map((p: string) => (
+          <span class="px-3 py-1 bg-gray-100 text-text-muted text-[0.8125rem] font-medium rounded-full">
+            {pillarLabels[p] || p}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-[2rem] md:text-[2.5rem] font-bold text-text-heading leading-tight mb-8">
+        {cs.clientName}
+      </h1>
+
+      {cs.featuredImage && (
+        <img
+          src={urlFor(cs.featuredImage).width(800).auto('format').url()}
+          alt={cs.clientName}
+          class="w-full rounded-xl shadow-md mb-10"
+          loading="eager"
+        />
+      )}
+
+      {/* Content sections */}
+      {sections.map((section) => (
+        <div class="mb-12">
+          <h2 class="text-[1.375rem] font-bold text-text-heading mb-4 flex items-center gap-3">
+            <span class="w-1.5 h-7 bg-brand-green rounded-full inline-block"></span>
+            {section.title}
+          </h2>
+          <PortableText value={section.data} />
+        </div>
+      ))}
+
+      {/* Pull quote */}
+      {cs.pullQuote && (
+        <blockquote class="my-12 p-8 bg-brand-green-pale rounded-xl border-l-4 border-brand-green">
+          <p class="text-[1.125rem] text-text-heading leading-relaxed italic">
+            "{cs.pullQuote}"
+          </p>
+          {cs.pullQuoteAttribution && (
+            <cite class="block mt-4 text-[0.9375rem] text-text-body not-italic font-medium">
+              — {cs.pullQuoteAttribution}
+            </cite>
+          )}
+        </blockquote>
+      )}
+
+      <div class="mt-12">
+        <a href="/case-studies" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
+          <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          Back to case studies
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Want similar results for your business?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>

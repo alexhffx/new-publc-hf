@@ -1,0 +1,46 @@
+---
+import { urlFor } from '../lib/sanity';
+
+interface Props {
+  image: any;
+  alt: string;
+  caption?: string;
+  layout?: 'full' | 'contained';
+  bgClass?: string;
+}
+
+const { image, alt, caption, layout = 'contained', bgClass = '' } = Astro.props;
+const imageUrl = image ? urlFor(image).width(1920).auto('format').url() : '';
+---
+
+{imageUrl && (
+  <section class:list={['section-padding', bgClass]}>
+    {layout === 'full' ? (
+      <div class="w-full">
+        <img
+          src={imageUrl}
+          alt={alt}
+          class="w-full h-auto"
+          loading="lazy"
+        />
+        {caption && (
+          <div class="container-content mt-4">
+            <p class="text-sm text-text-muted text-center">{caption}</p>
+          </div>
+        )}
+      </div>
+    ) : (
+      <div class="container-content">
+        <img
+          src={imageUrl}
+          alt={alt}
+          class="w-full h-auto rounded-xl shadow-md"
+          loading="lazy"
+        />
+        {caption && (
+          <p class="text-sm text-text-muted text-center mt-4">{caption}</p>
+        )}
+      </div>
+    )}
+  </section>
+)}

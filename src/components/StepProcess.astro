@@ -1,0 +1,36 @@
+---
+interface Step {
+  number: number;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  steps: Step[];
+}
+
+const { steps } = Astro.props;
+---
+
+<div class="relative">
+  <!-- Connecting line on desktop -->
+  <div class="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-brand-green/20 via-brand-green/40 to-brand-green/20" aria-hidden="true"></div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+    {steps.map((step) => (
+      <div class="relative flex flex-col items-center text-center">
+        <!-- Step number circle -->
+        <div class="relative z-10 w-14 h-14 bg-brand-green text-white rounded-full font-bold
+                    flex items-center justify-center text-[1.125rem] mb-5
+                    shadow-md shadow-brand-green/20
+                    ring-4 ring-white">
+          {step.number}
+        </div>
+
+        <h3 class="text-[1.125rem] font-semibold text-text-heading mb-2">{step.title}</h3>
+
+        <p class="text-[0.9375rem] text-text-body leading-relaxed max-w-[260px]">{step.description}</p>
+      </div>
+    ))}
+  </div>
+</div>

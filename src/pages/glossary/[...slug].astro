@@ -1,0 +1,62 @@
+---
+export const prerender = false;
+
+import PageLayout from '../../layouts/PageLayout.astro';
+import PortableText from '../../components/PortableText.astro';
+import { getGlossaryEntry } from '../../lib/sanity';
+
+const { slug } = Astro.params;
+const entry = await getGlossaryEntry(slug || '');
+
+if (!entry) {
+  return Astro.redirect('/404');
+}
+---
+
+<PageLayout
+  title={`${entry.term} — FX Glossary`}
+  description={`Definition of ${entry.term} in foreign exchange and treasury.`}
+>
+  <section class="section-padding">
+    <div class="container-content max-w-3xl mx-auto">
+      {/* Breadcrumb */}
+      <nav class="mb-8 text-[0.875rem] text-text-muted">
+        <a href="/glossary" class="hover:text-brand-green transition-colors">Glossary</a>
+        <span class="mx-2">/</span>
+        <span class="text-text-heading font-medium">{entry.term}</span>
+      </nav>
+
+      <h1 class="text-[2rem] md:text-[2.5rem] font-bold text-text-heading leading-tight mb-8">
+        {entry.term}
+      </h1>
+
+      <PortableText value={entry.definition} />
+
+      {entry.relatedTerms && entry.relatedTerms.length > 0 && (
+        <div class="mt-12 pt-8 border-t border-gray-100">
+          <h2 class="text-[1.125rem] font-semibold text-text-heading mb-4">Related terms</h2>
+          <div class="flex flex-wrap gap-2">
+            {entry.relatedTerms.map((t: any) => (
+              <a
+                href={`/glossary/${t.slug?.current}`}
+                class="px-4 py-2 bg-brand-green-pale text-brand-green text-[0.9375rem] font-medium rounded-full
+                       hover:bg-brand-green hover:text-white transition-colors"
+              >
+                {t.term}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="mt-12">
+        <a href="/glossary" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
+          <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          Back to glossary
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

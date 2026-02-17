@@ -1,0 +1,68 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import { getFxAcademyModules, urlFor } from '../../lib/sanity';
+
+const modules = await getFxAcademyModules();
+---
+
+<PageLayout title="FX Academy" description="Learn the fundamentals of FX and international treasury.">
+  <Hero
+    title="Learn the fundamentals of FX and international treasury"
+    subtitle="Free educational resources to help you understand foreign exchange and treasury management."
+  />
+  <section class="section-padding">
+    <div class="container-content">
+      {modules && modules.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {modules.map((mod: any) => (
+            <a
+              href={`/fx-academy/${mod.slug?.current}`}
+              class="group block bg-white rounded-xl border border-gray-100 overflow-hidden
+                     shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
+                     hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
+                     transition-all duration-300"
+            >
+              <div class="relative overflow-hidden">
+                {mod.featuredImage ? (
+                  <img
+                    src={urlFor(mod.featuredImage).width(600).height(375).auto('format').url()}
+                    alt=""
+                    class="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full aspect-[16/10] bg-gradient-to-br from-brand-green-pale to-brand-green/10 flex items-center justify-center">
+                    <span class="text-[3rem] font-bold text-brand-green/20">
+                      {String(mod.moduleNumber || '').padStart(2, '0')}
+                    </span>
+                  </div>
+                )}
+                {mod.moduleNumber && (
+                  <span class="absolute top-3 left-3 bg-brand-green text-white text-[0.75rem] font-bold px-2.5 py-1 rounded-full">
+                    Module {mod.moduleNumber}
+                  </span>
+                )}
+              </div>
+              <div class="p-6">
+                <h3 class="text-[1.125rem] font-semibold text-text-heading
+                           group-hover:text-brand-green transition-colors duration-200 leading-snug mb-2">
+                  {mod.title}
+                </h3>
+                {mod.description && (
+                  <p class="text-[0.9375rem] text-text-body leading-relaxed line-clamp-2">
+                    {mod.description}
+                  </p>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-text-muted text-lg">FX Academy modules coming soon!</p>
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

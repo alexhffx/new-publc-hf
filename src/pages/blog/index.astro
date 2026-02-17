@@ -1,0 +1,36 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getBlogPosts, urlFor } from '../../lib/sanity';
+
+const posts = await getBlogPosts();
+---
+
+<PageLayout title="Blog" description="Insights on treasury, FX, and international finance from HedgeFlows.">
+  <Hero
+    title="Insights on treasury, FX, and international finance"
+    subtitle="Expert articles, guides, and news to help you navigate international treasury."
+  />
+  <section class="section-padding">
+    <div class="container-content">
+      {posts && posts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {posts.map((post: any) => (
+            <BlogCard
+              title={post.title}
+              excerpt={post.excerpt || ''}
+              date={post.publishedAt || new Date().toISOString()}
+              href={`/blog/${post.slug?.current}`}
+              image={post.featuredImage ? urlFor(post.featuredImage).width(600).height(375).auto('format').url() : undefined}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-text-muted text-lg">No blog posts yet. Check back soon!</p>
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

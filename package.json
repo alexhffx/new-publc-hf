@@ -1,0 +1,26 @@
+{
+  "name": "hedgeflows-web",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vercel": "^9.0.4",
+    "@sanity/client": "^7.15.0",
+    "@sanity/image-url": "^2.0.3",
+    "@sanity/vision": "^5.9.0",
+    "astro": "^5.17.2",
+    "astro-portabletext": "^0.13.0",
+    "sanity": "^5.9.0",
+    "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19"
+  }
+}

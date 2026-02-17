@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('industries/logistics');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Logistics & Wholesale'}
+  description={page?.seoDescription || 'Treasury solutions for logistics and wholesale businesses.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Treasury solutions for logistics and wholesale'}
+    subtitle={page?.heroSubtitle || 'Optimise cross-border payments, manage working capital, and mitigate currency risk in your supply chain.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <CTASection
+    headline="Ready to take control of your international finances?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>

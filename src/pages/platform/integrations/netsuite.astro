@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import PageSections from '../../../components/PageSections.astro';
+import CTASection from '../../../components/CTASection.astro';
+import { getPage } from '../../../lib/sanity';
+
+const page = await getPage('platform/integrations/netsuite');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'NetSuite Integration'}
+  description={page?.seoDescription || 'Connect HedgeFlows with NetSuite for automated treasury management.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Connect HedgeFlows with NetSuite'}
+    subtitle={page?.heroSubtitle || 'Sync invoices, bills, and payments between NetSuite and HedgeFlows automatically.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <CTASection
+    headline="Ready to take control of your international finances?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>

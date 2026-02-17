@@ -1,0 +1,25 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import PageSections from '../components/PageSections.astro';
+import { getPage } from '../lib/sanity';
+
+const page = await getPage('treasury-health-check');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Treasury Health Check'}
+  description={page?.seoDescription || 'See what your international finances are really costing you.'}
+>
+  <Hero
+    title={page?.heroTitle || 'See what your international finances are really costing you'}
+    subtitle={page?.heroSubtitle || 'Book a free treasury health check and uncover hidden costs in your FX, banking, and cash management.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <!-- Calendly booking widget -->
+  <div id="calendly-embed" class="mt-12 container-content bg-bg-light rounded-card p-12 text-center text-text-muted">
+    Calendly booking widget will be embedded here
+  </div>
+</PageLayout>

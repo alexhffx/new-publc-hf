@@ -1,0 +1,19 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('legal/terms');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Terms & Conditions'}
+  description={page?.seoDescription || 'HedgeFlows terms and conditions of service.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Terms & Conditions'}
+    subtitle={page?.heroSubtitle || 'Please read these terms carefully before using our services.'}
+  />
+  <PageSections sections={page?.sections || []} />
+</PageLayout>

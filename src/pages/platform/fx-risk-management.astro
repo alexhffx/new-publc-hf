@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('platform/fx-risk-management');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'FX Risk Management'}
+  description={page?.seoDescription || 'Manage currency risk with confidence using HedgeFlows.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Manage currency risk with confidence'}
+    subtitle={page?.heroSubtitle || 'Identify exposures, set hedging strategies, and execute FX trades from a single platform.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <CTASection
+    headline="Ready to take control of your international finances?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>

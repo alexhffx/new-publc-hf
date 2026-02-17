@@ -1,0 +1,49 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  publishedAt?: string;
+  author?: string;
+}
+
+const { title, description, ogImage, publishedAt, author } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogType="article"
+>
+  <Header />
+  <main>
+    <article class="container-content section-padding">
+      <header class="max-w-3xl mx-auto mb-12">
+        <h1 class="text-h1 text-text-heading mb-4">{title}</h1>
+        {(publishedAt || author) && (
+          <div class="flex items-center gap-4 text-small text-text-muted">
+            {publishedAt && (
+              <time datetime={publishedAt}>
+                {new Date(publishedAt).toLocaleDateString('en-GB', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+            )}
+            {author && <span>by {author}</span>}
+          </div>
+        )}
+      </header>
+      <div class="max-w-3xl mx-auto prose prose-lg">
+        <slot />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('platform/payments');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Payments & AP Automation'}
+  description={page?.seoDescription || 'Send and receive international payments with ease.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Send and receive international payments with ease'}
+    subtitle={page?.heroSubtitle || 'Streamline your accounts payable with automated international payment workflows.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <CTASection
+    headline="Ready to take control of your international finances?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>

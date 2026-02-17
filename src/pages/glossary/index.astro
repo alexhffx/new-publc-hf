@@ -1,0 +1,72 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import { getGlossaryEntries } from '../../lib/sanity';
+
+const entries = await getGlossaryEntries();
+
+// Group entries by first letter
+const grouped: Record<string, any[]> = {};
+if (entries && entries.length > 0) {
+  for (const entry of entries) {
+    const letter = entry.term[0].toUpperCase();
+    if (!grouped[letter]) grouped[letter] = [];
+    grouped[letter].push(entry);
+  }
+}
+const letters = Object.keys(grouped).sort();
+---
+
+<PageLayout title="Glossary" description="FX and treasury terminology explained in plain English.">
+  <Hero
+    title="FX and treasury terminology explained"
+    subtitle="A comprehensive glossary of foreign exchange and treasury terms for international businesses."
+  />
+  <section class="section-padding">
+    <div class="container-content">
+      {letters.length > 0 ? (
+        <>
+          {/* Letter nav */}
+          <div class="flex flex-wrap gap-2 mb-12 justify-center">
+            {letters.map((letter) => (
+              <a
+                href={`#letter-${letter}`}
+                class="w-10 h-10 rounded-lg bg-brand-green-pale text-brand-green font-semibold
+                       flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors text-[0.9375rem]"
+              >
+                {letter}
+              </a>
+            ))}
+          </div>
+
+          {/* Term groups */}
+          <div class="space-y-10">
+            {letters.map((letter) => (
+              <div id={`letter-${letter}`}>
+                <h2 class="text-[1.5rem] font-bold text-text-heading mb-4 pb-2 border-b border-gray-100">
+                  {letter}
+                </h2>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
+                  {grouped[letter].map((entry: any) => (
+                    <li>
+                      <a
+                        href={`/glossary/${entry.slug?.current}`}
+                        class="text-[1.0625rem] text-text-body hover:text-brand-green transition-colors py-1.5 block"
+                      >
+                        {entry.term}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-text-muted text-lg">No glossary entries yet. Check back soon!</p>
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

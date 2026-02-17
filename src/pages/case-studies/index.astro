@@ -1,0 +1,103 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import { getCaseStudies, urlFor } from '../../lib/sanity';
+
+const caseStudies = await getCaseStudies();
+
+const industryLabels: Record<string, string> = {
+  'e-commerce': 'E-Commerce',
+  'travel': 'Travel',
+  'logistics': 'Logistics & Wholesale',
+  'staffing': 'Staffing & Recruitment',
+  'startups': 'Startups & Scaleups',
+  'professional-services': 'Professional Services',
+};
+
+const pillarLabels: Record<string, string> = {
+  'bank-management': 'Bank Management',
+  'cash-management': 'Cash Management',
+  'risk-management': 'Risk Management',
+  'working-capital': 'Working Capital',
+  'digitalisation': 'Digitalisation',
+};
+---
+
+<PageLayout title="Case Studies" description="See how HedgeFlows helps international businesses optimise treasury and FX.">
+  <Hero
+    title="Real results for real businesses"
+    subtitle="See how we've helped international businesses take control of treasury, reduce FX costs, and manage risk."
+  />
+  <section class="section-padding">
+    <div class="container-content">
+      {caseStudies && caseStudies.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {caseStudies.map((cs: any) => (
+            <a
+              href={`/case-studies/${cs.slug?.current}`}
+              class="group block bg-white rounded-xl border border-gray-100 overflow-hidden
+                     shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
+                     hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
+                     transition-all duration-300"
+            >
+              {cs.featuredImage ? (
+                <img
+                  src={urlFor(cs.featuredImage).width(700).height(350).auto('format').url()}
+                  alt=""
+                  class="w-full aspect-[2/1] object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full aspect-[2/1] bg-gradient-to-br from-brand-green-pale to-brand-green/10 flex items-center justify-center">
+                  {cs.clientLogo ? (
+                    <img src={urlFor(cs.clientLogo).width(200).auto('format').url()} alt="" class="h-16 w-auto opacity-40" />
+                  ) : (
+                    <span class="text-[2rem] font-bold text-brand-green/20">{cs.clientName}</span>
+                  )}
+                </div>
+              )}
+              <div class="p-6 md:p-7">
+                {/* Tags */}
+                <div class="flex flex-wrap gap-2 mb-3">
+                  {cs.industry && (
+                    <span class="px-2.5 py-0.5 bg-brand-green-pale text-brand-green text-[0.75rem] font-semibold rounded-full">
+                      {industryLabels[cs.industry] || cs.industry}
+                    </span>
+                  )}
+                  {cs.advisoryPillars?.map((p: string) => (
+                    <span class="px-2.5 py-0.5 bg-gray-100 text-text-muted text-[0.75rem] font-medium rounded-full">
+                      {pillarLabels[p] || p}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 class="text-[1.25rem] font-semibold text-text-heading
+                           group-hover:text-brand-green transition-colors duration-200 leading-snug mb-3">
+                  {cs.clientName}
+                </h3>
+
+                {cs.pullQuote && (
+                  <p class="text-[0.9375rem] text-text-body leading-relaxed italic line-clamp-2">
+                    "{cs.pullQuote}"
+                  </p>
+                )}
+
+                <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.875rem] mt-4
+                             group-hover:gap-2.5 transition-all duration-200">
+                  Read case study
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-text-muted text-lg">Case studies coming soon!</p>
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

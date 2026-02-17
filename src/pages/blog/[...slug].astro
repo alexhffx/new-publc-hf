@@ -1,0 +1,45 @@
+---
+export const prerender = false;
+
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import PortableText from '../../components/PortableText.astro';
+import { getBlogPost, urlFor } from '../../lib/sanity';
+
+const { slug } = Astro.params;
+const post = await getBlogPost(slug || '');
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<BlogLayout
+  title={post.seoTitle || post.title}
+  description={post.seoDescription || post.excerpt}
+  ogImage={post.featuredImage ? urlFor(post.featuredImage).width(1200).height(630).auto('format').url() : undefined}
+  publishedAt={post.publishedAt}
+  author={post.author?.name}
+>
+  {post.featuredImage && (
+    <img
+      src={urlFor(post.featuredImage).width(800).auto('format').url()}
+      alt={post.featuredImage.alt || post.title}
+      class="w-full rounded-xl shadow-md mb-10 max-w-3xl mx-auto"
+      loading="eager"
+    />
+  )}
+
+  <PortableText value={post.body} />
+
+  {post.tags && post.tags.length > 0 && (
+    <div class="mt-12 pt-8 border-t border-gray-100 max-w-3xl mx-auto">
+      <div class="flex flex-wrap gap-2">
+        {post.tags.map((tag: string) => (
+          <span class="px-3 py-1 bg-brand-green-pale text-brand-green text-[0.8125rem] font-medium rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+</BlogLayout>

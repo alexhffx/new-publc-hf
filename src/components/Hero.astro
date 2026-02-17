@@ -1,0 +1,93 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  primaryCta?: {
+    label: string;
+    href: string;
+  };
+  secondaryCta?: {
+    label: string;
+    href: string;
+  };
+  centered?: boolean;
+  bgClass?: string;
+  large?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  primaryCta,
+  secondaryCta,
+  centered = true,
+  bgClass = '',
+  large = false,
+} = Astro.props;
+---
+
+<section class:list={['relative overflow-hidden', large ? 'pt-20 pb-28 md:pt-28 md:pb-36 lg:pt-32 lg:pb-44' : 'pt-16 pb-20 md:pt-20 md:pb-28', bgClass]}>
+  <!-- Gradient background — stronger green presence -->
+  <div class="absolute inset-0 bg-gradient-to-b from-brand-green-pale via-brand-green-pale/30 to-white pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Decorative radial glow top-left -->
+  <div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-brand-green/[0.06] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Decorative wave lines (right side, similar to current hedgeflows.com) -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <svg class="absolute -right-10 bottom-0 w-[700px] h-[500px] opacity-[0.08]" viewBox="0 0 700 500" fill="none">
+      <path d="M50,80 Q175,30 300,80 T550,80 T700,80" stroke="#039464" stroke-width="1.5" fill="none"/>
+      <path d="M50,130 Q175,80 300,130 T550,130 T700,130" stroke="#039464" stroke-width="1.5" fill="none"/>
+      <path d="M50,180 Q175,130 300,180 T550,180 T700,180" stroke="#039464" stroke-width="1.5" fill="none"/>
+      <path d="M50,230 Q175,180 300,230 T550,230 T700,230" stroke="#039464" stroke-width="1.5" fill="none"/>
+      <path d="M50,280 Q175,230 300,280 T550,280 T700,280" stroke="#039464" stroke-width="1.5" fill="none"/>
+      <path d="M50,330 Q175,280 300,330 T550,330 T700,330" stroke="#039464" stroke-width="1.5" fill="none"/>
+      <path d="M50,380 Q175,330 300,380 T550,380 T700,380" stroke="#039464" stroke-width="1.5" fill="none"/>
+      <path d="M50,430 Q175,380 300,430 T550,430 T700,430" stroke="#039464" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- Decorative circle — subtle top-right accent -->
+  <div class="absolute top-16 right-[10%] w-20 h-20 border border-brand-green/10 rounded-full pointer-events-none hidden lg:block" aria-hidden="true"></div>
+  <div class="absolute bottom-24 left-[8%] w-12 h-12 border border-brand-green/10 rounded-full pointer-events-none hidden lg:block" aria-hidden="true"></div>
+
+  <div class:list={['container-content relative z-10', { 'text-center': centered }]}>
+    <h1 class:list={[
+      'text-text-heading leading-[1.1] tracking-tight font-bold',
+      large ? 'text-[2.25rem] md:text-[3.25rem] lg:text-[3.75rem]' : 'text-[2rem] md:text-[2.75rem] lg:text-[3rem]',
+      centered ? 'max-w-4xl mx-auto' : 'max-w-3xl',
+    ]}>
+      {title}
+    </h1>
+
+    {subtitle && (
+      <p class:list={[
+        'mt-6 md:mt-8 text-[1.125rem] md:text-[1.25rem] text-text-body leading-relaxed',
+        centered ? 'max-w-2xl mx-auto' : 'max-w-2xl',
+      ]}>
+        {subtitle}
+      </p>
+    )}
+
+    {(primaryCta || secondaryCta) && (
+      <div class:list={[
+        'mt-10 md:mt-12 flex flex-col sm:flex-row flex-wrap gap-4',
+        { 'justify-center items-center': centered },
+      ]}>
+        {primaryCta && (
+          <a href={primaryCta.href} class="btn-primary text-[1.0625rem] px-8 py-4">
+            {primaryCta.label}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        )}
+        {secondaryCta && (
+          <a href={secondaryCta.href} class="btn-secondary text-[1.0625rem] px-8 py-4">
+            {secondaryCta.label}
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</section>

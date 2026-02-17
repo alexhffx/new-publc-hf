@@ -1,0 +1,19 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('legal/complaints');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Complaints Policy'}
+  description={page?.seoDescription || 'HedgeFlows complaints policy and resolution process.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Complaints Policy'}
+    subtitle={page?.heroSubtitle || 'Our process for handling complaints fairly and promptly.'}
+  />
+  <PageSections sections={page?.sections || []} />
+</PageLayout>

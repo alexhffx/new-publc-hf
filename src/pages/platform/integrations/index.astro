@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Hero from '../../../components/Hero.astro';
+import PageSections from '../../../components/PageSections.astro';
+import CTASection from '../../../components/CTASection.astro';
+import { getPage } from '../../../lib/sanity';
+
+const page = await getPage('platform/integrations');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Integrations'}
+  description={page?.seoDescription || 'Connect your accounting system to HedgeFlows.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Connect your accounting system'}
+    subtitle={page?.heroSubtitle || 'Seamless integrations with the leading accounting platforms to automate your treasury workflows.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <CTASection
+    headline="Ready to take control of your international finances?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>

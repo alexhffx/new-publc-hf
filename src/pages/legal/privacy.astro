@@ -1,0 +1,19 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('legal/privacy');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Privacy Policy'}
+  description={page?.seoDescription || 'HedgeFlows privacy policy and data protection information.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Privacy Policy'}
+    subtitle={page?.heroSubtitle || 'How we collect, use, and protect your personal data.'}
+  />
+  <PageSections sections={page?.sections || []} />
+</PageLayout>

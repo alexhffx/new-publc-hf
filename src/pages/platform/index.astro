@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PageSections from '../../components/PageSections.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getPage } from '../../lib/sanity';
+
+const page = await getPage('platform');
+---
+
+<PageLayout
+  title={page?.seoTitle || page?.title || 'Platform Overview'}
+  description={page?.seoDescription || 'Technology that makes treasury advice actionable for international businesses.'}
+>
+  <Hero
+    title={page?.heroTitle || 'Technology that makes treasury advice actionable'}
+    subtitle={page?.heroSubtitle || 'A unified platform combining advisory intelligence with powerful treasury tools.'}
+    primaryCta={page?.primaryCta}
+    secondaryCta={page?.secondaryCta}
+  />
+  <PageSections sections={page?.sections || []} />
+  <CTASection
+    headline="Ready to take control of your international finances?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  />
+</PageLayout>
