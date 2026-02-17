@@ -33,7 +33,8 @@ const footerColumns = [
   {
     title: 'Solutions',
     links: [
-      { label: 'Startups & Scaleups', href: '/solutions/startups' },
+      { label: 'Startups & Small Businesses', href: '/solutions/startups' },
+      { label: 'Scaleups & Mid-sized', href: '/solutions/scaleups' },
       { label: 'E-Commerce', href: '/industries/e-commerce' },
       { label: 'Travel', href: '/industries/travel' },
       { label: 'Logistics', href: '/industries/logistics' },
@@ -122,6 +123,12 @@ const legalLinks = [
             {link.label}
           </a>
         ))}
+        <button
+          onclick="window.dispatchEvent(new Event('hf:show-consent'))"
+          class="text-small text-white hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
+        >
+          Cookie Preferences
+        </button>
       </nav>
     </div>
   </div>

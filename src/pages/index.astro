@@ -6,18 +6,28 @@ import StepProcess from '../components/StepProcess.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import BlogCard from '../components/BlogCard.astro';
 import CTASection from '../components/CTASection.astro';
-import { getTestimonials, getBlogPosts, getClientLogos, urlFor } from '../lib/sanity';
+import { getTestimonials, getClientLogos, urlFor } from '../lib/sanity';
+import { getCollection } from 'astro:content';
 import { staticClientLogos } from '../data/clientLogos';
+
+// Fetch real blog posts from Markdown content collection
+const mdEntries = await getCollection('blog');
+const latestPosts = mdEntries
+  .map((entry) => ({
+    title: entry.data.title,
+    excerpt: entry.data.description || '',
+    date: entry.data.date,
+    href: `/blog/${entry.data.slug}`,
+    image: entry.data.featuredImage || undefined,
+  }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 3);
 
 // Fetch from Sanity with fallbacks
 let sanityTestimonials: any[] = [];
-let sanityPosts: any[] = [];
 let clientLogos: any[] = [];
 try {
   sanityTestimonials = await getTestimonials(true) || [];
-} catch (e) { /* fallback to hardcoded */ }
-try {
-  sanityPosts = await getBlogPosts(3) || [];
 } catch (e) { /* fallback to hardcoded */ }
 try {
   const sanityLogos = await getClientLogos() || [];
@@ -70,26 +80,6 @@ const testimonials = [
   },
 ];
 
-const placeholderPosts = [
-  {
-    title: 'Understanding Hidden FX Costs in International Trade',
-    excerpt: 'Most businesses don\'t realise how much their bank charges on currency conversions. Here\'s how to find out.',
-    date: '2026-01-15',
-    href: '/blog',
-  },
-  {
-    title: 'Why Every International Business Needs a Treasury Health Check',
-    excerpt: 'A treasury review can reveal significant savings opportunities. Learn what to expect from the process.',
-    date: '2026-01-08',
-    href: '/blog',
-  },
-  {
-    title: 'FX Hedging for Mid-Market Businesses: A Practical Guide',
-    excerpt: 'You don\'t need to be a FTSE 100 company to manage currency risk effectively. Here\'s how to start.',
-    date: '2025-12-20',
-    href: '/blog',
-  },
-];
 ---
 
 <PageLayout
@@ -326,26 +316,15 @@ const placeholderPosts = [
         </a>
       </div>
       <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-        {sanityPosts.length > 0 ? (
-          sanityPosts.map((post: any) => (
-            <BlogCard
-              title={post.title}
-              excerpt={post.excerpt || ''}
-              date={post.publishedAt || new Date().toISOString()}
-              href={`/blog/${post.slug?.current}`}
-              image={post.featuredImage ? urlFor(post.featuredImage).width(600).height(375).auto('format').url() : undefined}
-            />
-          ))
-        ) : (
-          placeholderPosts.map((post) => (
-            <BlogCard
-              title={post.title}
-              excerpt={post.excerpt}
-              date={post.date}
-              href={post.href}
-            />
-          ))
-        )}
+        {latestPosts.map((post) => (
+          <BlogCard
+            title={post.title}
+            excerpt={post.excerpt}
+            date={post.date}
+            href={post.href}
+            image={post.image}
+          />
+        ))}
       </div>
       <div class="mt-10 text-center md:hidden">
         <a href="/blog" class="btn-secondary">

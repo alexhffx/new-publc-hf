@@ -1,0 +1,277 @@
+---
+// GDPR-compliant cookie consent banner
+// Stores preferences in localStorage under 'hf-cookie-consent'
+// Dispatches 'hf:consent' CustomEvent for page-level script gating
+// Listens for 'hf:show-consent' to re-open from footer or placeholders
+---
+
+<!-- Cookie Banner -->
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-label="Cookie consent"
+  aria-describedby="cookie-banner-desc"
+  class="fixed bottom-0 inset-x-0 z-[100] hidden"
+>
+  <div class="bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.1)]">
+    <div class="container-content py-5 md:py-6">
+
+      <!-- Main banner row -->
+      <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+        <div class="flex-1">
+          <p class="text-[0.9375rem] text-text-heading font-semibold mb-1">We value your privacy</p>
+          <p id="cookie-banner-desc" class="text-[0.875rem] text-text-body leading-relaxed">
+            We use cookies to enhance your experience. Some are essential for the site to function; others help us improve our services.
+            <a href="/legal/cookies" class="text-brand-green font-medium hover:underline">Learn more</a>
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 flex-shrink-0">
+          <button
+            id="cookie-reject"
+            class="px-5 py-2.5 text-[0.875rem] font-semibold border-2 border-brand-green text-brand-green bg-white rounded-full hover:bg-brand-green hover:text-white transition-all duration-200 cursor-pointer"
+          >
+            Reject Non-Essential
+          </button>
+          <button
+            id="cookie-accept"
+            class="px-5 py-2.5 text-[0.875rem] font-semibold bg-brand-green text-white rounded-full shadow-sm shadow-brand-green/20 hover:bg-brand-green-dark transition-all duration-200 cursor-pointer"
+          >
+            Accept All
+          </button>
+          <button
+            id="cookie-manage-toggle"
+            class="text-[0.8125rem] font-medium text-text-muted hover:text-brand-green transition-colors underline cursor-pointer"
+          >
+            Manage Preferences
+          </button>
+        </div>
+      </div>
+
+      <!-- Expandable preferences panel -->
+      <div id="cookie-preferences" class="hidden mt-6 pt-6 border-t border-gray-200">
+        <div class="space-y-5 max-w-2xl">
+
+          <!-- Necessary -->
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-[0.9375rem] font-semibold text-text-heading">Necessary</p>
+              <p class="text-[0.8125rem] text-text-muted">Essential for the website to function. Cannot be disabled.</p>
+            </div>
+            <button
+              role="switch"
+              aria-checked="true"
+              aria-label="Necessary cookies (always enabled)"
+              disabled
+              class="relative inline-flex h-6 w-11 flex-shrink-0 rounded-full bg-brand-green cursor-not-allowed opacity-60"
+            >
+              <span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition mt-0.5"></span>
+            </button>
+          </div>
+
+          <!-- Analytics -->
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-[0.9375rem] font-semibold text-text-heading">Analytics</p>
+              <p class="text-[0.8125rem] text-text-muted">Help us understand how visitors use our site to improve it.</p>
+            </div>
+            <button
+              id="toggle-analytics"
+              role="switch"
+              aria-checked="false"
+              aria-label="Analytics cookies"
+              class="cookie-toggle relative inline-flex h-6 w-11 flex-shrink-0 rounded-full bg-gray-200 cursor-pointer transition-colors duration-200"
+            >
+              <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition-transform duration-200 translate-x-0.5 mt-0.5"></span>
+            </button>
+          </div>
+
+          <!-- Marketing -->
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-[0.9375rem] font-semibold text-text-heading">Marketing</p>
+              <p class="text-[0.8125rem] text-text-muted">Enable interactive demos, booking widgets, and personalised content.</p>
+            </div>
+            <button
+              id="toggle-marketing"
+              role="switch"
+              aria-checked="false"
+              aria-label="Marketing cookies"
+              class="cookie-toggle relative inline-flex h-6 w-11 flex-shrink-0 rounded-full bg-gray-200 cursor-pointer transition-colors duration-200"
+            >
+              <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition-transform duration-200 translate-x-0.5 mt-0.5"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <button
+            id="cookie-save"
+            class="px-6 py-2.5 text-[0.875rem] font-semibold bg-brand-green text-white rounded-full shadow-sm shadow-brand-green/20 hover:bg-brand-green-dark transition-all duration-200 cursor-pointer"
+          >
+            Save Preferences
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function() {
+  var STORAGE_KEY = 'hf-cookie-consent';
+  var CONSENT_VERSION = 1;
+
+  // ── Read / write ──────────────────────────────────────
+  function getConsent() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      if (parsed.version !== CONSENT_VERSION) return null;
+      return parsed;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveConsent(analytics, marketing) {
+    var consent = {
+      necessary: true,
+      analytics: analytics,
+      marketing: marketing,
+      timestamp: new Date().toISOString(),
+      version: CONSENT_VERSION
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
+    dispatchConsent(consent);
+    hideBanner();
+  }
+
+  function dispatchConsent(consent) {
+    window.dispatchEvent(new CustomEvent('hf:consent', { detail: consent }));
+    // Activate consent-gated embeds (iframes with data-consent-src)
+    activateConsentedEmbeds(consent);
+  }
+
+  function activateConsentedEmbeds(consent) {
+    var categories = ['analytics', 'marketing'];
+    categories.forEach(function(cat) {
+      if (!consent[cat]) return;
+      // Swap data-consent-src → src on iframes
+      document.querySelectorAll('[data-consent-src][data-consent-category="' + cat + '"]')
+        .forEach(function(el) {
+          var src = el.getAttribute('data-consent-src');
+          if (src) {
+            el.setAttribute('src', src);
+            el.removeAttribute('data-consent-src');
+          }
+        });
+      // Load companion scripts (e.g. Storylane JS)
+      var storylaneSrc = 'https://js.storylane.io/js/v2/storylane.js';
+      if (cat === 'marketing' && document.querySelector('[data-consent-category="marketing"]') !== null) {
+        if (!document.querySelector('script[src*="storylane"]')) {
+          var s = document.createElement('script');
+          s.src = storylaneSrc;
+          s.async = true;
+          document.body.appendChild(s);
+        }
+      }
+      // Hide placeholders
+      document.querySelectorAll('[data-consent-placeholder="' + cat + '"]')
+        .forEach(function(el) { el.classList.add('hidden'); });
+    });
+  }
+
+  // ── Banner show / hide ────────────────────────────────
+  var banner = document.getElementById('cookie-banner');
+  var prefsPanel = document.getElementById('cookie-preferences');
+
+  function showBanner() {
+    if (banner) banner.classList.remove('hidden');
+  }
+
+  function hideBanner() {
+    if (banner) banner.classList.add('hidden');
+    if (prefsPanel) prefsPanel.classList.add('hidden');
+  }
+
+  // ── Toggle switches ───────────────────────────────────
+  function setToggleState(id, on) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    var thumb = btn.querySelector('span');
+    btn.setAttribute('aria-checked', on ? 'true' : 'false');
+    if (on) {
+      btn.classList.remove('bg-gray-200');
+      btn.classList.add('bg-brand-green');
+      if (thumb) { thumb.classList.remove('translate-x-0.5'); thumb.classList.add('translate-x-5'); }
+    } else {
+      btn.classList.remove('bg-brand-green');
+      btn.classList.add('bg-gray-200');
+      if (thumb) { thumb.classList.remove('translate-x-5'); thumb.classList.add('translate-x-0.5'); }
+    }
+  }
+
+  function getToggleState(id) {
+    var btn = document.getElementById(id);
+    return btn ? btn.getAttribute('aria-checked') === 'true' : false;
+  }
+
+  // Toggle click handlers
+  document.querySelectorAll('.cookie-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var current = btn.getAttribute('aria-checked') === 'true';
+      setToggleState(btn.id, !current);
+    });
+  });
+
+  // ── Button handlers ───────────────────────────────────
+  var acceptBtn = document.getElementById('cookie-accept');
+  var rejectBtn = document.getElementById('cookie-reject');
+  var manageBtn = document.getElementById('cookie-manage-toggle');
+  var saveBtn = document.getElementById('cookie-save');
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', function() {
+      saveConsent(true, true);
+    });
+  }
+
+  if (rejectBtn) {
+    rejectBtn.addEventListener('click', function() {
+      saveConsent(false, false);
+    });
+  }
+
+  if (manageBtn) {
+    manageBtn.addEventListener('click', function() {
+      if (prefsPanel) prefsPanel.classList.toggle('hidden');
+    });
+  }
+
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function() {
+      saveConsent(getToggleState('toggle-analytics'), getToggleState('toggle-marketing'));
+    });
+  }
+
+  // ── Re-open from footer / placeholders ────────────────
+  window.addEventListener('hf:show-consent', function() {
+    var existing = getConsent();
+    if (existing) {
+      setToggleState('toggle-analytics', existing.analytics);
+      setToggleState('toggle-marketing', existing.marketing);
+    }
+    showBanner();
+    if (prefsPanel) prefsPanel.classList.remove('hidden');
+  });
+
+  // ── Initialise on load ────────────────────────────────
+  var existing = getConsent();
+  if (existing) {
+    dispatchConsent(existing);
+  } else {
+    showBanner();
+  }
+})();
+</script>

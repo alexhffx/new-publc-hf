@@ -6,19 +6,19 @@ import CTASection from '../../components/CTASection.astro';
 
 const painPoints = [
   {
-    title: 'Streamline global payments',
-    description: 'Connected global account with automated reconciliations in 35 currencies. Stop spending days on manual bank transfers and spreadsheet matching.',
+    title: 'One global business account',
+    description: 'Your own IBAN and local bank details in 35+ currencies. Pay suppliers, contractors, and staff worldwide — and collect from global clients — all from one place.',
     icon: 'M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z',
   },
   {
-    title: 'Effortlessly manage cash flows',
-    description: 'Multi-currency cash and bank management dashboard with real-time visibility across entities. Plan ahead instead of firefighting.',
-    icon: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+    title: 'Simple currency management',
+    description: 'See your FX exposure at a glance and lock in rates when it suits you. No complexity, no jargon — just clear visibility so you know what you\'re paying.',
+    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
   },
   {
-    title: 'Manage currencies with confidence',
-    description: 'See your FX risks early and avoid surprise costs with our Currency Co-pilot. Get expert guidance without needing a full treasury team.',
-    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+    title: 'Automated bookkeeping',
+    description: 'Invoices sync automatically from Xero or QuickBooks. Payments reconcile back to your ledger. Spend minutes, not days, on international finance admin.',
+    icon: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
   },
 ];
 
@@ -39,14 +39,14 @@ const testimonials = [
 ---
 
 <PageLayout
-  title="Treasury for Startups & Scaleups | HedgeFlows"
-  description="Financial mission control for international growth. Global payments, treasury and risk management automation for startup CFOs building scalable financial processes."
+  title="Treasury for Startups & Small Businesses | HedgeFlows"
+  description="Global business account and simple currency management for startups and small businesses that trade internationally. Pay, collect, and manage FX — all in one place."
 >
   <Hero
-    title="Financial mission control for international growth"
-    subtitle="Global payments, treasury, and risk management automation for startup CFOs that need scalable financial processes to help them grow globally."
+    title="Global payments and currency management, simplified"
+    subtitle="A global business account, market-leading FX rates, and simple currency tools — everything a startup or small business needs to trade internationally without the complexity."
     primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-    secondaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
   />
 
   <TrustBar />
@@ -55,8 +55,8 @@ const testimonials = [
   <section class="section-padding bg-[#F8FAFB]">
     <div class="container-content">
       <div class="text-center mb-14">
-        <h2 class="section-heading">Plan. Build. Scale.</h2>
-        <p class="section-subheading mx-auto">We help you build beyond borders</p>
+        <h2 class="section-heading">Everything you need to trade globally</h2>
+        <p class="section-subheading mx-auto">Stop juggling banks, brokers, and spreadsheets</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
         {painPoints.map((s) => (
@@ -79,15 +79,15 @@ const testimonials = [
     <div class="container-content space-y-24">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
-          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Global Payments</p>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Global Business Account</p>
           <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
             Pay and get paid like a local in 35+ currencies
           </h3>
           <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
-            Your own IBAN and local bank details around the globe. Pay vendors, international staff, and freelancers. Collect from global B2B clients. Save time with unique bookkeeping automation that removes the complexity of dealing in multiple currencies.
+            Your own IBAN and local bank details around the globe. Pay vendors, staff, and freelancers. Collect from global B2B clients. Save time with unique bookkeeping automation that removes the complexity of dealing in multiple currencies.
           </p>
           <ul class="space-y-3">
-            {['Same-day payments via SWIFT, SEPA, Faster Payments, and ACH', 'Automatic invoice sync from your accounting system', 'Auto-reconciliation back to your ledgers', 'Payment links for faster collections'].map((item) => (
+            {['Same-day payments via SWIFT, SEPA, Faster Payments, and ACH', 'Automatic invoice sync from your accounting system', 'Auto-reconciliation back to your ledgers', 'Market-leading FX rates from 0.25%'].map((item) => (
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -104,18 +104,18 @@ const testimonials = [
 
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
-          <img src="/assets/images/platform/cashflow-plan.png" alt="Cash flow management dashboard" class="w-full h-auto" loading="lazy" />
+          <img src="/assets/images/platform/fx-risk-hero.png" alt="Simple currency management dashboard" class="w-full h-auto" loading="lazy" />
         </div>
         <div class="order-1 lg:order-2">
-          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Cash Management</p>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Simple Currency Management</p>
           <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
-            Streamline cashflow forecasting and liquidity management
+            See your FX exposure and lock in rates with confidence
           </h3>
           <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
-            Real-time integrations with multiple ledgers, ERP systems, and bank accounts. Avoid costly ERP implementations by connecting HedgeFlows to Xero and QuickBooks for seamless visibility across multiple entities.
+            Know exactly where you're exposed to currency moves. Book rates when they're right for you, with transparent pricing and no hidden margins. Simple tools that give you control without needing an FX expert on staff.
           </p>
           <ul class="space-y-3">
-            {['Consolidated view across currencies, banks, and entities', 'Connect via Open Banking for real-time balances', 'Multi-entity cashflow forecasting', 'Access better deals for deposits and funding'].map((item) => (
+            {['Clear view of your currency exposure by invoice', 'Lock in rates with forward contracts', 'Transparent FX pricing — see the mid-rate and our spread', 'No minimum volumes or lock-in contracts'].map((item) => (
               <li class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -133,7 +133,7 @@ const testimonials = [
   <section class="section-padding bg-[#F8FAFB]">
     <div class="container-content">
       <div class="text-center mb-14">
-        <h2 class="section-heading">Trusted by startups globally</h2>
+        <h2 class="section-heading">Trusted by growing businesses worldwide</h2>
       </div>
       <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {testimonials.map((t) => (
@@ -156,7 +156,7 @@ const testimonials = [
   <section class="section-padding">
     <div class="container-content max-w-3xl mx-auto text-center">
       <div class="bg-gradient-to-br from-brand-green-pale via-brand-green-pale/60 to-white rounded-3xl p-10 md:p-14 border border-brand-green/10">
-        <h2 class="text-[1.5rem] md:text-[2rem] font-bold text-text-heading mb-4">Apply for our startup program</h2>
+        <h2 class="text-[1.5rem] md:text-[2rem] font-bold text-text-heading mb-4">Apply for our startup programme</h2>
         <p class="text-[1.0625rem] text-text-body leading-relaxed mb-6">
           HedgeFlows for Startups is open to businesses less than 5 years old. Enjoy extended subscription discounts, exclusive events, and expert access — essential benefits for growing businesses.
         </p>
@@ -171,7 +171,7 @@ const testimonials = [
   </section>
 
   <CTASection
-    headline="Ready to build your treasury infrastructure?"
+    headline="Ready to simplify your international finances?"
     primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'See Pricing', href: '/pricing' }}
   />

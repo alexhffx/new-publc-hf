@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title?: string;
@@ -70,5 +71,64 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
   </head>
   <body>
     <slot />
+    <CookieConsent />
+
+    <!-- Google Analytics 4 — consent-gated (analytics category) -->
+    <script is:inline>
+    (function() {
+      var GA_ID = 'G-L12D7J2N6C';
+      var STORAGE_KEY = 'hf-cookie-consent';
+
+      function loadGA() {
+        if (document.querySelector('script[src*="googletagmanager"]')) return;
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID, { anonymize_ip: true });
+      }
+
+      // Check existing consent on page load
+      try {
+        var consent = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (consent && consent.analytics) loadGA();
+      } catch(e) {}
+
+      // Listen for consent changes
+      window.addEventListener('hf:consent', function(e) {
+        if (e.detail && e.detail.analytics) loadGA();
+      });
+    })();
+    </script>
+
+    <!-- Tidio Chat — consent-gated (marketing category) -->
+    <script is:inline>
+    (function() {
+      var STORAGE_KEY = 'hf-cookie-consent';
+
+      function loadTidio() {
+        if (document.querySelector('script[src*="tidio"]')) return;
+        var s = document.createElement('script');
+        s.src = '//code.tidio.co/m8zlba8jlop0bfonjnfjv3uaki2pacfr.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+
+      // Check existing consent on page load
+      try {
+        var consent = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (consent && consent.marketing) loadTidio();
+      } catch(e) {}
+
+      // Listen for consent changes
+      window.addEventListener('hf:consent', function(e) {
+        if (e.detail && e.detail.marketing) loadTidio();
+      });
+    })();
+    </script>
   </body>
 </html>

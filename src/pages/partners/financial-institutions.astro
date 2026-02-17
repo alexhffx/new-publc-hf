@@ -1,0 +1,304 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const problemStats = [
+  { value: '5.5M', label: 'UK SMEs — most underserved by banks on treasury' },
+  { value: '80%', label: 'of SME FX is still done manually via phone or portal' },
+  { value: '<5%', label: 'of mid-market firms have access to proper risk management' },
+];
+
+const partnerModels = [
+  {
+    title: 'Referral partnership',
+    description: 'Introduce your SME clients to HedgeFlows for treasury, cash management, and FX risk — and earn ongoing revenue share. We handle onboarding, support, and delivery. You keep the banking relationship.',
+    features: [
+      'Revenue share on referred clients',
+      'Clients stay on your banking rails',
+      'Dedicated partner manager',
+      'Co-branded marketing materials',
+    ],
+    icon: 'M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5',
+  },
+  {
+    title: 'Embedded treasury',
+    description: 'Embed HedgeFlows treasury tools directly into your client offering. Your clients get institutional-grade cash and risk management through your platform — powered by our infrastructure.',
+    features: [
+      'API-first integration',
+      'White-label or co-branded options',
+      'FX, payments, and risk management',
+      'Your branding, our engine',
+    ],
+    icon: 'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  },
+  {
+    title: 'Advisory collaboration',
+    description: 'Your relationship managers bring the client. Our treasury advisors bring the expertise. Together, you offer a full-service solution that deepens client loyalty and unlocks new revenue.',
+    features: [
+      'Joint advisory on FX policy and hedging',
+      'Cash management and working capital review',
+      'Board-ready reporting for your clients',
+      'Strengthens your SME proposition',
+    ],
+    icon: 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z',
+  },
+];
+
+const whyPartner = [
+  {
+    title: 'FCA regulated',
+    description: 'Authorised Payment Institution (FRN: 1008699). Safeguarded client funds. Full regulatory compliance built in.',
+    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  },
+  {
+    title: 'Institutional pedigree',
+    description: 'Founded by treasury professionals from Standard Chartered and Bank of America Merrill Lynch — with 40+ years of combined experience.',
+    icon: 'M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5',
+  },
+  {
+    title: 'API-first platform',
+    description: 'RESTful APIs, webhooks, and pre-built connectors for ERP, CRM, and BI systems. Built for integration from day one.',
+    icon: 'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  },
+  {
+    title: 'Proven with SMEs',
+    description: 'Trusted by businesses across travel, logistics, professional services, and tech — the sectors your SME clients operate in.',
+    icon: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0',
+  },
+];
+---
+
+<PageLayout
+  title="Financial Institution Partnerships | HedgeFlows"
+  description="Partner with HedgeFlows to give your SME and mid-market clients institutional-grade treasury, FX risk management, and cash management — without building it yourself."
+>
+  <Hero
+    title="Better SME coverage, without building from scratch"
+    subtitle="Banks and FX brokers know the SME opportunity is huge — but the economics of serving them with treasury, risk management, and cash solutions don't stack up. We change that. Partner with us to extend institutional-grade capabilities to your SME clients, on your terms."
+    primaryCta={{ label: 'Explore a Partnership', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Email Our Team', href: 'mailto:partners@hedgeflows.com' }}
+  />
+
+  <TrustBar />
+
+  <!-- Awards & Regulation -->
+  <section class="section-padding-sm bg-[#F8FAFB] border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x md:divide-gray-200">
+        <!-- TMI Awards 2025 -->
+        <div class="flex items-center gap-5 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/tmi.jpg"
+            alt="TMI Awards 2025 for Innovation & Excellence"
+            class="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[1rem]">Best Risk Management</p>
+            <p class="text-[0.875rem] text-text-muted">TMI Awards 2025</p>
+          </div>
+        </div>
+
+        <!-- TTP Awards 2026 -->
+        <div class="flex items-center gap-5 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/ttp.jpg"
+            alt="TTP Awards 2026"
+            class="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[1rem]">SME Inclusion Initiative</p>
+            <p class="text-[0.875rem] text-text-muted">TTP Awards 2026</p>
+          </div>
+        </div>
+
+        <!-- FCA Badge -->
+        <div class="flex items-center gap-5 md:justify-center md:px-8">
+          <div class="w-20 h-20 md:w-24 md:h-24 bg-brand-green-pale rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-10 h-10 md:w-12 md:h-12 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-text-heading text-[1rem]">FCA Regulated</p>
+            <p class="text-[0.875rem] text-text-muted">Firm Reference Number: 1008699</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">The SME treasury gap</h2>
+        <p class="section-subheading mx-auto max-w-3xl">
+          Mid-market and SME businesses are the backbone of international trade — but they're the most underserved segment when it comes to treasury and risk management
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
+        {problemStats.map((stat) => (
+          <div class="text-center">
+            <p class="text-[2.5rem] font-bold text-brand-green leading-none mb-2">{stat.value}</p>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Problem narrative -->
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+          <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">The challenge for banks</h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed">
+            Your corporate treasury desk serves large enterprises well — but the cost-to-serve model breaks down for SMEs. Building bespoke FX risk advisory, cash management tools, and hedging solutions for hundreds of smaller clients isn't viable. So they get a basic portal, a rate over the phone, and little guidance. Many drift to fintechs or brokers for FX — and you lose the relationship.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+          <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">The challenge for FX brokers</h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed">
+            You win clients on rate — but retaining them means offering more than execution. SME clients increasingly want cash visibility, exposure tracking, hedging guidance, and integration with their accounting systems. Building that technology stack from scratch takes years and millions. Without it, you compete purely on margin — a race to the bottom.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">The Opportunity</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Extend your reach into the SME segment — without the build cost
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            HedgeFlows gives your SME clients the treasury capabilities they need — cash management, FX risk monitoring, hedging guidance, payment automation, and accounting integrations — delivered through a platform built for businesses that don't have a treasury team. You keep the client relationship. We provide the infrastructure and advisory expertise.
+          </p>
+          <ul class="space-y-3">
+            {[
+              'Institutional-grade tools sized for SMEs and mid-market',
+              'FX risk advisory backed by 40+ years of banking experience',
+              'Multi-currency cash management and payment automation',
+              'ERP and accounting integrations out of the box',
+              'FCA-regulated with safeguarded client funds',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden">
+          <img src="/assets/images/platform/fx-risk-hero.png" alt="Treasury platform for SME clients" class="w-full h-auto" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership Models -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Partnership models</h2>
+        <p class="section-subheading mx-auto">Flexible structures designed around how you want to work with us</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {partnerModels.map((model) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={model.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{model.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">{model.description}</p>
+            <ul class="space-y-2.5 mt-auto">
+              {model.features.map((f) => (
+                <li class="flex items-start gap-2.5 text-[0.875rem] text-text-body">
+                  <svg class="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
+          <img src="/assets/images/platform/cashflow-plan.png" alt="Partner onboarding process" class="w-full h-auto" loading="lazy" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">How It Works</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            From conversation to client coverage in weeks
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            We move fast. Most partnerships go from first conversation to live clients in under a month. Here's how it typically works:
+          </p>
+          <div class="space-y-6">
+            {[
+              { step: '1', title: 'Discovery call', description: 'We understand your client base, your current SME offering, and where the gaps are.' },
+              { step: '2', title: 'Solution design', description: 'We design the partnership model — referral, embedded, or advisory collaboration — and agree commercial terms.' },
+              { step: '3', title: 'Integration & training', description: 'Technical integration (if needed), team training, and co-branded materials. We get your relationship managers comfortable with the offering.' },
+              { step: '4', title: 'Go live', description: 'Start introducing clients. We handle onboarding, treasury advisory, and ongoing support. You earn revenue and deepen client relationships.' },
+            ].map((s) => (
+              <div class="flex gap-4">
+                <div class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center flex-shrink-0 text-[0.875rem] font-bold">
+                  {s.step}
+                </div>
+                <div>
+                  <p class="text-[0.9375rem] font-semibold text-text-heading mb-1">{s.title}</p>
+                  <p class="text-[0.875rem] text-text-body leading-relaxed">{s.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Partner -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Why financial institutions partner with us</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {whyPartner.map((item) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={item.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{item.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Let's explore how we can serve your SME clients together"
+    primaryCta={{ label: 'Explore a Partnership', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Email partners@hedgeflows.com', href: 'mailto:partners@hedgeflows.com' }}
+  />
+</PageLayout>

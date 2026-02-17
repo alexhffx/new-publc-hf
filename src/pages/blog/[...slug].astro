@@ -35,12 +35,74 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
   month: 'long',
   day: 'numeric',
 });
+
+const siteUrl = 'https://hedgeflows.com';
+const pageUrl = `${siteUrl}/blog/${post.data.slug}`;
+
+// BlogPosting structured data
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": post.data.date,
+  "dateModified": post.data.updated || post.data.date,
+  "author": {
+    "@type": "Person",
+    "name": post.data.author || "HedgeFlows",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HedgeFlows",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/logos/hf-logo-green.svg`,
+    },
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+  ...(post.data.featuredImage ? { "image": post.data.featuredImage } : {}),
+};
+
+// BreadcrumbList structured data
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl,
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": `${siteUrl}/blog`,
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": post.data.title,
+      "item": pageUrl,
+    },
+  ],
+};
 ---
 
 <PageLayout
   title={post.data.seoTitle || post.data.title}
   description={post.data.description}
+  ogImage={post.data.featuredImage}
+  ogType="article"
 >
+  {/* Structured Data */}
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
   <article class="section-padding bg-white">
     <div class="container-content max-w-3xl mx-auto">
       {/* Breadcrumb */}
