@@ -29,4 +29,33 @@ const blogMarkdown = defineCollection({
   }),
 });
 
-export const collections = { blog: blogMarkdown };
+/* ------------------------------------------------------------------
+   Glossary — Markdown content collection (migrated from HubSpot)
+   Future entries can also be added via Sanity and merged at page level.
+   ------------------------------------------------------------------ */
+const glossaryMarkdown = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/glossary' }),
+  schema: z.object({
+    term: z.string(),
+    slug: z.string(),
+    definition: z.string().optional().default(''),   // Short definition for index page
+    category: z.enum([
+      'fx-fundamentals',
+      'hedging-instruments',
+      'risk-concepts',
+      'payments-operations',
+      'accounting-finance',
+      'market-structure',
+    ]).optional(),
+    relatedTerms: z.array(z.string()).optional().default([]),  // Slugs
+    relatedBlogPosts: z.array(z.string()).optional().default([]),
+    relatedAcademyModule: z.string().optional(),
+    seoDescription: z.string().optional(),
+    lastUpdated: z.string().optional(),
+  }),
+});
+
+export const collections = {
+  blog: blogMarkdown,
+  glossary: glossaryMarkdown,
+};

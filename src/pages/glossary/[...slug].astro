@@ -1,44 +1,106 @@
 ---
-export const prerender = false;
-
 import PageLayout from '../../layouts/PageLayout.astro';
-import PortableText from '../../components/PortableText.astro';
-import { getGlossaryEntry } from '../../lib/sanity';
+import { getCollection, render } from 'astro:content';
 
-const { slug } = Astro.params;
-const entry = await getGlossaryEntry(slug || '');
-
-if (!entry) {
-  return Astro.redirect('/404');
+/* ── Generate static paths from Markdown content collection ── */
+export async function getStaticPaths() {
+  const entries = await getCollection('glossary');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry, allEntries: entries },
+  }));
 }
+
+const { entry, allEntries } = Astro.props;
+const { Content } = await render(entry);
+
+/* ── Resolve related terms to their full data ────────────── */
+const relatedTerms = (entry.data.relatedTerms || [])
+  .map((slug: string) => allEntries.find((e: any) => e.data.slug === slug))
+  .filter(Boolean)
+  .map((e: any) => ({ term: e.data.term, slug: e.data.slug }));
+
+/* ── Category label ──────────────────────────────────────── */
+const categoryLabels: Record<string, string> = {
+  'fx-fundamentals': 'FX Fundamentals',
+  'hedging-instruments': 'Hedging Instruments',
+  'risk-concepts': 'Risk Concepts',
+  'payments-operations': 'Payments & Operations',
+  'accounting-finance': 'Accounting & Finance',
+  'market-structure': 'Market Structure',
+};
+
+const categoryColors: Record<string, string> = {
+  'fx-fundamentals': 'bg-blue-50 text-blue-700',
+  'hedging-instruments': 'bg-emerald-50 text-emerald-700',
+  'risk-concepts': 'bg-amber-50 text-amber-700',
+  'payments-operations': 'bg-violet-50 text-violet-700',
+  'accounting-finance': 'bg-rose-50 text-rose-700',
+  'market-structure': 'bg-slate-50 text-slate-700',
+};
+
+/* ── Academy module link ─────────────────────────────────── */
+const academySlug = entry.data.relatedAcademyModule;
 ---
 
 <PageLayout
-  title={`${entry.term} — FX Glossary`}
-  description={`Definition of ${entry.term} in foreign exchange and treasury.`}
+  title={`${entry.data.term} — FX Glossary | HedgeFlows`}
+  description={entry.data.seoDescription || entry.data.definition || `Definition of ${entry.data.term} in foreign exchange and treasury.`}
 >
-  <section class="section-padding">
+  <article class="section-padding bg-white">
     <div class="container-content max-w-3xl mx-auto">
       {/* Breadcrumb */}
-      <nav class="mb-8 text-[0.875rem] text-text-muted">
+      <nav class="mb-8 text-[0.875rem] text-text-muted" aria-label="Breadcrumb">
         <a href="/glossary" class="hover:text-brand-green transition-colors">Glossary</a>
         <span class="mx-2">/</span>
-        <span class="text-text-heading font-medium">{entry.term}</span>
+        <span class="text-text-heading font-medium">{entry.data.term}</span>
       </nav>
 
-      <h1 class="text-[2rem] md:text-[2.5rem] font-bold text-text-heading leading-tight mb-8">
-        {entry.term}
+      {/* Term & category */}
+      <h1 class="text-[2rem] md:text-[2.75rem] font-bold text-text-heading leading-tight mb-4">
+        {entry.data.term}
       </h1>
 
-      <PortableText value={entry.definition} />
+      {entry.data.category && (
+        <span class:list={[
+          'inline-block text-[0.75rem] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-8',
+          categoryColors[entry.data.category] || 'bg-gray-100 text-gray-600'
+        ]}>
+          {categoryLabels[entry.data.category] || entry.data.category}
+        </span>
+      )}
 
-      {entry.relatedTerms && entry.relatedTerms.length > 0 && (
+      {/* Main definition content */}
+      <div class="prose-glossary">
+        <Content />
+      </div>
+
+      {/* FX Academy link */}
+      {academySlug && (
+        <div class="mt-10 bg-brand-green-pale/50 rounded-2xl p-6 border border-brand-green/10">
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-3">
+            Want to learn more? This topic is covered in depth in our FX Academy.
+          </p>
+          <a
+            href={`/fx-academy/${academySlug}`}
+            class="inline-flex items-center gap-2 text-brand-green font-semibold text-[0.875rem] hover:gap-3 transition-all"
+          >
+            Go to FX Academy guide
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      )}
+
+      {/* Related terms */}
+      {relatedTerms.length > 0 && (
         <div class="mt-12 pt-8 border-t border-gray-100">
-          <h2 class="text-[1.125rem] font-semibold text-text-heading mb-4">Related terms</h2>
+          <h2 class="text-[1.125rem] font-bold text-text-heading mb-4">Related terms</h2>
           <div class="flex flex-wrap gap-2">
-            {entry.relatedTerms.map((t: any) => (
+            {relatedTerms.map((t: any) => (
               <a
-                href={`/glossary/${t.slug?.current}`}
+                href={`/glossary/${t.slug}`}
                 class="px-4 py-2 bg-brand-green-pale text-brand-green text-[0.9375rem] font-medium rounded-full
                        hover:bg-brand-green hover:text-white transition-colors"
               >
@@ -49,14 +111,69 @@ if (!entry) {
         </div>
       )}
 
-      <div class="mt-12">
+      {/* Advisory CTA */}
+      <div class="mt-12 bg-[#F8FAFB] rounded-2xl p-8 border border-gray-100">
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-4">
+          Need help understanding how this applies to your business? Our advisory team can walk you through it.
+        </p>
+        <a
+          href="/advisory"
+          class="inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-6 py-3 rounded-full text-[0.875rem] shadow-sm hover:bg-brand-green-dark hover:shadow-md transition-all duration-200"
+        >
+          Book a Treasury Review
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      {/* Back link */}
+      <div class="mt-10">
         <a href="/glossary" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
           <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
-          Back to glossary
+          Back to Glossary
         </a>
       </div>
     </div>
-  </section>
+  </article>
 </PageLayout>
+
+<style is:global>
+  /* Glossary prose styles */
+  .prose-glossary h2 {
+    @apply text-[1.5rem] font-bold text-text-heading mt-10 mb-4 leading-tight;
+  }
+  .prose-glossary h3 {
+    @apply text-[1.25rem] font-bold text-text-heading mt-8 mb-3;
+  }
+  .prose-glossary h4 {
+    @apply text-[1.125rem] font-semibold text-text-heading mt-6 mb-2;
+  }
+  .prose-glossary p {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4;
+  }
+  .prose-glossary ul, .prose-glossary ol {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4 pl-6;
+  }
+  .prose-glossary ul { @apply list-disc; }
+  .prose-glossary ol { @apply list-decimal; }
+  .prose-glossary li { @apply mb-2; }
+  .prose-glossary strong { @apply text-text-heading font-semibold; }
+  .prose-glossary a {
+    @apply text-brand-green underline underline-offset-2 hover:text-brand-green-dark transition-colors;
+  }
+  .prose-glossary table {
+    @apply w-full border-collapse mb-6 text-[0.9375rem];
+  }
+  .prose-glossary thead th {
+    @apply bg-[#F8FAFB] text-text-heading font-semibold text-left px-4 py-3 border border-gray-200;
+  }
+  .prose-glossary tbody td {
+    @apply px-4 py-3 border border-gray-200 text-text-body;
+  }
+  .prose-glossary blockquote {
+    @apply border-l-4 border-brand-green/30 pl-6 italic text-text-muted my-6;
+  }
+</style>

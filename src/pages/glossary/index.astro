@@ -1,72 +1,246 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
 import { getGlossaryEntries } from '../../lib/sanity';
 
-const entries = await getGlossaryEntries();
+/* ── 1. Markdown glossary entries ──────────────────────────── */
+const mdEntries = await getCollection('glossary');
+const mdTerms = mdEntries.map((entry) => ({
+  term: entry.data.term,
+  slug: entry.data.slug,
+  definition: entry.data.definition || '',
+  category: entry.data.category || '',
+  source: 'md' as const,
+}));
 
-// Group entries by first letter
-const grouped: Record<string, any[]> = {};
-if (entries && entries.length > 0) {
-  for (const entry of entries) {
-    const letter = entry.term[0].toUpperCase();
-    if (!grouped[letter]) grouped[letter] = [];
-    grouped[letter].push(entry);
+/* ── 2. Sanity glossary entries (future) ──────────────────── */
+let sanityTerms: typeof mdTerms = [];
+try {
+  const raw = await getGlossaryEntries();
+  if (raw && raw.length > 0) {
+    sanityTerms = raw.map((entry: any) => ({
+      term: entry.term,
+      slug: entry.slug?.current,
+      definition: '',
+      category: '',
+      source: 'sanity' as const,
+    }));
   }
+} catch {}
+
+/* ── 3. Merge, dedupe, sort alphabetically ─────────────────── */
+const seenSlugs = new Set<string>();
+const allTerms = [...mdTerms, ...sanityTerms]
+  .filter((t) => {
+    if (seenSlugs.has(t.slug)) return false;
+    seenSlugs.add(t.slug);
+    return true;
+  })
+  .sort((a, b) => a.term.localeCompare(b.term));
+
+/* ── Group by first letter ─────────────────────────────────── */
+const grouped: Record<string, typeof allTerms> = {};
+for (const t of allTerms) {
+  const letter = t.term[0].toUpperCase();
+  if (!grouped[letter]) grouped[letter] = [];
+  grouped[letter].push(t);
 }
 const letters = Object.keys(grouped).sort();
+
+/* ── Category definitions ──────────────────────────────────── */
+const categories = [
+  { slug: 'all', label: 'All' },
+  { slug: 'fx-fundamentals', label: 'FX Fundamentals' },
+  { slug: 'hedging-instruments', label: 'Hedging Instruments' },
+  { slug: 'risk-concepts', label: 'Risk Concepts' },
+  { slug: 'payments-operations', label: 'Payments & Ops' },
+  { slug: 'accounting-finance', label: 'Accounting & Finance' },
+  { slug: 'market-structure', label: 'Market Structure' },
+];
+
+const categoryColors: Record<string, string> = {
+  'fx-fundamentals': 'bg-blue-50 text-blue-700 border-blue-200',
+  'hedging-instruments': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  'risk-concepts': 'bg-amber-50 text-amber-700 border-amber-200',
+  'payments-operations': 'bg-violet-50 text-violet-700 border-violet-200',
+  'accounting-finance': 'bg-rose-50 text-rose-700 border-rose-200',
+  'market-structure': 'bg-slate-50 text-slate-700 border-slate-200',
+};
 ---
 
-<PageLayout title="Glossary" description="FX and treasury terminology explained in plain English.">
+<PageLayout
+  title="FX & Treasury Glossary | HedgeFlows"
+  description="Plain-English definitions of foreign exchange, hedging, treasury, and international payments terminology. 47+ terms explained."
+>
   <Hero
-    title="FX and treasury terminology explained"
-    subtitle="A comprehensive glossary of foreign exchange and treasury terms for international businesses."
+    title="FX & Treasury Glossary"
+    subtitle="Plain-English definitions of foreign exchange, hedging, and treasury terminology for international businesses."
   />
+
   <section class="section-padding">
     <div class="container-content">
-      {letters.length > 0 ? (
-        <>
-          {/* Letter nav */}
-          <div class="flex flex-wrap gap-2 mb-12 justify-center">
-            {letters.map((letter) => (
-              <a
-                href={`#letter-${letter}`}
-                class="w-10 h-10 rounded-lg bg-brand-green-pale text-brand-green font-semibold
-                       flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors text-[0.9375rem]"
-              >
-                {letter}
-              </a>
-            ))}
-          </div>
 
-          {/* Term groups */}
-          <div class="space-y-10">
-            {letters.map((letter) => (
-              <div id={`letter-${letter}`}>
-                <h2 class="text-[1.5rem] font-bold text-text-heading mb-4 pb-2 border-b border-gray-100">
-                  {letter}
-                </h2>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
-                  {grouped[letter].map((entry: any) => (
-                    <li>
-                      <a
-                        href={`/glossary/${entry.slug?.current}`}
-                        class="text-[1.0625rem] text-text-body hover:text-brand-green transition-colors py-1.5 block"
-                      >
-                        {entry.term}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </>
-      ) : (
-        <div class="text-center py-12">
-          <p class="text-text-muted text-lg">No glossary entries yet. Check back soon!</p>
+      {/* ── Search bar ───────────────────────────────────── */}
+      <div class="max-w-xl mx-auto mb-8">
+        <div class="relative">
+          <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            id="glossary-search"
+            placeholder="Search terms..."
+            class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 text-[1rem] text-text-heading
+                   placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                   transition-all"
+          />
         </div>
-      )}
+      </div>
+
+      {/* ── Category filters ─────────────────────────────── */}
+      <div class="flex flex-wrap gap-2 mb-8 justify-center" id="glossary-category-filters">
+        {categories.map((cat) => (
+          <button
+            type="button"
+            data-category={cat.slug}
+            class:list={[
+              'px-3.5 py-1.5 rounded-full text-[0.8125rem] font-medium transition-all duration-200 border',
+              cat.slug === 'all'
+                ? 'bg-brand-green text-white border-brand-green'
+                : 'bg-white text-text-muted border-gray-200 hover:border-brand-green/30 hover:text-brand-green',
+            ]}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ── Letter nav ───────────────────────────────────── */}
+      <div class="flex flex-wrap gap-1.5 mb-10 justify-center" id="letter-nav">
+        {letters.map((letter) => (
+          <a
+            href={`#letter-${letter}`}
+            class="w-9 h-9 rounded-lg bg-brand-green-pale text-brand-green font-semibold
+                   flex items-center justify-center hover:bg-brand-green hover:text-white transition-colors text-[0.875rem]"
+          >
+            {letter}
+          </a>
+        ))}
+      </div>
+
+      {/* ── Term groups ──────────────────────────────────── */}
+      <div class="space-y-10" id="glossary-terms">
+        {letters.map((letter) => (
+          <div id={`letter-${letter}`} class="glossary-group">
+            <h2 class="text-[1.5rem] font-bold text-text-heading mb-5 pb-2 border-b border-gray-100">
+              {letter}
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {grouped[letter].map((t) => (
+                <a
+                  href={`/glossary/${t.slug}`}
+                  class="glossary-term-card group block rounded-xl border border-gray-100 p-4
+                         hover:border-brand-green/20 hover:shadow-sm transition-all duration-200"
+                  data-term={t.term.toLowerCase()}
+                  data-cat={t.category}
+                >
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1 min-w-0">
+                      <h3 class="text-[1rem] font-semibold text-text-heading group-hover:text-brand-green transition-colors leading-snug mb-1">
+                        {t.term}
+                      </h3>
+                      {t.definition && (
+                        <p class="text-[0.8125rem] text-text-muted leading-relaxed line-clamp-2">
+                          {t.definition}
+                        </p>
+                      )}
+                    </div>
+                    <svg class="w-4 h-4 text-gray-300 group-hover:text-brand-green flex-shrink-0 mt-1 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  {t.category && (
+                    <span class:list={[
+                      'inline-block mt-2 text-[0.6875rem] font-medium px-2 py-0.5 rounded-full border',
+                      categoryColors[t.category] || 'bg-gray-50 text-gray-600 border-gray-200'
+                    ]}>
+                      {categories.find((c) => c.slug === t.category)?.label || t.category}
+                    </span>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ── No results ───────────────────────────────────── */}
+      <div id="no-results" class="text-center py-12 hidden">
+        <p class="text-text-muted text-lg">No matching terms found.</p>
+      </div>
+
+      {/* ── Credentials ──────────────────────────────────── */}
+      <div class="max-w-3xl mx-auto mt-16 text-center">
+        <p class="text-[0.9375rem] text-text-muted leading-relaxed">
+          Written by the HedgeFlows advisory team — 40+ years of institutional FX and treasury experience. FCA regulated (Firm Reference: 1008699).
+        </p>
+      </div>
     </div>
   </section>
 </PageLayout>
+
+<script>
+  const searchInput = document.getElementById('glossary-search') as HTMLInputElement;
+  const filterBtns = document.querySelectorAll('#glossary-category-filters button');
+  const groups = document.querySelectorAll('.glossary-group');
+  const noResults = document.getElementById('no-results');
+  const termsContainer = document.getElementById('glossary-terms');
+
+  let activeCat = 'all';
+
+  function applyFilters() {
+    const query = (searchInput?.value || '').toLowerCase().trim();
+    let visible = 0;
+
+    groups.forEach((group) => {
+      const groupCards = group.querySelectorAll<HTMLElement>('.glossary-term-card');
+      let groupVisible = 0;
+
+      groupCards.forEach((card) => {
+        const term = card.dataset.term || '';
+        const cat = card.dataset.cat || '';
+        const matchSearch = !query || term.includes(query);
+        const matchCat = activeCat === 'all' || cat === activeCat;
+
+        if (matchSearch && matchCat) {
+          card.style.display = '';
+          groupVisible++;
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      (group as HTMLElement).style.display = groupVisible > 0 ? '' : 'none';
+    });
+
+    if (noResults) noResults.classList.toggle('hidden', visible > 0);
+    if (termsContainer) termsContainer.classList.toggle('hidden', visible === 0);
+  }
+
+  searchInput?.addEventListener('input', applyFilters);
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCat = (btn as HTMLElement).dataset.category || 'all';
+      filterBtns.forEach((b) => {
+        b.classList.remove('bg-brand-green', 'text-white', 'border-brand-green');
+        b.classList.add('bg-white', 'text-text-muted', 'border-gray-200');
+      });
+      btn.classList.remove('bg-white', 'text-text-muted', 'border-gray-200');
+      btn.classList.add('bg-brand-green', 'text-white', 'border-brand-green');
+      applyFilters();
+    });
+  });
+</script>
