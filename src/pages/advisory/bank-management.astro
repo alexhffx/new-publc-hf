@@ -1,26 +1,118 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
 
-const page = await getPage('advisory/bank-management');
+const services = [
+  { title: 'Banking audit', description: 'Review who you bank with, what you pay, and how it compares to market.' },
+  { title: 'Gap analysis', description: 'What\'s costing you money and what capabilities you\'re missing.' },
+  { title: 'Bank introductions', description: 'Warm introductions to the right institutions. Not cold referrals.' },
+  { title: 'Negotiation support', description: 'Know the market rate, negotiate from strength. We sit at the table with you.' },
+  { title: 'Ongoing oversight', description: 'Monitor pricing, flag drift, catch hidden terms that restrict future options.' },
+];
+
+const whyNow = [
+  { title: 'International expansion', description: 'New markets need banking capabilities your domestic bank may not offer.' },
+  { title: 'Post-fundraise cash', description: 'Above £85k at one institution? Past FSCS limits. Diversification isn\'t optional.' },
+  { title: 'Hidden costs', description: '0.5% difference in FX pricing on £5m = £25,000 a year.' },
+];
+
+const steps = [
+  { number: 1, title: 'Banking review', description: 'Benchmark your setup against market.' },
+  { number: 2, title: 'Recommendations', description: 'What to negotiate, whether you need a second relationship, and with whom.' },
+  { number: 3, title: 'Introductions', description: 'We connect you and support onboarding where needed.' },
+  { number: 4, title: 'Quarterly check-ins', description: 'Your setup keeps pace as your business evolves.' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Bank Management'}
-  description={page?.seoDescription || 'Establish and manage the right banking relationships for your business.'}
+  title="Bank Management Advisory | HedgeFlows"
+  description="Benchmarked pricing, diversified banking relationships, and the leverage that comes from knowing your options. Expert advisory for growing businesses."
 >
   <Hero
-    title={page?.heroTitle || 'Establish and manage the right banking relationships'}
-    subtitle={page?.heroSubtitle || 'Expert guidance on selecting, onboarding, and managing banking partners for international businesses.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Your banking relationships shape what's possible — and what you're overpaying for"
+    subtitle="Benchmarked pricing, diversified risk, and the leverage that comes from knowing your options."
+    primaryCta={{ label: 'Book a Banking Review', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <TrustBar />
+
+  <!-- The Problem -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-heading text-center mb-8">The banking gap</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed text-center">
+          One bank, chosen years ago. No benchmark on pricing. No leverage for better terms. All counterparty risk in one place. If you're £5–50m revenue, you're too big for basic banking, too small for a proactive RM. You're in the gap.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Now -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Why act now</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {whyNow.map((item) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-2">{item.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">What we do</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {services.map((s) => (
+          <div class="bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6">
+            <h3 class="text-[1.0625rem] font-bold text-text-heading mb-2">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl border border-gray-100 p-8 shadow-sm text-center">
+        <svg class="w-8 h-8 text-brand-green/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">
+          "We had no idea we were paying 1.2% on every FX transaction. HedgeFlows benchmarked us, helped us negotiate, and introduced a specialist provider. Saved over £100k in year one."
+        </p>
+        <p class="text-[0.9375rem] font-semibold text-text-heading">[Client Name]</p>
+        <p class="text-[0.8125rem] text-text-muted">CEO, [E-commerce company]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">How it works</h2>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to benchmark your banking setup?"
+    primaryCta={{ label: 'Book a Banking Review', href: '/treasury-health-check' }}
   />
 </PageLayout>

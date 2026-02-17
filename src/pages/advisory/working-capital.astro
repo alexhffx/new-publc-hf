@@ -1,26 +1,109 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
 
-const page = await getPage('advisory/working-capital');
+const services = [
+  { title: 'Needs assessment', description: 'Map cash flow cycles, growth plans, and contract structures to size the real requirement.' },
+  { title: 'Market survey', description: 'Invoice finance, supply chain finance, venture debt, trade finance — we know what\'s available.' },
+  { title: 'Terms comparison', description: 'Rates are the headline. We look at covenants, security, and the fine print.' },
+  { title: 'Facility management', description: 'Drawdowns, reporting, compliance, and renegotiation when the time comes.' },
+];
+
+const steps = [
+  { number: 1, title: 'Requirements', description: 'Map your cash flow cycles and growth plans to size the real need.' },
+  { number: 2, title: 'Market survey', description: 'We survey the market for the best fit — bank and non-bank options.' },
+  { number: 3, title: 'Terms review', description: 'Compare terms, covenants, and the fine print others miss.' },
+  { number: 4, title: 'Implementation', description: 'We support drawdowns, reporting, and renegotiation as you grow.' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Working Capital'}
-  description={page?.seoDescription || 'Bank and non-bank facilities to fund your business growth.'}
+  title="Working Capital Solutions | HedgeFlows"
+  description="Independent advice on growth funding facilities. Invoice finance, supply chain finance, venture debt, and trade finance — we recommend what's best because we're not a lender."
 >
   <Hero
-    title={page?.heroTitle || 'Bank and non-bank facilities to fund growth'}
-    subtitle={page?.heroSubtitle || 'Access the right funding structures to support your international trade and business expansion.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Growth capital beyond your bank's overdraft"
+    subtitle="Independent advice on bank and non-bank facilities. We recommend what's best for you — because we're not a lender."
+    primaryCta={{ label: 'Book a Working Capital Review', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <TrustBar />
+
+  <!-- The Problem -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-heading text-center mb-8">The funding gap</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed text-center">
+          You've won the orders. You need capital to fulfil them. But your bank's overdraft is the only option you know — and its terms may be quietly restricting future financing options.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">What we do</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {services.map((s) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <h3 class="text-[1.0625rem] font-bold text-text-heading mb-2">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Independent -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="section-heading mb-6">Why independent advice matters</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-6">
+          Lenders sell products. Brokers earn commissions. We earn from FX execution — so our working capital advice is genuinely independent.
+        </p>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed">
+          We flag risks others won't, like the all-assets pledge in a standard overdraft that blocks better financing later.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl border border-gray-100 p-8 shadow-sm text-center">
+        <svg class="w-8 h-8 text-brand-green/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">
+          "Our overdraft had a hidden all-assets pledge. HedgeFlows spotted it and found us selective invoice finance at better rates, no personal guarantees. Freed up half a million in capital."
+        </p>
+        <p class="text-[0.9375rem] font-semibold text-text-heading">[Client Name]</p>
+        <p class="text-[0.8125rem] text-text-muted">Finance Director, [Recruitment company]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">How it works</h2>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to explore your working capital options?"
+    primaryCta={{ label: 'Book a Working Capital Review', href: '/treasury-health-check' }}
   />
 </PageLayout>

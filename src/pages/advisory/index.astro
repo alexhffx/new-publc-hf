@@ -1,0 +1,254 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
+import CTASection from '../../components/CTASection.astro';
+
+/* ─────────────────────────── Icon SVG paths ─────────────────────────── */
+const iconPaths: Record<string, string> = {
+  coins: 'M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125',
+  shield: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  bank: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z',
+  'trending-up': 'M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941',
+  bolt: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+};
+
+/* ─────────────────────────── Problem stats ─────────────────────────── */
+const problemStats = [
+  { value: '0.5–2%', label: 'What most banks charge on FX, hidden in the rate' },
+  { value: '£85k', label: 'FSCS protection limit — is your cash above this at one bank?' },
+  { value: '3–5 days', label: 'What finance teams spend each month on manual international payments' },
+];
+
+/* ─────────────────────────── Five pillars ─────────────────────────── */
+const pillars = [
+  {
+    icon: 'coins',
+    title: 'Cash Management',
+    description: 'Policies, controls, and reporting that satisfy investors and auditors — while your cash works harder.',
+    href: '/advisory/cash-management',
+  },
+  {
+    icon: 'shield',
+    title: 'FX Risk Management',
+    description: 'Know your exposure. Hedge deliberately. Stop currency moves eating your margins.',
+    href: '/advisory/fx-risk-management',
+  },
+  {
+    icon: 'bank',
+    title: 'Bank Management',
+    description: 'The right relationships, benchmarked pricing, and the leverage of knowing your options.',
+    href: '/advisory/bank-management',
+  },
+  {
+    icon: 'trending-up',
+    title: 'Working Capital',
+    description: 'Growth funding beyond your bank\'s overdraft. Independent advice on the right facility.',
+    href: '/advisory/working-capital',
+  },
+  {
+    icon: 'bolt',
+    title: 'Digitalisation',
+    description: 'Automated payments, audit trails, and real-time reporting. Replace the spreadsheets.',
+    href: '/advisory/digitalisation',
+  },
+];
+
+/* ─────────────────────────── How it starts ─────────────────────────── */
+const steps = [
+  { number: 1, title: 'Treasury Review', description: '30-minute conversation. We map your setup and identify what\'s costing you.' },
+  { number: 2, title: 'Recommendations', description: 'Clear priorities — what to fix first, what can wait, and what it\'s worth.' },
+  { number: 3, title: 'Implementation', description: 'We help you act, starting with whatever\'s most urgent. At your pace.' },
+];
+
+/* ─────────────────────────── Testimonials ─────────────────────────── */
+const testimonials = [
+  {
+    quote: 'The Hedgeflows team have been instrumental in helping us to develop our FX strategy and guiding us through its implementation. They did not try to sell us their platform over other providers, but instead helped us find the best solution for our bespoke needs. Despite only working with them for a short period of time we already view them as a key and trusted partner.',
+    name: 'Harry Young',
+    role: '',
+    company: 'Journey',
+  },
+];
+---
+
+<PageLayout
+  title="Treasury Advisory | HedgeFlows"
+  description="Expert treasury advisory for internationally trading SMEs. Cash management, FX risk, banking, working capital, and digitalisation — without hiring a treasurer."
+>
+  <!-- Hero -->
+  <Hero
+    title="Most growing businesses don't have a treasury team. We are yours."
+    subtitle="Expert advisory and an FCA-regulated platform, combined. We handle cash management, FX risk, banking, working capital, and treasury operations — so your finance team can focus on the business."
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Connect Your Accounting System', href: '/treasury-health-check' }}
+  />
+
+  <!-- Trust Bar -->
+  <TrustBar label="Trusted by international businesses:" />
+
+  <!-- Problem Stats -->
+  <section class="section-padding-sm bg-white">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {problemStats.map((stat) => (
+          <div class="bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6 text-center">
+            <p class="text-[2rem] md:text-[2.5rem] font-bold text-brand-green leading-none mb-2">{stat.value}</p>
+            <p class="text-[0.875rem] text-text-body leading-relaxed">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Gap -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="section-heading">The mid-market treasury gap</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-6">
+          Large corporates have treasury teams. Your business faces the same challenges — multiple currencies, board reporting, investor requirements — but without the dedicated function.
+        </p>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-8">
+          We close it. A fractional treasury function: 40+ years of institutional expertise with a platform that automates execution. 0.25% on FX. No advisory fees. No platform subscriptions. Aligned incentives.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Five Pillars -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Five ways we help</h2>
+        <p class="section-subheading mx-auto">
+          Each pillar works standalone or together — a modular treasury function for your business.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {pillars.map((pillar) => (
+          <a
+            href={pillar.href}
+            class="group bg-white rounded-2xl border border-gray-100 p-8
+                   shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
+                   hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
+                   hover:border-brand-green/20 transition-all duration-300 flex flex-col"
+          >
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5
+                        group-hover:bg-brand-green group-hover:scale-105 transition-all duration-300">
+              <svg class="w-6 h-6 text-brand-green group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[pillar.icon]} />
+              </svg>
+            </div>
+
+            <h3 class="text-[1.25rem] font-bold text-text-heading mb-3 group-hover:text-brand-green transition-colors duration-200">
+              {pillar.title}
+            </h3>
+
+            <p class="text-[0.9375rem] text-text-body leading-relaxed flex-1">
+              {pillar.description}
+            </p>
+
+            <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.875rem] mt-6 group-hover:gap-2.5 transition-all duration-200">
+              Learn more
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Starts -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">How advisory begins</h2>
+        <p class="section-subheading mx-auto">
+          No long sales process. No commitment until you see the value.
+        </p>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-12">
+        <h2 class="section-heading">What clients say</h2>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        {testimonials.map((t) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm text-center">
+            <svg class="w-8 h-8 text-brand-green/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">
+              "{t.quote}"
+            </p>
+            <div>
+              <p class="text-[0.9375rem] font-semibold text-text-heading">{t.name}</p>
+              <p class="text-[0.8125rem] text-text-muted">{t.role ? `${t.role}, ${t.company}` : t.company}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Credibility Strip -->
+  <section class="section-padding-sm bg-white border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x md:divide-gray-200">
+        <!-- TMI Awards -->
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/tmi.jpg"
+            alt="TMI Awards 2025"
+            class="w-16 h-16 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">Best Risk Management</p>
+            <p class="text-[0.8125rem] text-text-muted">TMI Awards 2025</p>
+          </div>
+        </div>
+        <!-- TTP Awards -->
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/ttp.jpg"
+            alt="TTP Awards 2026"
+            class="w-16 h-16 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">SME Inclusion Initiative</p>
+            <p class="text-[0.8125rem] text-text-muted">TTP Awards 2026</p>
+          </div>
+        </div>
+        <!-- FCA -->
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <div class="w-16 h-16 bg-brand-green-pale rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">FCA Regulated</p>
+            <p class="text-[0.8125rem] text-text-muted">Firm Reference Number: 1008699</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection
+    headline="Ready to close the treasury gap?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Connect Your Accounting System', href: '/treasury-health-check' }}
+  />
+</PageLayout>

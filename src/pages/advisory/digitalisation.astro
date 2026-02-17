@@ -1,26 +1,136 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
 
-const page = await getPage('advisory/digitalisation');
+const services = [
+  { title: 'Accounting integration', description: 'Xero, QuickBooks, NetSuite, Sage. Connect in clicks.' },
+  { title: 'Payment automation', description: 'Payments from invoices. Batch runs. Auto-reconciliation. Days become minutes.' },
+  { title: 'Approval workflows', description: 'Dual auth, amount escalation, segregation of duties. Every action logged.' },
+  { title: 'Real-time dashboards', description: 'Cash across banks and currencies. FX tracking. Board reports in minutes.' },
+  { title: 'Implementation', description: 'We configure, migrate, and train. Live in days, not months.' },
+];
+
+const whyNow = [
+  { title: 'Audit gaps', description: 'Auditors want decision-to-execution trails for every payment and FX transaction.' },
+  { title: 'Error rate', description: 'Manual processing = manual errors. Each costs money and time.' },
+  { title: 'Team retention', description: 'Finance team doing data entry 30–40% of the time? You\'ll lose them.' },
+];
+
+const steps = [
+  { number: 1, title: 'Process audit', description: 'Map your current workflows and identify the biggest time sinks.' },
+  { number: 2, title: 'Connect', description: 'Link your accounting system and bank accounts in minutes.' },
+  { number: 3, title: 'Configure', description: 'Set up approval workflows, payment runs, and reporting dashboards.' },
+  { number: 4, title: 'Go live', description: 'We train your team and support the transition. Live in days.' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Digitalisation'}
-  description={page?.seoDescription || 'Automate treasury with controls and audit trails.'}
+  title="Treasury Digitalisation | HedgeFlows"
+  description="Automated payments, approval workflows, audit trails, and real-time reporting. Connected to your accounting system. Replace the spreadsheets and go live in days."
 >
   <Hero
-    title={page?.heroTitle || 'Automate treasury with controls and audit trails'}
-    subtitle={page?.heroSubtitle || 'Modernise your treasury operations with digital tools, automated workflows, and robust audit capabilities.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Treasury processes that scale with you — not spreadsheets that break"
+    subtitle="Automated payments, approval workflows, audit trails, and real-time reporting. Connected to your accounting system. Live in days."
+    primaryCta={{ label: 'Connect Your Accounting System', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Process Audit', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <TrustBar />
+
+  <!-- The Problem -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-heading text-center mb-8">The operational drag</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed text-center">
+          First week of every month: reconciliation. Payment approvals over Slack. No audit trail for FX decisions. Month-end takes twice as long as it should. The real cost isn't the time — it's what it displaces.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Now -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Why act now</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {whyNow.map((item) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-2">{item.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">What we do</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {services.map((s) => (
+          <div class="bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6">
+            <h3 class="text-[1.0625rem] font-bold text-text-heading mb-2">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="max-w-2xl mx-auto bg-white rounded-2xl border border-gray-100 p-8 shadow-sm text-center">
+        <svg class="w-8 h-8 text-brand-green/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">
+          "Three days a month on payment runs became half a day. Proper approval workflows, full audit trails, and my team is finally doing actual finance work."
+        </p>
+        <p class="text-[0.9375rem] font-semibold text-text-heading">[Client Name]</p>
+        <p class="text-[0.8125rem] text-text-muted">Head of Finance, [Travel company]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Gateway -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="section-heading mb-6">The foundation for everything else</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-8">
+          Once your accounting system is connected, you've built the foundation for everything else. The same data powers risk management, cash forecasting, and banking benchmarks. Most clients start here. They stay because it unlocks everything.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/platform" class="btn-secondary text-[0.9375rem] px-6 py-3">Explore the Platform</a>
+          <a href="/advisory" class="btn-primary text-[0.9375rem] px-6 py-3">See all advisory services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">How it works</h2>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to automate your treasury operations?"
+    primaryCta={{ label: 'Connect Your Accounting System', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Process Audit', href: '/treasury-health-check' }}
   />
 </PageLayout>

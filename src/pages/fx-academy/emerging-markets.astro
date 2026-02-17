@@ -1,0 +1,357 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+---
+
+<AcademyGuideLayout
+  title="Emerging Market FX: Managing Currency Risk in High-Growth Economies"
+  metaDescription="How to manage currency risk when trading with emerging markets. Understand EM currency volatility, hedging costs, capital controls, and practical strategies for UK businesses expanding into high-growth economies."
+  tldr="Emerging markets now account for over half of global merchandise exports, creating enormous opportunities for UK businesses. But their currencies carry specific risks — higher volatility, inflation-driven depreciation, capital controls, and tiered FX markets — that require careful management. Understanding these risks and the practical tools available is essential for any business expanding into high-growth economies."
+  keyFacts={[
+    { text: 'Emerging market countries account for more than half of the world\'s total merchandise exports (WTO, 2020)' },
+    { text: 'EM currencies typically experience volatility swings more than twice as large as those between developed-economy currencies' },
+    { text: 'Higher inflation and interest rates in EM countries mean their currencies often depreciate on a forward basis, raising hedging costs for receivables' },
+    { text: 'Capital controls in countries such as China, India, Brazil, and South Africa can restrict your ability to remit funds and convert currencies freely' },
+    { text: 'Non-deliverable forwards (NDFs) are commonly used to hedge restricted EM currencies, but their fixing rates may differ from actual conversion rates' },
+  ]}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={[
+    { title: 'FX Markets & Financial Instruments', href: '/fx-academy/fx-markets-and-instruments', description: 'Deep dive into spot, forward, swap, and option contracts — including NDFs used for EM currencies' },
+    { title: 'Currency Management for Growing Businesses', href: '/fx-academy/currency-management', description: 'A structured approach to identifying and managing FX risks across all your currency exposures' },
+    { title: 'Building a Hedging Programme', href: '/fx-academy/hedging-programme', description: 'How to design and implement a hedging policy that covers both developed and emerging market currencies' },
+  ]}
+  advisoryCta={{
+    text: 'Trading with emerging markets and unsure how to manage the currency risk? Our advisory team can assess your EM currency exposures, benchmark your current costs, and recommend practical hedging strategies — in a free 30-minute diagnostic.',
+    href: '/advisory/fx-risk-management',
+    label: 'Book an EM Currency Diagnostic',
+  }}
+  faqSchema={[
+    { question: 'What makes emerging market currencies riskier than major currencies?', answer: 'Emerging market currencies are exposed to higher inflation, current account deficits, political instability, weaker institutional frameworks, and greater sensitivity to global financial market sentiment. These factors combine to produce higher volatility — typically more than twice the fluctuation seen between major developed-economy currencies like GBP, USD, and EUR.' },
+    { question: 'What are capital controls and how do they affect businesses?', answer: 'Capital controls are restrictions imposed by governments or central banks on the ability to use, exchange, or convert a currency for specific purposes such as international trade or investment. Countries including China, India, Brazil, South Korea, and South Africa maintain some form of capital controls. These can restrict your ability to remit funds, add documentation requirements, and create tiered FX markets with different onshore and offshore prices.' },
+    { question: 'What is a non-deliverable forward (NDF)?', answer: 'A non-deliverable forward (NDF) is a hedging instrument used for currencies where access to regular forward contracts is restricted for overseas entities. Unlike standard forwards, NDFs settle a cash amount based on the difference between the booked forward rate and a fixing rate on a specific date. The fixing rate is typically based on a central bank rate or an industry-agreed standard, which may differ from the actual rate available for currency conversion.' },
+    { question: 'Why are hedging costs higher for emerging market currencies?', answer: 'Hedging costs for EM currencies are driven by interest rate differentials. Because many emerging economies have higher inflation and interest rates than the UK, their currencies are expected to depreciate on a forward basis. This means forward FX rates for selling EM currencies (hedging receivables) are typically less favourable than spot rates. Conversely, forward rates for buying EM currencies (hedging payables) can be more favourable than spot.' },
+    { question: 'What is trapped cash in emerging markets?', answer: 'Trapped cash occurs when proceeds from sales or investments in an emerging market cannot be repatriated due to capital controls or regulatory restrictions. While these funds can sometimes be reinvested locally, the inability to access them for other purposes represents a real financial risk that needs to be monitored strategically, particularly when the amounts involved are large.' },
+    { question: 'How can UK SMEs manage emerging market currency risk?', answer: 'UK SMEs should start by mapping their EM currency exposures and understanding the specific risks of each currency they deal with. Practical steps include using forward contracts or NDFs to hedge known exposures, building documentation processes to comply with capital control requirements, monitoring trapped cash positions, working with specialist FX providers who understand EM currencies, and maintaining contingency plans for sudden currency devaluations or policy changes.' },
+  ]}
+  readingTime="14 min read"
+  videoId="2JNbjYxW0us"
+>
+
+  <!-- ============================================================
+       MAIN CONTENT — Emerging Market FX
+       ============================================================ -->
+
+  <h2>Why are emerging markets reshaping global trade?</h2>
+
+  <p>
+    Over the past several decades, emerging market (EM) economies have transformed from peripheral players to central figures in the global trade landscape. Characterised by rapid industrialisation, expanding consumer bases, and competitive advantages across multiple sectors, countries such as China, India, Vietnam, and Brazil are not merely participating in international commerce — they are actively reshaping it.
+  </p>
+
+  <p>
+    The scale of this shift is striking. China consistently ranks as the world's largest exporter of goods, whilst countries like Vietnam and India have seen substantial export increases year on year. In 2020, the World Trade Organization reported that the combined merchandise exports of emerging market countries accounted for more than half of the world's total exports — a milestone that would have seemed improbable just two decades earlier.
+  </p>
+
+  <p>
+    For UK businesses, this transformation creates tangible opportunities. Products and brands ranging from fashion and beauty to innovative technologies in renewable energy, pharmaceuticals, and medical devices are in growing demand across EM economies. Businesses of all sizes — including SMEs — are increasingly engaging in servicing this demand. Many governments, including the UK government, and trade organisations offer targeted support and incentives to SMEs exporting to emerging markets, including financial assistance, market intelligence, and trade promotion services.
+  </p>
+
+  <p>
+    Yet despite these opportunities, businesses must be aware of the specific challenges that come with trading in emerging market economies. Chief among these is <strong>currency risk</strong> — a category of financial exposure that is materially different from what you encounter when dealing in major developed-economy currencies like the euro or the US dollar.
+  </p>
+
+
+  <h2>What makes emerging market currencies different?</h2>
+
+  <p>
+    Emerging markets are incredibly diverse in their economic characteristics. From more advanced emerging economies such as China, India, Saudi Arabia, South Africa, and Mexico to so-called frontier economies in sub-Saharan Africa or Central Asia, each country presents a unique combination of opportunities and challenges. This diversity arises from geography, culture, economic development stage, political systems, and resource endowments.
+  </p>
+
+  <p>
+    What these economies share, however, is a set of structural characteristics that translate into specific financial risks for their currencies. Understanding these risk factors is essential for any UK business with EM currency exposure.
+  </p>
+
+  <h3>Current account deficits</h3>
+  <p>
+    Countries that import more than they export may need to rely on foreign capital to finance the deficit. If international investors become concerned about the size of a country's deficit, they may not purchase the local currency at prevailing exchange rates. The currency will then weaken to levels where investors see the risk-reward ratio as attractive again. For a UK business holding receivables denominated in that currency, this depreciation directly reduces the sterling value of future payments.
+  </p>
+
+  <h3>Sensitivity to global financial market sentiment</h3>
+  <p>
+    EM currencies are disproportionately affected by swings in global risk appetite. In positive market conditions, EM currencies often attract investment because they offer higher expected returns — the so-called interest rate "carry" of investing in local currencies. This puts them in greater demand, and their exchange rates strengthen. Conversely, during periods of market stress or risk aversion, investors rapidly withdraw from EM assets and seek safe havens such as the US dollar or Swiss franc, causing EM currencies to weaken sharply and suddenly.
+  </p>
+
+  <h3>Inflation and purchasing power erosion</h3>
+  <p>
+    High inflation rates in many emerging economies erode the purchasing power of their currencies over time. This is one of the primary reasons why EM currencies tend to depreciate steadily against major currencies. The Indian rupee and the South African rand, for example, have both fallen consistently against the US dollar over the past two decades. Both countries have experienced inflation at roughly twice the level of the United States, and this differential is reflected in the long-term trend of their exchange rates. For a UK business, this means that the sterling value of EM-denominated receivables or assets tends to decline over time, even in the absence of any sudden crisis.
+  </p>
+
+  <h3>Hyperinflation: the extreme case</h3>
+  <p>
+    In some cases, high inflation expectations become self-fulfilling, leading to hyperinflation. When the public and businesses lose confidence in a currency's ability to hold value, they avoid holding cash in that currency. Money loses value on a daily basis — often faster than the interest rates paid on deposits. The Argentinean peso provides a stark illustration: its value against the US dollar has collapsed over successive years, making it nearly impossible for overseas businesses to hold peso-denominated assets without suffering severe losses. Whilst hyperinflation is an extreme scenario, it underscores the importance of understanding the inflationary environment before committing significant capital to an EM currency.
+  </p>
+
+
+  <h2>How do capital and exchange rate controls affect your business?</h2>
+
+  <p>
+    Many of the world's largest emerging economies maintain some form of capital controls — restrictions imposed by governments or central banks on the ability to use, exchange, or convert the local currency for specific purposes. Countries including China, India, South Korea, Brazil, Russia, South Africa, and Turkey all have capital control regimes, though their nature and severity vary considerably.
+  </p>
+
+  <p>
+    Capital controls can take many forms. They may restrict the amount of local currency that can be converted into foreign currency in a given period, require extensive documentation to evidence the commercial purpose of a transaction, limit the repatriation of profits or dividends, or impose taxes on certain types of cross-border financial flows. For a UK business operating in these markets, the practical implications are significant: you may face delays in accessing your funds, additional administrative burdens, and costs that erode your margins.
+  </p>
+
+  <p>
+    Crucially, capital controls can change suddenly. A government facing a balance of payments crisis may impose new restrictions with little or no warning, trapping capital that was previously freely moveable. This is not a theoretical risk — it has happened repeatedly in emerging markets over the past two decades.
+  </p>
+
+  <h3>Exchange rate controls and managed floats</h3>
+  <p>
+    In addition to capital controls, some EM central banks actively intervene in their currency markets to keep exchange rates within a specific range. China and India are prominent examples of countries that operate a <strong>managed float</strong> — where the currency is allowed to fluctuate, but within parameters set or influenced by the central bank. This can create an artificial sense of stability, but it also introduces the risk of sudden, sharp adjustments when the authorities decide to widen the band or change their intervention strategy.
+  </p>
+
+  <h3>Pegged currencies</h3>
+  <p>
+    Some EM currencies are formally pegged to another currency — usually the US dollar. The Hong Kong dollar (HKD) and the Saudi riyal (SAR) are well-known examples. A peg means the exchange rate is fixed, which removes day-to-day volatility but introduces a different risk: if the peg becomes unsustainable due to economic divergence between the two countries, it may be abandoned suddenly, causing a large and abrupt revaluation. Other currencies may operate a "crawling peg," where the exchange rate is adjusted gradually over time. For UK businesses, pegged currencies simplify short-term planning but require monitoring for signs of stress on the peg.
+  </p>
+
+
+  <h2>What political and institutional risks should you watch for?</h2>
+
+  <p>
+    Currency risk in emerging markets does not exist in isolation — it is closely tied to the broader political and institutional environment. Many emerging economies are characterised by political instability, frequent government policy changes, and economic uncertainty. These factors can lead to abrupt currency devaluations, the imposition of new capital controls, or restrictions on cross-border flows that directly affect your business.
+  </p>
+
+  <p>
+    Geopolitical risks are equally important. Trade wars, sanctions, and military conflicts can significantly affect the economic situation of a country and, by extension, the value of its currency. A UK business with exposure to a country that becomes the target of international sanctions may find that its ability to transact in the local currency is severely curtailed overnight.
+  </p>
+
+  <h3>Weak public institutions</h3>
+  <p>
+    The quality of a country's public institutions — its legal system, regulatory framework, central bank independence, and governance standards — has a direct and indirect effect on its currency. A government that implements unorthodox economic policies or compromises the independence of its central bank can trigger a loss of investor confidence that sends the currency into a sustained decline. Turkey provides a cautionary example: the Turkish lira lost the vast majority of its value against the US dollar between 2010 and 2022, driven in large part by unconventional monetary policy decisions and concerns about institutional independence. For UK businesses with Turkish lira exposure during this period, the erosion in value was devastating.
+  </p>
+
+  <p>
+    The lesson for UK SMEs is that currency risk assessment in emerging markets must go beyond the numbers. It requires an understanding of the political landscape, the credibility of economic policy, and the strength of the institutions that underpin the financial system. These are not factors that change overnight (except when they do), but they are the factors that determine whether a currency is structurally stable or vulnerable to sudden shocks.
+  </p>
+
+
+  <h2>Why are emerging market currencies more volatile?</h2>
+
+  <p>
+    Because of the structural vulnerabilities and risk factors discussed above, most EM currencies experience significantly higher exchange rate volatility than major developed-economy currencies. Currencies such as the Brazilian real, South African rand, and Indonesian rupiah regularly experience currency swings that are <strong>more than twice as large</strong> as the fluctuations seen between currencies like the pound, the euro, and the US dollar.
+  </p>
+
+  <p>
+    For a UK business, this higher volatility translates directly into greater uncertainty around the sterling value of future cash flows. A 10% move in GBP/ZAR (South African rand) over a quarter is not unusual; the same magnitude of move in GBP/EUR would be considered exceptional and would likely require a significant economic or political shock. If your business is quoting prices, agreeing contracts, or budgeting revenue in EM currencies, you are carrying substantially more FX risk per unit of exposure than you would in a major currency.
+  </p>
+
+  <p>
+    This volatility also makes it harder to set accurate budgets and forecasts. A UK manufacturer sourcing components from India and selling finished products to Brazil faces a double exposure: the cost base and the revenue base are both denominated in volatile currencies that can move independently of each other and independently of sterling. Forecasting quarterly margins with any precision becomes extremely challenging without some form of hedging or risk mitigation.
+  </p>
+
+
+  <h2>Why is hedging more expensive — and more complex — for EM currencies?</h2>
+
+  <p>
+    If you want to protect your business against EM currency fluctuations using forward contracts, you will quickly discover that the economics are different from hedging major currencies. The cost of hedging — or the benefit, depending on which direction you are hedging — is determined primarily by the <strong>interest rate differential</strong> between the two currencies.
+  </p>
+
+  <h3>Hedging payables: a potential advantage</h3>
+  <p>
+    If you are a UK business buying goods from an EM country and paying in the local currency, forward FX rates are often more favourable than prevailing spot rates. This is because the higher interest rates in the EM country mean the local currency is expected to depreciate on a forward basis. By locking in a forward rate, you may effectively reduce the cost of your future purchases. This can be a meaningful advantage for importers.
+  </p>
+
+  <h3>Hedging receivables: a structural challenge</h3>
+  <p>
+    Conversely, if you are receiving payment in an EM currency, hedging the value of those receivables is often costly. The forward rate for selling the EM currency in the future will typically be worse than today's spot rate, reflecting the expected depreciation. This means you are paying a premium to lock in certainty — and that premium can be substantial for high-interest-rate currencies. For a UK exporter selling into India or Brazil, the cost of hedging can represent a material portion of the transaction margin.
+  </p>
+
+  <h3>Tiered FX markets and non-deliverable forwards</h3>
+  <p>
+    Currency restrictions in many EM countries create tiered markets where prices can differ depending on whether you are trading onshore or offshore. This adds another layer of complexity and potential cost. For currencies where access to regular forward contracts is restricted to overseas entities — such as the Chinese renminbi (CNY), the Indian rupee (INR), or the Brazilian real (BRL) — <strong>non-deliverable forwards (NDFs)</strong> are commonly used as a hedging tool.
+  </p>
+
+  <p>
+    NDFs work differently from standard forwards. Rather than exchanging the actual currencies at maturity, an NDF settles a cash amount based on the difference between the booked forward rate and a fixing rate on a specific date. The fixing rate is typically determined by the central bank or an industry-agreed benchmark. The critical issue for businesses is that the NDF fixing rate may differ significantly from the actual exchange rate available to you when you convert the EM currency in the local market. This basis risk means that an NDF hedge may not perfectly offset your underlying currency exposure, leaving residual gains or losses.
+  </p>
+
+
+  <h2>What practical challenges arise when dealing with EM currencies?</h2>
+
+  <h3>Restricted currencies and documentation requirements</h3>
+  <p>
+    Capital controls in many EM countries mean that remitting funds — converting local currency proceeds into sterling and transferring them to the UK — is not as straightforward as it is with major currencies. You may be required to provide documentation evidencing the commercial source of the proceeds, the purpose of the conversion, and compliance with local regulations. This adds administrative cost and can cause significant delays in your ability to access funds.
+  </p>
+
+  <h3>Trapped cash</h3>
+  <p>
+    In more extreme cases, proceeds from sales or investments in an emerging market can become trapped for prolonged periods due to capital controls, regulatory changes, or banking system constraints. In the short term, you may be able to use these funds for local reinvestment, acquisitions, or operational expenses. However, the inability to repatriate capital represents a real financial risk that must be considered strategically, particularly when the amounts involved are large relative to your business's overall cash position.
+  </p>
+
+  <p>
+    Managing trapped cash requires proactive planning. Before entering an EM market with capital controls, it is worth understanding the regulatory framework for repatriation, establishing banking relationships that facilitate cross-border transfers, and building contingency plans for scenarios where access to funds becomes restricted.
+  </p>
+
+
+  <!-- Worked Example -->
+  <div class="worked-example">
+    <h3>Worked Example: How EM currency risk affects a UK technology company</h3>
+
+    <p>
+      Let us walk through a realistic scenario to illustrate the combined impact of EM currency volatility, hedging costs, and conversion challenges on a UK business operating across multiple emerging markets.
+    </p>
+
+    <p>
+      <strong>The business:</strong> Precision Analytics Ltd is a UK-based data analytics company. It sources software development services from a team in India (paying in Indian rupees, INR) and sells analytics subscriptions to corporate clients in Brazil (receiving payment in Brazilian reais, BRL). The company also has a small but growing client base in South Africa (receiving South African rand, ZAR).
+    </p>
+
+    <p>
+      <strong>Quarterly EM exposure profile (Q2):</strong>
+    </p>
+    <ul>
+      <li>INR payables (India development team): INR 15,000,000 per quarter (~£142,000 at opening rates)</li>
+      <li>BRL receivables (Brazil subscriptions): BRL 400,000 per quarter (~£62,000 at opening rates)</li>
+      <li>ZAR receivables (South Africa subscriptions): ZAR 1,200,000 per quarter (~£52,000 at opening rates)</li>
+    </ul>
+
+    <p>
+      <strong>Opening exchange rates (1 April):</strong> GBP/INR = 105.50, GBP/BRL = 6.45, GBP/ZAR = 23.10
+    </p>
+
+    <p>
+      <strong>What happens during Q2:</strong> Global risk appetite deteriorates due to geopolitical tensions. EM currencies weaken broadly. By 30 June, GBP/INR has moved to 108.20, GBP/BRL to 7.05, and GBP/ZAR to 24.80. Sterling has strengthened by 2.6% against the rupee, 9.3% against the real, and 7.4% against the rand.
+    </p>
+
+    <p>
+      <strong>Impact — unhedged vs hedged outcomes:</strong>
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Exposure</th>
+          <th>Currency amount</th>
+          <th>GBP at opening rate</th>
+          <th>GBP at closing rate (unhedged)</th>
+          <th>GBP if hedged via 3-month forward</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>INR payables (cost)</td>
+          <td>INR 15,000,000</td>
+          <td>£142,180</td>
+          <td>£138,632</td>
+          <td>£140,845</td>
+        </tr>
+        <tr>
+          <td>BRL receivables (revenue)</td>
+          <td>BRL 400,000</td>
+          <td>£62,016</td>
+          <td>£56,738</td>
+          <td>£59,520</td>
+        </tr>
+        <tr>
+          <td>ZAR receivables (revenue)</td>
+          <td>ZAR 1,200,000</td>
+          <td>£51,948</td>
+          <td>£48,387</td>
+          <td>£49,800</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <strong>Analysis of the unhedged position:</strong>
+    </p>
+    <ul>
+      <li><strong>INR payables:</strong> Sterling's strength against the rupee actually reduces Precision Analytics' costs by £3,548. When you are paying in an EM currency that weakens, the move works in your favour — your sterling buys more rupees.</li>
+      <li><strong>BRL receivables:</strong> The 9.3% move against the real costs £5,278 in lost revenue value. Brazilian client payments that were worth £62,016 at the start of the quarter are now worth only £56,738.</li>
+      <li><strong>ZAR receivables:</strong> The rand's 7.4% depreciation costs a further £3,561 in lost revenue value.</li>
+      <li><strong>Net unhedged impact:</strong> The payables saving of £3,548 partially offsets the receivables losses of £8,839, leaving a net FX loss of approximately <strong>£5,291</strong> for the quarter.</li>
+    </ul>
+
+    <p>
+      <strong>Analysis of the hedged position:</strong>
+    </p>
+    <ul>
+      <li>Hedging the INR payables via a forward would have locked in a slightly less favourable rate than spot (because INR interest rates are higher than GBP rates), resulting in a cost of £140,845 — still a saving versus the opening rate but less than the unhedged windfall.</li>
+      <li>Hedging BRL receivables would have locked in £59,520 — better than the unhedged outcome by £2,782, though worse than the opening spot rate due to the forward discount on BRL.</li>
+      <li>Hedging ZAR receivables would have locked in £49,800 — better than unhedged by £1,413.</li>
+      <li><strong>Net hedged impact:</strong> approximately <strong>£2,019</strong> worse than opening rates, but £3,272 better than the unhedged outcome.</li>
+    </ul>
+
+    <p>
+      <strong>Key takeaways for UK businesses:</strong>
+    </p>
+    <ul>
+      <li><strong>EM receivables are the primary risk.</strong> When EM currencies weaken — which is the more common direction — the sterling value of your overseas revenue falls. The BRL exposure alone cost nearly 8.5% of the revenue in a single quarter.</li>
+      <li><strong>Hedging has a cost but provides certainty.</strong> The forward discount on EM currencies means hedging receivables always involves accepting a rate worse than today's spot. But it eliminates the risk of a much larger adverse move, which is especially valuable for EM currencies with their higher volatility.</li>
+      <li><strong>Natural offsets matter.</strong> Precision Analytics' INR payables partially offset the receivables exposure because a stronger pound benefits the payables side. Businesses with both EM payables and receivables should map their net exposure before deciding what to hedge.</li>
+      <li><strong>Budget at the forward rate, not the spot rate.</strong> For EM currencies, the forward rate is a more realistic planning assumption than the current spot rate because it incorporates the expected depreciation driven by interest rate differentials.</li>
+    </ul>
+  </div>
+
+
+  <h2>How should UK businesses approach emerging market currency risk?</h2>
+
+  <p>
+    Managing EM currency risk requires a more deliberate and structured approach than dealing with major currency exposures. The higher volatility, structural depreciation tendencies, and practical complications of EM currencies mean that a passive approach — simply converting as and when needed — is likely to produce more volatile outcomes and higher costs over time.
+  </p>
+
+  <h3>Map your EM exposures separately</h3>
+  <p>
+    Start by identifying and quantifying all your EM currency exposures separately from your major currency positions. For each EM currency, note the type of exposure (payables, receivables, or balance sheet items), the typical amounts and timing, and the specific characteristics of that currency (capital controls, pegged or floating, deliverable or NDF-only). This separation is important because the hedging instruments, costs, and risks differ materially from your EUR or USD positions.
+  </p>
+
+  <h3>Understand the specific risks of each currency</h3>
+  <p>
+    Not all EM currencies are equal. The Chinese renminbi, managed by a central bank with vast foreign exchange reserves, presents a very different risk profile from the Argentinean peso, which is subject to chronic inflation and periodic crises. Before entering a new market or accepting a new currency, invest time in understanding the inflation environment, the capital control regime, the central bank's policy framework, and the country's political stability. This due diligence will inform both your commercial decisions (pricing, payment terms, currency of invoicing) and your financial risk management.
+  </p>
+
+  <h3>Consider your invoicing currency carefully</h3>
+  <p>
+    Where you have negotiating power, invoicing in a major currency (GBP, USD, or EUR) rather than the local EM currency transfers the currency risk to your counterparty. This is common practice in many EM trade relationships and can significantly simplify your FX management. However, it may reduce your competitiveness if local competitors or other international suppliers are willing to invoice in the local currency. The decision should be made on a case-by-case basis, weighing the cost of managing the currency risk against the commercial benefit of offering local-currency pricing.
+  </p>
+
+  <h3>Build hedging into your planning cycle</h3>
+  <p>
+    For committed EM currency exposures — invoices raised, contracts signed, or purchase orders placed — consider hedging a defined percentage using forward contracts or NDFs as part of your regular planning cycle. A common approach is to hedge 75–100% of committed exposures and a smaller percentage (25–50%) of forecast but uncommitted exposures. The hedging cost for EM currencies is higher than for major currencies, but so is the potential adverse movement, making the insurance value of hedging proportionally greater.
+  </p>
+
+  <h3>Monitor trapped cash and repatriation risks</h3>
+  <p>
+    If your business generates significant local-currency revenue in an EM country with capital controls, establish a clear process for monitoring your trapped cash position and for initiating repatriation as soon as regulations and documentation requirements allow. Regularly review the regulatory environment for changes that could affect your ability to move funds. In some cases, it may be more cost-effective to use local-currency proceeds for local expenses or investments rather than bearing the cost and complexity of repatriation.
+  </p>
+
+  <h3>Work with specialists</h3>
+  <p>
+    EM currencies require specialist knowledge that many high-street banks do not provide to SME clients. Working with an FX provider or advisory firm that has deep experience in emerging markets can make a significant difference to both the quality of your hedging execution and the rates you achieve. Specialist providers are more likely to offer competitive pricing on NDFs, understand the documentation requirements for restricted currencies, and provide market intelligence on the specific economies you are exposed to.
+  </p>
+
+
+  <h2>What opportunities do emerging markets offer despite the risks?</h2>
+
+  <p>
+    It is important not to lose sight of the fundamental opportunity that emerging markets represent. These economies are growing faster than the developed world, their consumer bases are expanding rapidly, and their integration into global supply chains continues to deepen. For UK businesses, the potential rewards of EM engagement — access to new customers, competitive sourcing, and portfolio diversification — often outweigh the currency challenges, provided those challenges are managed proactively.
+  </p>
+
+  <p>
+    The UK government and trade bodies actively support SME expansion into emerging markets through export finance facilities, market advisory services, and trade missions. UK Export Finance (UKEF), for instance, provides guarantees and insurance products that can help mitigate some of the commercial and political risks of EM trade. Understanding and using these resources can complement your currency risk management strategy.
+  </p>
+
+  <p>
+    Moreover, the EM currency characteristics that create hedging challenges can also create opportunities. The forward discount on EM currencies — driven by higher local interest rates — means that UK businesses buying from EM countries can often lock in forward rates that are more favourable than spot. For importers, this effectively reduces the cost of future purchases. A well-managed hedging programme that takes advantage of these forward points can turn what appears to be a currency risk into a tangible cost saving.
+  </p>
+
+  <p>
+    Emerging markets represent a complex yet dynamic facet of the global economy. Their diverse economic characteristics, coupled with unique challenges such as currency volatility and political instability, require careful navigation. But for UK businesses willing to invest in understanding the risks and building appropriate management frameworks, these markets offer substantial opportunities for growth, innovation, and competitive advantage. The key is to approach them with open eyes, practical tools, and a structured plan for managing the financial risks that come with the territory.
+  </p>
+
+  <p>
+    If you are new to managing EM currency exposures, continue with <a href="/fx-academy/fx-markets-and-instruments">FX Markets & Financial Instruments</a> for a detailed explanation of forwards, NDFs, and other hedging tools. For a broader framework on structuring your currency risk management, see <a href="/fx-academy/currency-management">Currency Management for Growing Businesses</a>.
+  </p>
+
+</AcademyGuideLayout>

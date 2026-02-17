@@ -1,0 +1,448 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+---
+
+<AcademyGuideLayout
+  title="Currency Management for Growing Businesses"
+  metaDescription="Learn how to identify, quantify and manage foreign exchange risk as your UK business scales internationally. A structured framework for finance teams."
+  tldr="Growing businesses with international revenues or costs face real P&L volatility from currency movements. A structured approach to identifying exposures, quantifying their impact, and managing them with the right tools can turn FX from an unpredictable cost into a controlled business input. You do not need a large treasury team to do this well."
+  keyFacts={[
+    { text: "GBP/EUR moved 12% in 2022 alone — enough to wipe out a typical SME profit margin." },
+    { text: "Over 70% of mid-market companies have no formal FX policy, leaving risk unmanaged." },
+    { text: "A 5% adverse FX move on £2 million of exposure equals a £100,000 hit to your bottom line." },
+    { text: "UK businesses lost an estimated £7.8 billion to poor FX management in a single year." },
+    { text: "Forward contracts can lock in exchange rates up to 24 months ahead with no upfront premium." },
+    { text: "Companies that hedge consistently report 30–40% lower earnings volatility from FX." },
+  ]}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={[
+    {
+      title: "Foreign Exchange 101",
+      href: "/fx-academy/foreign-exchange-101",
+      description: "Start here if you are new to FX — how currency markets work and why exchange rates move.",
+    },
+    {
+      title: "Mastering FX Cashflow Hedging",
+      href: "/fx-academy/cashflow-hedging",
+      description: "Go deeper on protecting future revenues and costs with cashflow hedging strategies.",
+    },
+    {
+      title: "How to Construct a Hedging Programme",
+      href: "/fx-academy/hedging-programme",
+      description: "A step-by-step guide to building an FX hedging programme that fits your business.",
+    },
+  ]}
+  advisoryCta={{
+    text: "Need help building an FX risk framework tailored to your business? Our advisory team works with growing UK companies to design practical currency management processes — from first exposure map to board-ready reporting.",
+    href: "/advisory/fx-risk-management",
+    label: "Speak to an FX advisor",
+  }}
+  faqSchema={[
+    {
+      question: "What is currency risk and why does it matter?",
+      answer: "Currency risk is the potential for financial loss when exchange rates move between the time a transaction is agreed and the time it settles. For UK businesses trading internationally, it creates unpredictable swings in revenue, costs, and reported profits. There are three types: transaction risk on individual invoices, translation risk on overseas subsidiary balances, and economic risk affecting long-term competitiveness.",
+    },
+    {
+      question: "How do you identify your FX exposures?",
+      answer: "Start by mapping every point where your business touches a foreign currency: overseas sales invoices, supplier payments in foreign currencies, intercompany loans, foreign currency bank balances, and any overseas payroll. Pull data from your accounting system to build a complete picture by currency, by month. The goal is a single exposure schedule that shows what you owe and are owed in each currency over the next 6 to 12 months.",
+    },
+    {
+      question: "What is an FX risk management policy?",
+      answer: "An FX risk management policy is a written document that sets out how your business identifies, measures, and manages currency risk. It typically covers which exposures to hedge, target hedge ratios, approved instruments, counterparty limits, roles and responsibilities, and reporting requirements. Investors, auditors, and boards increasingly expect growing businesses to have one in place.",
+    },
+    {
+      question: "When should a growing business start managing FX risk?",
+      answer: "Most businesses should start actively managing FX risk when foreign currency revenues or costs exceed 10–15% of total turnover, or when the absolute exposure exceeds £500,000 per year. Other triggers include preparing for a fundraise, onboarding institutional investors, an upcoming audit, or board-level concern about margin volatility. The earlier you build good habits, the easier they are to maintain as you scale.",
+    },
+  ]}
+  readingTime="13 min read"
+>
+
+  <h2>What is currency risk and why does it matter?</h2>
+
+  <p>
+    Currency risk — also called foreign exchange risk or FX risk — is the possibility that changes in exchange rates will affect the value of your business transactions, assets, or earnings. For any UK company that invoices in euros, pays suppliers in US dollars, or holds funds in a foreign currency account, exchange rate movements directly affect how much sterling ends up in the bank.
+  </p>
+
+  <p>
+    This is not a theoretical concern. In the twelve months to October 2022, GBP/EUR moved from 1.21 to 1.10 and back to 1.16. A UK business invoicing €100,000 per month would have seen its sterling receipts swing by over £8,000 per month — purely from exchange rate changes, with no change in underlying sales volume or pricing.
+  </p>
+
+  <p>
+    There are three types of currency risk that growing businesses need to understand:
+  </p>
+
+  <h3>Transaction risk</h3>
+  <p>
+    This is the most immediate and visible form of FX risk. It arises whenever there is a gap between agreeing a price in a foreign currency and actually receiving or making the payment. If you invoice a customer €50,000 today and they pay in 60 days, the sterling value of that receivable will change every day until the euros arrive and are converted. Transaction risk affects your cash flow and profit margins on individual deals.
+  </p>
+
+  <h3>Translation risk</h3>
+  <p>
+    If your business has overseas subsidiaries, branch offices, or significant foreign currency balances on its balance sheet, you face translation risk. When you consolidate financial statements, those foreign currency assets and liabilities are converted to sterling at the prevailing rate. A weaker euro means your European subsidiary's assets are worth less in sterling terms — even if nothing has changed operationally. Translation risk affects your reported net assets and can create volatility in your consolidated accounts.
+  </p>
+
+  <h3>Economic risk</h3>
+  <p>
+    This is the long-term, strategic form of FX risk. Even if you invoice entirely in sterling, a sustained move in exchange rates can affect your competitiveness. If the pound strengthens significantly against the euro, your UK-manufactured products become more expensive for European buyers, and European competitors become cheaper in the UK market. Economic risk is harder to hedge directly but is important to factor into pricing strategy and market planning.
+  </p>
+
+  <p>
+    For most growing businesses, transaction risk is the priority. It is the most measurable, the most directly tied to cash flow, and the most straightforward to manage. The rest of this guide focuses primarily on transaction-level currency management, with references to translation and economic risk where relevant.
+  </p>
+
+
+  <h2>How do you identify your FX exposures?</h2>
+
+  <p>
+    Before you can manage currency risk, you need to know exactly where it exists in your business. Many finance teams underestimate their exposure because they only think about the most obvious foreign currency transactions. A proper exposure mapping exercise usually reveals more FX touchpoints than expected.
+  </p>
+
+  <p>
+    Start by working through each of these categories:
+  </p>
+
+  <ul>
+    <li><strong>Foreign currency receivables</strong> — sales invoices issued in currencies other than sterling. Include both billed invoices (already in your ledger) and forecast sales that you are confident will occur in the coming months.</li>
+    <li><strong>Foreign currency payables</strong> — supplier invoices and committed purchase orders denominated in foreign currencies. This includes raw materials, SaaS subscriptions, contractor payments, and any other costs billed in euros, dollars, or other currencies.</li>
+    <li><strong>Intercompany balances</strong> — loans, recharges, or trading balances between your UK entity and overseas subsidiaries. These are often the largest single FX exposures and frequently get overlooked.</li>
+    <li><strong>Foreign currency bank balances</strong> — funds sitting in EUR, USD, or other currency accounts. These are exposed to translation risk until they are converted or used.</li>
+    <li><strong>Overseas payroll and operating costs</strong> — if you have staff or offices abroad, their costs in local currency create a recurring FX exposure.</li>
+    <li><strong>Capital expenditure</strong> — any planned equipment purchases, deposits, or investments denominated in foreign currencies.</li>
+  </ul>
+
+  <p>
+    The most effective way to do this is to pull data directly from your accounting system. Export your accounts receivable and accounts payable ledgers filtered by currency, and supplement with forecast data from your sales and procurement teams. The output should be a simple schedule showing your net exposure (receivables minus payables) in each currency, broken down by month, for at least the next six to twelve months.
+  </p>
+
+  <p>
+    Here is what a simplified exposure schedule looks like:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>EUR receivables</th>
+        <th>EUR payables</th>
+        <th>Net EUR exposure</th>
+        <th>USD payables</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mar 2025</td>
+        <td>€120,000</td>
+        <td>€30,000</td>
+        <td>€90,000</td>
+        <td>$25,000</td>
+      </tr>
+      <tr>
+        <td>Apr 2025</td>
+        <td>€110,000</td>
+        <td>€35,000</td>
+        <td>€75,000</td>
+        <td>$25,000</td>
+      </tr>
+      <tr>
+        <td>May 2025</td>
+        <td>€130,000</td>
+        <td>€28,000</td>
+        <td>€102,000</td>
+        <td>$30,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    This schedule becomes the foundation of everything that follows — quantifying impact, setting policy, and deciding what to hedge. Without it, any FX management activity is guesswork.
+  </p>
+
+  <p>
+    If your accounting system supports multi-currency reporting (most modern platforms do, including Xero, QuickBooks, and NetSuite), you can automate much of this data extraction. Connecting your accounting data to your FX management process is one of the highest-value steps a growing finance team can take.
+  </p>
+
+
+  <h2>How do you quantify the impact of currency movements?</h2>
+
+  <p>
+    Knowing your exposures is step one. Step two is understanding how much those exposures could cost you if exchange rates move against you. This is where many businesses stall — they know they have FX risk, but they have not put a number on it, so it stays in the "worry about it later" category.
+  </p>
+
+  <p>
+    There are three practical approaches to quantifying FX impact:
+  </p>
+
+  <h3>Sensitivity analysis</h3>
+  <p>
+    The simplest method. Take your net exposure in each currency and calculate the sterling impact of a 5% and 10% move in the exchange rate. For example, if you have a net EUR exposure of €1,000,000 over the next twelve months and the current GBP/EUR rate is 1.17:
+  </p>
+
+  <ul>
+    <li>At 1.17: your EUR exposure converts to approximately £855,000.</li>
+    <li>At 1.23 (5% sterling strengthening): that same exposure converts to approximately £813,000 — a £42,000 reduction.</li>
+    <li>At 1.29 (10% sterling strengthening): it converts to approximately £775,000 — an £80,000 reduction.</li>
+  </ul>
+
+  <p>
+    This gives your board and leadership team a concrete range of potential outcomes. When the CFO can say "a 5% move in sterling against the euro would cost us £42,000 this year", the conversation about whether to manage FX risk becomes much more grounded.
+  </p>
+
+  <h3>Scenario planning</h3>
+  <p>
+    Take sensitivity analysis further by modelling specific scenarios that reflect real-world possibilities. Rather than abstract percentage moves, consider what happened in past events: the 2016 Brexit referendum (GBP fell 8% in a single day), the 2022 mini-budget crisis (GBP fell 5% intraday against USD), or the gradual post-Covid recovery. Map your current exposure against these historical scenarios to produce "what would have happened to us" figures. These are far more compelling in a board presentation than theoretical percentages.
+  </p>
+
+  <h3>Simplified Value-at-Risk (VaR)</h3>
+  <p>
+    VaR is a statistical measure used by banks and corporates to estimate the maximum expected loss over a given time period at a given confidence level. A full VaR model requires historical volatility data and statistical modelling, but a simplified version is accessible: take your net exposure, multiply by the currency pair's annualised volatility (readily available from financial data providers), and adjust for your time horizon. For GBP/EUR, annualised volatility typically runs between 6% and 10%. On a £1 million exposure with 8% volatility over a three-month horizon, the approximate VaR at 95% confidence is around £40,000.
+  </p>
+
+  <p>
+    The point of all three methods is the same: to turn vague concern about exchange rates into a specific financial number. That number drives better decisions about how much to spend on hedging and what level of risk your business is comfortable absorbing.
+  </p>
+
+
+  <h2>What is an FX risk management policy?</h2>
+
+  <p>
+    An FX risk management policy is a written document — typically two to five pages — that sets out your company's approach to identifying, measuring, and managing currency risk. It is the bridge between knowing you have FX risk and actually doing something about it consistently.
+  </p>
+
+  <p>
+    A good policy covers the following areas:
+  </p>
+
+  <ul>
+    <li><strong>Objectives</strong> — what the policy is trying to achieve. Typically this is to reduce the volatility of sterling cash flows and protect budget rates, not to speculate on exchange rate movements.</li>
+    <li><strong>Scope</strong> — which entities, currencies, and exposure types are covered. A growing group might start with transaction risk in EUR and USD only.</li>
+    <li><strong>Hedge ratios</strong> — the target percentage of forecast exposure to hedge, often varying by time horizon. For example: hedge 75–100% of exposures in the next 0–3 months, 50–75% at 3–6 months, and 25–50% at 6–12 months.</li>
+    <li><strong>Approved instruments</strong> — which hedging tools the business is allowed to use. Most growing businesses limit this to spot transactions and forward contracts, potentially adding vanilla options as they mature.</li>
+    <li><strong>Roles and responsibilities</strong> — who is authorised to execute FX transactions, who sets policy, and who monitors compliance. Even in a small team, clear segregation of duties matters.</li>
+    <li><strong>Counterparty limits</strong> — which banks or platforms the business is authorised to trade with, and any concentration limits.</li>
+    <li><strong>Reporting and governance</strong> — how often exposures and hedge positions are reviewed, who receives reports, and how policy exceptions are escalated.</li>
+  </ul>
+
+  <p>
+    Why does this matter for a growing business? Three reasons:
+  </p>
+
+  <p>
+    First, <strong>investors expect it</strong>. If you are raising a Series A or later, institutional investors will ask about FX risk management during due diligence. Having a written policy demonstrates financial maturity and reduces perceived risk.
+  </p>
+
+  <p>
+    Second, <strong>auditors look for it</strong>. As your business grows past the audit threshold (£10.2 million turnover for UK companies), your auditors will assess how you manage financial risks including FX. A documented policy makes the audit process smoother.
+  </p>
+
+  <p>
+    Third, <strong>consistency matters</strong>. Without a policy, FX decisions tend to be reactive and emotional — hedging when rates feel bad, doing nothing when they feel good. A policy creates a repeatable process that removes guesswork and reduces the risk of costly mistakes.
+  </p>
+
+  <p>
+    You do not need a 50-page document. A clear, concise policy that your finance team actually follows is far more valuable than an elaborate one that sits in a drawer.
+  </p>
+
+
+  <h2>What are the main approaches to managing FX risk?</h2>
+
+  <p>
+    Once you understand your exposures and have a policy framework, you need to choose how to manage the risk. There are several approaches, and most businesses use a combination.
+  </p>
+
+  <h3>Natural hedging</h3>
+  <p>
+    The simplest form of FX risk management: match your foreign currency income with foreign currency costs. If you receive €100,000 per month from European customers and pay €60,000 per month to European suppliers, your net exposure is only €40,000. By holding euros in a dedicated EUR account and using them to pay EUR-denominated costs before converting the remainder to sterling, you reduce the amount that needs active hedging. Natural hedging costs nothing and should always be the first step.
+  </p>
+
+  <h3>Netting</h3>
+  <p>
+    Related to natural hedging, netting involves offsetting receivables and payables in the same currency across your group. If your UK entity owes €50,000 to your French subsidiary, and the French subsidiary owes €30,000 back, only the net €20,000 needs to be settled. This reduces transaction volumes, bank charges, and FX exposure simultaneously. For businesses with multiple entities trading with each other, a monthly netting cycle can significantly reduce overall risk.
+  </p>
+
+  <h3>Forward contracts</h3>
+  <p>
+    A forward contract locks in an exchange rate for a future date. If you know you will need to convert €100,000 to sterling in three months, you can agree today's forward rate with your bank or FX provider, removing all uncertainty about what that conversion will yield. Forwards are the most widely used hedging instrument for SMEs — they are simple, flexible (available for almost any amount and tenor from one week to two years), and require no upfront premium. The trade-off is that you are locked in: if rates move in your favour, you do not benefit.
+  </p>
+
+  <h3>Currency options</h3>
+  <p>
+    An option gives you the right, but not the obligation, to exchange currencies at a specified rate on a future date. This means you are protected if rates move against you, but you can still benefit if they move in your favour. The cost is an upfront premium, which varies depending on the strike rate, tenor, and market volatility. Options are more expensive than forwards but offer more flexibility. They are typically used when there is uncertainty about whether an exposure will materialise — for example, hedging a sales pipeline where deals may or may not close.
+  </p>
+
+  <h3>Layered hedging</h3>
+  <p>
+    Rather than hedging all your exposure at a single rate, layered hedging involves spreading your hedges over time. For example, instead of locking in your entire Q3 EUR exposure today, you might hedge a third now, a third next month, and a third the month after. This gives you an average rate across multiple market levels, reducing the risk of locking in at a particularly bad (or good) moment. Layered hedging is the approach most commonly recommended by treasury professionals for medium-term exposures.
+  </p>
+
+  <p>
+    For most growing businesses, the practical starting point is: use natural hedging and netting to minimise net exposures, then use forward contracts (potentially with a layered approach) to hedge the remainder according to your policy's target hedge ratios. Options can be added as sophistication and exposure size grow.
+  </p>
+
+
+  <h2>When should a growing business start managing FX risk?</h2>
+
+  <p>
+    There is no single threshold, but there are clear signals that it is time to move from ad hoc currency conversion to structured FX management. Consider it a priority if any of the following apply:
+  </p>
+
+  <ul>
+    <li><strong>Foreign currency turnover exceeds 10–15% of total revenue.</strong> At this level, FX movements start to have a material impact on reported margins. If your gross margin is 40% and FX can swing 5%, that is a meaningful portion of your profitability at risk.</li>
+    <li><strong>Absolute FX exposure exceeds £500,000 per year.</strong> Even if foreign currency is a small percentage of your total business, £500,000 of exposure means a 5% adverse rate move costs you £25,000. That is real money for a growing company.</li>
+    <li><strong>You are preparing for a fundraise.</strong> Institutional investors — particularly VCs investing at Series A and beyond — will assess your financial risk management as part of due diligence. A clear FX policy signals operational maturity.</li>
+    <li><strong>You are approaching an audit threshold.</strong> UK companies with turnover above £10.2 million, a balance sheet above £5.1 million, or more than 50 employees must have a statutory audit. Auditors will examine financial risk management including FX.</li>
+    <li><strong>Your board or investors have raised it.</strong> If FX is appearing in board discussions or investor updates as a source of variance, that is a signal to formalise your approach.</li>
+    <li><strong>You have been caught out.</strong> A single quarter where FX movements materially dented your margins is often the catalyst. The question is whether you wait for that event or get ahead of it.</li>
+  </ul>
+
+  <p>
+    The earlier you build a structured approach, the easier it is to maintain. Companies that wait until they have £10 million of FX exposure often find they have also accumulated years of bad habits — inconsistent conversion timing, no rate benchmarking, and no visibility into future exposures. Starting at £500,000 to £1 million of exposure, even with a simple process, sets the foundation for scaling effectively.
+  </p>
+
+
+  <h2>What does good currency management look like in practice?</h2>
+
+  <p>
+    Theory is important, but execution is what protects your margins. Here is what a well-run currency management process looks like for a growing UK business with, say, £2–5 million of annual FX exposure.
+  </p>
+
+  <h3>Monthly rhythm</h3>
+  <p>
+    At the start of each month, the finance team runs an exposure report from the accounting system. This shows current foreign currency receivables, payables, and forecast exposures for the next six to twelve months. Net exposures by currency are compared against existing hedge positions to identify gaps. Any new hedges required under the policy are executed within the first week of the month.
+  </p>
+
+  <h3>Connection to accounting data</h3>
+  <p>
+    The exposure report should be generated from live accounting data, not a manually maintained spreadsheet. If your FX management platform connects to your accounting system (Xero, QuickBooks, NetSuite, or similar), the data is always current and the risk of errors is dramatically reduced. This connection also enables automatic matching of invoices to hedge contracts, simplifying reconciliation.
+  </p>
+
+  <h3>Rate benchmarking</h3>
+  <p>
+    Every FX conversion should be benchmarked against the mid-market rate at the time of execution. This ensures you are getting fair pricing from your bank or FX provider and makes it easy to spot if costs are creeping up. Over a year, the difference between paying a 0.3% margin and a 1.5% margin on £3 million of FX conversions is £36,000.
+  </p>
+
+  <h3>Board and investor reporting</h3>
+  <p>
+    A monthly or quarterly FX summary should be included in board packs. It does not need to be complex — a single page showing total exposure by currency, hedge coverage, average hedged rates versus budget rates, and realised gains or losses is sufficient. This gives the board visibility and demonstrates that FX risk is being actively managed.
+  </p>
+
+  <h3>Periodic policy review</h3>
+  <p>
+    The FX policy should be reviewed at least annually, or whenever there is a material change in the business (entering a new market, a large contract win, a fundraise). The review should assess whether hedge ratios, approved instruments, and counterparty arrangements are still appropriate.
+  </p>
+
+  <p>
+    The goal is not perfection — it is consistency. A business that follows a simple, documented process every month will achieve far better outcomes than one that hedges sporadically based on gut feel or market news.
+  </p>
+
+
+  <div class="worked-example">
+    <h3>Worked example: UK e-commerce company with £3 million annual FX exposure</h3>
+
+    <p>
+      Consider BrightGoods Ltd, a UK-based e-commerce business selling consumer products across Europe and the US. They invoice European customers in euros and American customers in US dollars. Their annual FX profile looks like this:
+    </p>
+
+    <ul>
+      <li>EUR receivables: approximately €2,000,000 per year (roughly €167,000 per month)</li>
+      <li>USD receivables: approximately $800,000 per year (roughly $67,000 per month)</li>
+      <li>EUR payables (EU warehousing and logistics): approximately €300,000 per year</li>
+      <li>Net EUR exposure: approximately €1,700,000 per year</li>
+      <li>Net USD exposure: approximately $800,000 per year</li>
+      <li>Combined sterling equivalent exposure: approximately £3,000,000 per year</li>
+    </ul>
+
+    <p>
+      BrightGoods budgeted at GBP/EUR 1.17 and GBP/USD 1.27 for the financial year. Here is what happens over a 12-month period under three scenarios: no hedging, a basic forward hedging programme, and a layered hedging approach.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>EUR sterling receipts</th>
+          <th>USD sterling receipts</th>
+          <th>Total sterling</th>
+          <th>Variance vs budget</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Budget rate</strong> (GBP/EUR 1.17, GBP/USD 1.27)</td>
+          <td>£1,453,000</td>
+          <td>£630,000</td>
+          <td>£2,083,000</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><strong>Unhedged</strong> (rates move to 1.22 / 1.33)</td>
+          <td>£1,393,000</td>
+          <td>£602,000</td>
+          <td>£1,995,000</td>
+          <td>-£88,000</td>
+        </tr>
+        <tr>
+          <td><strong>Forward hedge at budget rates</strong> (75% hedged)</td>
+          <td>£1,438,000</td>
+          <td>£623,000</td>
+          <td>£2,061,000</td>
+          <td>-£22,000</td>
+        </tr>
+        <tr>
+          <td><strong>Layered hedge</strong> (monthly layers, 75% avg)</td>
+          <td>£1,430,000</td>
+          <td>£618,000</td>
+          <td>£2,048,000</td>
+          <td>-£35,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      In this scenario, sterling strengthens by approximately 4–5% against both the euro and the dollar over the year. The unhedged position results in an £88,000 shortfall against budget — equivalent to roughly 3% of turnover and potentially a significant portion of net profit for a growing e-commerce business.
+    </p>
+
+    <p>
+      The forward hedge programme, where BrightGoods locked in 75% of their exposure at rates close to budget at the start of the year, limits the damage to £22,000. The layered approach, where hedges were added monthly as new exposure materialised, lands at £35,000 below budget — better than unhedged, slightly worse than the block forward hedge in this particular scenario, but with the advantage of not having committed the full year's hedging upfront.
+    </p>
+
+    <p>
+      Now consider the reverse: if sterling had weakened by 5%, the unhedged position would have produced a windfall gain. But the hedged positions would still have delivered close to budget. This is the fundamental point of hedging — it is not about making money from FX. It is about reducing the range of outcomes so your business can budget, plan, and invest with confidence.
+    </p>
+
+    <p>
+      For BrightGoods, the practical cost of the hedging programme (forward margins, platform fees) is approximately £3,000–£5,000 per year. Compared to the £88,000 of potential unhedged downside, that is a straightforward return on investment.
+    </p>
+  </div>
+
+
+  <h2>Putting it all together</h2>
+
+  <p>
+    Currency management for growing businesses is not about eliminating FX risk entirely — that is neither possible nor necessary. It is about understanding your exposures, putting a number on the potential impact, and implementing a consistent process to keep that impact within acceptable bounds.
+  </p>
+
+  <p>
+    The key steps are:
+  </p>
+
+  <ol>
+    <li><strong>Map your exposures</strong> — pull data from your accounting system to build a complete picture of foreign currency receivables, payables, and forecast flows.</li>
+    <li><strong>Quantify the impact</strong> — run sensitivity analysis to put a sterling number on what FX movements could cost you.</li>
+    <li><strong>Write a policy</strong> — even a simple two-page document that sets out your objectives, hedge ratios, and approved instruments.</li>
+    <li><strong>Execute consistently</strong> — follow a monthly process to review exposures, maintain hedge coverage, and benchmark rates.</li>
+    <li><strong>Report to stakeholders</strong> — include FX exposure and hedging data in board packs and investor updates.</li>
+    <li><strong>Review and adapt</strong> — revisit your policy as the business grows and your exposure profile changes.</li>
+  </ol>
+
+  <p>
+    You do not need a dedicated treasury team to do this. Modern platforms can automate much of the data gathering, exposure tracking, and execution. What you do need is a decision to treat FX as a financial risk that deserves the same attention as credit risk, cash management, or cost control.
+  </p>
+
+  <p>
+    The businesses that manage currency well are not the ones with the most sophisticated tools or the largest treasury teams. They are the ones that follow a simple, documented process every month — and stick to it regardless of what the market is doing.
+  </p>
+
+</AcademyGuideLayout>

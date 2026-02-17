@@ -1,26 +1,155 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
+import DownloadForm from '../../components/DownloadForm.astro';
 
-const page = await getPage('advisory/cash-management');
+const triggers = [
+  { title: 'Investor deadline', description: 'Post-funding, institutional investors require cash management policies within 60–90 days.' },
+  { title: 'Audit season', description: 'Auditors flag missing treasury controls. A clean audit protects your next raise.' },
+  { title: 'The board question', description: '"Where\'s our cash and what\'s it earning?" Most CFOs wing the answer.' },
+];
+
+const services = [
+  { title: 'Policy development', description: 'Practical, board-ready cash management policy — not a 40-page document for a drawer.' },
+  { title: 'Cash segmentation', description: 'Operating reserves, strategic reserves, term deposits. Know what\'s available and what\'s earning.' },
+  { title: 'Counterparty diversification', description: 'Spread risk across institutions. Stay within FSCS limits. Satisfy investor governance.' },
+  { title: 'Multi-currency forecasting', description: 'Connected to your accounting system. Live forecasts, updated automatically.' },
+  { title: 'Interest optimisation', description: 'Sweep structures, notice accounts, and the right instruments for your liquidity profile.' },
+];
+
+const steps = [
+  { number: 1, title: 'Diagnostic', description: 'Review your setup. Identify gaps investors or auditors would flag.' },
+  { number: 2, title: 'Policy & framework', description: 'Draft or review your cash management policy, tailored to stage and investor base.' },
+  { number: 3, title: 'Implementation', description: 'Open accounts, configure segmentation, set up reporting.' },
+  { number: 4, title: 'Ongoing', description: 'Live cash visibility via platform. Monthly reviews as your business evolves.' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Cash Management'}
-  description={page?.seoDescription || 'Meet investor and audit requirements while earning interest on your cash.'}
+  title="Cash Management Advisory | HedgeFlows"
+  description="Formal cash management policies, proper controls, and board-ready reporting — without hiring a treasurer. Meet investor and audit requirements."
 >
   <Hero
-    title={page?.heroTitle || 'Meet investor and audit requirements while earning interest'}
-    subtitle={page?.heroSubtitle || 'Optimise your cash positions, meet compliance requirements, and maximise returns on idle funds.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Your investors expect treasury-grade cash management. We help you deliver it."
+    subtitle="Formal policies, proper controls, and board-ready reporting — without hiring a treasurer."
+    primaryCta={{ label: 'Book a Cash Management Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Download Policy Template', href: '#download' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <TrustBar />
+
+  <!-- The Problem -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-heading text-center mb-8">The hidden gap</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed text-center">
+          After a funding round, you might hold £5–30m in a single bank account earning almost nothing. No formal policy. No segmentation. No counterparty diversification. Your investors assume this is handled. Your auditors will check. It usually isn't.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Now -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Why act now</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {triggers.map((item) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-2">{item.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">What we do</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {services.map((s) => (
+          <div class="bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6">
+            <h3 class="text-[1.0625rem] font-bold text-text-heading mb-2">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">How it works</h2>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-2xl mx-auto bg-[#F8FAFB] rounded-2xl border border-gray-100 p-8 shadow-sm text-center">
+        <svg class="w-8 h-8 text-brand-green/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">
+          "We had £28m in one account and no policy. Our investors were asking questions we couldn't answer. HedgeFlows had us board-ready within a month — the policy, the segmentation, the reporting."
+        </p>
+        <p class="text-[0.8125rem] text-text-muted">Head of Finance, Confidential Series B Scaleup</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Form -->
+  <section id="download" class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Get started with a proven framework</h2>
+        <p class="section-subheading mx-auto">
+          Download the same template structure we use with advisory clients. Saves weeks of starting from scratch.
+        </p>
+      </div>
+      <DownloadForm
+        title="Cash Management Policy Starter Kit"
+        description="A practical, editable template covering counterparty limits, cash segmentation, interest optimisation, and governance. Built from the same structure we use with advisory clients."
+        resourceName="Cash Management Policy Starter Kit"
+        downloadUrl="/assets/downloads/cash-management-policy-template.docx"
+        sourceTag="cash-policy-template"
+        qualifyingQuestion={{
+          label: "Company stage",
+          name: "company_stage",
+          options: ["Seed", "Series A", "Series B+", "Revenue-funded", "Other"],
+        }}
+      />
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto bg-brand-green-pale/50 rounded-2xl p-8 md:p-10 border border-brand-green/10">
+        <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Case Study</p>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed">
+          A venture-backed tech company held £28m post-fundraise in a single account. Investors required a formal policy within 90 days. Their Head of Finance attended our Treasury Masterclass, recognised the gaps, and had a board-ready framework within a month.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to build best-practice cash management?"
+    primaryCta={{ label: 'Book a Cash Management Review', href: '/treasury-health-check' }}
   />
 </PageLayout>

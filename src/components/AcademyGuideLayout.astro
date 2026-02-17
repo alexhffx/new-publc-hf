@@ -1,0 +1,255 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+
+interface KeyFact {
+  icon?: string;
+  text: string;
+}
+
+interface RelatedPage {
+  title: string;
+  href: string;
+  description: string;
+}
+
+interface AdvisoryCta {
+  text: string;
+  href: string;
+  label: string;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  metaDescription: string;
+  tldr: string;
+  keyFacts: KeyFact[];
+  lastUpdated: string;
+  author: string;
+  authorCredentials: string;
+  relatedPages: RelatedPage[];
+  advisoryCta: AdvisoryCta;
+  faqSchema?: FaqItem[];
+  readingTime?: string;
+  videoId?: string;
+}
+
+const {
+  title,
+  metaDescription,
+  tldr,
+  keyFacts,
+  lastUpdated,
+  author,
+  authorCredentials,
+  relatedPages,
+  advisoryCta,
+  faqSchema = [],
+  readingTime = '10 min read',
+  videoId,
+} = Astro.props;
+
+/* Build FAQ JSON-LD from question headings */
+const faqJsonLd = faqSchema.length > 0 ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqSchema.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+}) : null;
+
+const articleJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": metaDescription,
+  "author": {
+    "@type": "Organization",
+    "name": "HedgeFlows",
+    "url": "https://hedgeflows.com",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HedgeFlows",
+    "url": "https://hedgeflows.com",
+  },
+  "dateModified": lastUpdated,
+});
+---
+
+<PageLayout title={`${title} | HedgeFlows FX Academy`} description={metaDescription}>
+  {/* Schema markup — JSON-LD is valid in <body> */}
+  <script type="application/ld+json" set:html={articleJsonLd} />
+  {faqJsonLd && <script type="application/ld+json" set:html={faqJsonLd} />}
+
+  <article class="section-padding bg-white">
+    <div class="container-content max-w-3xl mx-auto">
+      {/* Breadcrumb */}
+      <nav class="mb-8 text-[0.875rem] text-text-muted" aria-label="Breadcrumb">
+        <a href="/fx-academy" class="hover:text-brand-green transition-colors">FX Academy</a>
+        <span class="mx-2">/</span>
+        <span class="text-text-heading font-medium">{title}</span>
+      </nav>
+
+      {/* Title & meta */}
+      <h1 class="text-[2rem] md:text-[2.75rem] font-bold text-text-heading leading-tight mb-4">
+        {title}
+      </h1>
+      <div class="flex items-center gap-4 text-[0.8125rem] text-text-muted mb-10">
+        <span>{readingTime}</span>
+        <span>·</span>
+        <span>Updated {lastUpdated}</span>
+      </div>
+
+      {/* TL;DR Box */}
+      <div class="bg-brand-green-pale border border-brand-green/15 rounded-2xl p-6 md:p-8 mb-10">
+        <p class="text-[0.75rem] font-bold text-brand-green uppercase tracking-wider mb-2">TL;DR</p>
+        <p class="text-[1.0625rem] text-text-heading leading-relaxed font-medium">
+          {tldr}
+        </p>
+      </div>
+
+      {/* Video */}
+      {videoId && (
+        <div class="mb-10">
+          <div class="relative w-full rounded-2xl overflow-hidden shadow-sm border border-gray-100" style="padding-bottom: 56.25%;">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+              title={`${title} — Video Guide`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              class="absolute inset-0 w-full h-full"
+            ></iframe>
+          </div>
+          <p class="text-[0.8125rem] text-text-muted mt-3 text-center">
+            Prefer watching? This video covers the key concepts from this guide.
+          </p>
+        </div>
+      )}
+
+      {/* Key Facts Panel */}
+      <div class="bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6 md:p-8 mb-12">
+        <p class="text-[0.75rem] font-bold text-text-muted uppercase tracking-wider mb-4">Key Facts</p>
+        <ul class="space-y-3">
+          {keyFacts.map((fact) => (
+            <li class="flex items-start gap-3 text-[0.9375rem] text-text-body leading-relaxed">
+              <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{fact.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Main Content Slot */}
+      <div class="prose-academy">
+        <slot />
+      </div>
+
+      {/* Advisory CTA Card */}
+      <div class="mt-14 bg-brand-green-pale/50 rounded-2xl p-8 border border-brand-green/10">
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-4">
+          {advisoryCta.text}
+        </p>
+        <a
+          href={advisoryCta.href}
+          class="inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-6 py-3 rounded-full text-[0.875rem] shadow-sm hover:bg-brand-green-dark hover:shadow-md transition-all duration-200"
+        >
+          {advisoryCta.label}
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      {/* Related Guides */}
+      <div class="mt-14 pt-10 border-t border-gray-100">
+        <h2 class="text-[1.25rem] font-bold text-text-heading mb-6">Continue learning</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          {relatedPages.map((page) => (
+            <a
+              href={page.href}
+              class="group block bg-[#F8FAFB] rounded-xl border border-gray-100 p-5 hover:border-brand-green/20 hover:shadow-sm transition-all duration-200"
+            >
+              <p class="text-[0.9375rem] font-semibold text-text-heading group-hover:text-brand-green transition-colors mb-1">
+                {page.title}
+              </p>
+              <p class="text-[0.8125rem] text-text-muted leading-relaxed">
+                {page.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer metadata */}
+      <div class="mt-14 pt-8 border-t border-gray-100 text-[0.8125rem] text-text-muted">
+        <p class="mb-1"><strong class="text-text-heading font-semibold">Author:</strong> {author}</p>
+        <p class="mb-3">{authorCredentials}</p>
+        <p>Last updated: {lastUpdated}</p>
+      </div>
+
+      {/* Back link */}
+      <div class="mt-10">
+        <a href="/fx-academy" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
+          <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          Back to FX Academy
+        </a>
+      </div>
+    </div>
+  </article>
+</PageLayout>
+
+<style is:global>
+  /* Academy prose styles for main content */
+  .prose-academy h2 {
+    @apply text-[1.5rem] font-bold text-text-heading mt-12 mb-4 leading-tight;
+  }
+  .prose-academy h3 {
+    @apply text-[1.25rem] font-bold text-text-heading mt-8 mb-3;
+  }
+  .prose-academy p {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4;
+  }
+  .prose-academy ul, .prose-academy ol {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4 pl-6;
+  }
+  .prose-academy ul { @apply list-disc; }
+  .prose-academy ol { @apply list-decimal; }
+  .prose-academy li { @apply mb-2; }
+  .prose-academy strong { @apply text-text-heading font-semibold; }
+  .prose-academy table {
+    @apply w-full border-collapse mb-6 text-[0.9375rem];
+  }
+  .prose-academy thead th {
+    @apply bg-[#F8FAFB] text-text-heading font-semibold text-left px-4 py-3 border border-gray-200;
+  }
+  .prose-academy tbody td {
+    @apply px-4 py-3 border border-gray-200 text-text-body;
+  }
+  .prose-academy .worked-example {
+    @apply bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6 md:p-8 my-8;
+  }
+  .prose-academy .worked-example h3 {
+    @apply text-[1.125rem] font-bold text-text-heading mt-0 mb-3;
+  }
+  .prose-academy .worked-example p {
+    @apply text-[0.9375rem];
+  }
+  .prose-academy blockquote {
+    @apply border-l-4 border-brand-green/30 pl-6 italic text-text-muted my-6;
+  }
+</style>

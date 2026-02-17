@@ -1,0 +1,407 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+
+const keyFacts = [
+  { text: 'Unrealised FX gains and losses hit your P&L every reporting period, even if no cash has moved.' },
+  { text: 'Balance sheet hedging targets existing assets and liabilities, not forecasted future cashflows.' },
+  { text: 'Typical instruments used are short-dated FX forwards, usually with tenors of 1 to 3 months.' },
+  { text: 'IAS 21 and FRS 102 Section 30 require foreign currency monetary items to be remeasured at each period end.' },
+  { text: 'A rolling hedge programme can reduce P&L volatility by 80-95% on balance sheet exposures.' },
+  { text: 'Natural offsets between receivables and payables in the same currency should be netted before hedging the residual.' },
+];
+
+const relatedPages = [
+  {
+    title: 'Mastering FX Cashflow Hedging',
+    href: '/fx-academy/cashflow-hedging',
+    description: 'Understand how to protect future revenues and costs from currency movements before they hit the balance sheet.',
+  },
+  {
+    title: 'Currency Management for Growing Businesses',
+    href: '/fx-academy/currency-management',
+    description: 'A structured approach to identifying, quantifying, and managing FX risk as your international operations scale.',
+  },
+  {
+    title: 'How to Construct a Hedging Programme',
+    href: '/fx-academy/hedging-programme',
+    description: 'A step-by-step guide to building an FX hedging programme that fits your business and gets board-level buy-in.',
+  },
+  {
+    title: 'Foreign Exchange 101',
+    href: '/fx-academy/foreign-exchange-101',
+    description: 'The fundamentals of FX markets, currency pairs, and what moves exchange rates.',
+  },
+];
+
+const faqSchema = [
+  {
+    question: 'What is balance sheet hedging?',
+    answer: 'Balance sheet hedging is the practice of using financial instruments, typically short-dated FX forward contracts, to offset the unrealised foreign exchange gains and losses that arise when monetary assets and liabilities denominated in foreign currencies are remeasured at each reporting period end. Unlike cashflow hedging, which protects future transactions, balance sheet hedging addresses exposures that already exist on the balance sheet.',
+  },
+  {
+    question: 'Where do balance sheet FX exposures come from?',
+    answer: 'Balance sheet FX exposures come from any monetary item denominated in a foreign currency. Common sources include trade receivables (amounts owed by overseas customers), trade payables (amounts owed to foreign suppliers), intercompany loans and balances, foreign currency cash and bank balances, and accrued income or expenses in foreign currencies.',
+  },
+  {
+    question: 'How does IAS 21 affect your FX reporting?',
+    answer: 'IAS 21 (and FRS 102 Section 30 for UK companies using UK GAAP) requires that all monetary items denominated in a foreign currency are remeasured at the closing exchange rate at each balance sheet date. Any exchange differences arising from this remeasurement must be recognised in profit or loss in the period they occur, creating P&L volatility even when no cash has moved.',
+  },
+  {
+    question: 'What are common balance sheet hedging pitfalls?',
+    answer: 'Common pitfalls include incomplete exposure identification (missing intercompany balances or accruals), timing mismatches between hedge maturity and reporting dates, ignoring intercompany positions which can be the largest source of balance sheet FX exposure, over-reliance on natural hedging without verifying that offsets are genuine, and failing to update hedge positions as underlying exposures change during the period.',
+  },
+];
+---
+
+<AcademyGuideLayout
+  title="Balance Sheet Hedging"
+  metaDescription="How to protect your balance sheet from FX risk. Manage unrealised currency gains and losses on receivables, payables, and intercompany balances."
+  tldr="Balance sheet hedging uses short-dated FX forwards to neutralise unrealised currency gains and losses on existing foreign-currency assets and liabilities. It reduces P&L volatility caused by period-end remeasurement under IAS 21 and FRS 102, giving your board and investors a clearer picture of underlying business performance."
+  keyFacts={keyFacts}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={relatedPages}
+  advisoryCta={{
+    text: "Need help designing a balance sheet hedging programme for your business? Our advisory team can help you identify exposures, select the right instruments, and build a process that fits your reporting cycle.",
+    href: "/advisory/fx-risk-management",
+    label: "Speak to our advisory team",
+  }}
+  faqSchema={faqSchema}
+  readingTime="14 min read"
+  videoId="OnlDgZRGKS0"
+>
+
+<h2>What is balance sheet hedging?</h2>
+
+<p>
+  Balance sheet hedging is the practice of offsetting foreign exchange risk on monetary items that already sit on your balance sheet. These items — trade receivables, payables, intercompany loans, and foreign currency cash balances — are denominated in currencies other than your functional currency (typically sterling for UK businesses). When exchange rates move between the date a transaction is recorded and the date you close your books, the sterling value of those items changes. That change flows straight through to your profit and loss account as an unrealised FX gain or loss.
+</p>
+
+<p>
+  The word "unrealised" is important. No cash has actually moved. You have not bought or sold anything new. But your reported earnings still change, sometimes materially. For a business with significant overseas operations, these swings can obscure the real performance of the underlying business and make it harder for management, investors, and lenders to understand what is actually happening.
+</p>
+
+<p>
+  Balance sheet hedging is distinct from cashflow hedging. Cashflow hedging protects future expected transactions — for example, revenues you expect to receive in US dollars over the next twelve months. Balance sheet hedging, by contrast, deals with exposures that have already crystallised. The receivable has been invoiced. The payable has been booked. The intercompany loan has been drawn. These are known, quantifiable amounts sitting on the balance sheet today.
+</p>
+
+<p>
+  Because the exposures are known and short-dated (they will typically settle or roll within one to three months), the hedging instruments used are also short-dated — usually FX forward contracts maturing in line with the next reporting period or the expected settlement date of the underlying item.
+</p>
+
+<h2>Where do balance sheet FX exposures come from?</h2>
+
+<p>
+  Any monetary item on your balance sheet that is denominated in a currency other than sterling creates an FX exposure. For most UK businesses trading internationally, the main sources are:
+</p>
+
+<ul>
+  <li><strong>Trade receivables</strong> — Invoices you have issued to overseas customers in their local currency. Until the customer pays and you convert the proceeds to sterling, the sterling value of that receivable fluctuates with the exchange rate.</li>
+  <li><strong>Trade payables</strong> — Invoices you have received from foreign suppliers. The sterling cost of settling these invoices changes as exchange rates move.</li>
+  <li><strong>Intercompany loans and balances</strong> — If your UK parent has lent dollars or euros to a subsidiary, or if subsidiaries owe each other in non-sterling currencies, these balances create FX exposure on the parent's consolidated balance sheet. Intercompany balances are often the single largest source of balance sheet FX risk, yet they are frequently overlooked.</li>
+  <li><strong>Foreign currency cash and bank balances</strong> — Holding dollars, euros, or other currencies in bank accounts means the sterling equivalent fluctuates daily.</li>
+  <li><strong>Accrued income and expenses</strong> — Revenue recognised but not yet invoiced, or costs incurred but not yet billed, in foreign currencies. These are easy to miss because they may not be visible in the sub-ledger until the accrual is posted.</li>
+  <li><strong>Deposits and prepayments</strong> — Amounts paid or received in advance in foreign currencies, such as deposits on overseas property leases or prepaid annual software licences billed in US dollars.</li>
+</ul>
+
+<p>
+  The key point is that all of these items are monetary — they represent a right to receive or an obligation to pay a fixed or determinable amount of foreign currency. Non-monetary items, such as inventory or property valued at historical cost, are not remeasured and do not create the same type of balance sheet FX exposure (although they may give rise to other FX considerations under different accounting standards).
+</p>
+
+<h2>How does IAS 21 affect your FX reporting?</h2>
+
+<p>
+  IAS 21, <em>The Effects of Changes in Foreign Exchange Rates</em>, is the international accounting standard that governs how businesses account for foreign currency transactions and balances. For UK companies reporting under IFRS, it applies directly. For those using UK GAAP, FRS 102 Section 30 contains equivalent requirements.
+</p>
+
+<p>
+  The core requirement is straightforward: at each balance sheet date, you must remeasure all monetary items denominated in a foreign currency using the closing exchange rate — the spot rate at the end of the reporting period. Any difference between the carrying amount of the item (at the rate it was originally recorded or last remeasured) and the new sterling value at the closing rate is recognised as an exchange difference in profit or loss.
+</p>
+
+<p>
+  In practical terms, this means that every month-end or quarter-end, your finance team recalculates the sterling value of every foreign currency receivable, payable, loan, and cash balance. The resulting gains or losses hit the income statement, typically reported within "other operating income" or "finance costs" depending on your chart of accounts and the nature of the item.
+</p>
+
+<h3>Why this matters for your P&L</h3>
+
+<p>
+  Consider a simple scenario. Your UK business invoices a US customer for $500,000 when GBP/USD is 1.2500. You record a receivable of exactly 400,000 pounds. By month-end, the rate has moved to 1.2800. The receivable is now worth 390,625 pounds. You record an unrealised FX loss of 9,375 pounds — even though the customer has not yet paid and you have not done anything differently.
+</p>
+
+<p>
+  Now multiply that across dozens or hundreds of invoices in multiple currencies, add in payables, intercompany balances, and cash positions, and the aggregate impact can easily run into six or seven figures per quarter for a mid-sized international business. The volatility is particularly problematic because it has nothing to do with how well the business is actually performing. A strong quarter operationally can be overshadowed by an adverse FX swing, while a weak quarter can be flattered by a favourable one.
+</p>
+
+<p>
+  For businesses subject to audit, auditors will scrutinise FX remeasurement calculations and may challenge the rates used, the completeness of the exposure identification, and whether the treatment of gains and losses is consistent with the accounting policy. Getting this right — and having a clear, documented approach — saves significant time during the audit process.
+</p>
+
+<h2>How do you set up a balance sheet hedging programme?</h2>
+
+<p>
+  A balance sheet hedging programme does not need to be complicated, but it does need to be systematic. The goal is to identify your net foreign currency exposure at each reporting date and put hedges in place that will generate an offsetting gain or loss when the underlying items are remeasured. Here is a practical framework:
+</p>
+
+<h3>Step 1: Identify and quantify exposures by currency</h3>
+
+<p>
+  Extract all foreign currency monetary items from your balance sheet. Group them by currency. For each currency, calculate the net position — total assets minus total liabilities. If you have $2,000,000 in receivables and $600,000 in payables, your net USD exposure is $1,400,000 long. If you have euro payables of 500,000 euros and no euro receivables, your net EUR exposure is 500,000 euros short.
+</p>
+
+<p>
+  Do not forget intercompany balances. In many businesses, the intercompany loan from the UK parent to the US subsidiary dwarfs the trade receivables. If you exclude it, you are hedging a fraction of the actual exposure.
+</p>
+
+<h3>Step 2: Determine your hedge ratio</h3>
+
+<p>
+  Most balance sheet hedging programmes aim to hedge 100% of the net exposure in each material currency. The logic is simple: you know the exposure exists, you can measure it precisely, and the instruments are cheap and liquid. There is little reason to leave known balance sheet exposure unhedged. Some businesses choose to hedge 90% or 95% to allow for small movements in the underlying balance during the period, but the target is typically close to full coverage.
+</p>
+
+<h3>Step 3: Execute hedges using short-dated forwards</h3>
+
+<p>
+  Once you know your net exposure, you execute FX forward contracts to offset it. For a net long USD position of $1,400,000, you would sell $1,400,000 forward against sterling, maturing at or shortly after the next reporting date. For a net short EUR position of 500,000 euros, you would buy 500,000 euros forward.
+</p>
+
+<p>
+  The forward maturity should align with your reporting cycle. If you report monthly, use one-month forwards. If you report quarterly, use three-month forwards. This ensures the hedge gain or loss is recognised in the same period as the remeasurement of the underlying items.
+</p>
+
+<h3>Step 4: Roll and adjust at each period end</h3>
+
+<p>
+  At the end of each reporting period, the existing forwards mature and are settled. You then reassess the balance sheet, calculate the new net exposures (which will have changed as invoices are paid, new ones are raised, and intercompany balances move), and execute new forwards for the next period. This creates a rolling hedge programme — a repeating cycle of hedge, report, settle, re-hedge.
+</p>
+
+<p>
+  The discipline is in the process: having a clear timetable, knowing who is responsible for extracting the data, who approves the hedges, and who monitors the results. For many growing businesses, this is where a platform like HedgeFlows adds significant value — automating the exposure identification and forward execution so the process runs consistently without relying on manual spreadsheets.
+</p>
+
+<h2>What instruments are used for balance sheet hedging?</h2>
+
+<p>
+  Balance sheet hedging overwhelmingly relies on <strong>FX forward contracts</strong>. A forward is an agreement to exchange a specified amount of one currency for another at a predetermined rate on a future date. There is no upfront premium (unlike options), and the contract is binding on both sides.
+</p>
+
+<h3>Short-dated forwards (1-3 months)</h3>
+
+<p>
+  Because balance sheet exposures are remeasured at each period end, the hedges need to cover relatively short windows — typically one to three months. Short-dated forwards are highly liquid, carry minimal forward points (the difference between the spot rate and the forward rate is small for short tenors), and are simple to execute and account for.
+</p>
+
+<h3>Rolling programmes</h3>
+
+<p>
+  Rather than executing hedges on an ad hoc basis, best practice is to operate a rolling programme. Each month (or quarter), maturing forwards are settled, new exposures are assessed, and fresh forwards are put in place. This creates a consistent, repeatable process that the finance team can manage efficiently and auditors can review easily.
+</p>
+
+<h3>Natural offsets</h3>
+
+<p>
+  Before executing any forwards, you should net off natural offsets. If you have $800,000 in receivables and $300,000 in payables, your net USD exposure is only $500,000. Hedging the gross positions separately would be more expensive (wider bid-offer spreads on two trades rather than one) and unnecessary. Netting is the first step in any efficient hedging programme.
+</p>
+
+<h3>Why not options?</h3>
+
+<p>
+  FX options are occasionally used in cashflow hedging, where there is uncertainty about whether a future transaction will occur. For balance sheet hedging, options are rarely appropriate. The exposure is known and certain — it is already on the balance sheet. Paying an option premium for the right but not the obligation to exchange currencies adds cost without meaningful benefit. Forwards are the standard instrument for this purpose.
+</p>
+
+<h2>How do you measure and monitor balance sheet hedge effectiveness?</h2>
+
+<p>
+  Unlike cashflow hedging under IFRS 9, where formal hedge effectiveness testing is required for hedge accounting, balance sheet hedges are typically accounted for at fair value through profit or loss. This means the gain or loss on the forward contract and the remeasurement gain or loss on the underlying exposure both flow through the P&L — and if the hedge is well matched, they offset each other naturally. No special hedge accounting designation is required.
+</p>
+
+<p>
+  However, the absence of a formal accounting requirement does not mean you should not monitor effectiveness. Good practice includes:
+</p>
+
+<h3>Tracking the net FX line in the P&L</h3>
+
+<p>
+  Each period, compare the total unrealised FX gains and losses on your balance sheet items with the gains and losses on your hedging forwards. The net should be close to zero if the programme is working well. If you see a material net figure, investigate why — it usually points to an exposure that was missed, a timing mismatch, or a change in the underlying balance that was not reflected in the hedge.
+</p>
+
+<h3>Monitoring the hedge ratio</h3>
+
+<p>
+  Track the ratio of your hedge notional to the actual net exposure for each currency. If you are targeting 100% and the ratio drifts to 80% or 120%, it means the underlying balance has moved and the hedge needs adjusting. Some businesses monitor this weekly rather than waiting for the period end, particularly if their receivables and payables balances are volatile.
+</p>
+
+<h3>Board and management reporting</h3>
+
+<p>
+  Include a summary of balance sheet FX exposures, hedge coverage, and net FX P&L impact in your monthly management pack. This gives the board visibility over the programme and creates accountability. A simple table showing exposure by currency, hedge amount, hedge ratio, and net P&L impact is usually sufficient.
+</p>
+
+<h3>Variance analysis</h3>
+
+<p>
+  When the net FX P&L is not zero (which will be the case in practice — perfect hedging is rare), understand why. Common causes include: intra-period movements in the underlying balance (an invoice is paid mid-month, reducing the receivable but the forward is still in place), timing differences between when exposures are identified and when hedges are executed, and small mismatches between the hedge maturity and the exact reporting date.
+</p>
+
+<div class="worked-example">
+  <h3>Worked example: UK tech company with US and European exposure</h3>
+
+  <p>
+    Consider a UK-based SaaS company with the following foreign currency monetary items on its balance sheet at the start of a quarter:
+  </p>
+
+  <ul>
+    <li>US dollar receivables: $800,000 (invoices to American clients)</li>
+    <li>Euro payables: -€300,000 (hosting and infrastructure costs billed by a German provider)</li>
+    <li>Opening rates: GBP/USD 1.2500, GBP/EUR 1.1500</li>
+  </ul>
+
+  <p>
+    At the opening rates, these balance sheet items are valued as follows:
+  </p>
+
+  <ul>
+    <li>USD receivables: $800,000 / 1.2500 = <strong>£640,000</strong></li>
+    <li>EUR payables: €300,000 / 1.1500 = <strong>£260,870</strong> (liability)</li>
+  </ul>
+
+  <p>
+    Now suppose at quarter-end the exchange rates have moved: GBP/USD has risen to 1.2800 (sterling strengthened against the dollar) and GBP/EUR has fallen to 1.1300 (sterling weakened against the euro).
+  </p>
+
+  <p><strong>Scenario A: No hedging in place</strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Opening value (£)</th>
+        <th>Closing value (£)</th>
+        <th>Unrealised FX P&L (£)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>USD receivables ($800k)</td>
+        <td>640,000</td>
+        <td>625,000</td>
+        <td>-15,000</td>
+      </tr>
+      <tr>
+        <td>EUR payables (€300k)</td>
+        <td>260,870</td>
+        <td>265,487</td>
+        <td>-4,617</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td></td>
+        <td></td>
+        <td><strong>-19,617</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Without hedging, the company reports an unrealised FX loss of £19,617 in its P&L for the quarter. The dollar receivables are now worth less in sterling (because the pound strengthened), and the euro payables cost more to settle (because the pound weakened against the euro). Neither movement reflects the company's operational performance.
+  </p>
+
+  <p><strong>Scenario B: Balance sheet hedges in place</strong></p>
+
+  <p>
+    At the start of the quarter, the company sells $800,000 forward at 1.2500 and buys €300,000 forward at 1.1500 (both maturing at quarter-end). At maturity, the forwards settle at the closing spot rates:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Unrealised FX P&L (£)</th>
+        <th>Forward hedge gain/loss (£)</th>
+        <th>Net P&L impact (£)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>USD receivables ($800k)</td>
+        <td>-15,000</td>
+        <td>+15,000</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>EUR payables (€300k)</td>
+        <td>-4,617</td>
+        <td>+4,617</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong>-19,617</strong></td>
+        <td><strong>+19,617</strong></td>
+        <td><strong>0</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    With hedging, the forward contracts generate gains that exactly offset the unrealised losses on the underlying balance sheet items. The net FX impact on the P&L is zero. The company's reported earnings reflect its actual operating performance, not currency movements.
+  </p>
+
+  <p>
+    In practice, the offset will not be perfectly zero — there will be small differences due to forward points, timing of when hedges are executed versus when rates are fixed for reporting, and intra-period movements in the underlying balances. But the objective is to reduce the net FX line from a material number (£19,617 in this example, which for a growing SaaS business could be the equivalent of several percentage points of operating margin) to an immaterial residual.
+  </p>
+</div>
+
+<h2>What are common balance sheet hedging pitfalls?</h2>
+
+<p>
+  Balance sheet hedging is conceptually simple — identify the exposure, hedge it, repeat — but in practice several pitfalls regularly catch businesses out:
+</p>
+
+<h3>1. Incomplete exposure identification</h3>
+
+<p>
+  The most common problem is not capturing all of the foreign currency monetary items on the balance sheet. Trade receivables and payables are usually well understood, but intercompany balances, accruals, deposits, and prepayments are frequently missed. If you only hedge your trade receivables but ignore an intercompany loan that is three times the size, the programme will appear ineffective and the net FX line will remain volatile. A thorough, documented process for identifying all foreign currency monetary items — reviewed and updated each period — is essential.
+</p>
+
+<h3>2. Timing mismatches</h3>
+
+<p>
+  If your forward contracts mature on a different date from your reporting period end, there will be a gap. Exchange rates can move between the two dates, creating a residual gain or loss that the hedge does not cover. Best practice is to match hedge maturities to your specific reporting dates. If your quarter ends on 31 March, your forwards should mature on 31 March (or the next business day), not on 28 March or 3 April.
+</p>
+
+<h3>3. Ignoring intercompany positions</h3>
+
+<p>
+  Intercompany loans and balances between group entities are remeasured under IAS 21 just like any other monetary item (unless they form part of the net investment in a foreign operation, which has specific treatment under IAS 21.32). Many businesses assume that because intercompany balances are "internal" they do not matter. They do. An unhedged intercompany loan of $5,000,000 will create far more P&L volatility than a $200,000 trade receivable. Intercompany balances should be included in the exposure identification process and hedged alongside trade items.
+</p>
+
+<h3>4. Over-reliance on natural hedging</h3>
+
+<p>
+  Natural hedging — relying on offsetting receivables and payables in the same currency to reduce net exposure — is a valid first step. But it needs to be verified, not assumed. If your USD receivables of $800,000 are due in 30 days and your USD payables of $600,000 are due in 90 days, the natural offset only exists on the balance sheet at a point in time. The receivables will be collected and the cash converted (or spent) long before the payables fall due. The timing mismatch means the natural offset may not persist, and you could be left with unhedged payables for two months.
+</p>
+
+<h3>5. Failing to adjust hedges intra-period</h3>
+
+<p>
+  Balance sheet exposures change throughout the period as new invoices are raised, old ones are collected, and intercompany balances move. If you set your hedges at the start of the quarter and do not adjust them, the hedge may be materially over- or under-covering the actual exposure by period end. The most effective programmes monitor exposures at least monthly (ideally weekly or in real time) and adjust hedges when the underlying position has moved significantly — for example, by more than 10-15% from the hedged amount.
+</p>
+
+<h3>6. Poor documentation and audit trail</h3>
+
+<p>
+  Even though balance sheet hedges do not require formal hedge accounting documentation under IFRS 9, your auditors will want to understand the programme. They will ask: What is the policy? How are exposures identified? Who authorises the hedges? How do you monitor effectiveness? If the answers are "we do it on a spreadsheet" and "the finance director handles it personally," you are likely to face audit queries and risk key-person dependency. A documented policy, clear process, and audit trail — ideally supported by a treasury management platform — makes the audit smoother and the programme more resilient.
+</p>
+
+<h3>7. Confusing balance sheet hedging with cashflow hedging</h3>
+
+<p>
+  These are different programmes with different objectives, different instruments, and different accounting treatments. Cashflow hedges protect future expected transactions and can qualify for hedge accounting under IFRS 9 (with gains and losses parked in other comprehensive income until the hedged transaction occurs). Balance sheet hedges protect existing monetary items and are typically marked to market through the P&L. Conflating the two — for example, by using a 12-month forward to "hedge" a receivable that will be collected in 30 days — creates confusion and may result in accounting mismatches.
+</p>
+
+<p>
+  A well-run balance sheet hedging programme is one of the most effective tools a finance team has for reducing reported earnings volatility. The exposures are known, the instruments are straightforward, and the process — once established — is highly repeatable. The challenge is not complexity but discipline: doing it consistently, capturing all the exposures, and monitoring the results so that the programme delivers what it promises.
+</p>
+
+</AcademyGuideLayout>

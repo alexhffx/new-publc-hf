@@ -1,0 +1,239 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  resourceName: string;
+  downloadUrl: string;
+  sourceTag: string;
+  qualifyingQuestion: {
+    label: string;
+    name: string;
+    options: string[];
+  };
+  hubspotPortalId?: string;
+  hubspotFormId?: string;
+}
+
+const {
+  title,
+  description,
+  resourceName,
+  downloadUrl,
+  sourceTag,
+  qualifyingQuestion,
+  hubspotPortalId = 'PLACEHOLDER_PORTAL_ID',
+  hubspotFormId = 'PLACEHOLDER_FORM_ID',
+} = Astro.props;
+
+const formId = `download-form-${sourceTag}`;
+const successId = `download-success-${sourceTag}`;
+---
+
+<div class="bg-brand-green-pale rounded-2xl p-8 md:p-10 border border-brand-green/10 max-w-2xl mx-auto">
+  <!-- Form -->
+  <div id={formId}>
+    <div class="flex items-start gap-4 mb-6">
+      <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center flex-shrink-0">
+        <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+        </svg>
+      </div>
+      <div>
+        <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-1">Free Download</p>
+        <h3 class="text-[1.25rem] font-bold text-text-heading leading-tight">{title}</h3>
+      </div>
+    </div>
+
+    <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">{description}</p>
+
+    <form
+      data-portal-id={hubspotPortalId}
+      data-form-id={hubspotFormId}
+      data-source-tag={sourceTag}
+      data-download-url={downloadUrl}
+      data-success-id={successId}
+      class="advisory-download-form space-y-4"
+    >
+      <div class="grid md:grid-cols-2 gap-4">
+        <input
+          type="text"
+          name="firstname"
+          placeholder="First name"
+          required
+          class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                 text-text-heading placeholder:text-text-muted/60 bg-white
+                 focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                 transition-colors"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Work email"
+          required
+          class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                 text-text-heading placeholder:text-text-muted/60 bg-white
+                 focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                 transition-colors"
+        />
+      </div>
+
+      <input
+        type="text"
+        name="company"
+        placeholder="Company name"
+        required
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+               text-text-heading placeholder:text-text-muted/60 bg-white
+               focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+               transition-colors"
+      />
+
+      <select
+        name={qualifyingQuestion.name}
+        required
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+               text-text-heading bg-white appearance-none
+               focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+               transition-colors"
+      >
+        <option value="" disabled selected>{qualifyingQuestion.label}</option>
+        {qualifyingQuestion.options.map((opt) => (
+          <option value={opt}>{opt}</option>
+        ))}
+      </select>
+
+      <input type="hidden" name="source_tag" value={sourceTag} />
+
+      <button
+        type="submit"
+        class="btn-primary w-full text-[1rem] px-6 py-3.5 justify-center"
+      >
+        <span class="btn-text">Download {resourceName}</span>
+        <span class="btn-loading hidden">
+          <svg class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </span>
+      </button>
+
+      <p class="text-[0.8125rem] text-text-muted text-center">
+        Sent to your inbox. No spam, no sales calls — just useful treasury resources.
+      </p>
+
+      <!-- Error message -->
+      <p class="form-error hidden text-[0.875rem] text-red-600 text-center"></p>
+    </form>
+  </div>
+
+  <!-- Success State -->
+  <div id={successId} class="hidden text-center py-4">
+    <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+      </svg>
+    </div>
+    <h3 class="text-[1.25rem] font-bold text-text-heading mb-2">Your download is ready</h3>
+    <p class="text-[0.9375rem] text-text-body mb-6">
+      Check your email — we've sent the {resourceName} to your inbox.
+    </p>
+    <a
+      href={downloadUrl}
+      download
+      class="btn-primary inline-flex items-center gap-2 text-[1rem] px-8 py-3.5"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+      Download now
+    </a>
+    <p class="text-[0.8125rem] text-text-muted mt-4">
+      Want help reviewing your draft?
+      <a href="/treasury-health-check" class="text-brand-green font-semibold hover:underline">Book a free review</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.advisory-download-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formEl = e.target as HTMLFormElement;
+      const portalId = formEl.dataset.portalId;
+      const formId = formEl.dataset.formId;
+      const sourceTag = formEl.dataset.sourceTag;
+      const downloadUrl = formEl.dataset.downloadUrl;
+      const successId = formEl.dataset.successId;
+
+      const btnText = formEl.querySelector('.btn-text') as HTMLElement;
+      const btnLoading = formEl.querySelector('.btn-loading') as HTMLElement;
+      const errorEl = formEl.querySelector('.form-error') as HTMLElement;
+      const submitBtn = formEl.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+      // Show loading
+      btnText.classList.add('hidden');
+      btnLoading.classList.remove('hidden');
+      submitBtn.disabled = true;
+      errorEl.classList.add('hidden');
+
+      const data = new FormData(formEl);
+
+      // Build HubSpot fields array
+      const fields = [];
+      for (const [name, value] of data.entries()) {
+        if (name !== 'source_tag') {
+          fields.push({ name, value: value.toString() });
+        }
+      }
+      // Add source tag as a field
+      fields.push({ name: 'lead_source_detail', value: sourceTag || '' });
+
+      const payload = {
+        fields,
+        context: {
+          pageUri: window.location.href,
+          pageName: document.title,
+        },
+      };
+
+      try {
+        const response = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        if (response.ok || portalId === 'PLACEHOLDER_PORTAL_ID') {
+          // Success — show success state
+          const formWrapper = formEl.closest('[id^="download-form-"]') as HTMLElement;
+          const successEl = document.getElementById(successId || '') as HTMLElement;
+          if (formWrapper) formWrapper.classList.add('hidden');
+          if (successEl) successEl.classList.remove('hidden');
+
+          // Also trigger direct download
+          if (downloadUrl) {
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = '';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        errorEl.textContent = 'Something went wrong. Please try again or email us at hello@hedgeflows.com.';
+        errorEl.classList.remove('hidden');
+      } finally {
+        btnText.classList.remove('hidden');
+        btnLoading.classList.add('hidden');
+        submitBtn.disabled = false;
+      }
+    });
+  });
+</script>

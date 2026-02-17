@@ -9,9 +9,26 @@ interface Props {
   ogImage?: string;
   publishedAt?: string;
   author?: string;
+  category?: string;
 }
 
-const { title, description, ogImage, publishedAt, author } = Astro.props;
+const { title, description, ogImage, publishedAt, author, category } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  'fx-risk-hedging': 'FX Risk & Hedging',
+  'treasury-cash': 'Treasury & Cash',
+  'payments-ops': 'Payments & Ops',
+  'markets': 'Market Commentary',
+  'news': 'Company News',
+};
+
+const categoryColors: Record<string, string> = {
+  'fx-risk-hedging': 'bg-emerald-50 text-emerald-700',
+  'treasury-cash': 'bg-sky-50 text-sky-700',
+  'payments-ops': 'bg-violet-50 text-violet-700',
+  'markets': 'bg-amber-50 text-amber-700',
+  'news': 'bg-rose-50 text-rose-700',
+};
 ---
 
 <BaseLayout
@@ -25,20 +42,26 @@ const { title, description, ogImage, publishedAt, author } = Astro.props;
     <article class="container-content section-padding">
       <header class="max-w-3xl mx-auto mb-12">
         <h1 class="text-h1 text-text-heading mb-4">{title}</h1>
-        {(publishedAt || author) && (
-          <div class="flex items-center gap-4 text-small text-text-muted">
-            {publishedAt && (
-              <time datetime={publishedAt}>
-                {new Date(publishedAt).toLocaleDateString('en-GB', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-            )}
-            {author && <span>by {author}</span>}
-          </div>
-        )}
+        <div class="flex flex-wrap items-center gap-3 text-small text-text-muted">
+          {publishedAt && (
+            <time datetime={publishedAt}>
+              {new Date(publishedAt).toLocaleDateString('en-GB', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+          )}
+          {author && <span>by {author}</span>}
+          {category && categoryLabels[category] && (
+            <span class:list={[
+              'text-[0.6875rem] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full',
+              categoryColors[category] || 'bg-gray-100 text-gray-600'
+            ]}>
+              {categoryLabels[category]}
+            </span>
+          )}
+        </div>
       </header>
       <div class="max-w-3xl mx-auto prose prose-lg">
         <slot />

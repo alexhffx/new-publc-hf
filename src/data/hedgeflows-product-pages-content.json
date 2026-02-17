@@ -1,0 +1,799 @@
+{
+  "extractedDate": "2026-02-17",
+  "pages": {
+    "connected-business-account": {
+      "url": "https://www.hedgeflows.com/connected-business-account",
+      "pageTitle": "Connected business account for foreign trade from HedgeFlows",
+      "hero": {
+        "headline": "Connected global account to do business with the world",
+        "subtitle": "Pay and get paid, at scale in any currency. With FX costs that are hard-to-beat and pre-bookable exchange rates to secure guaranteed rates in advance.",
+        "ctas": [
+          { "text": "Free trial", "url": "https://app.hedgeflows.com/sign-up" },
+          { "text": "Book a demo", "url": "https://www.hedgeflows.com/book-a-demo" }
+        ],
+        "heroImage": "https://www.hedgeflows.com/hs-fs/hubfs/Dashboard.png"
+      },
+      "featureCards": [
+        {
+          "title": "Pay & get paid like a local",
+          "description": "One account for your bank payments in 35 currencies to and from 185 countries.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/map.png"
+        },
+        {
+          "title": "Effortlessly move currencies",
+          "description": "Prebook exchange rates when they are good. Schedule payments and automate payouts with certainty about your FX costs.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/cycle.png"
+        },
+        {
+          "title": "Automate bookkeeping",
+          "description": "No more bank feeds and less bookkeeping. Relax as HedgeFlows auto-reconciles your paid bills and invoices in any currency.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/piechart.png"
+        }
+      ],
+      "valueProposition": {
+        "heading": "Finally. A global payments account that makes accounting easy.",
+        "body": "Running a business shouldn't mean wasting hours on cross-border payments or managing currency surprises. No more unexpected FX costs, manual bookkeeping errors, and poorly integrated systems slow you down and hurt your bottom line.",
+        "cta": { "text": "Let's Do This", "url": "#" },
+        "bulletPoints": [
+          "Pay or get paid in 35 currencies",
+          "Prebook guaranteed FX rates in advance",
+          "Import invoices from Xero, Quickbooks, etc.",
+          "Schedule payment runs with or without FX",
+          "Auto-reconcile as soon as payments are made"
+        ]
+      },
+      "competitivePositioning": {
+        "heading": "Cheaper than banks, smarter than Wise",
+        "subheading": "Go further than with any other bank or platform and save more time and money with our prebookable FX rates, auto-reconciliations, and smart currency management.",
+        "qAndA": [
+          {
+            "question": "How to save money on FX with HedgeFlows?",
+            "answer": "HedgeFlows offers better exchange rates than most banks, but we don't stop there. We have also made it easy to prebook exchange rates when they are great for your business."
+          },
+          {
+            "question": "Why prebook FX rates?",
+            "answer": "You avoid overpaying for hotel rooms and flights by booking them in advance. We make it easy to do the same for your invoices when you trade internationally. Book guaranteed exchange rates for your orders and invoices when you get them or when they work best for your business."
+          },
+          {
+            "question": "What is different about your integrations?",
+            "answer": "Payment files and bank feeds are so last decade - slow and clunky. Connect you cloud-based ERP or accounting system to HedgeFlows and manage you payables and receivables in one seamless process in real-time."
+          }
+        ]
+      },
+      "testimonials": [
+        {
+          "quote": "HF provides a great solution to FX payments around the world and creates time and cost efficiencies throughout the end-to-end payment and reconciliation process.",
+          "name": "Jason Burt",
+          "title": "Head of Finance"
+        },
+        {
+          "quote": "Brilliant service! Prebooking FX rates has protected us from currency swings, and the intuitive platform ensures our bookkeeping is a breeze.",
+          "name": "Alice Hobson",
+          "title": "Business Owner"
+        },
+        {
+          "quote": "We've switched to HedgeFlows from Wise, and we haven't looked back. The integration with Xero works 99% flawlessly, and their team provides excellent support to resolve issues quickly.",
+          "name": "Michal Jahns",
+          "title": "Business Owner"
+        }
+      ],
+      "testimonialsLink": {
+        "text": "Recent reviews",
+        "url": "https://apps.xero.com/uk/app/hedgeflows/reviews"
+      },
+      "resourceGuide": {
+        "heading": "Managing currencies : Guide for SMEs",
+        "description": "Delve into various methods of managing foreign currencies, empowering you to make informed decisions and save valuable resources. Whether you're buying or selling goods internationally, equip yourself with the knowledge to optimise your financial outcomes.",
+        "cta": "Download Guide",
+        "image": "https://www.hedgeflows.com/hs-fs/hubfs/Untitled%20(480%20%C3%97%20297mm)%20(297%20%C3%97%20450mm).png"
+      },
+      "stats": {
+        "currencies": 35,
+        "countries": 185
+      },
+      "clientLogos": [
+        "https://www.hedgeflows.com/hs-fs/hubfs/FS%20Mackenzie%20International%20Group%20(2).png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/7f4ae03f6e7fc2dcfc3a2d562f9c9769.w1200.h628.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/2-Jun-29-2024-04-47-47-6720-AM.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/6-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/Logo-Black-Transparent-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/the-accounts-department-logo.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/moteefe-logo-vector.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/fb40a9fdf490560a02aa4896633b932a.jpeg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/VogaCloset-Logo.jpg"
+      ],
+      "allImages": [
+        "https://www.hedgeflows.com/hs-fs/hubfs/HF%20Logo%20green.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Dashboard.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/map.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/cycle.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/piechart.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/Logo-Black-Transparent-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/the-accounts-department-logo.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/moteefe-logo-vector.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/fb40a9fdf490560a02aa4896633b932a.jpeg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/VogaCloset-Logo.jpg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/FS%20Mackenzie%20International%20Group%20(2).png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/7f4ae03f6e7fc2dcfc3a2d562f9c9769.w1200.h628.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/2-Jun-29-2024-04-47-47-6720-AM.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/6-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Untitled%20(480%20%C3%97%20297mm)%20(297%20%C3%97%20450mm).png",
+        "https://www.hedgeflows.com/hubfs/HedgeFlows_Logo_white-2.svg",
+        "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/1734348371362.jpg",
+        "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/1744026638832.jpg",
+        "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/1734018983427.jpg"
+      ]
+    },
+
+    "global-bulk-payments": {
+      "url": "https://www.hedgeflows.com/global-bulk-payments",
+      "pageTitle": "Global bulk payments for Xero, Quickbooks, Business Central, Netsuite",
+      "hero": {
+        "headline": "GLOBAL PAYMENT AUTOMATION",
+        "subtitle": "Save time on multi-currency payments & reconciliations",
+        "description": "Remove routine tasks and easily automate payments and reconciliations across multiple currencies. Many payment providers can do domestic payment automation - HedgeFlows delivers the same ease in 35 currencies.",
+        "ctas": [
+          { "text": "Free trial", "url": "https://app.hedgeflows.com/sign-up" },
+          { "text": "Watch The Video", "url": "#demo-payment-run" }
+        ],
+        "heroImage": "https://www.hedgeflows.com/hs-fs/hubfs/screen2.png"
+      },
+      "featureCards": [
+        {
+          "title": "Real-time workflows",
+          "description": "Connect your ERP and easily select bills and payroll to approve, schedule and pay with flexible processes and an audit trail.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/Untitled%20design%20(30).png"
+        },
+        {
+          "title": "Domestic & cross-border",
+          "description": "Robust workflows for domestic and foreign payments, with flexibility to embed FX or fund with currency balances you hold.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/crossborder.png"
+        },
+        {
+          "title": "Automated bookkeeping",
+          "description": "Relax as we apply payments to processed invoices, calculate FX gains & losses, and post to your ledgers in real-time.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/gear.png"
+        }
+      ],
+      "integrationLogos": {
+        "sectionHeading": "Streamline your payments today with:",
+        "logos": [
+          { "name": "Xero", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/xero_Logo_-_White-1-1.png" },
+          { "name": "Business Central", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/bc-logo-copy-1.png" },
+          { "name": "NetSuite", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/netsuite-logo-white-01.png" },
+          { "name": "QuickBooks", "url": "https://www.hedgeflows.com/hubfs/qb-logo-horizontal-reversed.svg" }
+        ]
+      },
+      "videoSection": {
+        "heading": "EXPERIENCE OUR TIME-SAVING PAYMENT RUNS IN 90 SECONDS",
+        "anchorId": "demo-payment-run"
+      },
+      "stats": [
+        { "value": "81%", "label": "Time saved", "context": "Moteefe case study" },
+        { "value": "62%", "label": "Cost reduction", "context": "Moteefe case study" },
+        { "value": "0.25%", "label": "Exchange Rate markup above interbank" },
+        { "value": "80%", "label": "Time savings on payment runs" },
+        { "value": "35", "label": "Currencies supported" },
+        { "value": "100", "label": "Free local payments in GBP, USD and EUR" }
+      ],
+      "testimonials": [
+        {
+          "quote": "HedgeFlows is a real game changer for us. It's saved us loads of TIME and EFFORT, completely revolutionizing how we handle payments. Its user-friendly interface is loaded with features, making it easy to navigate and highly flexible.",
+          "name": "Mohammad",
+          "title": "Head of Finance, Vogacloset"
+        },
+        {
+          "quote": "After starting to use Hedgeflows recently, we have not only saved a huge amount TIME and EFFORT but also created a super slick process that has literally changed the way we do international payment runs forever!",
+          "name": "Chris",
+          "title": "MD, FirstPoint Logistics"
+        },
+        {
+          "quote": "HedgeFlows has made our weekly payment runs far QUICKER and EASIER, and is a great workaround to Xero's restrictions on only creating payment runs for GBP.",
+          "name": "Chris",
+          "title": "Accountant, Signify Technologies"
+        },
+        {
+          "quote": "It has made making non-GBP payments simpler and cheaper to do! It also helps recognise where we are exposed as a business to FX rates.",
+          "name": "Ben",
+          "title": "Finance Director, Champo"
+        },
+        {
+          "quote": "Managing FX and payments is ALWAYS tricky, but HedgeFlows really helps. Clearly putting the customer at the centre of the app - definitely a key part of the Xero tech stack",
+          "name": "Geoff",
+          "title": "Finance Director, Moteefe"
+        },
+        {
+          "quote": "We have been using Hedgeflows for almost 10 months now. Brilliant FX service with the sync with XERO works very well.",
+          "name": "Sean",
+          "title": "Accounts Team, TransferRoom"
+        }
+      ],
+      "caseStudies": [
+        {
+          "heading": "CASE STUDY - SUPPORTING FAST GROWTH WITH SUPPLIERS & STAFF WORLDWIDE",
+          "company": "Moteefe",
+          "stats": { "timeSaved": "81%", "costReduction": "62%" },
+          "logo": "https://www.hedgeflows.com/hubfs/moteefe-logo-vector.png"
+        },
+        {
+          "heading": "CASE STUDY - HOW ALICE SAVES HOURS EACH WEEK AS HER BUSINESS GROWS",
+          "company": "JBM Logistics",
+          "quote": "Being able to pull the invoices and pay them directly with HedgeFlows is great. It's not a challenge anymore. Feeding invoices back - I didn't know that was even a challenge, and now you guys do it for me!"
+        }
+      ],
+      "bankAccountValidation": {
+        "heading": "BANK ACCOUNT VALIDATION - Prevent fraud and errors",
+        "features": [
+          "Authorized Push Payment (APP) Fraud prevention",
+          "Confirmation of Payee",
+          "Bank Account Validation",
+          "Fraud Monitoring & Alerts"
+        ],
+        "image": "https://www.hedgeflows.com/hubfs/Validation.png",
+        "cta": { "text": "Find out more", "url": "https://www.hedgeflows.com/international-bank-account-verification" }
+      },
+      "cheatsheet": {
+        "heading": "FREE CHEATSHEET - How to choose the right automation software?",
+        "topics": [
+          "What to consider when choosing your automation provider",
+          "Technologies to get familiar and their benefits",
+          "List of leading providers of AP automation"
+        ],
+        "image": "https://www.hedgeflows.com/hs-fs/hubfs/Neutral%20and%20Pastel%20Modern%20Professional%20Cleaning%20Checklist.jpg"
+      },
+      "gettingStarted": {
+        "heading": "GETTING STARTED - Transform how you manage vendor payments today:",
+        "steps": [
+          {
+            "step": 1,
+            "title": "SIGN UP TO HEDGEFLOWS",
+            "description": "Sign up for free using your email address at app.hedgeflows.com/sign-up."
+          },
+          {
+            "step": 2,
+            "title": "CONNECT YOUR SYSTEMS",
+            "description": "Sync HedgeFlows with your ERP or accounting systems in a few easy clicks."
+          },
+          {
+            "step": 3,
+            "title": "REGISTER YOUR BUSINESS",
+            "description": "Register your business to start saving time and managing finances with HedgeFlows."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "question": "What invoices can I pay via Hedgeflows?",
+          "answer": "HedgeFlows makes paying domestic or international invoices from systems such as Xero, NetSuite or Microsoft Dynamics Business Central easy and faultless. Once vendor invoices are authorised in your system, they appear in HedgeFlows, and you can simply choose the list of invoices you wish to pay. You can fund your payment run from your trusted bank account, and we automatically process any optional currency conversions, make correct transfers, send remittance emails and reconcile back to General Ledger for you!"
+        },
+        {
+          "question": "Do you have an approval process for payments?",
+          "answer": "Yes, HedgeFlows offers a customisable approval process with individual roles and limits to support your payment run needs."
+        },
+        {
+          "question": "How safe are payments and funds handled by HedgeFlows?",
+          "answer": "FCA regulated, named accounts, safeguarded funds, automated sweeps to bank."
+        },
+        {
+          "question": "Why is it safe to connect my ERP/account to HedgeFlows?",
+          "answer": "FCA regulated, Strong Customer Authentication, role-based access controls."
+        },
+        {
+          "question": "I have an external accountant, can they use HedgeFlows?",
+          "answer": "Of course, we are working with the leading accountancy practices in the UK already and are helping make foreign currencies simpler for thousands of small businesses in the country. You keep control of the validation of foreign payments, while your accountant takes care of processing the invoices, cash management, and accounting tasks."
+        },
+        {
+          "question": "Are payment runs made straight from my bank account?",
+          "answer": "HedgeFlows offers a range of solutions to process your payments. If your bank supports Open Banking services, you can rely on our robust payment initiation technology to make vendor payments straight from your bank by preparing your payment runs in HedgeFlows and securely authorising via Open Banking. Otherwise, you can also rely on our industry-leading payment infrastructure to process payments via your multi-currency payment accounts with HedgeFlows and simply fund them with a single transfer from your bank."
+        }
+      ],
+      "pricing": {
+        "freePayments": "100 free local payments in GBP, USD and EUR",
+        "subscription": "From 0 per month",
+        "fxMarkup": "0.25% markup above the interbank exchange rate"
+      },
+      "links": {
+        "calculateSavings": "https://www.hedgeflows.com/automated-ap-savings",
+        "moreCaseStudies": "https://www.hedgeflows.com/case-studies",
+        "bankValidation": "https://www.hedgeflows.com/international-bank-account-verification",
+        "xeroReviews": "https://apps.xero.com/uk/app/hedgeflows/reviews",
+        "capterraReviews": "https://www.capterra.co.uk/software/1038660/hedgeflows"
+      },
+      "ratings": {
+        "heading": "Top-rated payment automation",
+        "xeroAppBadge": "https://www.hedgeflows.com/hs-fs/hubfs/Top%20Rates%20Xero%20app-1.png"
+      },
+      "allImages": [
+        "https://www.hedgeflows.com/hs-fs/hubfs/HF%20Logo%20green.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/screen2.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Untitled%20design%20(30).png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/crossborder.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/gear.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/xero_Logo_-_White-1-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/bc-logo-copy-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/netsuite-logo-white-01.png",
+        "https://www.hedgeflows.com/hubfs/qb-logo-horizontal-reversed.svg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Top%20Rates%20Xero%20app-1.png",
+        "https://www.hedgeflows.com/hubfs/moteefe-logo-vector.png",
+        "https://www.hedgeflows.com/hubfs/Validation.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Neutral%20and%20Pastel%20Modern%20Professional%20Cleaning%20Checklist.jpg",
+        "https://www.hedgeflows.com/hubfs/HedgeFlows_Logo_white-2.svg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Payments-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Risk%20Management-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Barclays.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Santander.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Revolut.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Wise.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/NatWest.png"
+      ]
+    },
+
+    "cash-management": {
+      "url": "https://www.hedgeflows.com/cash-management",
+      "pageTitle": "Cash and currency visibility",
+      "hero": {
+        "headline": "Manage Your Cash Flow, Effortlessly",
+        "subtitle": "Say goodbye to manual cash flow tracking and guesswork. Streamline cash management with real-time insights across multiple currencies and entities.",
+        "ctas": [
+          { "text": "Book a demo", "url": "/book-a-demo" },
+          { "text": "Schedule a demo", "url": "/book-a-demo" }
+        ],
+        "heroImage": "https://www.hedgeflows.com/hs-fs/hubfs/screen3.png"
+      },
+      "featureCards": [
+        {
+          "title": "Single gateway",
+          "description": "All your entities and bank accounts in one place, consolidated across currencies in real-time.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/gateway.png"
+        },
+        {
+          "title": "Cashflow planning",
+          "description": "Get started on website and landing pages right away with little to no learning curve.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/Risk%20Management-1.png"
+        },
+        {
+          "title": "Cash management",
+          "description": "Manage your spare working capital or access funding from our partners with a click of a button.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/cycle.png"
+        }
+      ],
+      "sections": [
+        {
+          "sectionLabel": "MULTI-CURRENCY CASH MANAGEMENT",
+          "heading": "Integrated Cash Management for CFO and Finance Teams"
+        },
+        {
+          "heading": "Real-Time Visibility Across Entities, Accounts & Currencies",
+          "sectionLabel": "MULTI-CURRENCY & MULTI-ENTITY",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/Balances-1.jpg"
+        },
+        {
+          "heading": "Streamlined Multi-Currency Forecasting",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/cashflowPlan.png"
+        },
+        {
+          "heading": "Enhance Cash Returns With Better Choice",
+          "description": "Diversify your deposits across 30 bank accounts with one hub account and get a better yield with less banking risk.",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/BankBalances.jpg"
+        },
+        {
+          "heading": "Find The Right Funding For Your Growth",
+          "description": "Instantly access working capital solutions from our partners.",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/FundingInvoices.png"
+        }
+      ],
+      "gettingStarted": {
+        "heading": "Getting started - Simplify Cash Management with three easy steps",
+        "steps": [
+          {
+            "step": 1,
+            "title": "SIGN UP TO HEDGEFLOWS",
+            "description": "Create an account for free using your email address."
+          },
+          {
+            "step": 2,
+            "title": "CONNECT YOUR SYSTEMS & BANKS",
+            "description": "Sync your software and bank accounts to start using data."
+          },
+          {
+            "step": 3,
+            "title": "MANAGE YOUR FINANCES",
+            "description": "Gain full control over cash flow & currency data instantly."
+          }
+        ]
+      },
+      "integrationLogos": [
+        { "name": "Microsoft Business Central", "url": "https://www.hedgeflows.com/hubfs/MS%20BC%20Logo.svg" },
+        { "name": "NetSuite", "url": "https://www.hedgeflows.com/hubfs/Netsuite%20Logo.svg" },
+        { "name": "Xero", "url": "https://www.hedgeflows.com/hubfs/Xero%20App%20Logo.svg" },
+        { "name": "Sage", "url": "https://www.hedgeflows.com/hubfs/Sage%20Logo.svg" },
+        { "name": "QuickBooks", "url": "https://www.hedgeflows.com/hubfs/Quickbooks%20Logo.svg" }
+      ],
+      "stats": {
+        "bankAccounts": "30 bank accounts consolidation"
+      },
+      "ctas": [
+        { "text": "Book a demo", "url": "/book-a-demo" },
+        { "text": "Schedule a demo", "url": "/book-a-demo" },
+        { "text": "Get Started", "url": "/book-a-demo" },
+        { "text": "Schedule a call", "url": "/book-a-demo" },
+        { "text": "Our pricing", "url": "/pricing-plans" }
+      ],
+      "allImages": [
+        "https://www.hedgeflows.com/hs-fs/hubfs/HF%20Logo%20green.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/screen3.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/gateway.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Risk%20Management-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/cycle.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Balances-1.jpg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/cashflowPlan.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/BankBalances.jpg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/FundingInvoices.png",
+        "https://www.hedgeflows.com/hubfs/MS%20BC%20Logo.svg",
+        "https://www.hedgeflows.com/hubfs/Netsuite%20Logo.svg",
+        "https://www.hedgeflows.com/hubfs/Xero%20App%20Logo.svg",
+        "https://www.hedgeflows.com/hubfs/Sage%20Logo.svg",
+        "https://www.hedgeflows.com/hubfs/Quickbooks%20Logo.svg",
+        "https://www.hedgeflows.com/hubfs/HedgeFlows_Logo_white-2.svg"
+      ]
+    },
+
+    "fx-risk-management": {
+      "url": "https://www.hedgeflows.com/fx-risk-management",
+      "pageTitle": "FX Risk Management Platform",
+      "hero": {
+        "headline": "Expert FX risk management for CFOs who want clarity, not complexity",
+        "subtitle": "Most finance teams manage currency risk like driving in fog - they know something's out there, but can't see how big or how close. Let your facts, not market moves and emotions, drive your financial decisions.",
+        "ctas": [
+          { "text": "See Your FX Risk Right Now", "url": "https://www.hedgeflows.com/book-a-demo" },
+          { "text": "Interactive Demo", "url": "#risk-mgmt-demo" }
+        ],
+        "heroImage": "https://www.hedgeflows.com/hubfs/hedgedRate.png"
+      },
+      "featureCards": [
+        {
+          "title": "Connect your data",
+          "description": "Connect your ERP, forecasting tools, or CRM in minutes to get real-time visibility into your actual currency exposures. No more guessing what your risk looks like - see it as it happens.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/See%20risks.png"
+        },
+        {
+          "title": "See your FX risks",
+          "description": "Transform your raw data into clear risk insights. See exactly how much FX exposure you're carrying, what it means for your business, and when you should be concerned.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/Expert.png"
+        },
+        {
+          "title": "Execute with confidence",
+          "description": "Implement hedging policy, get expert recommendations, then execute them easily. Embed them in your workflows and systems to manage treasury in 35 currencies.",
+          "icon": "https://www.hedgeflows.com/hs-fs/hubfs/Transparent.png"
+        }
+      ],
+      "awards": {
+        "heading": "Award-winning Risk Management Solution",
+        "items": [
+          "Highly commended for Innovation (2023)",
+          "Best Risk Management Solution (2025)"
+        ],
+        "image": "https://www.hedgeflows.com/hs-fs/hubfs/TMIAWARDS%20LOGO25%20REV.png"
+      },
+      "sections": [
+        {
+          "sectionLabel": "AUTOMATED RISK MANAGEMENT",
+          "heading": "Monitor FX risk without constant manual oversight",
+          "body": "No more nasty surprises. Connect your data, let us know your risk tolerance, and HedgeFlows will automatically monitor and alert you before it's too late to act.",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/screen1.png",
+          "cta": { "text": "Book a consultation", "url": "https://www.hedgeflows.com/book-a-demo" }
+        },
+        {
+          "sectionLabel": "CONNECTED CURRENCY DATA",
+          "heading": "Get the visibility to beat volatility",
+          "body": "Go beyond the FX 'budget buffer' on projects. Gain critical early visibility of your entire pipeline and currency needs, including projected cash flows through integrations with software like NetSuite & HubSpot, and stay one step ahead.",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/cashflowPlan.png",
+          "cta": { "text": "Book a consultation", "url": "https://www.hedgeflows.com/book-a-demo" }
+        },
+        {
+          "heading": "Add integrations for the full FX picture",
+          "body": "Connect your accounting, ERP, FP&A and other tools and see and quantify your risks as soon as they arise.",
+          "animatedImage": "https://www.hedgeflows.com/hs-fs/hubfs/Cashflows-graph.gif"
+        },
+        {
+          "sectionLabel": "FX HEDGING WORKFLOWS",
+          "heading": "Manage currencies, don't gamble on them",
+          "body": "Easily execute risk management best practices with help from our experts and guidance from our especially-trained AI - Currency Co-pilot.",
+          "subheading": "Discover effortless FX hedging",
+          "note": "View some of the Hedging workflows from our award-winning FX management platform:"
+        },
+        {
+          "sectionLabel": "EXPERT IN-PERSON GUIDANCE",
+          "heading": "Build a hedging strategy to suit your business",
+          "body": "Get a free upfront consultation with our experts to discuss risk and plan an FX risk management process that's right for the industry, size and specific needs of your business. Then use our intuitive tools and workflows to implement it.",
+          "ctas": [
+            { "text": "Book a consultation", "url": "https://www.hedgeflows.com/book-a-demo" },
+            { "text": "Free Online Academy", "url": "https://www.hedgeflows.com/fx-and-treasury-academy" }
+          ]
+        }
+      ],
+      "academyCards": [
+        {
+          "title": "Balance sheet hedging",
+          "description": "Learn how to avoid FX Gains & losses on your financial statements.",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/3-Mar-19-2024-09-37-01-9463-PM.png",
+          "link": "/fx-and-treasury-academy/balance-sheet-hedging-training"
+        },
+        {
+          "title": "Cashflow hedging",
+          "description": "Protect your future cashflows and margins from currency swings.",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/2-4-1.png",
+          "link": "/fx-and-treasury-academy/fx-cashflow-hedging-training"
+        },
+        {
+          "title": "Build a hedging program",
+          "description": "10 Steps to implementing a comprehensive hedging program.",
+          "image": "https://www.hedgeflows.com/hs-fs/hubfs/1-Mar-19-2024-09-38-26-0428-PM.png",
+          "link": "/fx-and-treasury-academy/how-to-construct-a-hedging-programme"
+        }
+      ],
+      "testimonials": [
+        {
+          "quote": "Super access to treasury for smaller companies. Better exchange rates than our bank, excellent client-focused service, and plenty of data to make better currency decisions. The perfect option for a smaller business.",
+          "name": "Stephanie Mills",
+          "title": "FD, BeloFX",
+          "logo": "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/belo_logo_yellow.png"
+        },
+        {
+          "quote": "Managing FX and payments is always tricky but Hedgeflows really helps. The hedgeflows team v happy to put the customer at the centre of the app - definitely a key part of the xero tech stack",
+          "name": "Geoff Deane",
+          "title": "Moteefe",
+          "logo": "https://www.hedgeflows.com/hubfs/moteefe-logo-1.png"
+        },
+        {
+          "quote": "The Hedgeflows team have been instrumental in helping us to develop our FX strategy and guiding us through its implementation. We really appreciated that they did not try to 'sell' us their platform or services over other providers, but instead helped us find the best solution for our bespoke needs.",
+          "name": "Harry Young",
+          "title": "Journey",
+          "logo": "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/journeydotworld_logo.jpg"
+        }
+      ],
+      "freeTemplate": {
+        "heading": "FREE TEMPLATE",
+        "subheading": "FX Hedging Policy Template",
+        "body": "Download a complimentary and customizable FX hedging policy template designed for Finance and Treasury teams. This document encompasses objectives, FX products, strategies, controls, monitoring, and more. Easily tailor it to meet your unique needs, or contact our team for more assistance.",
+        "image": "https://www.hedgeflows.com/hs-fs/hubfs/Hedging%20policy%20download.jpg"
+      },
+      "gettingStarted": {
+        "heading": "A NEW HEDGING PROCESS IN THREE EASY STEPS:",
+        "steps": [
+          {
+            "step": 1,
+            "title": "SET GOALS",
+            "description": "Book a free consultation with our experts to discuss your FX risks and help you formulate clear objectives."
+          },
+          {
+            "step": 2,
+            "title": "CONNECT DATA",
+            "description": "Connect your accounting or ERP system in MINUTES for real-time visibility and alerts."
+          },
+          {
+            "step": 3,
+            "title": "IMPLEMENT & MONITOR",
+            "description": "Our intuitive guides and support from experts help you configure hedging strategies, alerts and reports."
+          }
+        ],
+        "ctas": [
+          { "text": "Free consultation", "url": "https://www.hedgeflows.com/book-a-demo" },
+          { "text": "Online Tutorial", "url": "https://www.hedgeflows.com/fx-and-treasury-academy/how-to-construct-a-hedging-programme" }
+        ]
+      },
+      "security": {
+        "heading": "Bank-grade security",
+        "subheading": "Connect securely to your banks and ERP systems",
+        "body": "HedgeFlows is an FCA-regulated institution that processes millions in currency payments and transactions every day. We treat your data with the utmost care and protect it from cyber threats and unauthorised access with role-based access controls and multi-factor authentication."
+      },
+      "integrationLogos": [
+        { "name": "NetSuite", "url": "https://www.hedgeflows.com/hs-fs/hubfs/NetSuite.png" },
+        { "name": "Business Central", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Business%20Central.png" },
+        { "name": "Xero", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Xero.png" },
+        { "name": "QuickBooks", "url": "https://www.hedgeflows.com/hs-fs/hubfs/QBO.png" },
+        { "name": "Dynamics", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Dynamics.png" },
+        { "name": "HubSpot", "url": "https://www.hedgeflows.com/hs-fs/hubfs/HubSpot-1.png" },
+        { "name": "Zapier", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Zappier.png" },
+        { "name": "Shopify", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Shopify.png" },
+        { "name": "Excel", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Excel.png" }
+      ],
+      "partners": {
+        "heading": "OUR PARTNERS:",
+        "logos": [
+          { "name": "TMI Awards", "url": "https://www.hedgeflows.com/hs-fs/hubfs/TMIAWARDS%20LOGO25.png" },
+          { "name": "Grow London Global", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/647b1f1d381b769798acf8c3_glg-1-1.png" },
+          { "name": "Oxford Foundry", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Oxford%20Foundry%20logo-1-1.png" },
+          { "name": "Partner", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/images.png" },
+          { "name": "Barclays Rise Academy", "url": "https://www.hedgeflows.com/hs-fs/hubfs/RGA%20Primary%20Badge_Black%20Text-2-1-1-1.png" },
+          { "name": "Money 2020", "url": "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/logo_money2020.png" }
+        ]
+      },
+      "allImages": [
+        "https://www.hedgeflows.com/hs-fs/hubfs/HF%20Logo%20green.png",
+        "https://www.hedgeflows.com/hubfs/hedgedRate.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/See%20risks.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Expert.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Transparent.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/TMIAWARDS%20LOGO25%20REV.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/screen1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/cashflowPlan.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/QBO.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Dynamics.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/HubSpot-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Zappier.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Shopify.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Excel.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/NetSuite.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Business%20Central.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Xero.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Cashflows-graph.gif",
+        "https://www.hedgeflows.com/hs-fs/hubfs/3-Mar-19-2024-09-37-01-9463-PM.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/2-4-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/1-Mar-19-2024-09-38-26-0428-PM.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Hedging%20policy%20download.jpg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/HedgeFlows%20workshop.jpg",
+        "https://www.hedgeflows.com/hs-fs/hubfs/TMIAWARDS%20LOGO25.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/647b1f1d381b769798acf8c3_glg-1-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Oxford%20Foundry%20logo-1-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/images.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/RGA%20Primary%20Badge_Black%20Text-2-1-1-1.png",
+        "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/logo_money2020.png",
+        "https://www.hedgeflows.com/hubfs/HedgeFlows_Logo_white-2.svg",
+        "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/belo_logo_yellow.png",
+        "https://www.hedgeflows.com/hubfs/moteefe-logo-1.png",
+        "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/journeydotworld_logo.jpg"
+      ]
+    }
+  },
+
+  "sharedElements": {
+    "navigation": {
+      "products": [
+        { "name": "Connected Global Account", "url": "/connected-business-account" },
+        { "name": "Payment Automation", "url": "/global-bulk-payments" },
+        { "name": "Cash & Bank Management", "url": "/cash-management" },
+        { "name": "FX Risk Management", "url": "/fx-risk-management" }
+      ],
+      "solutions": [
+        "Start-ups & Scale-ups",
+        "e-Commerce, Fashion & Beauty",
+        "Travel",
+        "Logistics & Wholesale",
+        "Staffing & Recruiting",
+        "Accountants",
+        "Partnerships"
+      ],
+      "integrations": ["Xero", "QuickBooks", "NetSuite", "Business Central"],
+      "comparisons": [
+        "HedgeFlows vs Wise",
+        "HedgeFlows vs Tipalti",
+        "HedgeFlows vs Telleroo",
+        "HedgeFlows vs XE.com"
+      ],
+      "resources": [
+        "FX Academy",
+        "Case Studies",
+        "Webinars",
+        "Help Centre",
+        "Glossary",
+        "Our Blog"
+      ]
+    },
+    "logos": {
+      "headerLogo": "https://www.hedgeflows.com/hs-fs/hubfs/HF%20Logo%20green.png",
+      "footerLogo": "https://www.hedgeflows.com/hubfs/HedgeFlows_Logo_white-2.svg"
+    },
+    "footer": {
+      "companyInfo": "HedgeFlows Ltd, a company registered in England with company number 12689184, is authorised and regulated by the Financial Conduct Authority as an Authorised Payment Institution (Firm Reference Number: 1008699) for the provision of payment services under the Payment Service Regulations 2017.",
+      "copyright": "2026 HedgeFlows Ltd. All rights reserved.",
+      "links": [
+        { "text": "Payments Automation", "url": "https://www.hedgeflows.com/global-bulk-payments" },
+        { "text": "Cash Management", "url": "https://www.hedgeflows.com/cash-management" },
+        { "text": "Risk Management", "url": "https://www.hedgeflows.com/fx-risk-management" },
+        { "text": "About us", "url": "https://www.hedgeflows.com/about-us" },
+        { "text": "Contact us", "url": "https://www.hedgeflows.com/contact-us" }
+      ],
+      "legal": [
+        { "text": "Terms & Conditions", "url": "https://hedgeflows.com/terms-and-conditions" },
+        { "text": "Terms of Use", "url": "https://hedgeflows.com/terms-of-use" },
+        { "text": "Complaints Policy", "url": "https://hedgeflows.com/complaints-policy" },
+        { "text": "Cookie Policy", "url": "https://hedgeflows.com/cookie-policy" },
+        { "text": "Privacy Policy", "url": "/privacy-policy" }
+      ],
+      "social": ["LinkedIn", "YouTube"]
+    },
+    "authLinks": {
+      "signUp": "https://app.hedgeflows.com/sign-up",
+      "login": "https://app.hedgeflows.com/login"
+    }
+  },
+
+  "allUniqueImages": [
+    "https://www.hedgeflows.com/hs-fs/hubfs/HF%20Logo%20green.png",
+    "https://www.hedgeflows.com/hubfs/HedgeFlows_Logo_white-2.svg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Dashboard.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/screen2.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/screen3.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/screen1.png",
+    "https://www.hedgeflows.com/hubfs/hedgedRate.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/map.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/cycle.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/piechart.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/gateway.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/crossborder.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/gear.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Untitled%20design%20(30).png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/See%20risks.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Expert.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Transparent.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Risk%20Management-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Payments-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Balances-1.jpg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/cashflowPlan.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/BankBalances.jpg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/FundingInvoices.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Cashflows-graph.gif",
+    "https://www.hedgeflows.com/hubfs/Validation.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/TMIAWARDS%20LOGO25%20REV.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/TMIAWARDS%20LOGO25.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Top%20Rates%20Xero%20app-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Hedging%20policy%20download.jpg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/HedgeFlows%20workshop.jpg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Untitled%20(480%20%C3%97%20297mm)%20(297%20%C3%97%20450mm).png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Neutral%20and%20Pastel%20Modern%20Professional%20Cleaning%20Checklist.jpg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/3-Mar-19-2024-09-37-01-9463-PM.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/2-4-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/1-Mar-19-2024-09-38-26-0428-PM.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Barclays.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Santander.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Revolut.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Wise.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/NatWest.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/NetSuite.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Business%20Central.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Xero.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/QBO.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Dynamics.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/HubSpot-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Zappier.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Shopify.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Excel.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Slack.png",
+    "https://www.hedgeflows.com/hubfs/MS%20BC%20Logo.svg",
+    "https://www.hedgeflows.com/hubfs/Netsuite%20Logo.svg",
+    "https://www.hedgeflows.com/hubfs/Xero%20App%20Logo.svg",
+    "https://www.hedgeflows.com/hubfs/Sage%20Logo.svg",
+    "https://www.hedgeflows.com/hubfs/Quickbooks%20Logo.svg",
+    "https://www.hedgeflows.com/hubfs/qb-logo-horizontal-reversed.svg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/xero_Logo_-_White-1-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/bc-logo-copy-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/netsuite-logo-white-01.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/FS%20Mackenzie%20International%20Group%20(2).png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/7f4ae03f6e7fc2dcfc3a2d562f9c9769.w1200.h628.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/2-Jun-29-2024-04-47-47-6720-AM.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/6-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/Logo-Black-Transparent-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/the-accounts-department-logo.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/moteefe-logo-vector.png",
+    "https://www.hedgeflows.com/hubfs/moteefe-logo-vector.png",
+    "https://www.hedgeflows.com/hubfs/moteefe-logo-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/moteefe-logo-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/fb40a9fdf490560a02aa4896633b932a.jpeg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/VogaCloset-Logo.jpg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/647b1f1d381b769798acf8c3_glg-1-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Oxford%20Foundry%20logo-1-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/images.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/RGA%20Primary%20Badge_Black%20Text-2-1-1-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/logo_money2020.png",
+    "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/belo_logo_yellow.png",
+    "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/journeydotworld_logo.jpg",
+    "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/1734348371362.jpg",
+    "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/1744026638832.jpg",
+    "https://www.hedgeflows.com/hubfs/Imported%20sitepage%20images/1734018983427.jpg",
+    "https://www.hedgeflows.com/hs-fs/hubfs/firstpoint-logo-x2-1-2.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/signify.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/images-1.png",
+    "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/81599653_2463759867062805_6779954177108869120_n.jpg"
+  ]
+}

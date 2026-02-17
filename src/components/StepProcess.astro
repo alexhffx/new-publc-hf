@@ -10,13 +10,15 @@ interface Props {
 }
 
 const { steps } = Astro.props;
+const colClass = steps.length === 3 ? 'lg:grid-cols-3' : steps.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-4';
+const lineInset = steps.length === 3 ? 'left-[16.67%] right-[16.67%]' : steps.length === 2 ? 'left-[25%] right-[25%]' : 'left-[12.5%] right-[12.5%]';
 ---
 
 <div class="relative">
   <!-- Connecting line on desktop -->
-  <div class="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-brand-green/20 via-brand-green/40 to-brand-green/20" aria-hidden="true"></div>
+  <div class={`hidden lg:block absolute top-7 ${lineInset} h-0.5 bg-gradient-to-r from-brand-green/20 via-brand-green/40 to-brand-green/20`} aria-hidden="true"></div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+  <div class={`grid grid-cols-1 md:grid-cols-2 ${colClass} gap-10 lg:gap-6`}>
     {steps.map((step) => (
       <div class="relative flex flex-col items-center text-center">
         <!-- Step number circle -->

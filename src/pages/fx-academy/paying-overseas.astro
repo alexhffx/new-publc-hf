@@ -1,0 +1,358 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+
+const keyFacts = [
+  { text: 'SWIFT fees typically range from £15 to £40 per payment, before intermediary charges' },
+  { text: 'Banks commonly add 0.5% to 2% margin on top of the interbank FX rate' },
+  { text: 'Traditional wire transfers take 3 to 5 business days to settle' },
+  { text: 'APP fraud losses reached £460 million in the UK in 2023 (UK Finance)' },
+  { text: 'SEPA transfers within the EEA settle in under one business day for as little as €0.20' },
+  { text: 'Multi-currency accounts can eliminate unnecessary conversions on repeat-currency flows' },
+];
+
+const relatedPages = [
+  {
+    title: 'Foreign Exchange 101',
+    href: '/fx-academy/foreign-exchange-101',
+    description: 'Understand what FX transactions are, how currency markets work, and what moves exchange rates.',
+  },
+  {
+    title: 'Currency Management for Growing Businesses',
+    href: '/fx-academy/currency-management',
+    description: 'A structured approach to identifying, quantifying, and managing FX risk as you scale internationally.',
+  },
+  {
+    title: 'FX Markets & Financial Instruments',
+    href: '/fx-academy/fx-markets-and-instruments',
+    description: 'Spot, forward, swap, and option contracts explained — and how to access FX markets at any business size.',
+  },
+];
+
+const faqSchema = [
+  {
+    question: 'What are the main ways to pay overseas?',
+    answer: 'The main methods are SWIFT wire transfers through your bank, SEPA transfers within Europe, local payment rails such as ACH in the US or Faster Payments domestically, specialist FX brokers, and multi-currency accounts that let you hold and pay in foreign currencies directly.',
+  },
+  {
+    question: 'What are the hidden costs in international payments?',
+    answer: 'Hidden costs include FX markup above the interbank rate (typically 0.5% to 2% at high street banks), SWIFT network fees of £15 to £40, intermediary bank charges of £10 to £25 per hop, receiving bank fees deducted from the transferred amount, and poor timing caused by manual processes that miss favourable rates.',
+  },
+  {
+    question: 'How can you prevent international payment fraud?',
+    answer: 'Key measures include verifying bank details through a separate channel before first payment, implementing dual authorisation for payments above a set threshold, using Confirmation of Payee where available, training staff on APP fraud and invoice redirection scams, and maintaining a verified supplier bank detail register.',
+  },
+  {
+    question: 'What is a multi-currency account and when do you need one?',
+    answer: 'A multi-currency account lets you hold balances in multiple currencies so you can receive and pay in the same currency without converting to sterling and back. It is most useful when you have repeat transactions in the same currency, when you receive and pay in the same foreign currency, or when you want to convert at a time of your choosing rather than at the point of payment.',
+  },
+];
+---
+
+<AcademyGuideLayout
+  title="Paying Overseas for Growing Businesses"
+  metaDescription="International payment methods, hidden FX costs, fraud prevention, and how to choose a provider. A practical guide for UK finance teams paying overseas."
+  tldr="International payments cost more than you think. Between FX markups, SWIFT fees, intermediary charges, and the operational risk of manual processes, a growing UK business paying overseas regularly can lose tens of thousands of pounds a year — often without realising it. This guide explains what those costs are, how to control them, and how to build a payment process that scales."
+  keyFacts={keyFacts}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={relatedPages}
+  advisoryCta={{
+    text: 'If your finance team is still processing international payments manually, our advisory team can help you map your current workflow, identify where costs and risks are hiding, and build a plan to automate.',
+    href: '/advisory/digitalisation',
+    label: 'Talk to us about automating payments',
+  }}
+  faqSchema={faqSchema}
+  readingTime="11 min read"
+  videoId="Yi1PB56TID0"
+>
+
+  <h2>What are the main ways to pay overseas?</h2>
+
+  <p>
+    If you are a UK business paying suppliers, contractors, or partners abroad, you have more options than a bank wire transfer — though many growing companies default to it simply because it is what they know. Understanding the full range of payment methods is the first step toward reducing cost and improving control.
+  </p>
+
+  <h3>SWIFT wire transfers</h3>
+  <p>
+    The SWIFT network connects over 11,000 financial institutions in more than 200 countries. When your bank sends a wire transfer, it routes the payment through one or more intermediary (correspondent) banks before reaching the beneficiary's bank. Each hop can add a fee and a day of delay. A typical cross-border wire from a UK high street bank costs £15 to £40 in SWIFT charges, takes 3 to 5 business days, and is subject to whatever FX rate the bank decides to offer you — which is almost always marked up significantly from the interbank rate.
+  </p>
+  <p>
+    SWIFT gpi (Global Payments Innovation) has improved tracking and speed for some corridors, but adoption is uneven. You should not assume that sending a wire on Monday morning means it arrives by Wednesday.
+  </p>
+
+  <h3>SEPA transfers</h3>
+  <p>
+    If you are paying into the European Economic Area, SEPA (Single Euro Payments Area) transfers are considerably cheaper and faster. A SEPA Credit Transfer settles in under one business day and typically costs between €0.20 and €1.50 per transaction — a fraction of a SWIFT wire. SEPA Instant, where supported, settles in under 10 seconds. The catch is that SEPA only works in euros and only within the 36 SEPA member countries. If you are paying a European supplier in euros, there is rarely a reason to use SWIFT instead.
+  </p>
+
+  <h3>Local payment rails</h3>
+  <p>
+    Every major economy has its own domestic payment network: ACH in the United States, Faster Payments in the UK, BECS in Australia, and so on. Some international payment providers can route your payment through local rails by maintaining settlement accounts in multiple countries. This means your payment to a US supplier, for example, arrives as a domestic ACH credit rather than an international wire — faster, cheaper, and with fewer intermediary deductions. Not every provider offers this, and coverage varies by corridor, but it is worth asking about.
+  </p>
+
+  <h3>Specialist FX brokers and payment platforms</h3>
+  <p>
+    FCA-regulated FX brokers and payment platforms typically offer tighter exchange rates, lower transaction fees, and faster settlement than high street banks. Many also provide batch payment capabilities, accounting system integration, and tools for managing FX risk. The trade-off is that you are moving money through a non-bank institution, so you need to verify their regulatory status, safeguarding arrangements, and operational track record. We cover how to evaluate providers in detail later in this guide.
+  </p>
+
+  <h3>Multi-currency accounts</h3>
+  <p>
+    A multi-currency account lets you hold balances in several currencies, so you can receive US dollars from a client and then pay a US supplier in dollars without converting to sterling and back. This avoids two FX conversions and gives you the flexibility to convert at a time of your choosing. We explore this in more detail in its own section below.
+  </p>
+
+  <h2>What are the hidden costs in international payments?</h2>
+
+  <p>
+    The fee your bank shows you on the transfer confirmation is only part of the picture. In practice, there are at least five layers of cost in a typical international payment, and most finance teams only see one or two of them.
+  </p>
+
+  <h3>The FX markup</h3>
+  <p>
+    This is almost always the largest hidden cost. When your bank converts sterling to a foreign currency, it does not give you the interbank (mid-market) rate. It adds a margin — typically 0.5% to 2% for SMEs, and sometimes more on exotic currencies or smaller amounts. On a £50,000 payment, a 1.5% margin costs you £750, and it will not appear as a line item anywhere on your statement. It is simply baked into the exchange rate you are offered. For comparison, a specialist FX provider might charge 0.1% to 0.4% on the same transaction.
+  </p>
+
+  <h3>SWIFT network fees</h3>
+  <p>
+    Your bank charges a flat fee — typically £15 to £40 — to initiate a SWIFT transfer. Some banks charge more for same-day or urgent payments. If you are making dozens of payments per month, these fees alone can run into thousands of pounds annually.
+  </p>
+
+  <h3>Intermediary bank fees</h3>
+  <p>
+    When a wire transfer passes through a correspondent bank, that bank may deduct its own fee — often £10 to £25 — from the payment amount. If the payment routes through two intermediaries, you pay twice. The sender often does not know in advance which route the payment will take or how much will be deducted. This means your beneficiary can receive less than expected, causing confusion and requiring top-up payments.
+  </p>
+  <p>
+    You can instruct your bank to use the OUR, SHA, or BEN charging option on SWIFT messages. OUR means you pay all charges (including intermediary fees), SHA means charges are shared, and BEN means the beneficiary pays. In practice, OUR does not always guarantee full delivery because intermediary fees can be unpredictable.
+  </p>
+
+  <h3>Receiving bank fees</h3>
+  <p>
+    The beneficiary's bank may also charge a fee for receiving an international wire — typically £5 to £15. If you have agreed to pay your supplier a fixed amount, this deduction can create short payments and reconciliation headaches.
+  </p>
+
+  <h3>Poor timing</h3>
+  <p>
+    If your finance team processes international payments manually, there is a meaningful cost of delay. The time between raising a payment and actually executing the FX conversion might be hours or days. Exchange rates move continuously. On a volatile day, GBP/EUR can move 0.5% to 1% in either direction. For a business making £200,000 in monthly overseas payments, that timing gap can cost £1,000 to £2,000 per month in rate slippage — not because the rate moved against you, but because your process does not let you act at the right moment.
+  </p>
+
+  <h2>Why are manual international payments risky?</h2>
+
+  <p>
+    Beyond cost, manual international payment processes create operational risk that compounds as your business grows. Here are the most common failure modes.
+  </p>
+
+  <h3>Data entry errors</h3>
+  <p>
+    An incorrect IBAN, a transposed digit in an account number, or the wrong SWIFT/BIC code can result in a payment being rejected, delayed, or sent to the wrong account entirely. Rejected payments tie up cash for days while funds are returned, and bank fees are typically non-refundable. If the payment goes to the wrong beneficiary, recovering the funds can take weeks — if it is possible at all.
+  </p>
+
+  <h3>Lack of audit trail</h3>
+  <p>
+    When payments are initiated by logging into online banking, there is often no structured record linking the payment to its underlying invoice, purchase order, or approval. As your business scales, this makes it increasingly difficult to answer basic questions: who authorised this payment, what was it for, and was the rate competitive? Auditors and FCA compliance teams expect clear documentation.
+  </p>
+
+  <h3>Reconciliation nightmares</h3>
+  <p>
+    International payments rarely arrive for the exact amount expected. Between intermediary deductions, FX rate differences, and receiving bank fees, there is almost always a discrepancy. If your finance team is manually matching bank statements to invoices in a spreadsheet, these discrepancies consume hours every month. The problem multiplies with payment volume — a business making 30 international payments per month can easily spend two to three days per month on reconciliation alone.
+  </p>
+
+  <h3>Key-person dependency</h3>
+  <p>
+    In many growing businesses, international payments are handled by one or two people who know the process. If those people are on holiday, off sick, or leave the company, payments can stall. Suppliers do not get paid on time, relationships suffer, and early payment discounts are lost.
+  </p>
+
+  <h2>How can you prevent international payment fraud?</h2>
+
+  <p>
+    Authorised Push Payment (APP) fraud is the fastest-growing category of payment fraud in the UK. APP fraud occurs when a criminal tricks someone into authorising a payment to an account the criminal controls. According to UK Finance, APP fraud losses reached £460 million in 2023, and businesses are increasingly targeted alongside consumers.
+  </p>
+
+  <h3>Invoice redirection fraud</h3>
+  <p>
+    The most common form of APP fraud affecting businesses with international payments is invoice redirection. A fraudster impersonates a supplier — often by compromising the supplier's email account — and sends new bank details, claiming the supplier has changed banks. The payment goes to the fraudster's account. By the time anyone notices, the money has been moved and is usually unrecoverable.
+  </p>
+  <p>
+    This attack is particularly effective against international payments because the payee's bank is overseas, Confirmation of Payee is unavailable for most international transfers, and there is less familiarity with foreign bank account formats.
+  </p>
+
+  <h3>Verification procedures</h3>
+  <p>
+    The single most important control is to verify new or changed bank details through a separate channel. If you receive an email from a supplier with new bank details, call the supplier on a known phone number — not one provided in the email — and confirm the change verbally. This one step prevents the majority of invoice redirection fraud.
+  </p>
+  <p>
+    Maintain a verified supplier bank detail register and treat any change request as high-risk until independently confirmed. Some payment platforms include built-in beneficiary verification and alert you when bank details change.
+  </p>
+
+  <h3>Dual authorisation</h3>
+  <p>
+    Require two people to approve any international payment above a defined threshold — for example, £5,000. The first person prepares the payment; the second reviews and authorises it. This is standard practice in larger organisations, but many growing businesses skip it because they view it as slow. In fact, it takes minutes and significantly reduces the risk of both fraud and error. If your payment platform supports it, dual authorisation should be mandatory, not optional.
+  </p>
+
+  <h3>Payment limits and alerts</h3>
+  <p>
+    Set maximum payment limits per transaction and per day. Configure real-time alerts for payments above a threshold, payments to new beneficiaries, and payments to high-risk jurisdictions. These controls do not prevent fraud on their own, but they create friction that slows down an attacker and gives your team time to catch unusual activity.
+  </p>
+
+  <h3>PSR reimbursement rules</h3>
+  <p>
+    Since October 2024, the Payment Systems Regulator (PSR) requires UK payment firms to reimburse eligible APP fraud victims up to £85,000. However, this protection primarily covers consumers and micro-enterprises, and there are exclusions for gross negligence. Prevention remains far better than cure.
+  </p>
+
+  <h2>What is a multi-currency account and when do you need one?</h2>
+
+  <p>
+    A multi-currency account is a single account that holds balances in multiple currencies. Instead of maintaining separate bank accounts in different countries, you hold USD, EUR, or other currencies within one account structure, typically with unique account details (IBANs or local account numbers) for each currency.
+  </p>
+
+  <h3>How it reduces cost</h3>
+  <p>
+    The primary benefit is eliminating unnecessary FX conversions. Consider a UK-based e-commerce company that receives USD from US customers and pays US suppliers. Without a multi-currency account, those dollars are automatically converted to sterling on arrival, and then converted back to dollars when paying the supplier — two conversions, two markups. With a multi-currency account, the dollars stay in dollars. You only convert what you need to bring back to sterling.
+  </p>
+
+  <h3>Natural hedging</h3>
+  <p>
+    Holding currency balances creates a form of natural hedging. If you receive €100,000 per month from European clients and pay €60,000 to European suppliers, you have a natural hedge on that €60,000. Only the net €40,000 exposure needs to be managed. A multi-currency account makes this operationally straightforward.
+  </p>
+
+  <h3>When it makes sense</h3>
+  <p>
+    A multi-currency account is most valuable when you have regular, recurring flows in the same foreign currency — both inbound and outbound. If you only make occasional one-off payments abroad, the administrative overhead of maintaining foreign currency balances may not be worth it. As a rough guide, if you are handling more than £10,000 per month in a single foreign currency, a multi-currency account starts to pay for itself through reduced conversion costs alone.
+  </p>
+
+  <h3>Practical considerations</h3>
+  <p>
+    Check whether the account provides local receiving details (for example, a US ACH routing number for USD, or a EEA IBAN for EUR). Without local details, your payers may still need to send international wires, negating some of the benefit. Also confirm how the account interacts with your accounting software — the best platforms push transactions directly into your ledger with the correct currency coding.
+  </p>
+
+  <h2>How should you choose an international payment provider?</h2>
+
+  <p>
+    Switching from your bank to a specialist provider can save significant money, but not all providers are equal. Here is what to evaluate.
+  </p>
+
+  <h3>FCA regulation and safeguarding</h3>
+  <p>
+    Any firm handling your money in the UK should be authorised by the Financial Conduct Authority. Check the FCA Register (register.fca.org.uk) for the firm's permissions. Payment institutions and electronic money institutions are required to safeguard client funds — meaning your money is held separately from the firm's own funds. Ask the provider how they safeguard funds: in a segregated trust account, through insurance, or via a guarantee from an authorised credit institution.
+  </p>
+
+  <h3>Pricing transparency</h3>
+  <p>
+    Ask to see the FX markup separately from any fixed fees. A provider quoting a "no fee" service may be embedding a large margin in the exchange rate. Request a breakdown: what is the interbank rate at the time of your quote, and what is the rate you are being offered? The difference is the markup. Competitive providers for SME volumes typically charge 0.1% to 0.4% margin plus a small fixed fee, or a slightly wider margin with no fixed fee.
+  </p>
+
+  <h3>Accounting integration</h3>
+  <p>
+    If your finance team uses Xero, QuickBooks, or a similar cloud accounting package, check whether the payment provider integrates directly. A good integration pulls invoices from your accounting system, lets you approve and pay them in the platform, and pushes the payment confirmation and exchange rate back into the ledger automatically. This eliminates manual data entry, reduces reconciliation time, and ensures your books are always up to date with the correct FX rates.
+  </p>
+
+  <h3>Batch payments</h3>
+  <p>
+    If you make more than a handful of international payments per month, batch payment capability is essential. Rather than processing each payment individually — logging in, entering details, confirming — a batch process lets you upload or approve a set of payments in one go. This is particularly important for businesses paying multiple contractors or suppliers on a regular cycle.
+  </p>
+
+  <h3>API access</h3>
+  <p>
+    For more mature finance operations, API access allows you to automate payment initiation, rate locking, and status tracking from your own systems. This is relevant if you are building a procurement workflow, integrating with an ERP, or want to trigger payments programmatically based on invoice approval. Not every growing business needs API access today, but it is worth confirming the option exists for when you scale.
+  </p>
+
+  <h3>Coverage and local rails</h3>
+  <p>
+    Check which currencies and countries the provider supports, and whether they can route payments via local rails (ACH, SEPA, Faster Payments) rather than SWIFT. Local rail payments are cheaper, faster, and more predictable. If you regularly pay into specific corridors — the US, Europe, Australia, India — confirm that those corridors are well-supported.
+  </p>
+
+  <div class="worked-example">
+    <h3>Worked example: UK recruitment agency paying contractors abroad</h3>
+
+    <p>
+      Consider a UK-based recruitment agency that places contract workers in four countries. Every month, the agency needs to pay 15 contractors: 6 in the United States (USD), 4 in Germany (EUR), 3 in Australia (AUD), and 2 in India (INR). The total monthly payment value is approximately £85,000 equivalent.
+    </p>
+
+    <p><strong>Approach A: High street bank wire transfers</strong></p>
+    <p>
+      The finance manager logs into online banking, manually enters each payment, converts to the required currency at the bank's offered rate, and sends 15 individual SWIFT wires. Processing takes most of a working day each month.
+    </p>
+
+    <p><strong>Approach B: Specialist payment platform</strong></p>
+    <p>
+      The finance team imports approved invoices from their accounting system, reviews the batch, locks an exchange rate for each currency, and submits all 15 payments in one session. European payments route via SEPA. US payments route via ACH. Processing takes under an hour.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cost component</th>
+          <th>Bank wire (Approach A)</th>
+          <th>Payment platform (Approach B)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FX markup (avg. on £85,000)</td>
+          <td>1.2% = £1,020</td>
+          <td>0.3% = £255</td>
+        </tr>
+        <tr>
+          <td>SWIFT / transfer fees (15 payments)</td>
+          <td>15 x £28 = £420</td>
+          <td>6 x £3 + 4 x €0.50 + 5 x £4 = £40</td>
+        </tr>
+        <tr>
+          <td>Intermediary bank deductions</td>
+          <td>~£10 x 10 payments = £100</td>
+          <td>£0 (local rails, no intermediaries)</td>
+        </tr>
+        <tr>
+          <td>Receiving bank fees</td>
+          <td>~£8 x 8 payments = £64</td>
+          <td>£0 (local rail delivery)</td>
+        </tr>
+        <tr>
+          <td>Staff time (processing + reconciliation)</td>
+          <td>~8 hours at £35/hr = £280</td>
+          <td>~1.5 hours at £35/hr = £53</td>
+        </tr>
+        <tr>
+          <td><strong>Total monthly cost</strong></td>
+          <td><strong>£1,884</strong></td>
+          <td><strong>£348</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Annual cost</strong></td>
+          <td><strong>£22,608</strong></td>
+          <td><strong>£4,176</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <strong>Annual saving: approximately £18,400.</strong> The largest component of the saving comes from the FX markup — the difference between the bank's 1.2% margin and the platform's 0.3% margin on £85,000 per month accounts for over £9,000 per year. The second largest saving comes from reduced staff time: automated reconciliation and batch payments free up roughly 6.5 hours per month, which over a year returns more than three full working weeks to the finance team.
+    </p>
+    <p>
+      These figures are illustrative and based on typical rates as of early 2025. Actual costs vary by provider, payment corridor, and transaction size. The directional picture, however, is consistent: businesses making regular international payments almost always save materially by moving away from manual bank wires.
+    </p>
+  </div>
+
+  <h2>Building a payment process that scales</h2>
+
+  <p>
+    As a final note, the individual cost savings and risk reductions described in this guide compound when you build them into a structured process. A scalable international payment workflow typically looks like this:
+  </p>
+
+  <ol>
+    <li><strong>Invoice capture.</strong> Invoices are received digitally and recorded in your accounting system with the correct currency and amount.</li>
+    <li><strong>Approval workflow.</strong> Each payment is approved according to your authorisation matrix — for example, line manager for payments under £5,000, finance director for payments above.</li>
+    <li><strong>Beneficiary verification.</strong> New or changed bank details are verified through a separate channel before the first payment is made. Verified details are stored in a secure register.</li>
+    <li><strong>Batch processing.</strong> Approved payments are grouped by payment date and submitted as a batch, with FX rates locked at the point of submission.</li>
+    <li><strong>Automatic reconciliation.</strong> Payment confirmations, exchange rates, and settlement details flow back into your accounting system, matching against the original invoices without manual intervention.</li>
+    <li><strong>Reporting and audit.</strong> Every payment has a complete audit trail: who raised it, who approved it, what rate was applied, when it settled, and what the beneficiary received.</li>
+  </ol>
+
+  <p>
+    This is not an aspirational process for large corporates. Modern payment platforms make it accessible to businesses processing as few as 10 to 20 international payments per month. The investment is primarily in setting up the workflow and integrating with your accounting system — after that, the process runs with minimal manual intervention.
+  </p>
+
+  <p>
+    The businesses that pay the most for international payments are not the ones with the highest volumes. They are the ones that have not examined their process since they started paying overseas. If you have read this far, you are already ahead of most.
+  </p>
+
+</AcademyGuideLayout>

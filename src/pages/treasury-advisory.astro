@@ -1,26 +1,15 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/Hero.astro';
-import PageSections from '../components/PageSections.astro';
-import CTASection from '../components/CTASection.astro';
-import { getPage } from '../lib/sanity';
-
-const page = await getPage('treasury-advisory');
+/* Redirect old /treasury-advisory URL to the new /advisory page */
 ---
 
-<PageLayout
-  title={page?.seoTitle || page?.title || 'Treasury Advisory'}
-  description={page?.seoDescription || 'Your outsourced treasury function for international businesses.'}
->
-  <Hero
-    title={page?.heroTitle || 'Your outsourced treasury function'}
-    subtitle={page?.heroSubtitle || 'Expert treasury advisory tailored to the needs of internationally trading SMEs.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
-  />
-  <PageSections sections={page?.sections || []} />
-  <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
-  />
-</PageLayout>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0;url=/advisory" />
+    <link rel="canonical" href="/advisory" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/advisory">/advisory</a>…</p>
+  </body>
+</html>

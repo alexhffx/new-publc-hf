@@ -10,24 +10,28 @@ const accountingIntegrations = [
     description: 'Multi-currency payments, auto-reconciliation, and FX management. Certified Xero app with 5-star ratings.',
     href: '/platform/integrations/xero',
     category: 'Accounting',
+    logo: '/assets/logos/integrations/Xero_software_logo.svg',
   },
   {
     name: 'QuickBooks',
     description: 'Simplify international bill payments with bulk processing and automated bookkeeping for QuickBooks Online.',
     href: '/platform/integrations/quickbooks',
     category: 'Accounting',
+    logo: '/assets/logos/integrations/quickbooks-sq.svg',
   },
   {
     name: 'NetSuite',
     description: 'Real-time two-way integration for global payables, vendor payments, and multi-currency cash management.',
     href: '/platform/integrations/netsuite',
     category: 'ERP',
+    logo: '/assets/logos/integrations/netsuite-sq.svg',
   },
   {
     name: 'Business Central',
     description: 'Global payments and cash management inside D365 Business Central. Available in Microsoft AppSource.',
     href: '/platform/integrations/business-central',
     category: 'ERP',
+    logo: '/assets/logos/integrations/business-central-logo-sq.webp',
   },
 ];
 
@@ -41,19 +45,21 @@ const crmIntegrations = [
     name: 'HubSpot',
     description: 'Connect your sales pipeline for early FX exposure visibility. See currency needs before deals close.',
     category: 'CRM',
+    logo: '/assets/logos/integrations/Hubspot-sq.png',
   },
   {
     name: 'Salesforce',
     description: 'Integrate your CRM data for real-time pipeline-driven currency forecasting and hedging.',
     category: 'CRM',
+    logo: '/assets/logos/integrations/Salesforce_logo.png',
   },
 ];
 
 const businessTools = [
-  { name: 'Shopify', description: 'Manage multi-currency e-commerce revenue streams.' },
-  { name: 'Zapier', description: 'Connect HedgeFlows to 5,000+ apps with automated workflows.' },
-  { name: 'Slack', description: 'Get payment and FX alerts directly in your Slack channels.' },
-  { name: 'Excel', description: 'Export and import data for custom reporting and analysis.' },
+  { name: 'Shopify', description: 'Manage multi-currency e-commerce revenue streams.', logo: '/assets/logos/integrations/shopify-sq.svg' },
+  { name: 'Zapier', description: 'Connect HedgeFlows to 5,000+ apps with automated workflows.', logo: '/assets/logos/integrations/zapier-sq.svg' },
+  { name: 'Slack', description: 'Get payment and FX alerts directly in your Slack channels.', logo: '/assets/logos/integrations/slack-sq.jpg' },
+  { name: 'Excel', description: 'Export and import data for custom reporting and analysis.', logo: '/assets/logos/integrations/Excel-sq.png' },
 ];
 
 const bankFeatures = [
@@ -99,10 +105,8 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
                    shadow-sm hover:shadow-md hover:border-brand-green/20 transition-all duration-200 flex flex-col"
           >
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={iconPath} />
-                </svg>
+              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0">
+                <img src={i.logo} alt={i.name} class="w-10 h-10 object-contain" loading="lazy" />
               </div>
               <div>
                 <h3 class="text-[1.125rem] font-bold text-text-heading group-hover:text-brand-green transition-colors">{i.name}</h3>
@@ -144,10 +148,8 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
         {crmIntegrations.map((i) => (
           <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={iconPath} />
-                </svg>
+              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0">
+                <img src={i.logo} alt={i.name} class="w-10 h-10 object-contain" loading="lazy" />
               </div>
               <div>
                 <h3 class="text-[1.125rem] font-bold text-text-heading">{i.name}</h3>
@@ -174,10 +176,8 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
         {businessTools.map((t) => (
           <div class="bg-white rounded-xl border border-gray-100 p-5 text-center shadow-sm">
-            <div class="w-10 h-10 rounded-lg bg-brand-green-pale flex items-center justify-center mx-auto mb-3">
-              <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d={iconPath} />
-              </svg>
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <img src={t.logo} alt={t.name} class="w-10 h-10 object-contain" loading="lazy" />
             </div>
             <p class="text-[0.875rem] font-semibold text-text-heading mb-1">{t.name}</p>
             <p class="text-[0.75rem] text-text-muted leading-relaxed">{t.description}</p>
@@ -210,7 +210,7 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
             ))}
           </ul>
         </div>
-        <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+        <div class="rounded-2xl overflow-hidden">
           <img
             src="/assets/images/platform/bank-balances.jpg"
             alt="Connected bank account balances across multiple banks"

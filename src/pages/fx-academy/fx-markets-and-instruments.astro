@@ -1,0 +1,424 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+
+const keyFacts = [
+  { text: "The global FX market trades approximately $7.5 trillion every day, making it the largest financial market in the world." },
+  { text: "Spot transactions settle in two business days (T+2) and account for roughly 28% of total FX turnover." },
+  { text: "Forward contracts can lock in an exchange rate for periods from a few days to two years or more." },
+  { text: "FX swaps make up around 51% of daily turnover, primarily used by institutions to manage funding and settlement timing." },
+  { text: "FX brokers and payment institutions in the UK are regulated by the FCA under various frameworks, including the Payment Services Regulations." },
+];
+
+const relatedPages = [
+  {
+    title: "Foreign Exchange 101",
+    href: "/fx-academy/foreign-exchange-101",
+    description: "Start here if you are new to FX. Covers the basics of exchange rates, currency pairs, and why FX matters for your business.",
+  },
+  {
+    title: "Cashflow Hedging Explained",
+    href: "/fx-academy/cashflow-hedging",
+    description: "How to match hedging instruments to your forecast cash flows and reduce earnings volatility.",
+  },
+  {
+    title: "Building a Hedging Programme",
+    href: "/fx-academy/hedging-programme",
+    description: "A step-by-step framework for designing and implementing a currency hedging policy.",
+  },
+  {
+    title: "Currency Management for Growing Businesses",
+    href: "/fx-academy/currency-management",
+    description: "Practical approaches to managing FX risk when your business is scaling internationally.",
+  },
+];
+
+const faqSchema = [
+  {
+    question: "Where do FX prices come from?",
+    answer: "FX rates are determined in a decentralised global market where banks, central banks, corporations, and other participants trade currencies around the clock. The interbank market sets benchmark rates, which are then marked up by banks and brokers before being offered to business clients. The spread between bid and ask prices represents the cost of transacting.",
+  },
+  {
+    question: "What is a spot transaction?",
+    answer: "A spot transaction is the simplest FX trade: you agree a rate today and the currencies are exchanged two business days later (T+2). Spot is suitable when you need to convert currency immediately, for example to pay an overseas supplier invoice that is due now. The cost is the spread between the bid and ask rate.",
+  },
+  {
+    question: "What is a forward contract?",
+    answer: "A forward contract lets you lock in an exchange rate today for a currency exchange that will settle on a future date, typically from one week to two years ahead. Businesses use forwards to fix the cost of future foreign currency payments or receipts, removing uncertainty about exchange rate movements. The forward rate differs from the spot rate by an amount called the forward points, which reflect the interest rate differential between the two currencies.",
+  },
+  {
+    question: "What are FX options?",
+    answer: "FX options give the buyer the right, but not the obligation, to exchange currencies at a pre-agreed rate (the strike price) on or before a set date. The buyer pays a premium for this flexibility. Options are useful when a business wants downside protection but also wants to benefit if the exchange rate moves favourably. Vanilla options are straightforward; structured options combine multiple options to reduce or eliminate the premium but often cap the upside.",
+  },
+  {
+    question: "How do businesses access FX markets?",
+    answer: "Businesses can access FX markets through their bank, specialist FX brokers, or online platforms. Banks are convenient but often charge wider spreads, especially for smaller transactions. FX brokers typically offer more competitive rates and dedicated support. Online platforms can provide real-time pricing and straight-through processing. The right choice depends on your transaction volumes, currency pairs, and the level of advisory support you need.",
+  },
+  {
+    question: "What should you look out for when choosing an FX provider?",
+    answer: "Key factors include pricing transparency (can you see the mid-market rate and the margin?), FCA regulation and the safeguarding of client funds, execution quality, the range of instruments offered, and the quality of advisory and reporting. Businesses should also check whether the provider requires margin deposits on forward contracts and how those margins are managed.",
+  },
+];
+---
+
+<AcademyGuideLayout
+  title="FX Markets & Financial Instruments"
+  metaDescription="Understand how FX prices are set, and learn about spot, forwards, swaps, and options. A practical guide for UK businesses accessing currency markets."
+  tldr="Foreign exchange markets are where currencies are priced and traded. The main instruments available to businesses are spot transactions, forward contracts, FX swaps, and options. Each serves a different purpose depending on your timing, certainty needs, and risk appetite. Understanding how they work, what they cost, and when to use them is fundamental to managing your currency exposure effectively."
+  keyFacts={keyFacts}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={relatedPages}
+  advisoryCta={{
+    text: "Not sure which instruments are right for your exposures? Our advisory team can review your currency flows and recommend a practical approach, whether that involves simple forwards, options, or a combination.",
+    href: "/advisory/fx-risk-management",
+    label: "Speak to our FX advisory team",
+  }}
+  faqSchema={faqSchema}
+  readingTime="14 min read"
+  videoId="3J3l5UVn6Pg"
+>
+
+<h2>Where do FX prices come from?</h2>
+
+<p>
+  There is no single exchange where currencies are traded. The foreign exchange market is a decentralised, over-the-counter (OTC) network that operates 24 hours a day, five days a week, across major financial centres in London, New York, Tokyo, Singapore, and Sydney. London remains the largest hub, handling around 38% of global FX turnover.
+</p>
+
+<p>
+  At the core of the market sits the <strong>interbank market</strong>, where large banks trade currencies with each other in very high volumes. These interbank transactions establish the benchmark exchange rates you see quoted on financial news feeds. The rate at which one bank will sell a currency to another is the <strong>ask</strong> (or offer) price. The rate at which it will buy is the <strong>bid</strong> price. The difference between the two is the <strong>spread</strong>, and this spread is how market-makers earn revenue.
+</p>
+
+<p>
+  When a business wants to trade currency, it typically does not access the interbank market directly. Instead, it trades through a bank, broker, or platform that acts as an intermediary. These intermediaries add their own margin on top of the interbank spread. The total cost to your business is the combination of the underlying interbank spread plus the intermediary's markup.
+</p>
+
+<p>
+  A few things influence how wide or narrow the spread is for your business:
+</p>
+
+<ul>
+  <li><strong>Currency pair:</strong> Major pairs like GBP/EUR and GBP/USD are the most liquid and have the tightest interbank spreads. Emerging market currencies like the Turkish lira or South African rand carry wider spreads because they are less liquid and more volatile.</li>
+  <li><strong>Transaction size:</strong> Larger amounts generally attract tighter pricing. A conversion of &pound;500,000 will usually get a better rate than one of &pound;5,000.</li>
+  <li><strong>Time of day:</strong> Spreads are tightest during London trading hours (roughly 8:00 to 17:00 GMT) when liquidity is deepest. They widen outside these hours and around major economic data releases.</li>
+  <li><strong>Your provider's pricing model:</strong> Some providers quote a fixed margin over the mid-market rate. Others embed the margin in the quoted rate without disclosing it separately. Transparency varies significantly.</li>
+</ul>
+
+<p>
+  Understanding where prices come from helps you ask better questions of your FX provider and benchmark the rates you are offered against the interbank mid-rate, which is freely available on sites like Bloomberg, Reuters, or XE.
+</p>
+
+<h2>What is a spot transaction?</h2>
+
+<p>
+  A spot transaction is the most straightforward FX trade. You agree an exchange rate with your provider today, and the actual exchange of currencies takes place two business days later. This two-day settlement period is known as <strong>T+2</strong> and is the standard convention across the global FX market. Some currency pairs, such as USD/CAD, settle on a T+1 basis, but GBP pairs follow T+2.
+</p>
+
+<p>
+  Spot is appropriate when:
+</p>
+
+<ul>
+  <li>You have an invoice to pay now (or within the next couple of days).</li>
+  <li>You have received foreign currency and need to convert it to sterling.</li>
+  <li>You need to move money quickly without entering into a longer-term commitment.</li>
+</ul>
+
+<p>
+  The cost of a spot transaction is the spread between the bid and ask rate. For major currency pairs and reasonable transaction sizes, business clients can typically expect spreads of 0.2% to 1.0% of the transaction value, depending on the provider and the amount. On a &pound;100,000 GBP/EUR conversion, a 0.5% spread means you pay roughly &pound;500 in implicit cost compared to the interbank mid-rate.
+</p>
+
+<p>
+  The key limitation of spot is that it only covers immediate needs. It does nothing to protect you against rate movements on future payments or receipts. If you know you will need to pay &euro;500,000 in three months, a spot transaction today will not help unless you are prepared to pre-fund the payment and hold euros in the meantime.
+</p>
+
+<h2>What is a forward contract?</h2>
+
+<p>
+  A forward contract solves the timing problem that spot cannot address. It allows you to agree an exchange rate today for a currency exchange that will take place on a specific date in the future. Forward contracts are available for periods ranging from a few days to two years or more, though tenors beyond 12 months are less common for smaller businesses.
+</p>
+
+<h3>How the forward rate is calculated</h3>
+
+<p>
+  The forward rate is not a prediction of where the exchange rate will be in the future. It is derived mathematically from the current spot rate and the <strong>interest rate differential</strong> between the two currencies. This adjustment is expressed as <strong>forward points</strong>, which are added to or subtracted from the spot rate.
+</p>
+
+<p>
+  For example, if UK interest rates are higher than eurozone rates, the GBP/EUR forward rate for delivery in six months will be slightly lower than the current spot rate (sterling trades at a forward discount against the euro). This reflects the fact that holding sterling earns more interest than holding euros over that period. The forward points compensate for this difference so that neither party has a free arbitrage opportunity.
+</p>
+
+<h3>Margin requirements</h3>
+
+<p>
+  Because a forward contract creates a future obligation, most providers will require some form of credit arrangement or <strong>margin deposit</strong>. This deposit, typically 3% to 10% of the contract value, protects the provider against the risk that the exchange rate moves against you before settlement. If the rate moves significantly, the provider may issue a <strong>margin call</strong>, asking you to deposit additional funds.
+</p>
+
+<p>
+  For a &pound;200,000 forward contract, an initial margin of 5% means depositing &pound;10,000. This is returned when the contract settles, but it does tie up working capital in the meantime. Some providers offer unsecured forward facilities based on a credit assessment, which eliminates or reduces the margin requirement.
+</p>
+
+<h3>When to use forwards</h3>
+
+<ul>
+  <li><strong>Known future payments:</strong> You have a confirmed order and know you will need to pay &euro;500,000 in 90 days. A forward locks in the cost in sterling.</li>
+  <li><strong>Budget certainty:</strong> You are setting next year's budget and want to fix the exchange rate assumptions for your overseas costs or revenue.</li>
+  <li><strong>Protecting margins:</strong> Your product pricing is set in sterling, but your input costs are in dollars. A forward ensures that a dollar strengthening does not erode your profit margin.</li>
+</ul>
+
+<p>
+  The main trade-off with a forward is that you give up the ability to benefit if the exchange rate moves in your favour after you have locked in. If you buy euros forward at 1.1700 and the spot rate at settlement is 1.2000, you will have paid more than you would have by waiting. This is the cost of certainty.
+</p>
+
+<h2>What are FX swaps?</h2>
+
+<p>
+  An FX swap combines two transactions: a spot (or near-date) trade and a forward trade, in opposite directions, executed simultaneously. For example, you might buy euros spot and simultaneously agree to sell them back in three months, or vice versa.
+</p>
+
+<p>
+  FX swaps are the most heavily traded instrument in the FX market, accounting for over half of daily turnover. However, they are predominantly used by financial institutions and larger corporates rather than by smaller businesses. Understanding them is still useful because they underpin how forward pricing works and they explain some of the mechanics behind rolled forward contracts.
+</p>
+
+<h3>Why businesses use FX swaps</h3>
+
+<p>
+  The most common business use case for FX swaps is managing the timing of currency flows. For example:
+</p>
+
+<ul>
+  <li><strong>Rolled forwards:</strong> You booked a forward contract to sell USD in March, but your customer delays payment to April. Rather than closing the forward at a loss and booking a new one, your provider can "roll" the contract using a swap. The March leg is closed and a new April leg is opened simultaneously. The cost of the roll reflects the forward points for the additional month.</li>
+  <li><strong>Short-term funding:</strong> Your business receives euros from a European customer but needs sterling to meet UK payroll next week. You can swap the euros into sterling now and swap back when your next euro receipt arrives, avoiding the need to do two separate spot transactions at potentially different rates.</li>
+</ul>
+
+<p>
+  FX swaps do not provide protection against exchange rate movements in the way that forwards or options do. Their purpose is to manage the timing of currency availability. The cost of a swap is driven by the forward points (the interest rate differential) for the period between the two legs.
+</p>
+
+<h2>What are FX options?</h2>
+
+<p>
+  An FX option gives you the <strong>right, but not the obligation</strong>, to exchange currencies at a pre-agreed rate (the <strong>strike price</strong>) on or before a specified date. Unlike a forward, which commits you to transacting at the agreed rate regardless of where the market moves, an option lets you walk away if the market rate at expiry is more favourable than the strike.
+</p>
+
+<h3>Calls and puts</h3>
+
+<p>
+  If you need to <strong>buy</strong> a foreign currency (for example, to pay a euro-denominated supplier invoice), you would buy a <strong>call option</strong> on EUR/GBP. This gives you the right to buy euros at the strike price. If sterling weakens and euros become more expensive, you exercise the option and buy at the agreed rate. If sterling strengthens and euros become cheaper, you let the option expire and buy at the better market rate.
+</p>
+
+<p>
+  If you need to <strong>sell</strong> a foreign currency (for example, to convert dollar revenue into sterling), you would buy a <strong>put option</strong> on GBP/USD. This gives you the right to sell dollars at the strike price, protecting you if the dollar weakens.
+</p>
+
+<h3>The premium</h3>
+
+<p>
+  The flexibility of an option comes at a cost: the <strong>premium</strong>. This is paid upfront, regardless of whether you end up exercising the option. Premiums are influenced by several factors:
+</p>
+
+<ul>
+  <li><strong>Time to expiry:</strong> Longer-dated options cost more because there is more time for the rate to move.</li>
+  <li><strong>Volatility:</strong> Higher market volatility increases the probability of a large rate move, so premiums rise.</li>
+  <li><strong>Strike price relative to spot:</strong> An option with a strike close to the current spot rate (at-the-money) costs more than one with a strike far from spot (out-of-the-money).</li>
+  <li><strong>Interest rate differential:</strong> Like forwards, the interest rate difference between the two currencies affects option pricing.</li>
+</ul>
+
+<p>
+  For a three-month at-the-money GBP/EUR option on a notional amount of &pound;200,000, a typical premium might be in the range of 1.5% to 3.0% of the notional value, depending on market conditions. That is &pound;3,000 to &pound;6,000 for the right to protect your rate. This is a real cash cost, so options tend to be most appropriate when the potential downside from an adverse rate move is significant relative to the premium.
+</p>
+
+<h3>Vanilla vs structured options</h3>
+
+<p>
+  A plain <strong>vanilla option</strong> (a simple call or put) is the most transparent instrument. You pay the premium, you have the right, and there are no surprises.
+</p>
+
+<p>
+  <strong>Structured options</strong> combine two or more options to modify the payoff profile. The most common structures are:
+</p>
+
+<ul>
+  <li><strong>Collar (risk reversal):</strong> You buy a call option to protect against an adverse move and simultaneously sell a put option at a less favourable rate. The premium received from selling the put offsets part or all of the cost of the call. The trade-off is that you cap your ability to benefit from a favourable move beyond the put strike.</li>
+  <li><strong>Participating forward:</strong> A structure that gives you a worst-case rate (like a forward) but allows you to benefit from a portion of any favourable move. Typically offered at zero premium.</li>
+</ul>
+
+<p>
+  Structured options can be useful but are inherently more complex. It is important to understand the full range of outcomes, including worst-case scenarios, before entering into a structure. Some structures marketed as "zero cost" involve selling options that can generate large obligations if the market moves sharply. Always ask your provider to show you the payoff at a range of different spot rates at expiry.
+</p>
+
+<h2>Worked example: spot vs forward for a UK importer</h2>
+
+<div class="worked-example">
+  <h3>Scenario</h3>
+  <p>
+    Your business needs to pay a European supplier &euro;500,000 in three months. The current GBP/EUR spot rate is 1.1700 (meaning &pound;1 buys &euro;1.17). Your provider quotes a three-month forward rate of 1.1680, reflecting the forward points based on the UK-eurozone interest rate differential.
+  </p>
+
+  <h3>Option A: Wait and use spot in three months</h3>
+  <p>
+    You take no action now and convert at whatever the spot rate is in three months. Your sterling cost is uncertain.
+  </p>
+
+  <h3>Option B: Book a forward contract at 1.1680</h3>
+  <p>
+    You lock in a rate of 1.1680 today. In three months, you will exchange &pound;428,082 for &euro;500,000 regardless of where the market is.
+  </p>
+
+  <h3>Comparing outcomes under different rate scenarios</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>GBP/EUR spot rate in 3 months</th>
+        <th>Cost if you wait (spot)</th>
+        <th>Cost with forward at 1.1680</th>
+        <th>Saving / (Extra cost) of forward</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.1200 (sterling weakens)</td>
+        <td>&pound;446,429</td>
+        <td>&pound;428,082</td>
+        <td>&pound;18,347 saving</td>
+      </tr>
+      <tr>
+        <td>1.1500</td>
+        <td>&pound;434,783</td>
+        <td>&pound;428,082</td>
+        <td>&pound;6,701 saving</td>
+      </tr>
+      <tr>
+        <td>1.1680 (rate unchanged)</td>
+        <td>&pound;428,082</td>
+        <td>&pound;428,082</td>
+        <td>&pound;0</td>
+      </tr>
+      <tr>
+        <td>1.1900</td>
+        <td>&pound;420,168</td>
+        <td>&pound;428,082</td>
+        <td>(&pound;7,914) extra cost</td>
+      </tr>
+      <tr>
+        <td>1.2200 (sterling strengthens)</td>
+        <td>&pound;409,836</td>
+        <td>&pound;428,082</td>
+        <td>(&pound;18,246) extra cost</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The forward eliminates the risk of sterling weakening, which would make the payment more expensive. In the first two scenarios, the forward saves the business &pound;6,700 to &pound;18,300. However, if sterling strengthens, the forward means you pay more than you would have at spot. The forward rate is the price of certainty: you know your cost is &pound;428,082 regardless of what happens in the market.
+  </p>
+
+  <p>
+    For a business with thin margins or a fixed-price contract with its own customer, the certainty of the forward is often more valuable than the potential upside of waiting. For a business with wider margins and greater tolerance for variability, a partial hedge or an option structure might be more appropriate.
+  </p>
+</div>
+
+<h2>How do businesses access FX markets?</h2>
+
+<p>
+  There are three main channels through which UK businesses can trade currencies:
+</p>
+
+<h3>1. Your bank</h3>
+
+<p>
+  Most businesses start by using their existing bank for FX. The advantages are convenience and an established relationship. The bank already holds your accounts, so settlement is straightforward. However, banks often charge wider spreads to business clients, particularly for smaller transaction sizes. A high street bank might quote a margin of 1% to 3% over the interbank rate for a typical SME conversion, whereas the equivalent trade through a specialist broker might cost 0.2% to 0.5%.
+</p>
+
+<p>
+  Banks also tend to offer limited proactive advisory services to smaller clients. Your relationship manager may not be an FX specialist, and the tools for monitoring rates or managing hedges can be basic.
+</p>
+
+<h3>2. Specialist FX brokers</h3>
+
+<p>
+  FX brokers focus exclusively on currency services. They typically offer tighter spreads than banks, dedicated dealers who understand your business, and access to a broader range of instruments including forwards and options. Many UK FX brokers are authorised and regulated by the FCA, which provides a framework of conduct and capital requirements.
+</p>
+
+<p>
+  Brokers are particularly well-suited to businesses that trade currencies regularly and want a combination of competitive pricing and advisory support. The main consideration is that you need to set up a separate account and manage the settlement process, which involves sending and receiving funds separately from your main bank account.
+</p>
+
+<h3>3. Online platforms</h3>
+
+<p>
+  A growing number of fintech platforms offer FX services with real-time pricing, automated execution, and integration with accounting or ERP systems. Platforms can be effective for businesses that have high transaction volumes, well-understood exposures, and internal capability to manage FX decisions without external advisory support. Pricing is typically competitive, and the convenience of straight-through processing can save significant time.
+</p>
+
+<p>
+  Platforms are less well-suited if you need guidance on hedging strategy or want to discuss complex exposures with an experienced dealer. Most platforms focus on execution rather than advisory.
+</p>
+
+<h3>Choosing the right channel for your business</h3>
+
+<p>
+  The right approach often depends on your business's size, complexity, and internal expertise:
+</p>
+
+<ul>
+  <li><strong>Low FX volumes, simple needs:</strong> A broker or platform with competitive spot pricing may be sufficient.</li>
+  <li><strong>Regular FX flows, moderate complexity:</strong> A specialist broker with advisory capability and forward facilities is typically the best fit.</li>
+  <li><strong>High volumes, sophisticated treasury:</strong> A combination of bank facilities (for credit lines and settlement) and a platform or broker (for best execution) is common among larger businesses.</li>
+</ul>
+
+<h2>What should you look out for when choosing an FX provider?</h2>
+
+<p>
+  Not all FX providers are the same, and the differences can have a material impact on your costs and risk. Here are the key factors to evaluate:
+</p>
+
+<h3>Pricing transparency</h3>
+
+<p>
+  Can you see the interbank mid-rate alongside the rate you are being quoted? A transparent provider will show you the mid-rate and clearly state its margin. If the provider only shows you a single rate without context, you have no way of knowing whether you are getting a competitive deal. Ask for a breakdown and compare against the mid-rate on an independent source.
+</p>
+
+<h3>Regulation and safeguarding</h3>
+
+<p>
+  In the UK, any firm that provides FX services as a business must be authorised by the FCA, either as an investment firm (for forwards and options) or as a payment institution (for spot and payment services). Check that your provider appears on the FCA Register and understand which category they are authorised under.
+</p>
+
+<p>
+  Equally important is how your provider handles <strong>client money</strong>. If you send funds to your provider before settlement (for example, margin deposits on forwards), those funds should be safeguarded in segregated accounts. Ask your provider explicitly how client funds are held and what would happen to your money if the firm were to become insolvent.
+</p>
+
+<h3>Execution quality</h3>
+
+<p>
+  Execution quality refers to how closely the rate you receive matches the market rate at the time you trade. Slippage, delays, and requotes can all erode the value of a seemingly competitive headline price. Ask whether the provider uses straight-through processing and whether you can see a record of the interbank rate at the time of your trade.
+</p>
+
+<h3>Range of instruments</h3>
+
+<p>
+  If your business only needs spot conversions today, a payments-focused provider may be fine. But as your business grows and your exposures become more complex, you may need forwards, options, or structured products. It is worth choosing a provider that can grow with your needs, rather than having to change providers later.
+</p>
+
+<h3>Advisory and reporting</h3>
+
+<p>
+  Some providers offer proactive market updates, strategy discussions, and regular reviews of your hedging position. Others are purely execution-focused. If your finance team does not have deep FX expertise, advisory support can be valuable in helping you avoid common mistakes and make more informed decisions.
+</p>
+
+<p>
+  Reporting is also worth assessing. Can the provider give you clear, regular reports on your open positions, realised gains and losses, and the effectiveness of your hedging? Good reporting makes it easier to communicate FX performance to your board and auditors.
+</p>
+
+<h3>Margin and credit terms</h3>
+
+<p>
+  If you plan to use forward contracts, understand the margin requirements upfront. How much initial margin is required? Under what circumstances will you face a margin call? Can the provider offer an unsecured forward facility based on your creditworthiness? Margin requirements can tie up significant working capital, so this is an important practical consideration for growing businesses.
+</p>
+
+<p>
+  Choosing an FX provider is not a decision you need to make once and forget. Many businesses periodically review their provider arrangements to ensure they are still getting competitive pricing and appropriate service as their needs evolve.
+</p>
+
+</AcademyGuideLayout>

@@ -1,0 +1,493 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+
+const keyFacts = [
+  { text: "Cashflow hedging protects future expected revenues and costs — not items already on the balance sheet." },
+  { text: "IFRS 9 and FRS 102 (Section 12) both allow hedge accounting for qualifying cashflow hedges, reducing P&L volatility." },
+  { text: "Typical hedge ratios range from 50-80% for the first six months, declining for longer time horizons where forecasts are less certain." },
+  { text: "Rolling hedge programmes smooth out execution risk and avoid locking in a single rate for the entire budget period." },
+  { text: "Over-hedging — protecting more than the probable cashflow — is the most common and most costly mistake growing businesses make." },
+  { text: "A well-documented hedging policy is a prerequisite for hedge accounting and a strong signal to auditors and investors." },
+];
+
+const relatedPages = [
+  {
+    title: "Balance Sheet Hedging",
+    href: "/fx-academy/balance-sheet-hedging",
+    description: "Learn how to protect recognised foreign currency assets and liabilities from revaluation gains and losses.",
+  },
+  {
+    title: "Building a Hedging Programme",
+    href: "/fx-academy/hedging-programme",
+    description: "Step-by-step guide to designing, implementing, and governing an FX hedging programme.",
+  },
+  {
+    title: "Currency Management for Growing Businesses",
+    href: "/fx-academy/currency-management",
+    description: "A practical overview of how UK SMEs can manage multi-currency exposure without a full treasury team.",
+  },
+  {
+    title: "FX Markets and Instruments",
+    href: "/fx-academy/fx-markets-and-instruments",
+    description: "Understand spot, forwards, swaps, and options — and when each instrument is appropriate.",
+  },
+];
+
+const faqSchema = [
+  {
+    question: "What is cashflow hedging?",
+    answer: "Cashflow hedging is the practice of using financial instruments — typically FX forward contracts — to lock in exchange rates for future expected revenues or costs denominated in foreign currencies. It protects against adverse currency movements that would erode profit margins before those cashflows are recognised on the balance sheet.",
+  },
+  {
+    question: "When should you hedge cashflows vs balance sheet items?",
+    answer: "Hedge cashflows when you have probable future transactions in foreign currency that have not yet been invoiced — such as forecast export sales or committed purchase orders. Hedge balance sheet items when you have recognised receivables, payables, or intercompany balances already denominated in foreign currency. In practice, most growing businesses need both, but cashflow hedging typically has the greater impact on budget certainty.",
+  },
+  {
+    question: "What hedge ratios should you use for cashflow hedging?",
+    answer: "Hedge ratios should reflect the certainty of the underlying cashflow. A common layered approach for UK businesses is 70-80% for the first three months (where forecasts are most reliable), 50-60% for months four to six, and 30-40% for months seven to twelve. These ratios are then reviewed and increased as time passes and forecasts become firmer.",
+  },
+  {
+    question: "What is hedge accounting and do you need it?",
+    answer: "Hedge accounting is an optional set of rules under IFRS 9 or FRS 102 (Section 12) that allows you to match the timing of gains and losses on hedging instruments with the hedged cashflows, reducing artificial P&L volatility. You need it if your business reports under IFRS or FRS 102 and you want hedging gains and losses to flow through other comprehensive income rather than hitting the income statement immediately. It requires formal documentation, effectiveness testing, and ongoing compliance — but for many businesses the smoother earnings profile is worth the effort.",
+  },
+];
+---
+
+<AcademyGuideLayout
+  title="Mastering FX Cashflow Hedging"
+  metaDescription="A practical framework for UK businesses to protect future revenues and costs from currency risk using cashflow hedging strategies and rolling hedge programmes."
+  tldr="Cashflow hedging protects your future expected revenues and costs from adverse currency moves — unlike balance sheet hedging, which covers items already recognised in your accounts. For growing UK businesses with recurring foreign currency income or expenditure, a structured cashflow hedging programme is the single most effective way to protect profit margins and deliver budget certainty."
+  keyFacts={keyFacts}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={relatedPages}
+  advisoryCta={{
+    text: "Ready to build a cashflow hedging strategy tailored to your business? Our advisory team can help you design a programme that protects margins without tying up unnecessary capital or creating operational complexity.",
+    href: "/advisory/fx-risk-management",
+    label: "Talk to our FX advisory team",
+  }}
+  faqSchema={faqSchema}
+  readingTime="15 min read"
+  videoId="I1z-CA-RxrM"
+>
+
+  <h2>What is cashflow hedging?</h2>
+
+  <p>
+    Cashflow hedging is the practice of locking in exchange rates for future revenues or costs that your business expects to receive or pay in a foreign currency. The objective is straightforward: remove (or substantially reduce) the uncertainty about how much sterling you will actually collect from foreign sales, or how much you will pay for foreign-denominated supplies.
+  </p>
+
+  <p>
+    Consider a UK software company that invoices European customers in euros. Each month it expects to receive approximately EUR 150,000 in subscription income. At today's GBP/EUR rate of 1.18, that is worth roughly GBP 127,100. But if sterling strengthens to 1.22 over the next quarter, the same EUR 150,000 is worth only GBP 122,950 — a reduction of more than GBP 4,100 per month, or nearly GBP 50,000 annualised. For a growing business operating on 15-20% net margins, that currency move alone could wipe out a significant portion of profit.
+  </p>
+
+  <p>
+    Cashflow hedging addresses this risk by using FX forward contracts (or, less commonly, options) to fix the exchange rate at which those future euros will be converted into sterling. When the hedge is in place, the business knows in advance what its sterling income will be, regardless of where the spot rate moves in the interim.
+  </p>
+
+  <p>
+    It is important to distinguish cashflow hedging from <strong>balance sheet hedging</strong>. Balance sheet hedging protects items that have already been recognised in your accounts — for example, a EUR 200,000 trade receivable sitting on your books. Cashflow hedging, by contrast, protects flows that are expected but have not yet been invoiced or recognised. This forward-looking nature is what makes cashflow hedging so valuable for budgeting, forecasting, and margin protection — but it also introduces complexity around forecast accuracy and hedge accounting.
+  </p>
+
+  <h2>When should you hedge cashflows vs balance sheet items?</h2>
+
+  <p>
+    The distinction between cashflow and balance sheet hedging matters because the two approaches serve different purposes, use different accounting treatments, and require different governance.
+  </p>
+
+  <p>
+    <strong>Hedge cashflows when:</strong>
+  </p>
+  <ul>
+    <li>You have <strong>probable future transactions</strong> in foreign currency — forecast sales, committed purchase orders, or recurring subscription revenues that have not yet been invoiced.</li>
+    <li>You are building an annual budget and need certainty about the sterling value of foreign income or expenditure.</li>
+    <li>Your profit margins are sensitive to exchange rate moves and you want to lock in rates ahead of the budget period.</li>
+  </ul>
+
+  <p>
+    <strong>Hedge balance sheet items when:</strong>
+  </p>
+  <ul>
+    <li>You have <strong>recognised receivables or payables</strong> denominated in foreign currency — invoices already issued or received.</li>
+    <li>You carry intercompany balances in a foreign currency that create revaluation gains or losses each reporting period.</li>
+    <li>You want to neutralise the FX impact on items already sitting in your ledger.</li>
+  </ul>
+
+  <p>
+    In practice, most internationally active UK businesses need both. A useful decision framework is to think about timing: if the transaction has already occurred and is on the balance sheet, hedge it with a short-dated forward or natural offset. If the transaction is expected but has not yet occurred, it falls into the cashflow hedging bucket and should be covered by your rolling hedge programme.
+  </p>
+
+  <p>
+    For many growing businesses, cashflow hedging delivers the larger share of value. Balance sheet hedges merely prevent P&L noise from revaluations. Cashflow hedges protect actual economic value — the sterling margin you earn on future sales.
+  </p>
+
+  <h2>What cashflow exposures can you hedge?</h2>
+
+  <p>
+    Not all future foreign currency cashflows are equally suitable for hedging. The key criterion is <strong>probability</strong>: you should only hedge cashflows that are highly probable (under IFRS 9) or probable (under FRS 102). Hedging speculative or aspirational revenue targets creates the risk of over-hedging, which can generate real economic losses if the underlying cashflow does not materialise.
+  </p>
+
+  <p>
+    The most common hedgeable cashflow exposures for UK businesses include:
+  </p>
+
+  <h3>Forecast sales in foreign currency</h3>
+  <p>
+    If your business has recurring revenue streams in euros, US dollars, or other currencies — for example, monthly subscription billings, quarterly licence fees, or regular product shipments — these are typically highly probable and well-suited to hedging. The stronger and more predictable the revenue pattern, the higher the hedge ratio you can confidently apply.
+  </p>
+
+  <h3>Committed purchase orders</h3>
+  <p>
+    When you have issued or received purchase orders denominated in foreign currency, the cashflow is essentially committed. These can be hedged at ratios close to 100%, because the obligation is firm. Examples include raw material purchases from European suppliers, contracted manufacturing costs, or committed technology licence fees.
+  </p>
+
+  <h3>Contracted receivables not yet invoiced</h3>
+  <p>
+    Long-term contracts with foreign customers often specify prices in the customer's currency. The revenue is contractually agreed but invoices have not yet been raised. These sit between forecast and committed — they are highly probable and typically hedged at 70-90%.
+  </p>
+
+  <h3>Recurring operational costs</h3>
+  <p>
+    Payroll for overseas employees, office rents in foreign locations, or regular payments to foreign service providers are predictable and recurring. These costs are well-suited to a rolling hedge programme, particularly where the amounts are stable month to month.
+  </p>
+
+  <h3>Capital expenditure</h3>
+  <p>
+    Planned purchases of equipment, technology, or property in foreign currency are typically hedged once the expenditure is approved and the timing is reasonably certain. Because capex is often lumpy and material, a single unhedged purchase can create a significant budget variance.
+  </p>
+
+  <h2>How do you build a cashflow hedging programme?</h2>
+
+  <p>
+    A structured cashflow hedging programme does not need to be complicated, but it does need to be systematic. The five steps below provide a practical framework for UK businesses building or refining their approach.
+  </p>
+
+  <h3>Step 1: Forecast your foreign currency cashflows</h3>
+  <p>
+    Start with a rolling 12-month forecast of expected foreign currency receipts and payments, broken down by currency and by month. Pull this data from your sales pipeline, contracted revenue, purchase orders, and recurring cost base. Be honest about the certainty of each line — a signed contract is not the same as a sales target.
+  </p>
+
+  <h3>Step 2: Set hedge ratios by time bucket</h3>
+  <p>
+    Apply declining hedge ratios as you move further into the future. The rationale is simple: near-term cashflows are more certain, so you can hedge a higher proportion. Longer-dated forecasts carry more uncertainty, so you hedge less. A typical structure might be:
+  </p>
+  <ul>
+    <li><strong>Months 1-3:</strong> 70-80% hedged</li>
+    <li><strong>Months 4-6:</strong> 50-60% hedged</li>
+    <li><strong>Months 7-12:</strong> 30-40% hedged</li>
+  </ul>
+  <p>
+    These ratios are reviewed monthly. As month 7 becomes month 4, its hedge ratio increases from 30-40% up to 50-60%, and additional hedges are placed to bring coverage in line with the target.
+  </p>
+
+  <h3>Step 3: Choose your instruments</h3>
+  <p>
+    For most UK SMEs, <strong>FX forward contracts</strong> are the primary hedging instrument. Forwards are simple, widely available, and do not require an upfront premium. They fix the exchange rate for a specific amount on a specific future date.
+  </p>
+  <p>
+    <strong>FX options</strong> provide more flexibility — they give you the right but not the obligation to exchange at a set rate — but they come with a premium cost and are more complex to manage. Options are most useful when cashflow timing or amounts are uncertain, or when you want to participate in favourable rate moves.
+  </p>
+  <p>
+    <strong>Window forwards</strong> (also known as time-option forwards) offer a middle ground: they fix the rate but allow you to draw down the currency at any point within a defined window, which is useful when the exact settlement date is uncertain.
+  </p>
+
+  <h3>Step 4: Execute the hedges</h3>
+  <p>
+    Execution should follow your hedging policy rather than a market view. The whole point of a systematic programme is to remove the temptation to time the market. Most businesses execute hedges on a fixed schedule — for example, on the first business day of each month, they place forwards for the newly added month at the far end of the rolling programme and top up any under-hedged near-term buckets.
+  </p>
+
+  <h3>Step 5: Monitor, report, and adjust</h3>
+  <p>
+    Each month, compare your hedge portfolio against the updated cashflow forecast. Check that hedge ratios are within policy bands. Identify any cashflows that are no longer expected (requiring you to close or restructure the corresponding hedge) and any new exposures that need to be added. Report the results — including the effective hedged rate versus the budget rate — to management.
+  </p>
+
+  <h2>What hedge ratios should you use?</h2>
+
+  <p>
+    Hedge ratios are the most important parameter in your cashflow hedging programme. Set them too high and you risk over-hedging if cashflows fall short of forecast. Set them too low and you leave too much margin exposed to currency moves.
+  </p>
+
+  <p>
+    The <strong>layered approach</strong> described above is the industry standard for good reason: it balances protection against forecast uncertainty. Here is a more detailed breakdown of how ratios typically evolve:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Time horizon</th>
+        <th>Forecast confidence</th>
+        <th>Suggested hedge ratio</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0-3 months</td>
+        <td>High (contracted or near-certain)</td>
+        <td>70-80%</td>
+        <td>Strong forecast visibility; most revenue is committed or invoiced</td>
+      </tr>
+      <tr>
+        <td>3-6 months</td>
+        <td>Medium-high</td>
+        <td>50-60%</td>
+        <td>Pipeline is solid but some deals may slip or cancel</td>
+      </tr>
+      <tr>
+        <td>6-9 months</td>
+        <td>Medium</td>
+        <td>30-40%</td>
+        <td>Forecasts are directionally reliable but less precise</td>
+      </tr>
+      <tr>
+        <td>9-12 months</td>
+        <td>Lower</td>
+        <td>20-30%</td>
+        <td>Establishes a base layer; topped up as forecast firms</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The critical principle is that <strong>hedge ratios should never exceed forecast confidence</strong>. If your sales forecast for months 10-12 is based on pipeline estimates with a 60% conversion rate, hedging 80% of that forecast would mean you are effectively hedging speculative revenue. If the sales do not materialise, you are left holding forward contracts with no offsetting cashflow — and any mark-to-market loss on those contracts is a real economic cost.
+  </p>
+
+  <p>
+    Some businesses also apply different ratios to different currencies based on volatility. A GBP/EUR hedge programme might use slightly higher ratios (the pair is relatively stable), while a GBP/USD programme might use slightly lower ratios to reflect greater volatility and forecast uncertainty.
+  </p>
+
+  <h2>What is hedge accounting and do you need it?</h2>
+
+  <p>
+    Hedge accounting is an optional set of rules that allows you to align the timing of gains and losses on your hedging instruments with the underlying hedged cashflows. Without hedge accounting, gains and losses on forward contracts flow straight through the income statement as they arise — even if the underlying exposure has not yet hit the P&L. This creates artificial volatility in reported earnings that does not reflect the economic reality of your hedging programme.
+  </p>
+
+  <h3>How it works under IFRS 9 and FRS 102</h3>
+  <p>
+    Under both IFRS 9 and FRS 102 (Section 12), cashflow hedge accounting allows you to recognise the effective portion of gains and losses on hedging instruments in <strong>other comprehensive income (OCI)</strong> rather than profit or loss. The amounts accumulated in OCI are reclassified to the income statement when the hedged cashflow affects profit or loss — for example, when the forecast sale is invoiced and recognised as revenue.
+  </p>
+  <p>
+    The result is that the revenue appears in the P&L at (or close to) the hedged rate, which is exactly the outcome your hedging programme was designed to achieve.
+  </p>
+
+  <h3>Requirements for qualification</h3>
+  <p>
+    To apply cashflow hedge accounting, you must satisfy several conditions:
+  </p>
+  <ol>
+    <li><strong>Formal designation and documentation</strong> at inception — you must document the hedging relationship, the risk management objective, the hedged item, the hedging instrument, and how you will assess effectiveness.</li>
+    <li><strong>The hedged cashflow must be highly probable</strong> — not merely possible or expected, but highly probable. This is a higher bar under IFRS 9 than many businesses realise.</li>
+    <li><strong>Effectiveness testing</strong> — you must demonstrate, both prospectively and retrospectively, that the hedge is expected to be (and has been) highly effective at offsetting changes in the hedged cashflow. Under IFRS 9, there is no bright-line 80-125% quantitative threshold (as there was under IAS 39), but you must show an economic relationship between the hedging instrument and the hedged item.</li>
+    <li><strong>Ongoing compliance</strong> — hedge accounting is not a one-off exercise. You must test effectiveness at each reporting date and maintain documentation throughout the life of the hedge.</li>
+  </ol>
+
+  <h3>When is it worth the effort?</h3>
+  <p>
+    Hedge accounting is most valuable when:
+  </p>
+  <ul>
+    <li>Your business reports under IFRS or FRS 102 and investors or lenders scrutinise P&L volatility.</li>
+    <li>You have material hedging programmes that would otherwise create large, unpredictable swings in reported profit.</li>
+    <li>You are preparing for an audit, fundraise, or exit where clean, explainable financials matter.</li>
+  </ul>
+  <p>
+    For very small hedging programmes or businesses reporting under FRS 105 (the micro-entity regime), the compliance burden may outweigh the benefit. In those cases, you can still hedge economically — you just accept that gains and losses on forwards will flow through the P&L as they arise.
+  </p>
+  <p>
+    If you are unsure, discuss the question with your auditor before implementing hedge accounting. Getting it wrong — or failing to maintain the required documentation — can result in an enforced discontinuation of hedge accounting, which is both disruptive and costly.
+  </p>
+
+  <h2>What are common cashflow hedging mistakes?</h2>
+
+  <p>
+    Having worked with hundreds of UK businesses on their FX risk management, we consistently see the same errors. Most are avoidable with a clear policy and disciplined execution.
+  </p>
+
+  <h3>Over-hedging</h3>
+  <p>
+    The most costly mistake. Over-hedging occurs when you lock in forward contracts for a greater amount than the cashflow that ultimately materialises. If you hedge EUR 200,000 per month of forecast revenue but only receive EUR 140,000, you are left with EUR 60,000 of forward contracts that must be settled or closed — potentially at a loss. The root cause is usually overconfident forecasting or a failure to reduce hedges when the sales pipeline weakens.
+  </p>
+
+  <h3>Hedging uncertain or speculative cashflows</h3>
+  <p>
+    Closely related to over-hedging, this occurs when businesses hedge revenues that are aspirational rather than probable. A new market entry, an unsigned contract, or a product launch with unknown demand should not be hedged at the same ratios as established, recurring revenue. Use lower ratios (or no hedge at all) until the cashflow is more certain.
+  </p>
+
+  <h3>Ignoring basis risk</h3>
+  <p>
+    Basis risk arises when there is a mismatch between the hedging instrument and the hedged exposure — for example, hedging with a standard monthly forward when your actual cashflows arrive unevenly within the month, or hedging USD exposure when your real exposure is to a currency that is pegged to but not identical to the dollar. Basis risk does not eliminate the benefit of hedging, but it does reduce effectiveness and can cause unexpected P&L impacts.
+  </p>
+
+  <h3>Failing to review and adjust</h3>
+  <p>
+    A hedging programme is not a set-and-forget exercise. Businesses that put hedges in place at the start of the year and never revisit them are storing up risk. Cashflow forecasts change. Sales targets are revised. Suppliers renegotiate terms. Your hedge portfolio must be reviewed at least monthly against the latest forecast, and adjustments made where coverage has drifted outside policy bands.
+  </p>
+
+  <h3>Trying to time the market</h3>
+  <p>
+    Some finance teams delay hedging because they believe the rate will improve, or they accelerate hedging because they fear it will worsen. This is speculation, not risk management. A systematic programme that executes on a fixed schedule — regardless of where the rate is today — will deliver a better average outcome over time than any attempt to forecast short-term currency moves.
+  </p>
+
+  <h3>Lack of documentation</h3>
+  <p>
+    Even if you are not applying hedge accounting, your hedging programme should be governed by a written policy that sets out objectives, approved instruments, hedge ratio bands, execution procedures, and reporting requirements. Without this, hedging decisions become ad hoc and difficult to explain to auditors, board members, or investors.
+  </p>
+
+  <div class="worked-example">
+    <h3>Worked example: 12-month rolling hedge programme</h3>
+
+    <p>
+      <strong>Scenario:</strong> A UK manufacturer sells industrial components to customers across the eurozone. It invoices in euros and receives approximately EUR 200,000 per month. The finance director wants to build a 12-month rolling cashflow hedge programme to protect the sterling value of these receipts.
+    </p>
+
+    <p>
+      <strong>Assumptions:</strong> The current GBP/EUR spot rate is 1.1800. Forward points are modest (approximately -0.0015 per quarter). The business uses a layered hedge ratio structure and executes via FX forward contracts.
+    </p>
+
+    <p>
+      The table below shows the programme as it would look when first established in January 2025, before any monthly roll has occurred:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Forecast exposure (EUR)</th>
+          <th>Hedge ratio</th>
+          <th>Hedged amount (EUR)</th>
+          <th>Forward rate (GBP/EUR)</th>
+          <th>Sterling locked (GBP)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Feb 2025</td>
+          <td>200,000</td>
+          <td>80%</td>
+          <td>160,000</td>
+          <td>1.1795</td>
+          <td>135,651</td>
+        </tr>
+        <tr>
+          <td>Mar 2025</td>
+          <td>200,000</td>
+          <td>80%</td>
+          <td>160,000</td>
+          <td>1.1790</td>
+          <td>135,709</td>
+        </tr>
+        <tr>
+          <td>Apr 2025</td>
+          <td>200,000</td>
+          <td>75%</td>
+          <td>150,000</td>
+          <td>1.1785</td>
+          <td>127,277</td>
+        </tr>
+        <tr>
+          <td>May 2025</td>
+          <td>200,000</td>
+          <td>60%</td>
+          <td>120,000</td>
+          <td>1.1780</td>
+          <td>101,867</td>
+        </tr>
+        <tr>
+          <td>Jun 2025</td>
+          <td>200,000</td>
+          <td>60%</td>
+          <td>120,000</td>
+          <td>1.1775</td>
+          <td>101,910</td>
+        </tr>
+        <tr>
+          <td>Jul 2025</td>
+          <td>200,000</td>
+          <td>55%</td>
+          <td>110,000</td>
+          <td>1.1770</td>
+          <td>93,458</td>
+        </tr>
+        <tr>
+          <td>Aug 2025</td>
+          <td>200,000</td>
+          <td>40%</td>
+          <td>80,000</td>
+          <td>1.1760</td>
+          <td>68,027</td>
+        </tr>
+        <tr>
+          <td>Sep 2025</td>
+          <td>200,000</td>
+          <td>40%</td>
+          <td>80,000</td>
+          <td>1.1750</td>
+          <td>68,085</td>
+        </tr>
+        <tr>
+          <td>Oct 2025</td>
+          <td>200,000</td>
+          <td>35%</td>
+          <td>70,000</td>
+          <td>1.1740</td>
+          <td>59,625</td>
+        </tr>
+        <tr>
+          <td>Nov 2025</td>
+          <td>200,000</td>
+          <td>30%</td>
+          <td>60,000</td>
+          <td>1.1730</td>
+          <td>51,151</td>
+        </tr>
+        <tr>
+          <td>Dec 2025</td>
+          <td>200,000</td>
+          <td>25%</td>
+          <td>50,000</td>
+          <td>1.1720</td>
+          <td>42,662</td>
+        </tr>
+        <tr>
+          <td>Jan 2026</td>
+          <td>200,000</td>
+          <td>20%</td>
+          <td>40,000</td>
+          <td>1.1710</td>
+          <td>34,159</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <strong>Total forecast exposure:</strong> EUR 2,400,000 over 12 months.<br />
+      <strong>Total hedged:</strong> EUR 1,200,000 (50% blended average ratio).<br />
+      <strong>Blended hedged rate:</strong> approximately 1.1765 GBP/EUR.<br />
+      <strong>Total sterling locked in:</strong> approximately GBP 1,019,381 on the hedged portion.
+    </p>
+
+    <p>
+      <strong>How the rolling programme works month to month:</strong> Each month, the nearest forward matures and is settled against the actual euro receipts. At the same time, the hedge ratios for remaining months are reviewed and increased where the forecast has firmed up. A new month is added at the far end of the programme (now month 12 again), hedged at the base ratio of 20-25%. This rolling mechanism means the business is continuously adding layers of protection, achieving a smoothed average rate rather than a single point-in-time rate.
+    </p>
+
+    <p>
+      If GBP/EUR moves to 1.22 by mid-year, the hedged portion of revenue is still converted at approximately 1.1765 — protecting roughly GBP 22,000 of margin on the hedged EUR 1,200,000 compared to the unhedged outcome. The unhedged 50% is converted at prevailing spot rates, providing some participation in any favourable sterling weakness.
+    </p>
+  </div>
+
+  <h2>Putting it all together</h2>
+
+  <p>
+    A well-designed cashflow hedging programme gives your business three things: <strong>budget certainty</strong> (you know what your sterling revenues and costs will be), <strong>margin protection</strong> (adverse currency moves do not erode profit), and <strong>operational simplicity</strong> (a systematic process replaces ad hoc decision-making).
+  </p>
+
+  <p>
+    The building blocks are not complicated. You need a reliable cashflow forecast, a set of hedge ratios that reflect your confidence in that forecast, a disciplined execution schedule, and a monthly review process. If your business reports under IFRS or FRS 102 and wants to smooth P&L volatility, add hedge accounting — but only with proper documentation and audit support.
+  </p>
+
+  <p>
+    The most important step is the first one: map your foreign currency cashflows, quantify the exposure, and decide how much risk you are willing to accept. Everything else follows from that analysis.
+  </p>
+
+</AcademyGuideLayout>

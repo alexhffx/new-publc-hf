@@ -1,0 +1,420 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+---
+
+<AcademyGuideLayout
+  title="How to Construct a Hedging Programme"
+  metaDescription="A practical 10-step guide to building an FX hedging programme for growing UK businesses. From exposure mapping to policy drafting and execution."
+  tldr="A hedging programme is a structured, board-approved framework that systematically protects your business from currency volatility. Growing UK businesses that trade internationally need one because ad-hoc spot conversions leave margins exposed to unpredictable FX swings, and investors and auditors increasingly expect disciplined currency risk management."
+  keyFacts={[
+    { text: "A hedging programme should be documented in a board-approved FX policy with clear governance and delegated authority." },
+    { text: "Typical implementation from exposure mapping to first trade execution takes 4-8 weeks for a mid-market business." },
+    { text: "Hedge ratios should be graduated by time horizon, with higher coverage for near-term exposures and lower coverage further out." },
+    { text: "The programme should connect to your accounting system for live exposure data rather than relying on manual spreadsheets." },
+    { text: "UK businesses hedging with FCA-regulated counterparties benefit from FSCS protection and conduct-of-business safeguards." },
+    { text: "Even a simple forward-only programme can reduce FX-driven earnings volatility by 60-80% in the first year." },
+  ]}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={[
+    { title: "Cashflow Hedging Explained", href: "/fx-academy/cashflow-hedging", description: "How to protect future revenue and cost streams from currency movements using forward contracts and options." },
+    { title: "Balance Sheet Hedging", href: "/fx-academy/balance-sheet-hedging", description: "Techniques for neutralising FX gains and losses on foreign-currency receivables, payables, and intercompany balances." },
+    { title: "Currency Management for Growing Businesses", href: "/fx-academy/currency-management", description: "A practical overview of how scaling companies should think about managing multi-currency operations." },
+    { title: "FX Markets and Instruments", href: "/fx-academy/fx-markets-and-instruments", description: "A primer on how the foreign exchange market works and the instruments available to corporate hedgers." },
+  ]}
+  advisoryCta={{
+    text: "Building a hedging programme from scratch can feel daunting. Our advisory team has helped dozens of growing UK businesses design and implement their first FX programmes, drawing on decades of institutional experience.",
+    href: "/advisory/fx-risk-management",
+    label: "Get expert help with your hedging programme",
+  }}
+  faqSchema={[
+    {
+      question: "How long does it take to set up an FX hedging programme?",
+      answer: "For a typical mid-market UK business, expect 4-8 weeks from initial exposure mapping to executing your first hedges. The timeline depends on the complexity of your currency exposures, whether you already have banking relationships that support FX trading, and how quickly your board can approve the hedging policy. Simpler programmes with a single currency pair can be operational within 2-3 weeks.",
+    },
+    {
+      question: "Do I need a hedging programme if I only have one foreign currency?",
+      answer: "Yes, even single-currency exposure warrants a structured approach. A formal programme ensures consistent execution, prevents ad-hoc decision-making driven by market views, and gives your board and investors confidence that currency risk is being managed professionally. The programme can be simpler, but the discipline of documented policy and systematic hedging still delivers significant value.",
+    },
+    {
+      question: "What hedge ratio should a growing UK business use?",
+      answer: "Most growing businesses use graduated hedge ratios that decrease with time. A common starting framework is 75-90% for the next 3 months, 50-75% for months 4-6, and 25-50% for months 7-12. The exact ratios depend on your forecast confidence, margin sensitivity, and risk appetite. Businesses with very high forecast accuracy can hedge more aggressively further out.",
+    },
+    {
+      question: "How much does an FX hedging programme cost to run?",
+      answer: "The direct costs are the bid-offer spreads on your hedging instruments, typically 5-20 basis points per trade for forwards depending on your counterparty and volumes. There is no upfront premium for forward contracts. Options carry an additional premium, usually 1-3% of the notional amount. The indirect costs include staff time for monitoring and reporting, which platforms like HedgeFlows can significantly reduce through automation.",
+    },
+  ]}
+  readingTime="16 min read"
+  videoId="xXEe8Cf1cNU"
+>
+
+  <p>
+    For growing UK businesses that sell or buy internationally, currency movements can quietly erode months of hard-won margin. A 5% swing in GBP/USD, which can happen in a matter of weeks, wipes out the equivalent profit on a contract you thought was locked in. Yet many finance teams still convert currencies reactively, trading spot on the day an invoice is due and hoping for the best.
+  </p>
+  <p>
+    A hedging programme replaces hope with structure. It gives you a repeatable, board-approved process for identifying currency exposures, deciding how much to hedge, choosing the right instruments, and executing trades in a disciplined way. This guide walks you through the ten steps to build one from the ground up, with practical guidance tailored to UK businesses at the scale-up and mid-market stage.
+  </p>
+
+  <h2>Step 1: Map your FX exposures</h2>
+  <p>
+    Before you can hedge anything, you need a clear picture of where currency risk enters your business. Most companies underestimate the breadth of their exposures because they focus only on the obvious ones, such as overseas sales revenue, while overlooking less visible sources.
+  </p>
+  <p>
+    Start by cataloguing every line item in your P&L and balance sheet that is denominated in, or linked to, a foreign currency. Common sources include:
+  </p>
+  <ul>
+    <li><strong>Revenue:</strong> Sales invoiced in foreign currencies, recurring subscription revenue in USD or EUR, royalties, and licensing fees.</li>
+    <li><strong>Cost of goods sold:</strong> Supplier payments in foreign currencies, manufacturing costs at overseas facilities, raw materials priced in USD.</li>
+    <li><strong>Operating expenses:</strong> SaaS tools priced in USD, overseas payroll, travel, and marketing spend in local currencies.</li>
+    <li><strong>Balance sheet items:</strong> Foreign-currency receivables, payables, intercompany loans, and cash balances held in non-GBP accounts.</li>
+    <li><strong>Committed vs forecast:</strong> Distinguish between firm commitments (signed contracts, purchase orders) and forecast exposures (pipeline revenue, budget estimates). This distinction matters for hedge accounting and for setting appropriate hedge ratios.</li>
+  </ul>
+  <p>
+    The output of this step should be a currency exposure map: a simple matrix showing each currency, the type of exposure, the approximate annual volume, and the timing profile (when cash flows are expected). Pull this data from your accounting system, CRM pipeline, and procurement records. If you are running Xero, QuickBooks, or NetSuite, much of this can be extracted directly.
+  </p>
+
+  <h2>Step 2: Quantify the financial impact</h2>
+  <p>
+    Knowing that you have USD exposure is not enough. You need to understand what happens to your margins and earnings when exchange rates move. This is where sensitivity analysis comes in.
+  </p>
+  <p>
+    Take your exposure map and model the impact of realistic currency movements. For GBP/USD, a 5% move is entirely normal within a single quarter, and 10% moves have occurred several times in the past decade. For a business with $5 million in annual USD revenue, a 5% adverse move in GBP/USD translates to roughly 190,000 pounds of lost revenue when converted back to sterling. For a company operating on 20% net margins, that is nearly a fifth of your annual profit.
+  </p>
+  <p>
+    Run this analysis for each currency pair and each exposure type. Present the results in a simple table that your board and investors can understand: "If GBP strengthens by X%, our annual revenue decreases by Y pounds and our net margin drops from Z% to W%." This quantification is what converts FX risk from an abstract concern into a tangible business issue that demands a structured response.
+  </p>
+  <p>
+    Also consider the cumulative effect. If you have USD revenue and EUR costs, a scenario where sterling weakens against the euro while strengthening against the dollar can create a double hit. Correlation between your currency exposures matters.
+  </p>
+
+  <h2>Step 3: Define your risk appetite</h2>
+  <p>
+    With the financial impact quantified, the next question is: how much volatility is your business willing to accept? This is fundamentally a board-level decision, not a treasury one.
+  </p>
+  <p>
+    Risk appetite for FX should be expressed in concrete terms that tie back to your business objectives. Useful frameworks include:
+  </p>
+  <ul>
+    <li><strong>Maximum acceptable P&L impact:</strong> "We will not allow FX movements to reduce our gross margin by more than 2 percentage points in any quarter." For a business with 40% gross margin, this means tolerating FX swings that move margin between 38% and 42%, but hedging to prevent anything worse.</li>
+    <li><strong>Budget rate protection:</strong> "We will hedge to protect the exchange rate assumed in our annual budget within a tolerance of plus or minus 1%." This is common for businesses that set pricing based on a budget rate and need to deliver the margins they have forecast to investors.</li>
+    <li><strong>Earnings volatility ceiling:</strong> "FX-driven variance in EBITDA should not exceed 100,000 pounds per quarter." This puts a hard number on the acceptable range.</li>
+  </ul>
+  <p>
+    The risk appetite statement should be documented, approved by the board, and reviewed annually. It is the foundation that everything else in the programme is built on. Without it, hedging decisions become subjective and inconsistent.
+  </p>
+
+  <h2>Step 4: Choose your hedging instruments</h2>
+  <p>
+    For most growing UK businesses, the instrument toolkit is simpler than you might expect. You do not need exotic derivatives. The workhorses of corporate hedging are:
+  </p>
+  <ul>
+    <li><strong>Forward contracts:</strong> The most widely used instrument. A forward locks in an exchange rate for a specific amount on a specific future date. There is no upfront premium; the cost is embedded in the forward rate, which differs from spot by the interest rate differential between the two currencies. Forwards are simple, predictable, and sufficient for most hedging needs.</li>
+    <li><strong>FX options:</strong> An option gives you the right, but not the obligation, to exchange at a specified rate. You pay an upfront premium (typically 1-3% of the notional) but retain the ability to benefit if the market moves in your favour. Options are useful when you have uncertain exposures, such as pipeline revenue that may not materialise, or when your board wants downside protection without giving up all upside.</li>
+    <li><strong>Natural hedging:</strong> Before reaching for financial instruments, look for operational ways to reduce exposure. Invoicing overseas customers in GBP, matching foreign-currency revenues with foreign-currency costs, or holding operating cash in the currencies you spend it in can all reduce the net exposure you need to hedge with derivatives.</li>
+    <li><strong>Window forwards and flexible forwards:</strong> Variants that allow you to draw down the contracted amount over a window of dates rather than a single date. Useful when you know the monthly volume but not the exact payment dates.</li>
+  </ul>
+  <p>
+    For most mid-market UK businesses starting their first hedging programme, a forward-only approach is the right starting point. It is straightforward to execute, easy to account for, and delivers the majority of the risk reduction benefit. You can layer in options later as the programme matures and your team gains confidence.
+  </p>
+
+  <h2>Step 5: Set your hedge ratios</h2>
+  <p>
+    The hedge ratio is the percentage of each exposure that you hedge. Setting it correctly is one of the most important decisions in the programme, and the answer should not be "100% of everything."
+  </p>
+  <p>
+    The guiding principle is that hedge ratios should decrease as the time horizon extends. This reflects two realities: your forecast accuracy declines further out, and you want to avoid over-hedging exposures that may not materialise.
+  </p>
+  <p>
+    A typical graduated framework for a growing UK business looks like this:
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Time bucket</th>
+        <th>Exposure type</th>
+        <th>Suggested hedge ratio</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0-3 months</td>
+        <td>Committed + high-confidence forecast</td>
+        <td>75-90%</td>
+        <td>Near-term cash flows are highly predictable. Protect the budget rate.</td>
+      </tr>
+      <tr>
+        <td>3-6 months</td>
+        <td>Committed + moderate-confidence forecast</td>
+        <td>50-75%</td>
+        <td>Good visibility but some uncertainty in timing and amounts.</td>
+      </tr>
+      <tr>
+        <td>6-12 months</td>
+        <td>Forecast only</td>
+        <td>25-50%</td>
+        <td>Lower confidence in volumes. Hedge enough to dampen volatility, not eliminate it.</td>
+      </tr>
+      <tr>
+        <td>12+ months</td>
+        <td>Strategic / budget planning</td>
+        <td>0-25%</td>
+        <td>Only hedge if there are firm commitments or the business is highly rate-sensitive.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    These are starting points. A SaaS business with highly recurring revenue and 95%+ renewal rates can justify higher ratios further out. A project-based business with lumpy, uncertain cash flows should be more conservative. The key is to document the rationale and review the ratios quarterly as forecast accuracy data accumulates.
+  </p>
+
+  <h2>Step 6: Draft your hedging policy</h2>
+  <p>
+    The hedging policy is the written document that codifies your programme. It transforms what might otherwise be informal practices into a governed, auditable framework. This is not bureaucracy for its own sake; investors, auditors, and lenders increasingly expect to see a formal policy, and it protects the business from ad-hoc decision-making.
+  </p>
+  <p>
+    A good hedging policy for a mid-market UK business should include:
+  </p>
+  <ul>
+    <li><strong>Objectives:</strong> What the programme is designed to achieve (e.g., protect budget rates, reduce earnings volatility, ensure covenant compliance).</li>
+    <li><strong>Scope:</strong> Which currencies, exposure types, and entities are covered.</li>
+    <li><strong>Risk appetite statement:</strong> The board-approved thresholds from Step 3.</li>
+    <li><strong>Permitted instruments:</strong> Which derivatives the business is authorised to use, and any that are explicitly prohibited.</li>
+    <li><strong>Hedge ratio guidelines:</strong> The graduated ratios from Step 5, with the criteria for adjusting them.</li>
+    <li><strong>Delegated authority:</strong> Who is authorised to approve and execute hedges, and up to what size. Typical structures give the CFO authority for routine hedges within policy, with board approval required for exceptions or large single trades.</li>
+    <li><strong>Execution guidelines:</strong> Approved counterparties, maximum exposure to any single counterparty, and requirements for competitive pricing (e.g., minimum two quotes for trades above a threshold).</li>
+    <li><strong>Reporting requirements:</strong> What information the board receives, how frequently, and the key metrics to track.</li>
+    <li><strong>Review cycle:</strong> How often the policy itself is reviewed and updated (annually at minimum).</li>
+    <li><strong>Accounting treatment:</strong> Whether the business intends to apply hedge accounting under IFRS 9 or FRS 102, and the documentation requirements to qualify.</li>
+  </ul>
+  <p>
+    Keep the document practical, typically 5-10 pages. It should be approved by the board and stored where the finance team and auditors can easily access it. Think of it as the constitution of your hedging programme: it sets the boundaries within which day-to-day decisions are made.
+  </p>
+
+  <h2>Step 7: Select your execution counterparties</h2>
+  <p>
+    Where you execute your hedges matters more than many businesses realise. The choice of counterparty affects your pricing, the service you receive, the credit terms available, and the regulatory protections you benefit from.
+  </p>
+  <p>
+    UK businesses typically have three categories of counterparty to consider:
+  </p>
+  <ul>
+    <li><strong>Your existing bank:</strong> Convenient but often expensive. Most high-street banks price FX for mid-market clients with wide spreads, sometimes 50-100 basis points above the interbank rate. The advantage is simplicity: no new account setup and integrated payment flows.</li>
+    <li><strong>Specialist FX brokers:</strong> Companies like HedgeFlows that focus specifically on corporate FX. Pricing is typically 60-80% cheaper than the major banks for similar trade sizes. Look for FCA authorisation (check the FCA Register), segregated client accounts, and a track record with businesses of your size.</li>
+    <li><strong>Multi-dealer platforms:</strong> For larger businesses executing significant volumes, platforms that aggregate quotes from multiple banks can drive competitive pricing. These generally make economic sense once you are trading more than 20-30 million pounds equivalent per year.</li>
+  </ul>
+  <p>
+    Whichever route you choose, ensure your counterparty is authorised and regulated by the FCA. This is non-negotiable for UK businesses. FCA regulation means your counterparty must meet capital adequacy requirements, segregate client funds, and comply with conduct-of-business rules. Check Firm Reference Numbers on the FCA Register before opening any account.
+  </p>
+  <p>
+    Consider diversifying across two counterparties to avoid concentration risk and to maintain competitive tension on pricing. Your hedging policy should specify the maximum percentage of total hedging volume that can be placed with any single counterparty.
+  </p>
+
+  <h2>Step 8: Implement and execute</h2>
+  <p>
+    With your policy approved and counterparties selected, it is time to execute. The first round of hedging is often the most nerve-wracking, but a structured approach removes much of the anxiety.
+  </p>
+  <p>
+    Practical steps for your first execution cycle:
+  </p>
+  <ol>
+    <li><strong>Set your budget rate:</strong> Confirm the exchange rate assumed in your current budget or forecast. This is your benchmark.</li>
+    <li><strong>Calculate hedge amounts:</strong> Apply your hedge ratios to your exposure map. For each time bucket and currency pair, calculate the notional amount to hedge.</li>
+    <li><strong>Phase the execution:</strong> Do not hedge everything in a single trade. Spread execution over several days or weeks to avoid concentrating all your hedges at one exchange rate. A common approach is to execute in three to four tranches over a two-week window.</li>
+    <li><strong>Execute and confirm:</strong> Place the trades, receive confirmations, and record the details (trade date, value date, rate, notional amount, counterparty) in your hedging register.</li>
+    <li><strong>Set up settlement flows:</strong> Ensure that the forward contracts settle into the correct bank accounts and that your payments team knows when deliveries are expected. Mismatched settlement dates are a common operational headache in the early weeks.</li>
+  </ol>
+  <p>
+    On an ongoing basis, the execution cycle typically runs monthly. At the start of each month, you roll the hedge programme forward: the nearest time bucket has matured and been delivered, so you add new hedges at the far end of the horizon to maintain your target ratios. This rolling approach keeps the programme current and avoids cliff-edge maturities.
+  </p>
+
+  <h2>Step 9: Set up monitoring and reporting</h2>
+  <p>
+    A hedging programme that runs on autopilot without monitoring will eventually drift off course. Regular reporting serves three purposes: it confirms the programme is performing as intended, it provides the board with visibility, and it creates the documentation trail needed for audit and hedge accounting compliance.
+  </p>
+  <p>
+    Key reports and metrics to track:
+  </p>
+  <ul>
+    <li><strong>Mark-to-market (MTM) report:</strong> The current unrealised gain or loss on all open hedges. This should be produced at least monthly, ideally in real time through your platform. MTM is not a measure of programme success (hedges are expected to fluctuate), but the board needs to understand the current position.</li>
+    <li><strong>Hedge coverage report:</strong> A summary showing actual hedge ratios versus policy targets for each time bucket and currency pair. Flags any under-hedged or over-hedged positions.</li>
+    <li><strong>Effective rate report:</strong> The blended exchange rate you are achieving across all hedges and spot conversions, compared to the budget rate. This is the single most important metric for assessing programme value. If your effective rate is consistently close to the budget rate, the programme is doing its job.</li>
+    <li><strong>Maturity profile:</strong> A calendar view of when hedges mature and need to be delivered or rolled. Essential for cash flow planning.</li>
+    <li><strong>Counterparty exposure:</strong> The total MTM exposure to each counterparty, ensuring it stays within policy limits.</li>
+  </ul>
+  <p>
+    For board reporting, a one-page monthly summary covering the effective rate, hedge coverage, MTM position, and any policy exceptions is usually sufficient. Avoid overwhelming non-specialist directors with excessive detail. The narrative should be: "Here is the rate we are achieving, here is how it compares to budget, and here are any actions or decisions needed."
+  </p>
+  <p>
+    Platforms like HedgeFlows generate these reports automatically by connecting to your accounting system, eliminating the manual spreadsheet work that consumes hours each month in many finance teams.
+  </p>
+
+  <h2>Step 10: Review and refine</h2>
+  <p>
+    A hedging programme is never truly finished. Markets evolve, your business grows, and your exposure profile changes. Building a regular review cadence into the programme ensures it stays aligned with reality.
+  </p>
+  <p>
+    Conduct a formal review at least quarterly, covering:
+  </p>
+  <ul>
+    <li><strong>Forecast accuracy:</strong> How did actual cash flows compare to the forecasts used for hedging? If you are consistently over- or under-forecasting, adjust your hedge ratios accordingly.</li>
+    <li><strong>Programme performance:</strong> What effective rate did you achieve versus budget? What would have happened without hedging? This counterfactual analysis helps quantify the programme's value.</li>
+    <li><strong>Business changes:</strong> Has the business entered new markets, launched new products, or changed pricing currencies? Update the exposure map to reflect any structural changes.</li>
+    <li><strong>Policy adequacy:</strong> Are the hedge ratio guidelines still appropriate? Does the risk appetite statement still reflect the board's current position? Update as needed.</li>
+    <li><strong>Counterparty review:</strong> Are you getting competitive pricing? Has the service quality been acceptable? Consider running a periodic pricing comparison.</li>
+    <li><strong>Instrument review:</strong> Now that the programme is running, are there instruments (such as options for uncertain exposures) that could improve the risk-return profile?</li>
+  </ul>
+  <p>
+    The annual review should be more comprehensive, involving the board and potentially your external auditors. It is an opportunity to recalibrate the entire programme based on a full year of data and any strategic changes in the business.
+  </p>
+  <p>
+    Continuous improvement is the hallmark of a mature programme. The businesses that manage FX most effectively are those that treat their hedging programme as a living system, not a set-and-forget exercise.
+  </p>
+
+  <div class="worked-example">
+    <h3>Worked example: CloudMetrics Ltd builds its first hedging programme</h3>
+    <p>
+      CloudMetrics is a UK-based B2B SaaS company headquartered in London. The business has grown rapidly over the past three years and now generates approximately $5 million in annual recurring revenue from US customers, invoiced and collected in USD. Operating costs are predominantly in GBP, with some EUR spend on cloud infrastructure (around 300,000 euros annually). The company is backed by venture capital investors and is preparing for a Series B round.
+    </p>
+    <p>
+      <strong>Step 1 -- Exposure mapping:</strong> The finance team identifies $5m annual USD revenue (collected monthly, approximately $417k per month), EUR 300k in annual cloud costs (paid quarterly, EUR 75k per quarter), and roughly $200k in outstanding USD receivables at any given time. GBP/USD is the primary risk; EUR/GBP is secondary.
+    </p>
+    <p>
+      <strong>Step 2 -- Impact analysis:</strong> At a GBP/USD rate of 1.27, the $5m revenue converts to approximately GBP 3.94m. If sterling strengthens by 5% to 1.33, the same revenue converts to GBP 3.76m, a loss of GBP 180,000. On a 15% net margin, this wipes out nearly a quarter of annual profit. The board recognises this as a material risk, particularly ahead of investor due diligence.
+    </p>
+    <p>
+      <strong>Step 3 -- Risk appetite:</strong> The board agrees that FX movements should not cause more than a 2 percentage point swing in gross margin in any quarter. They also want to protect the GBP/USD rate assumed in the annual budget (1.27) within a plus or minus 2% band.
+    </p>
+    <p>
+      <strong>Step 4 -- Instruments:</strong> The team decides on forward contracts only for the initial programme. The recurring nature of the USD revenue makes forwards straightforward. Natural hedging is limited because nearly all costs are in GBP. Options are deferred for future consideration.
+    </p>
+    <p>
+      <strong>Step 5 -- Hedge ratios:</strong> Given the high predictability of SaaS subscription revenue (95% renewal rate), CloudMetrics adopts slightly more aggressive ratios than the typical framework: 85% for months 1-3, 70% for months 4-6, 40% for months 7-12.
+    </p>
+    <p>
+      <strong>Step 6 -- Policy:</strong> The CFO drafts a four-page hedging policy. The board approves it at the next meeting, granting the CFO delegated authority for forward trades up to $500k individually and $3m in aggregate, with board approval required above those limits.
+    </p>
+    <p>
+      <strong>Step 7 -- Counterparties:</strong> CloudMetrics opens accounts with two FCA-regulated providers: their existing bank for settlement convenience, and HedgeFlows for competitive forward pricing and automated reporting. The policy caps exposure to either counterparty at 60% of total hedging volume.
+    </p>
+    <p>
+      <strong>Step 8 -- First execution:</strong> In the first month, the team executes the following forwards over a one-week window across three tranches:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Time bucket</th>
+          <th>Monthly USD exposure</th>
+          <th>Hedge ratio</th>
+          <th>Hedged amount (USD)</th>
+          <th>Months covered</th>
+          <th>Total forwards (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Months 1-3</td>
+          <td>$417k</td>
+          <td>85%</td>
+          <td>$354k</td>
+          <td>3</td>
+          <td>$1,063k</td>
+        </tr>
+        <tr>
+          <td>Months 4-6</td>
+          <td>$417k</td>
+          <td>70%</td>
+          <td>$292k</td>
+          <td>3</td>
+          <td>$876k</td>
+        </tr>
+        <tr>
+          <td>Months 7-12</td>
+          <td>$417k</td>
+          <td>40%</td>
+          <td>$167k</td>
+          <td>6</td>
+          <td>$1,000k</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Total initial hedge: approximately $2.94 million in forward contracts, representing a blended hedge ratio of about 59% across the full 12-month horizon. All forwards are executed at rates within 15 pips of the budget rate of 1.27.
+    </p>
+    <p>
+      <strong>Step 9 -- Reporting:</strong> HedgeFlows connects to CloudMetrics' Xero instance and automatically generates monthly reports showing the effective rate, hedge coverage by time bucket, and MTM on open positions. The CFO includes a one-page summary in the monthly board pack.
+    </p>
+    <p>
+      <strong>Step 10 -- First quarterly review:</strong> After three months, the team finds that forecast accuracy was within 3% of actual USD collections, validating the hedge ratios. The effective GBP/USD rate achieved was 1.268, versus a spot average of 1.295 over the period, delivering GBP 82,000 of additional value compared to unhedged spot conversions. The board is satisfied and the programme continues with minor adjustments to the EUR hedge, which is added at a 60% ratio for the next two quarters.
+    </p>
+
+    <h3>CloudMetrics programme summary</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Primary currency pair</td>
+          <td>GBP/USD</td>
+        </tr>
+        <tr>
+          <td>Annual USD exposure</td>
+          <td>$5,000,000</td>
+        </tr>
+        <tr>
+          <td>Budget rate</td>
+          <td>1.2700</td>
+        </tr>
+        <tr>
+          <td>Hedge instruments</td>
+          <td>Vanilla forward contracts</td>
+        </tr>
+        <tr>
+          <td>Hedge horizon</td>
+          <td>Rolling 12 months</td>
+        </tr>
+        <tr>
+          <td>Blended hedge ratio</td>
+          <td>~59%</td>
+        </tr>
+        <tr>
+          <td>Execution frequency</td>
+          <td>Monthly roll</td>
+        </tr>
+        <tr>
+          <td>Counterparties</td>
+          <td>2 (bank + FCA-regulated specialist)</td>
+        </tr>
+        <tr>
+          <td>Reporting</td>
+          <td>Monthly board pack; real-time via platform</td>
+        </tr>
+        <tr>
+          <td>Policy review</td>
+          <td>Quarterly operational; annual board review</td>
+        </tr>
+        <tr>
+          <td>Setup time</td>
+          <td>5 weeks from first meeting to first trade</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Getting started</h2>
+  <p>
+    Building a hedging programme does not require a treasury department or institutional-scale volumes. What it requires is discipline: a clear understanding of your exposures, a board-level conversation about risk appetite, a written policy, and a reliable execution and reporting process.
+  </p>
+  <p>
+    The ten steps in this guide are designed to be followed in sequence, but the timeline can be compressed. Businesses with straightforward, single-currency exposures can move from Step 1 to Step 8 in as little as three weeks. More complex multi-currency programmes typically take six to eight weeks to implement fully.
+  </p>
+  <p>
+    The most important step is the first one. Map your exposures, quantify the risk, and have the conversation with your board. Once the scale of unmanaged FX risk is visible, the case for a structured programme makes itself.
+  </p>
+
+</AcademyGuideLayout>

@@ -213,44 +213,13 @@ const differentiators = [
         </p>
       </div>
 
-      <!-- Platform visual placeholder -->
-      <div class="max-w-4xl mx-auto rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] border border-brand-green/10 overflow-hidden shadow-lg">
-        <div class="p-8 md:p-12">
-          <!-- Mock dashboard header -->
-          <div class="flex items-center gap-3 mb-8">
-            <div class="w-3 h-3 rounded-full bg-red-400/60"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-400/60"></div>
-            <div class="w-3 h-3 rounded-full bg-green-400/60"></div>
-            <span class="text-[0.8125rem] font-medium text-brand-green/50 ml-2">HedgeFlows Dashboard</span>
-          </div>
-
-          <!-- Mock dashboard content -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div class="bg-white/80 rounded-xl p-4 text-center">
-              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">Total Balance</p>
-              <p class="text-[1.25rem] font-bold text-text-heading">$2.4M</p>
-            </div>
-            <div class="bg-white/80 rounded-xl p-4 text-center">
-              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">FX Exposure</p>
-              <p class="text-[1.25rem] font-bold text-text-heading">$840K</p>
-            </div>
-            <div class="bg-white/80 rounded-xl p-4 text-center">
-              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">Pending</p>
-              <p class="text-[1.25rem] font-bold text-text-heading">12 payments</p>
-            </div>
-            <div class="bg-white/80 rounded-xl p-4 text-center">
-              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">Hedged</p>
-              <p class="text-[1.25rem] font-bold text-brand-green">78%</p>
-            </div>
-          </div>
-
-          <!-- Mock chart area -->
-          <div class="bg-white/60 rounded-xl p-6 flex items-center justify-center h-40 md:h-52">
-            <svg class="w-16 h-16 text-brand-green/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-            </svg>
-          </div>
-        </div>
+      <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden">
+        <img
+          src="/assets/images/dashboard.png"
+          alt="HedgeFlows treasury dashboard showing cash positions, FX exposure, and payment status"
+          class="w-full h-auto"
+          loading="eager"
+        />
       </div>
     </div>
   </section>
@@ -304,25 +273,25 @@ const differentiators = [
             </svg>
           </a>
         </div>
-        <div class="rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
-          <div class="text-center">
-            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.wallet} />
-            </svg>
-            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
-          </div>
+        <div class="rounded-2xl overflow-hidden">
+          <img
+            src="/assets/images/platform/balances.jpg"
+            alt="HedgeFlows connected global account with multi-currency balances"
+            class="w-full h-auto"
+            loading="lazy"
+          />
         </div>
       </div>
 
       <!-- Row 2: Payments (reversed) -->
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1 rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
-          <div class="text-center">
-            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.send} />
-            </svg>
-            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
-          </div>
+        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
+          <img
+            src="/assets/images/platform/payments-hero.png"
+            alt="HedgeFlows payment automation and AP workflows"
+            class="w-full h-auto"
+            loading="lazy"
+          />
         </div>
         <div class="order-1 lg:order-2">
           <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Payments & AP Automation</p>
@@ -388,25 +357,25 @@ const differentiators = [
             </svg>
           </a>
         </div>
-        <div class="rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
-          <div class="text-center">
-            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths['bar-chart']} />
-            </svg>
-            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
-          </div>
+        <div class="rounded-2xl overflow-hidden">
+          <img
+            src="/assets/images/platform/cashflow-plan.png"
+            alt="HedgeFlows cash management and forecasting dashboard"
+            class="w-full h-auto"
+            loading="lazy"
+          />
         </div>
       </div>
 
       <!-- Row 4: FX Risk (reversed) -->
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1 rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
-          <div class="text-center">
-            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.shield} />
-            </svg>
-            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
-          </div>
+        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
+          <img
+            src="/assets/images/platform/fx-risk-hero.png"
+            alt="HedgeFlows FX risk management and exposure monitoring"
+            class="w-full h-auto"
+            loading="lazy"
+          />
         </div>
         <div class="order-1 lg:order-2">
           <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">FX Risk Management</p>
@@ -456,18 +425,27 @@ const differentiators = [
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {[
-          { name: 'Xero', category: 'Accounting' },
-          { name: 'QuickBooks', category: 'Accounting' },
-          { name: 'NetSuite', category: 'ERP' },
-          { name: 'Business Central', category: 'ERP' },
-          { name: 'HubSpot', category: 'CRM' },
-          { name: 'Salesforce', category: 'CRM' },
+          { name: 'Xero', category: 'Accounting', logo: '/assets/logos/integrations/Xero Wordmark_Blue.png' },
+          { name: 'QuickBooks', category: 'Accounting', logo: '/assets/logos/integrations/QuickBooks_logo.png' },
+          { name: 'NetSuite', category: 'ERP', logo: '/assets/logos/integrations/NetSuite-Logo.png' },
+          { name: 'Business Central', category: 'ERP', logo: '/assets/logos/integrations/Business-Central-logo-2026.png' },
+          { name: 'HubSpot', category: 'CRM', logo: '/assets/logos/integrations/HubSpot_Logo.svg' },
+          { name: 'Salesforce', category: 'CRM', logo: '/assets/logos/integrations/Salesforce_logo.png' },
         ].map((integration) => (
           <div class="bg-white rounded-xl border border-gray-100 p-5 text-center hover:border-brand-green/20 hover:shadow-md transition-all duration-200">
-            <div class="w-12 h-12 rounded-xl bg-[#F8FAFB] flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.plug} />
-              </svg>
+            <div class="h-12 flex items-center justify-center mx-auto mb-3">
+              {integration.logo ? (
+                <img
+                  src={integration.logo}
+                  alt={integration.name}
+                  class="max-h-10 max-w-[100px] w-auto object-contain"
+                  loading="lazy"
+                />
+              ) : (
+                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.plug} />
+                </svg>
+              )}
             </div>
             <p class="text-[0.875rem] font-semibold text-text-heading">{integration.name}</p>
             <p class="text-[0.75rem] text-text-muted mt-0.5">{integration.category}</p>

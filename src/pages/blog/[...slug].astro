@@ -1,45 +1,165 @@
 ---
-export const prerender = false;
+import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection, render } from 'astro:content';
 
-import BlogLayout from '../../layouts/BlogLayout.astro';
-import PortableText from '../../components/PortableText.astro';
-import { getBlogPost, urlFor } from '../../lib/sanity';
-
-const { slug } = Astro.params;
-const post = await getBlogPost(slug || '');
-
-if (!post) {
-  return Astro.redirect('/404');
+/* ── Generate static paths from Markdown content collection ── */
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
 }
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const categoryLabels: Record<string, string> = {
+  'fx-risk-hedging': 'FX Risk & Hedging',
+  'treasury-cash': 'Treasury & Cash Management',
+  'payments-ops': 'Payments & Operations',
+  'markets': 'Market Commentary',
+  'news': 'Company News',
+};
+
+const categoryColors: Record<string, string> = {
+  'fx-risk-hedging': 'bg-emerald-50 text-emerald-700',
+  'treasury-cash': 'bg-sky-50 text-sky-700',
+  'payments-ops': 'bg-violet-50 text-violet-700',
+  'markets': 'bg-amber-50 text-amber-700',
+  'news': 'bg-rose-50 text-rose-700',
+};
+
+const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
-<BlogLayout
-  title={post.seoTitle || post.title}
-  description={post.seoDescription || post.excerpt}
-  ogImage={post.featuredImage ? urlFor(post.featuredImage).width(1200).height(630).auto('format').url() : undefined}
-  publishedAt={post.publishedAt}
-  author={post.author?.name}
+<PageLayout
+  title={post.data.seoTitle || post.data.title}
+  description={post.data.description}
 >
-  {post.featuredImage && (
-    <img
-      src={urlFor(post.featuredImage).width(800).auto('format').url()}
-      alt={post.featuredImage.alt || post.title}
-      class="w-full rounded-xl shadow-md mb-10 max-w-3xl mx-auto"
-      loading="eager"
-    />
-  )}
+  <article class="section-padding bg-white">
+    <div class="container-content max-w-3xl mx-auto">
+      {/* Breadcrumb */}
+      <nav class="mb-8 text-[0.875rem] text-text-muted" aria-label="Breadcrumb">
+        <a href="/blog" class="hover:text-brand-green transition-colors">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-text-heading font-medium">{post.data.title}</span>
+      </nav>
 
-  <PortableText value={post.body} />
+      {/* Title & meta */}
+      <h1 class="text-[2rem] md:text-[2.75rem] font-bold text-text-heading leading-tight mb-4">
+        {post.data.title}
+      </h1>
 
-  {post.tags && post.tags.length > 0 && (
-    <div class="mt-12 pt-8 border-t border-gray-100 max-w-3xl mx-auto">
-      <div class="flex flex-wrap gap-2">
-        {post.tags.map((tag: string) => (
-          <span class="px-3 py-1 bg-brand-green-pale text-brand-green text-[0.8125rem] font-medium rounded-full">
-            {tag}
-          </span>
-        ))}
+      <div class="flex flex-wrap items-center gap-3 text-[0.8125rem] text-text-muted mb-10">
+        <time datetime={post.data.date}>{formattedDate}</time>
+        {post.data.author && (
+          <>
+            <span>·</span>
+            <span>by {post.data.author}</span>
+          </>
+        )}
+        {post.data.category && categoryLabels[post.data.category] && (
+          <>
+            <span>·</span>
+            <span class:list={[
+              'text-[0.6875rem] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full',
+              categoryColors[post.data.category] || 'bg-gray-100 text-gray-600'
+            ]}>
+              {categoryLabels[post.data.category]}
+            </span>
+          </>
+        )}
+      </div>
+
+      {/* Featured image */}
+      {post.data.featuredImage && (
+        <img
+          src={post.data.featuredImage}
+          alt={post.data.title}
+          class="w-full rounded-xl shadow-md mb-10"
+          loading="eager"
+        />
+      )}
+
+      {/* Main content */}
+      <div class="prose-blog">
+        <Content />
+      </div>
+
+      {/* Advisory CTA */}
+      <div class="mt-14 bg-brand-green-pale/50 rounded-2xl p-8 border border-brand-green/10">
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-4">
+          Need help managing your international finances? Our advisory team can help you build a treasury strategy that fits your business.
+        </p>
+        <a
+          href="/advisory"
+          class="inline-flex items-center gap-2 bg-brand-green text-white font-semibold px-6 py-3 rounded-full text-[0.875rem] shadow-sm hover:bg-brand-green-dark hover:shadow-md transition-all duration-200"
+        >
+          Book a Treasury Review
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      {/* Back link */}
+      <div class="mt-10">
+        <a href="/blog" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
+          <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          Back to Blog
+        </a>
       </div>
     </div>
-  )}
-</BlogLayout>
+  </article>
+</PageLayout>
+
+<style is:global>
+  /* Blog prose styles */
+  .prose-blog h2 {
+    @apply text-[1.5rem] font-bold text-text-heading mt-12 mb-4 leading-tight;
+  }
+  .prose-blog h3 {
+    @apply text-[1.25rem] font-bold text-text-heading mt-8 mb-3;
+  }
+  .prose-blog h4 {
+    @apply text-[1.125rem] font-semibold text-text-heading mt-6 mb-2;
+  }
+  .prose-blog p {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4;
+  }
+  .prose-blog ul, .prose-blog ol {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4 pl-6;
+  }
+  .prose-blog ul { @apply list-disc; }
+  .prose-blog ol { @apply list-decimal; }
+  .prose-blog li { @apply mb-2; }
+  .prose-blog strong { @apply text-text-heading font-semibold; }
+  .prose-blog a {
+    @apply text-brand-green underline underline-offset-2 hover:text-brand-green-dark transition-colors;
+  }
+  .prose-blog blockquote {
+    @apply border-l-4 border-brand-green/30 pl-6 italic text-text-muted my-6;
+  }
+  .prose-blog table {
+    @apply w-full border-collapse mb-6 text-[0.9375rem];
+  }
+  .prose-blog thead th {
+    @apply bg-[#F8FAFB] text-text-heading font-semibold text-left px-4 py-3 border border-gray-200;
+  }
+  .prose-blog tbody td {
+    @apply px-4 py-3 border border-gray-200 text-text-body;
+  }
+  .prose-blog img {
+    @apply rounded-xl my-6 max-w-full;
+  }
+  .prose-blog hr {
+    @apply my-8 border-gray-200;
+  }
+</style>

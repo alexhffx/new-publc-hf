@@ -1,0 +1,184 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
+import CTASection from '../../components/CTASection.astro';
+import DownloadForm from '../../components/DownloadForm.astro';
+
+const problemStats = [
+  { value: '£50,000', label: 'What a 5% move costs on £1m exposure. Most companies don\'t know their number.' },
+  { value: '0.5–2%', label: 'What banks typically charge on FX, hidden in the spread. Nobody tells you.' },
+  { value: '±10%', label: 'Typical budget variance from unmanaged FX. That\'s the difference between hitting plan and explaining a miss.' },
+];
+
+const whyNow = [
+  { title: 'Board reporting', description: 'Your board wants to understand FX exposure. You need a framework to explain it clearly.' },
+  { title: 'Budget variance', description: 'Currency moves are creating P&L surprises. A hedging policy stops the guessing.' },
+  { title: 'Fundraise prep', description: 'Investors want to see financial risk management. An FX policy is table stakes.' },
+  { title: 'International scaling', description: 'More currencies, more exposure. The informal approach that worked at £1m doesn\'t work at £10m.' },
+];
+
+const services = [
+  { title: 'Exposure mapping', description: 'Identify every source of FX risk — receivables, payables, intercompany, balance sheet. Connected to your accounting system.' },
+  { title: 'Risk appetite & policy', description: 'Board-ready FX risk management policy. Clear rules on what to hedge, how much, and when.' },
+  { title: 'Hedging strategy', description: 'Rolling hedges, natural offsets, forward contracts. The right approach for your exposure profile.' },
+  { title: 'Transparent execution', description: 'When you\'re ready to act, execute through our FCA-regulated platform. Margins from 0.25%, no hidden charges.' },
+  { title: 'Monitoring & reporting', description: 'Hedge accounting support, MTM reporting, and board packs that actually explain your position.' },
+  { title: 'Counterparty risk', description: 'Diversify execution counterparties. Understand credit exposure. Professional-grade risk management.' },
+];
+
+const steps = [
+  { number: 1, title: 'FX Diagnostic', description: 'We map your exposures and show you what currency risk is actually costing.' },
+  { number: 2, title: 'Strategy workshop', description: 'Build your hedging policy and risk appetite framework. Board-ready output.' },
+  { number: 3, title: 'First execution', description: 'Place your first hedges through the platform. See the pricing difference immediately.' },
+  { number: 4, title: 'Monthly rhythm', description: 'Ongoing monitoring, reporting, and strategy adjustment as your business evolves.' },
+];
+---
+
+<PageLayout
+  title="FX Risk Management Advisory | HedgeFlows"
+  description="Know your FX exposure. Manage it deliberately. Expert advisory and an FCA-regulated platform — hedging strategy, transparent execution, and board-ready reporting."
+>
+  <Hero
+    title="Know your exposure. Manage it deliberately. Stop leaving money on the table."
+    subtitle="Most growing businesses don't have an FX risk framework. They absorb currency moves and hope for the best. We give you the strategy, the policy, and the platform to execute — margins from 0.25%."
+    primaryCta={{ label: 'Book an FX Diagnostic', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Download FX Policy Template', href: '#download' }}
+  />
+
+  <TrustBar />
+
+  <!-- Problem Stats -->
+  <section class="section-padding-sm bg-white">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {problemStats.map((stat) => (
+          <div class="bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6 text-center">
+            <p class="text-[2rem] md:text-[2.5rem] font-bold text-brand-green leading-none mb-2">{stat.value}</p>
+            <p class="text-[0.875rem] text-text-body leading-relaxed">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="section-heading text-center mb-8">The FX gap</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed text-center mb-6">
+          Your business trades internationally. You invoice or pay in multiple currencies. But you probably don't have a formal FX risk management policy, a hedging strategy, or any idea what your bank is charging you on spreads.
+        </p>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed text-center">
+          You're not alone. Most mid-market businesses manage FX reactively — converting when they need to, hoping rates don't move, and absorbing the cost when they do. It's the financial equivalent of driving without insurance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Now -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Why act now</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {whyNow.map((item) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-2">{item.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">What we do</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {services.map((s) => (
+          <div class="bg-[#F8FAFB] rounded-2xl border border-gray-100 p-6">
+            <h3 class="text-[1.0625rem] font-bold text-text-heading mb-2">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">How it works</h2>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-2xl mx-auto bg-[#F8FAFB] rounded-2xl border border-gray-100 p-8 shadow-sm text-center">
+        <svg class="w-8 h-8 text-brand-green/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">
+          "We were converting £200k a month and had no idea our bank was charging 1.8% on every transaction. HedgeFlows showed us the real cost, built us a hedging strategy, and the savings paid for themselves in week one."
+        </p>
+        <p class="text-[0.8125rem] text-text-muted">CFO, Confidential International SaaS Company</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Form -->
+  <section id="download" class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Start with a proven framework</h2>
+        <p class="section-subheading mx-auto">
+          Download the same FX risk policy structure we use with advisory clients. Adapt it to your business.
+        </p>
+      </div>
+      <DownloadForm
+        title="FX Risk Management Policy Template"
+        description="An editable template covering exposure identification, risk appetite framework, hedging instruments, execution guidelines, and board reporting. The same structure used by our advisory clients."
+        resourceName="FX Risk Management Policy Template"
+        downloadUrl="/assets/downloads/fx-risk-management-policy-template.docx"
+        sourceTag="fx-policy-template"
+        qualifyingQuestion={{
+          label: "Approximate annual FX volume",
+          name: "fx_volume",
+          options: ["Under £1m", "£1m–£5m", "£5m–£20m", "£20m+", "Not sure"],
+        }}
+      />
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto bg-brand-green-pale/50 rounded-2xl p-8 md:p-10 border border-brand-green/10">
+        <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Why HedgeFlows</p>
+        <h3 class="text-[1.25rem] font-bold text-text-heading mb-4">40+ years of institutional FX expertise</h3>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-4">
+          Our advisory team brings experience from Standard Chartered, Merrill Lynch, and Bank of America — the same expertise that manages billions in corporate FX, now accessible to growing businesses.
+        </p>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed">
+          Combined with our FCA-regulated platform, you get institutional-grade risk management without institutional-grade costs. Advisory included. Execution from 0.25%. No hidden fees.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Ready to take control of your FX risk?"
+    primaryCta={{ label: 'Book an FX Diagnostic', href: '/treasury-health-check' }}
+  />
+</PageLayout>

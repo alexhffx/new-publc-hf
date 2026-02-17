@@ -5,6 +5,7 @@ interface Props {
   date: string;
   href: string;
   image?: string;
+  category?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   date,
   href,
   image,
+  category,
 } = Astro.props;
 
 // Format date nicely
@@ -21,6 +23,22 @@ const formattedDate = new Date(date).toLocaleDateString('en-GB', {
   month: 'short',
   day: 'numeric',
 });
+
+const categoryLabels: Record<string, string> = {
+  'fx-risk-hedging': 'FX Risk & Hedging',
+  'treasury-cash': 'Treasury & Cash',
+  'payments-ops': 'Payments & Ops',
+  'markets': 'Market Commentary',
+  'news': 'Company News',
+};
+
+const categoryColors: Record<string, string> = {
+  'fx-risk-hedging': 'bg-emerald-50 text-emerald-700',
+  'treasury-cash': 'bg-sky-50 text-sky-700',
+  'payments-ops': 'bg-violet-50 text-violet-700',
+  'markets': 'bg-amber-50 text-amber-700',
+  'news': 'bg-rose-50 text-rose-700',
+};
 ---
 
 <a href={href} class="group block bg-white rounded-xl border border-gray-100 overflow-hidden
@@ -48,11 +66,21 @@ const formattedDate = new Date(date).toLocaleDateString('en-GB', {
   </div>
 
   <div class="p-6">
-    <time class="text-[0.8125rem] font-medium text-text-muted uppercase tracking-wide" datetime={date}>
-      {formattedDate}
-    </time>
+    <div class="flex items-center gap-3 mb-2.5">
+      <time class="text-[0.8125rem] font-medium text-text-muted uppercase tracking-wide" datetime={date}>
+        {formattedDate}
+      </time>
+      {category && categoryLabels[category] && (
+        <span class:list={[
+          'text-[0.6875rem] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full',
+          categoryColors[category] || 'bg-gray-100 text-gray-600'
+        ]}>
+          {categoryLabels[category]}
+        </span>
+      )}
+    </div>
 
-    <h3 class="text-[1.125rem] font-semibold text-text-heading mt-2.5 mb-2
+    <h3 class="text-[1.125rem] font-semibold text-text-heading mt-0 mb-2
                group-hover:text-brand-green transition-colors duration-200 leading-snug">
       {title}
     </h3>

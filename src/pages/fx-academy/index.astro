@@ -1,68 +1,146 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import { getFxAcademyModules, urlFor } from '../../lib/sanity';
 
-const modules = await getFxAcademyModules();
+const guides = [
+  {
+    title: 'Foreign Exchange 101',
+    slug: 'foreign-exchange-101',
+    description: 'What is an FX transaction? How do FX markets work? What are different types of currencies and what moves them?',
+    readingTime: '12 min read',
+    level: 'Beginner',
+  },
+  {
+    title: 'FX Markets & Financial Instruments',
+    slug: 'fx-markets-and-instruments',
+    description: 'Where do FX prices come from? What are spot, forward, swap, and option contracts? How to access FX markets at any business size.',
+    readingTime: '14 min read',
+    level: 'Beginner',
+  },
+  {
+    title: 'Paying Overseas for Growing Businesses',
+    slug: 'paying-overseas',
+    description: 'Payment methods, hidden FX costs, manual process risks, and fraud prevention for international payments.',
+    readingTime: '11 min read',
+    level: 'Beginner',
+  },
+  {
+    title: 'Currency Management for Growing Businesses',
+    slug: 'currency-management',
+    description: 'A structured approach to identifying, quantifying, and managing FX risks as your international business scales.',
+    readingTime: '13 min read',
+    level: 'Intermediate',
+  },
+  {
+    title: 'Balance Sheet Hedging',
+    slug: 'balance-sheet-hedging',
+    description: 'How to set hedging objectives, design a process, and manage FX risks that affect your balance sheet and reported earnings.',
+    readingTime: '14 min read',
+    level: 'Intermediate',
+  },
+  {
+    title: 'Mastering FX Cashflow Hedging',
+    slug: 'cashflow-hedging',
+    description: 'Understand the difference between cashflow and balance sheet hedging, and build a framework to protect your future revenues and costs.',
+    readingTime: '15 min read',
+    level: 'Advanced',
+  },
+  {
+    title: 'How to Construct a Hedging Programme',
+    slug: 'hedging-programme',
+    description: 'A 10-step guide to building an effective FX hedging programme that fits your business and gets stakeholder buy-in.',
+    readingTime: '16 min read',
+    level: 'Advanced',
+  },
+  {
+    title: 'Emerging Market FX',
+    slug: 'emerging-markets',
+    description: 'Managing currency risk in high-growth economies — from capital controls and volatile currencies to NDFs and trapped cash.',
+    readingTime: '14 min read',
+    level: 'Advanced',
+  },
+  {
+    title: 'Structured FX Products',
+    slug: 'structured-fx-products',
+    description: 'Participating forwards, accumulators, TARFs, and knock-in/knock-out structures — what they are, how they work, and when they make sense.',
+    readingTime: '16 min read',
+    level: 'Advanced',
+  },
+];
+
+const levelColors: Record<string, string> = {
+  Beginner: 'bg-emerald-100 text-emerald-700',
+  Intermediate: 'bg-amber-100 text-amber-700',
+  Advanced: 'bg-purple-100 text-purple-700',
+};
 ---
 
-<PageLayout title="FX Academy" description="Learn the fundamentals of FX and international treasury.">
+<PageLayout
+  title="FX & Treasury Academy | HedgeFlows"
+  description="Free, in-depth guides on foreign exchange and treasury management for growing businesses. Learn FX fundamentals, hedging strategies, and international payments."
+>
   <Hero
-    title="Learn the fundamentals of FX and international treasury"
-    subtitle="Free educational resources to help you understand foreign exchange and treasury management."
+    title="FX & Treasury Academy"
+    subtitle="Free, in-depth guides to help you understand foreign exchange, manage currency risk, and build treasury best practices. Written by experts with 40+ years of institutional experience."
   />
+
   <section class="section-padding">
     <div class="container-content">
-      {modules && modules.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {modules.map((mod: any) => (
-            <a
-              href={`/fx-academy/${mod.slug?.current}`}
-              class="group block bg-white rounded-xl border border-gray-100 overflow-hidden
-                     shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
-                     hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
-                     transition-all duration-300"
-            >
-              <div class="relative overflow-hidden">
-                {mod.featuredImage ? (
-                  <img
-                    src={urlFor(mod.featuredImage).width(600).height(375).auto('format').url()}
-                    alt=""
-                    class="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div class="w-full aspect-[16/10] bg-gradient-to-br from-brand-green-pale to-brand-green/10 flex items-center justify-center">
-                    <span class="text-[3rem] font-bold text-brand-green/20">
-                      {String(mod.moduleNumber || '').padStart(2, '0')}
-                    </span>
-                  </div>
-                )}
-                {mod.moduleNumber && (
-                  <span class="absolute top-3 left-3 bg-brand-green text-white text-[0.75rem] font-bold px-2.5 py-1 rounded-full">
-                    Module {mod.moduleNumber}
-                  </span>
-                )}
+      {/* Learning path intro */}
+      <div class="max-w-3xl mx-auto text-center mb-14">
+        <p class="text-[1.0625rem] text-text-body leading-relaxed">
+          Nine guides taking you from FX fundamentals to building a complete hedging programme. Start anywhere — each guide stands alone — or follow the path from beginner to advanced.
+        </p>
+      </div>
+
+      {/* Guide cards */}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {guides.map((guide, i) => (
+          <a
+            href={`/fx-academy/${guide.slug}`}
+            class="group block bg-white rounded-xl border border-gray-100 overflow-hidden
+                   shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
+                   hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
+                   hover:border-brand-green/20 transition-all duration-300 flex flex-col"
+          >
+            {/* Number header */}
+            <div class="bg-gradient-to-br from-brand-green-pale to-brand-green/10 px-6 pt-6 pb-4 flex items-center justify-between">
+              <span class="text-[2.5rem] font-bold text-brand-green/20 leading-none">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class:list={['text-[0.6875rem] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full', levelColors[guide.level]]}>
+                {guide.level}
+              </span>
+            </div>
+
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[1.125rem] font-semibold text-text-heading
+                         group-hover:text-brand-green transition-colors duration-200 leading-snug mb-2">
+                {guide.title}
+              </h3>
+              <p class="text-[0.9375rem] text-text-body leading-relaxed flex-1 mb-4">
+                {guide.description}
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-[0.8125rem] text-text-muted">{guide.readingTime}</span>
+                <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.8125rem] group-hover:gap-2.5 transition-all duration-200">
+                  Read guide
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
               </div>
-              <div class="p-6">
-                <h3 class="text-[1.125rem] font-semibold text-text-heading
-                           group-hover:text-brand-green transition-colors duration-200 leading-snug mb-2">
-                  {mod.title}
-                </h3>
-                {mod.description && (
-                  <p class="text-[0.9375rem] text-text-body leading-relaxed line-clamp-2">
-                    {mod.description}
-                  </p>
-                )}
-              </div>
-            </a>
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-12">
-          <p class="text-text-muted text-lg">FX Academy modules coming soon!</p>
-        </div>
-      )}
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Credentials */}
+      <div class="max-w-3xl mx-auto mt-16 text-center">
+        <p class="text-[0.9375rem] text-text-muted leading-relaxed">
+          Written by the HedgeFlows advisory team — 40+ years of institutional FX and treasury experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699).
+        </p>
+      </div>
     </div>
   </section>
 </PageLayout>

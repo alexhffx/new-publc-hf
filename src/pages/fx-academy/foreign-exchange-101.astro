@@ -1,0 +1,344 @@
+---
+import AcademyGuideLayout from '../../components/AcademyGuideLayout.astro';
+---
+
+<AcademyGuideLayout
+  title="Foreign Exchange 101"
+  metaDescription="What is foreign exchange? Learn FX fundamentals — how currency markets work, what moves exchange rates, and where FX gains and losses come from. A practical guide for growing UK businesses."
+  tldr="Foreign exchange (FX) is the conversion of one currency to another. Businesses trading internationally face FX risk because exchange rates constantly fluctuate. Understanding how currency markets work, what drives rate movements, and where FX gains and losses appear in your accounts is the foundation for managing international finances effectively."
+  keyFacts={[
+    { text: 'The FX market trades over $7.5 trillion per day — it is the largest financial market in the world' },
+    { text: 'Exchange rates are quoted as currency pairs (e.g. GBP/USD 1.27 means £1 buys $1.27)' },
+    { text: 'A 5% adverse currency move on £1m exposure costs £50,000 — real money for any growing business' },
+    { text: 'FX gains and losses appear in your P&L even if you haven\'t converted any currency' },
+    { text: 'The "mid-market rate" you see on Google is not the rate your bank gives you — the difference is their margin' },
+  ]}
+  lastUpdated="February 2025"
+  author="HedgeFlows Advisory Team"
+  authorCredentials="40+ years of institutional FX experience from Standard Chartered, Merrill Lynch, and Bank of America. FCA regulated (Firm Reference: 1008699)."
+  relatedPages={[
+    { title: 'FX Markets & Financial Instruments', href: '/fx-academy/fx-markets-and-instruments', description: 'Deep dive into spot, forward, swap, and option contracts' },
+    { title: 'Currency Management for Growing Businesses', href: '/fx-academy/currency-management', description: 'A structured approach to identifying and managing FX risks' },
+    { title: 'Paying Overseas for Growing Businesses', href: '/fx-academy/paying-overseas', description: 'Payment methods, hidden costs, and fraud prevention' },
+  ]}
+  advisoryCta={{
+    text: 'Want to understand your actual FX exposure? Our advisory team can map your currency risks and show you what FX is really costing your business — in a free 30-minute diagnostic.',
+    href: '/advisory/fx-risk-management',
+    label: 'Book an FX Diagnostic',
+  }}
+  faqSchema={[
+    { question: 'What is a foreign exchange transaction?', answer: 'A foreign exchange (FX) transaction is the conversion of one currency into another. When a UK business invoices a US client in dollars and converts the payment to sterling, that conversion is an FX transaction. The rate at which currencies exchange determines how much you receive or pay.' },
+    { question: 'How do FX markets work?', answer: 'FX markets operate 24 hours a day, five days a week across global financial centres. Currencies are traded in pairs (e.g. GBP/USD). The market is decentralised — there is no single exchange. Banks, brokers, and electronic platforms facilitate trades. Rates are determined by supply and demand, influenced by interest rates, inflation, trade balances, and geopolitical events.' },
+    { question: 'What moves exchange rates?', answer: 'Exchange rates are primarily driven by interest rate differentials between countries, inflation expectations, economic data releases (GDP, employment, trade balances), central bank policy decisions, political events, and market sentiment. In the short term, speculation and news events can cause significant volatility.' },
+    { question: 'Where do FX gains and losses come from?', answer: 'FX gains and losses arise whenever you hold assets or liabilities denominated in a foreign currency. Even before you convert currency, changes in exchange rates alter the sterling value of foreign-currency receivables, payables, and cash balances. These unrealised gains and losses appear in your profit and loss account and can significantly impact reported earnings.' },
+  ]}
+  readingTime="12 min read"
+  videoId="sysLxkX5Mlw"
+>
+
+  <!-- ============================================================
+       MAIN CONTENT — Foreign Exchange 101
+       ============================================================ -->
+
+  <h2>What is a foreign exchange transaction?</h2>
+
+  <p>
+    A foreign exchange transaction — commonly shortened to FX transaction — is the conversion of one currency into another at an agreed rate. If your UK business buys components from a German supplier priced in euros, you need to convert sterling into euros to pay the invoice. That conversion is an FX transaction. Equally, if you sell software to a US customer who pays you in dollars, converting those dollars back into sterling is also an FX transaction.
+  </p>
+
+  <p>
+    Every FX transaction has three key elements: the <strong>currency pair</strong> (which two currencies are being exchanged), the <strong>exchange rate</strong> (how much of one currency you receive for each unit of the other), and the <strong>value date</strong> (when the actual exchange of funds takes place). For most business payments, the value date is either immediate (a spot transaction, settling in one or two business days) or at a future date (a forward contract, which we cover in a separate guide).
+  </p>
+
+  <p>
+    What catches many growing businesses off guard is the sheer volume of FX transactions they accumulate as they expand internationally. A business that invoices 30 overseas clients each month, pays five foreign suppliers, and runs payroll in two countries could easily generate 50 or more individual FX exposures every month. Each one carries a conversion cost and a timing risk: the rate you expected when you quoted a price or agreed a contract may not be the rate you get when money actually changes hands.
+  </p>
+
+  <p>
+    Consider a straightforward example. You agree to sell consulting services to a French client for EUR 100,000, payable in 60 days. On the day you sign the contract, GBP/EUR is 1.1650, so you expect to receive approximately £85,837. But by the time the client pays and you convert the euros, the rate has moved to 1.1850. Now your EUR 100,000 converts to only £84,388 — a difference of £1,449 that comes straight out of your margin. No change in your costs, no change in the service you delivered, but a meaningful dent in your profit — purely because the exchange rate moved.
+  </p>
+
+  <p>
+    This is the fundamental reason FX matters to any business trading across borders. It introduces a financial variable that sits outside your normal commercial control, and it can move quickly and unpredictably.
+  </p>
+
+
+  <h2>How do FX markets work?</h2>
+
+  <p>
+    The foreign exchange market is the largest and most liquid financial market in the world. According to the Bank for International Settlements (BIS), average daily turnover exceeded $7.5 trillion in 2022. To put that in perspective, the London Stock Exchange trades around £5–6 billion per day. The FX market is more than a thousand times larger.
+  </p>
+
+  <p>
+    Unlike stock markets, which operate through centralised exchanges (the London Stock Exchange, the New York Stock Exchange), the FX market is <strong>decentralised</strong>. There is no single building or platform where all trades happen. Instead, currencies are traded through a global network of banks, brokers, electronic platforms, and other financial institutions. This network is called the <strong>interbank market</strong>, and it operates over the counter (OTC), meaning trades are negotiated directly between parties rather than through a central order book.
+  </p>
+
+  <p>
+    The market operates effectively 24 hours a day, five days a week, because trading follows the sun across global financial centres. It opens on Sunday evening (UK time) as the Asian session begins in Sydney and Tokyo, transitions through the European session centred on London, and closes on Friday evening as the New York session ends. London remains the single largest FX trading centre, handling roughly 38% of global volume — which is why sterling-denominated businesses sit at the heart of the world's FX infrastructure.
+  </p>
+
+  <p>
+    For growing UK businesses, the practical implication is that exchange rates are moving at all times during the business week. A rate you saw at 9am when you opened your email may have shifted by the time your finance team processes the payment at 3pm. During periods of market stress — a central bank announcement, a political event, or an unexpected economic data release — rates can move sharply within minutes. This constant motion is what creates both the risk and the opportunity in managing your company's foreign currency exposure.
+  </p>
+
+  <p>
+    The participants in the FX market range from the very large to the very small. Central banks (like the Bank of England and the US Federal Reserve) intervene occasionally to stabilise their currencies. Global investment banks act as market makers, quoting prices and facilitating the bulk of institutional trades. Hedge funds and asset managers trade currencies as part of their investment strategies. Multinational corporations exchange billions daily to fund operations across countries. And smaller businesses — like yours — access the market through their bank or a specialist FX provider, typically paying a margin on top of the interbank rate for the convenience and service.
+  </p>
+
+
+  <h2>What are currency pairs and how are they quoted?</h2>
+
+  <p>
+    Currencies are always traded in pairs because every FX transaction involves simultaneously buying one currency and selling another. When you convert sterling to US dollars, you are selling GBP and buying USD. The currency pair is written as <strong>GBP/USD</strong>.
+  </p>
+
+  <p>
+    In every pair, the first currency listed is the <strong>base currency</strong> and the second is the <strong>quote currency</strong> (also called the counter currency). The exchange rate tells you how much of the quote currency you need to buy one unit of the base currency. So if GBP/USD = 1.2700, it means one pound sterling buys 1.27 US dollars.
+  </p>
+
+  <p>
+    There are conventions in the market about which currency is listed first. Sterling, the euro, the Australian dollar, and the New Zealand dollar are typically quoted as the base currency against the US dollar (GBP/USD, EUR/USD, AUD/USD). Most other currencies are quoted with the US dollar as the base (USD/JPY, USD/CHF, USD/CAD). These are conventions, not rules — but they matter because they determine which direction a rate move is good or bad for you.
+  </p>
+
+  <p>
+    When GBP/USD rises from 1.2700 to 1.3000, sterling has <strong>strengthened</strong> — each pound now buys more dollars. If you are a UK exporter receiving dollars, this is bad news: your dollars convert into fewer pounds. If you are a UK importer paying dollars, it is good news: your dollars cost fewer pounds to purchase.
+  </p>
+
+  <p>
+    Every exchange rate has two prices: the <strong>bid</strong> (the rate at which the market maker will buy the base currency from you) and the <strong>ask</strong> or <strong>offer</strong> (the rate at which the market maker will sell the base currency to you). The difference between the two is the <strong>spread</strong>, and it represents one of the costs of transacting. For major currency pairs like GBP/USD, the interbank spread is typically very tight — as little as 0.5 to 1 pip (a pip is the fourth decimal place, so 0.0001). The spread your bank or broker quotes you will be wider, reflecting their margin on top of the interbank rate. Understanding this distinction is essential for benchmarking what you pay for FX, which we cover in detail later in this guide.
+  </p>
+
+
+  <h2>What moves exchange rates?</h2>
+
+  <p>
+    Exchange rates are determined by supply and demand for currencies, but understanding what drives that supply and demand is where it gets useful. There are several major factors, and they operate across different time horizons.
+  </p>
+
+  <h3>Interest rate differentials</h3>
+  <p>
+    This is the single most important driver of currency movements over the medium term. Money flows toward higher yields. If the Bank of England raises interest rates while the US Federal Reserve holds steady, sterling tends to strengthen against the dollar because investors can earn a higher return on sterling-denominated assets. This relationship is not mechanical — expectations about future rate changes matter as much as the actual rates — but interest rate differentials explain a significant portion of currency movements over months and years.
+  </p>
+
+  <h3>Inflation expectations</h3>
+  <p>
+    A country with persistently higher inflation than its trading partners will generally see its currency weaken over time. Higher inflation erodes the purchasing power of a currency, making it less attractive to hold. Central banks respond to inflation by adjusting interest rates, which is why inflation and interest rate effects are closely intertwined. For UK businesses, the Bank of England's inflation target of 2% and its policy decisions to achieve that target are key inputs to GBP exchange rate movements.
+  </p>
+
+  <h3>Economic data releases</h3>
+  <p>
+    Markets react to scheduled economic data — GDP growth figures, employment reports, manufacturing indices, trade balance data, and consumer spending numbers. What matters is not the absolute number but <strong>whether the data is better or worse than what the market expected</strong>. A UK GDP growth figure of 0.3% might strengthen sterling if the consensus forecast was 0.1%, or weaken it if the market expected 0.5%. Key releases to watch include the Office for National Statistics (ONS) monthly GDP estimate, the labour market overview, and the Consumer Price Index (CPI) inflation reading.
+  </p>
+
+  <h3>Central bank policy decisions</h3>
+  <p>
+    The Bank of England's Monetary Policy Committee (MPC) meets eight times per year to set the base interest rate. These decisions — and the accompanying statements about the economic outlook — are among the most significant scheduled events for GBP. Other central bank decisions matter too: the European Central Bank (ECB) for EUR, the Federal Reserve for USD, and the Bank of Japan for JPY. Forward guidance (what central banks signal about their future intentions) can move markets as much as actual rate changes.
+  </p>
+
+  <h3>Political and geopolitical events</h3>
+  <p>
+    Elections, referendums, trade disputes, sanctions, and geopolitical conflicts all affect exchange rates. The Brexit referendum in June 2016, for example, saw GBP/USD fall from above 1.50 to below 1.33 in a single day — a decline of more than 11%. Political uncertainty tends to weaken a currency because it raises doubts about future economic policy, trade relationships, and investment flows. For UK businesses with ongoing international exposure, these events can create sudden and significant changes in the sterling value of overseas revenues and costs.
+  </p>
+
+  <h3>Market sentiment and positioning</h3>
+  <p>
+    In the short term — hours and days — exchange rates can be driven by speculative positioning, momentum trading, and shifts in risk appetite. When global investors become risk-averse (often described as "risk-off" mode), they tend to buy perceived safe-haven currencies like the US dollar, the Swiss franc, and the Japanese yen, and sell higher-risk currencies. These short-term movements can be large and are notoriously difficult to predict. For business planning purposes, the key takeaway is that exchange rates can move meaningfully in either direction over short periods, regardless of the underlying economic fundamentals.
+  </p>
+
+
+  <h2>Where do FX gains and losses come from?</h2>
+
+  <p>
+    One of the most common misconceptions among growing businesses is that FX only affects you when you physically convert currency — when you pay a supplier in euros or receive dollars from a customer. In reality, FX gains and losses arise the moment you create a foreign-currency-denominated asset or liability on your balance sheet. Understanding the three types of FX exposure is essential.
+  </p>
+
+  <h3>Transaction exposure</h3>
+  <p>
+    This is the most visible type and the one most businesses think of first. Transaction exposure arises from committed foreign currency cash flows — invoices you have raised or received, contracts you have signed, or orders you have placed. The risk is that the exchange rate moves between the date you commit to the transaction and the date you settle it in cash.
+  </p>
+  <p>
+    For example, if you issue an invoice for USD 200,000 on 1 March with 60-day payment terms, you have a transaction exposure from 1 March until the customer pays and you convert the dollars. If GBP/USD moves from 1.2600 to 1.2900 during that period, the sterling value of your receivable has fallen from £158,730 to £155,039 — a loss of £3,691 that is entirely due to the exchange rate.
+  </p>
+
+  <h3>Translation exposure (also called accounting exposure)</h3>
+  <p>
+    If your business holds foreign currency assets or liabilities — a USD bank account balance, a EUR trade receivable sitting on your ledger, or an overseas subsidiary's net assets — UK accounting standards (FRS 102, Section 30) require you to retranslate these items at the exchange rate prevailing on your balance sheet date. The difference between the rate at which the item was originally recorded and the rate at the balance sheet date creates an FX gain or loss that flows through your profit and loss account.
+  </p>
+  <p>
+    This is the source of the "unrealised" FX gains and losses that often surprise business owners when they review their management accounts. You may not have converted a single penny of currency, but if you hold a USD 500,000 bank balance and GBP/USD has moved by 3% since your last reporting period, you will see approximately £11,500 of unrealised FX movement in your accounts. These amounts are real — they affect your reported profit, your tax position, and potentially your banking covenants.
+  </p>
+
+  <h3>Economic exposure (also called operating exposure)</h3>
+  <p>
+    This is the broadest and most strategic form of FX risk. Economic exposure refers to the impact of exchange rate changes on the overall competitive position and future cash flows of your business, even where no specific foreign currency transaction exists yet. A UK manufacturer competing against eurozone rivals may find its products become less competitive if sterling strengthens, because its sterling costs translate into higher euro prices for European buyers. Conversely, a weaker pound makes UK exports cheaper and more competitive abroad, but raises the cost of imported raw materials.
+  </p>
+  <p>
+    Economic exposure is harder to measure precisely because it involves forecasts and assumptions about future business volumes, pricing power, and competitive dynamics. But it is often the largest source of FX risk for internationally active businesses. A sustained 10% move in GBP/EUR can reshape the competitive landscape for a UK business selling into Europe far more profoundly than any single transaction loss.
+  </p>
+
+  <h3>How FX gains and losses appear in your accounts</h3>
+  <p>
+    Under FRS 102, exchange differences arising from translating monetary items (trade receivables, trade payables, loans, bank balances) at the closing rate are recognised in profit or loss in the period they arise. This means your P&L will contain a line — sometimes labelled "foreign exchange gains/losses" or "exchange differences" — that reflects the net impact of rate movements on all your foreign currency monetary items. For businesses with significant overseas trade, this line can be material and volatile, making monthly and quarterly results harder to predict and explain to stakeholders.
+  </p>
+
+
+  <h2>What is the difference between the mid-market rate and the rate your bank offers?</h2>
+
+  <p>
+    When you search "GBP to USD" on Google, the rate displayed is the <strong>mid-market rate</strong> — also called the interbank rate or the spot rate. It represents the midpoint between the bid and ask prices at which large banks trade currencies with each other in the wholesale market. It is the closest thing to a "true" exchange rate.
+  </p>
+
+  <p>
+    No business, however, transacts at the mid-market rate. Your bank or FX provider adds a <strong>margin</strong> (sometimes called a spread or markup) to the mid-market rate before quoting you a price. This margin is how they earn revenue on the transaction, and it varies enormously depending on the provider, the currency pair, the transaction size, and your negotiating power.
+  </p>
+
+  <p>
+    For a UK SME converting GBP to USD, a typical high-street bank margin might range from 1.0% to 3.0% above the mid-market rate. On a £100,000 conversion, a 2% margin costs you £2,000 in hidden charges — money that never appears as a line item on your bank statement but is embedded in the rate you receive. Over a year, a business converting £1 million in foreign currency could be paying £20,000 or more in margins without ever seeing a separate "FX fee" on any statement.
+  </p>
+
+  <p>
+    Specialist FX brokers and platforms typically offer tighter margins than high-street banks — often 0.2% to 0.8% for SMEs — because their business model is built around FX rather than cross-subsidising it with other banking products. The difference in margin can be substantial. On the same £1 million of annual conversions, moving from a 2% bank margin to a 0.4% specialist margin would save £16,000 per year.
+  </p>
+
+  <p>
+    To benchmark what you are paying, you need to compare the rate you were given on each transaction against the mid-market rate at the exact time the trade was executed. Many businesses do not do this, which means they have no visibility over one of their largest and most recurring international costs. Building this comparison into your finance process — even in a simple spreadsheet — is one of the highest-value, lowest-effort improvements you can make to your international finance operations.
+  </p>
+
+  <p>
+    Be aware that some providers advertise "zero commission" or "no fees" on FX transactions. This almost always means the cost is embedded entirely in the exchange rate margin rather than charged separately. The total cost may be lower, the same, or higher than a provider who charges an explicit fee on top of a tighter rate. The only reliable comparison is total cost: what is the all-in rate you receive relative to the mid-market rate at the moment of execution?
+  </p>
+
+
+  <!-- Worked Example -->
+  <div class="worked-example">
+    <h3>Worked Example: How FX impacts a UK software company</h3>
+
+    <p>
+      Let us walk through a realistic scenario to show how FX affects the finances of a growing UK business across a single quarter.
+    </p>
+
+    <p>
+      <strong>The business:</strong> CloudBridge Ltd is a UK-based SaaS company. It sells project management software to clients in the US, Europe, and the UK. Annual recurring revenue is £4.2 million, of which approximately 45% (£1.89 million) comes from overseas clients who pay in their local currencies — predominantly USD and EUR.
+    </p>
+
+    <p>
+      <strong>The setup — Q3 opening position (1 July):</strong>
+    </p>
+    <ul>
+      <li>Outstanding USD receivables: $320,000 (from US subscription renewals invoiced in June)</li>
+      <li>Outstanding EUR receivables: EUR 185,000 (from European clients invoiced in June)</li>
+      <li>USD bank account balance: $45,000</li>
+      <li>New USD invoices to be raised in Q3: approximately $280,000</li>
+      <li>New EUR invoices to be raised in Q3: approximately EUR 160,000</li>
+    </ul>
+
+    <p>
+      <strong>Opening exchange rates on 1 July:</strong> GBP/USD = 1.2650 and GBP/EUR = 1.1700
+    </p>
+
+    <p>
+      <strong>What happens during Q3:</strong> Sterling strengthens over the quarter. By 30 September, GBP/USD has moved to 1.3100 and GBP/EUR to 1.2050. That is a 3.6% move against CloudBridge on USD exposures and a 3.0% move on EUR exposures.
+    </p>
+
+    <p>
+      <strong>Impact on outstanding receivables at quarter end:</strong>
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Foreign currency amount</th>
+          <th>GBP value at 1 Jul rate</th>
+          <th>GBP value at 30 Sep rate</th>
+          <th>FX gain / (loss)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>USD receivables outstanding</td>
+          <td>$195,000</td>
+          <td>£154,150</td>
+          <td>£148,855</td>
+          <td><strong>(£5,295)</strong></td>
+        </tr>
+        <tr>
+          <td>EUR receivables outstanding</td>
+          <td>EUR 110,000</td>
+          <td>£94,017</td>
+          <td>£91,286</td>
+          <td><strong>(£2,731)</strong></td>
+        </tr>
+        <tr>
+          <td>USD bank balance</td>
+          <td>$78,000</td>
+          <td>£61,660</td>
+          <td>£59,542</td>
+          <td><strong>(£2,118)</strong></td>
+        </tr>
+        <tr>
+          <td colspan="4"><strong>Total unrealised FX loss for Q3</strong></td>
+          <td><strong>(£10,144)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <strong>Impact on cash conversions during the quarter:</strong> CloudBridge collected $305,000 and EUR 175,000 during Q3 and converted the majority to sterling at prevailing rates throughout the quarter. Using an average conversion rate of GBP/USD 1.2880 (versus the 1.2650 rate assumed in their budget) and GBP/EUR 1.1870 (versus a budgeted 1.1700), the shortfall on converted amounts was approximately £4,700 on USD and £2,100 on EUR — a further £6,800 of realised FX loss versus budget.
+    </p>
+
+    <p>
+      <strong>Total Q3 FX impact: approximately £16,944.</strong>
+    </p>
+
+    <p>
+      For CloudBridge, with quarterly overseas revenue of roughly £470,000, that £16,944 represents a 3.6% drag on international earnings for the quarter. It came from no change in customer numbers, no change in pricing, and no change in product — purely from exchange rate movements.
+    </p>
+
+    <p>
+      <strong>What CloudBridge could have done differently:</strong>
+    </p>
+    <ul>
+      <li><strong>Benchmarked their conversion rates</strong> — checking each conversion against the mid-market rate at the time of execution to ensure their bank margins were competitive.</li>
+      <li><strong>Used forward contracts</strong> — locking in exchange rates for expected receivables at the start of the quarter, protecting their budgeted margins. A simple three-month forward on the $280,000 and EUR 160,000 of expected invoicing would have eliminated most of the realised loss.</li>
+      <li><strong>Consolidated and timed conversions</strong> — rather than converting ad hoc as payments arrived, batching conversions and timing them based on rate levels and cash flow needs.</li>
+      <li><strong>Tracked FX exposure systematically</strong> — maintaining a clear view of all outstanding foreign currency receivables, payables, and balances so the finance team could see the total exposure and make informed decisions.</li>
+    </ul>
+
+    <p>
+      None of these steps are complicated or expensive. They require visibility, a basic framework, and access to the right instruments — all of which are achievable for a business of CloudBridge's size.
+    </p>
+  </div>
+
+
+  <h2>What should a growing UK business do about FX?</h2>
+
+  <p>
+    If your business transacts in foreign currencies — whether you are invoicing overseas customers, paying international suppliers, running foreign payroll, or holding multi-currency bank accounts — you have FX exposure. The question is not whether it will affect your business, but how much and whether you are managing it or simply accepting whatever the market gives you.
+  </p>
+
+  <p>
+    The starting point is visibility. Most growing businesses have only a partial view of their total FX exposure at any given time. Receivables sit in one system, payables in another, bank balances in a third, and committed future transactions in the heads of the sales or procurement team. Pulling these together into a single picture — even a rough one — immediately tells you the scale of the risk you are carrying and which currencies matter most.
+  </p>
+
+  <p>
+    From there, the key steps are straightforward:
+  </p>
+
+  <ol>
+    <li><strong>Measure what you are paying for FX today.</strong> Compare your actual conversion rates against the mid-market rate to quantify the margin your bank or broker is charging. This is often the single biggest saving available to a growing business.</li>
+    <li><strong>Understand your exposure profile.</strong> Map your expected foreign currency inflows and outflows over the next 3 to 12 months. Identify which currencies, which amounts, and which time periods carry the most risk.</li>
+    <li><strong>Decide how much risk to accept.</strong> Not all FX risk needs to be hedged. Some businesses choose to hedge 100% of committed exposures and 50% of forecast exposures. Others hedge nothing and accept the volatility. The right answer depends on your margins, your cash flow sensitivity, and your stakeholders' tolerance for earnings volatility.</li>
+    <li><strong>Use the right instruments.</strong> For most growing businesses, spot transactions and forward contracts cover the vast majority of needs. Options and more complex structures have their place but are rarely necessary at the early stages of FX management.</li>
+    <li><strong>Build a repeatable process.</strong> FX management should not depend on one person watching rates and making ad hoc decisions. A simple, documented process — reviewed monthly or quarterly — ensures consistency and removes the temptation to speculate on rate movements.</li>
+  </ol>
+
+  <p>
+    The guides in this series cover each of these steps in detail. If you are new to managing FX, continue with <a href="/fx-academy/fx-markets-and-instruments">FX Markets & Financial Instruments</a> for a deeper understanding of the tools available, or jump to <a href="/fx-academy/currency-management">Currency Management for Growing Businesses</a> for a structured framework you can implement immediately.
+  </p>
+
+  <p>
+    Foreign exchange is not something to fear or ignore. It is a manageable financial variable — and for growing UK businesses with international ambitions, understanding it is a competitive advantage.
+  </p>
+
+</AcademyGuideLayout>

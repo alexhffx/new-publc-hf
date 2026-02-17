@@ -2,28 +2,101 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
 import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
 import { getBlogPosts, urlFor } from '../../lib/sanity';
 
-const posts = await getBlogPosts();
+/* ── 1. Markdown posts from content collection ─────────────── */
+const mdEntries = await getCollection('blog');
+const mdPosts = mdEntries.map((entry) => ({
+  title: entry.data.title,
+  excerpt: entry.data.description || '',
+  date: entry.data.date,
+  href: `/blog/${entry.data.slug}`,
+  image: entry.data.featuredImage || undefined,
+  category: entry.data.category,
+  source: 'md' as const,
+}));
+
+/* ── 2. Sanity posts (future CMS posts) ───────────────────── */
+let sanityPosts: typeof mdPosts = [];
+try {
+  const raw = await getBlogPosts();
+  if (raw && raw.length > 0) {
+    sanityPosts = raw.map((post: any) => ({
+      title: post.title,
+      excerpt: post.excerpt || '',
+      date: post.publishedAt || new Date().toISOString(),
+      href: `/blog/${post.slug?.current}`,
+      image: post.featuredImage
+        ? urlFor(post.featuredImage).width(600).height(375).auto('format').url()
+        : undefined,
+      category: 'news' as const, // Default; Sanity posts can have their own category field
+      source: 'sanity' as const,
+    }));
+  }
+} catch {
+  // Sanity may not have posts yet — that's fine
+}
+
+/* ── 3. Merge & sort by date (newest first) ───────────────── */
+const allPosts = [...mdPosts, ...sanityPosts].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+
+/* ── Category definitions ──────────────────────────────────── */
+const categories = [
+  { slug: 'all', label: 'All Posts' },
+  { slug: 'fx-risk-hedging', label: 'FX Risk & Hedging' },
+  { slug: 'treasury-cash', label: 'Treasury & Cash' },
+  { slug: 'payments-ops', label: 'Payments & Operations' },
+  { slug: 'markets', label: 'Market Commentary' },
+  { slug: 'news', label: 'Company News' },
+];
 ---
 
-<PageLayout title="Blog" description="Insights on treasury, FX, and international finance from HedgeFlows.">
+<PageLayout
+  title="Blog | HedgeFlows"
+  description="Insights on treasury, FX risk management, and international finance from HedgeFlows. Expert articles, guides, and market commentary."
+>
   <Hero
     title="Insights on treasury, FX, and international finance"
     subtitle="Expert articles, guides, and news to help you navigate international treasury."
   />
+
   <section class="section-padding">
     <div class="container-content">
-      {posts && posts.length > 0 ? (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {posts.map((post: any) => (
-            <BlogCard
-              title={post.title}
-              excerpt={post.excerpt || ''}
-              date={post.publishedAt || new Date().toISOString()}
-              href={`/blog/${post.slug?.current}`}
-              image={post.featuredImage ? urlFor(post.featuredImage).width(600).height(375).auto('format').url() : undefined}
-            />
+      {/* ── Category filter tabs ──────────────────────────── */}
+      <div class="flex flex-wrap gap-2 mb-10 justify-center" id="category-filters">
+        {categories.map((cat) => (
+          <button
+            type="button"
+            data-category={cat.slug}
+            class:list={[
+              'px-4 py-2 rounded-full text-[0.875rem] font-medium transition-all duration-200 border',
+              cat.slug === 'all'
+                ? 'bg-brand-green text-white border-brand-green'
+                : 'bg-white text-text-muted border-gray-200 hover:border-brand-green/30 hover:text-brand-green',
+            ]}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ── Post grid ─────────────────────────────────────── */}
+      {allPosts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="blog-grid">
+          {allPosts.map((post) => (
+            <div data-cat={post.category} class="blog-card-wrapper">
+              <BlogCard
+                title={post.title}
+                excerpt={post.excerpt}
+                date={post.date}
+                href={post.href}
+                image={post.image}
+                category={post.category}
+              />
+            </div>
           ))}
         </div>
       ) : (
@@ -31,6 +104,53 @@ const posts = await getBlogPosts();
           <p class="text-text-muted text-lg">No blog posts yet. Check back soon!</p>
         </div>
       )}
+
+      {/* ── Empty state for filtered view ─────────────────── */}
+      <div id="no-results" class="text-center py-12 hidden">
+        <p class="text-text-muted text-lg">No posts in this category yet.</p>
+      </div>
     </div>
   </section>
 </PageLayout>
+
+<script>
+  // Client-side category filtering
+  const filters = document.getElementById('category-filters');
+  const grid = document.getElementById('blog-grid');
+  const noResults = document.getElementById('no-results');
+  if (filters && grid) {
+    const buttons = filters.querySelectorAll('button');
+    const cards = grid.querySelectorAll<HTMLElement>('.blog-card-wrapper');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.category;
+
+        // Update button styles
+        buttons.forEach((b) => {
+          b.classList.remove('bg-brand-green', 'text-white', 'border-brand-green');
+          b.classList.add('bg-white', 'text-text-muted', 'border-gray-200');
+        });
+        btn.classList.remove('bg-white', 'text-text-muted', 'border-gray-200');
+        btn.classList.add('bg-brand-green', 'text-white', 'border-brand-green');
+
+        // Filter cards
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          if (cat === 'all' || card.dataset.cat === cat) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Show/hide empty state
+        if (noResults) {
+          noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+        grid.classList.toggle('hidden', visibleCount === 0);
+      });
+    });
+  }
+</script>
