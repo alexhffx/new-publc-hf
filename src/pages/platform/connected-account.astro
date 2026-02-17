@@ -1,26 +1,193 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
 
-const page = await getPage('platform/connected-account');
+const features = [
+  {
+    title: 'Pay & get paid like a local',
+    description: 'One account to send and receive bank payments in 35 currencies across 185 countries. Local IBANs in major currencies for seamless collections.',
+    icon: 'M15 10.5a3 3 0 11-6 0 3 3 0 016 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z',
+  },
+  {
+    title: 'Effortlessly move currencies',
+    description: 'Pre-book guaranteed exchange rates days or weeks in advance. Schedule payments and automate payouts with certainty about your FX costs.',
+    icon: 'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
+  },
+  {
+    title: 'Automate bookkeeping',
+    description: 'Eliminate manual bank feeds and reduce errors. Auto-reconcile paid bills and invoices in any currency directly to your accounting software.',
+    icon: 'M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z',
+  },
+];
+
+const benefits = [
+  'Pay or get paid in 35 currencies across 185 countries',
+  'Pre-book guaranteed FX rates to lock in costs in advance',
+  'Import invoices from Xero, QuickBooks, NetSuite, or Business Central',
+  'Schedule payment runs with or without embedded FX hedging',
+  'Auto-reconcile immediately upon payment completion',
+];
+
+const competitive = [
+  {
+    question: 'Why not just use my bank?',
+    answer: 'Banks typically charge 2-4% on FX with hidden markups in the spread. HedgeFlows charges just 0.25% above interbank — up to 5x cheaper.',
+  },
+  {
+    question: 'How is this different from Wise?',
+    answer: 'Wise is great for simple transfers, but it doesn\'t connect to your accounting software, manage FX risk, or automate payment runs. HedgeFlows does all three.',
+  },
+  {
+    question: 'Do I need to move my bank account?',
+    answer: 'No. HedgeFlows works alongside your existing bank. Connect via Open Banking and keep your banking relationships intact.',
+  },
+];
+
+const steps = [
+  { number: 1, title: 'Sign up for free', description: 'Create your account in minutes. No credit card required.' },
+  { number: 2, title: 'Connect your accounting', description: 'Link Xero, QuickBooks, NetSuite, or Business Central in under 3 minutes.' },
+  { number: 3, title: 'Register your business', description: 'Quick KYB check and you\'re ready to pay and get paid globally.' },
+  { number: 4, title: 'Start transacting', description: 'Import invoices, schedule payments, and watch everything reconcile automatically.' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Connected Account'}
-  description={page?.seoDescription || 'Your multi-currency business account for international trade.'}
+  title="Connected Global Account | HedgeFlows"
+  description="One account to pay and get paid in 35 currencies across 185 countries. Pre-bookable FX rates, local IBANs, and costs up to 5x cheaper than banks."
 >
+  <!-- Hero -->
   <Hero
-    title={page?.heroTitle || 'Your multi-currency business account'}
-    subtitle={page?.heroSubtitle || 'Hold, send, and receive funds in multiple currencies from a single connected account.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Connected global account to do business with the world"
+    subtitle="Pay and get paid at scale in any currency, with FX costs up to 5x cheaper than banks and pre-bookable exchange rates to secure guaranteed costs in advance."
+    primaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <!-- Hero Image -->
+  <section class="bg-white -mt-8 md:-mt-14 relative z-10 pb-12">
+    <div class="container-content">
+      <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+        <img
+          src="/assets/images/dashboard.png"
+          alt="HedgeFlows connected global account dashboard"
+          class="w-full h-auto"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <TrustBar />
+
+  <!-- 3 Feature Cards -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="grid md:grid-cols-3 gap-8">
+        {features.map((f) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={f.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{f.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{f.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="section-heading text-left">A global payments account that makes accounting easy</h2>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-8">
+            Stop juggling multiple bank portals, payment files, and manual reconciliations. With HedgeFlows, everything connects — your invoices, payments, FX, and ledger.
+          </p>
+          <ul class="space-y-3">
+            {benefits.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+          <img
+            src="/assets/images/platform/balances.jpg"
+            alt="Multi-currency account balances in HedgeFlows"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competitive Comparison -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Cheaper than banks, smarter than Wise</h2>
+        <p class="section-subheading mx-auto">
+          Just 0.25% above the interbank rate — up to 5x cheaper than high-street banks. Plus the automation they can't offer.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {competitive.map((item) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6">
+            <h3 class="text-[1rem] font-semibold text-text-heading mb-3">{item.question}</h3>
+            <p class="text-[0.875rem] text-text-body leading-relaxed">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section-padding-sm bg-white">
+    <div class="container-content">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        {[
+          { value: '35', label: 'Currencies supported' },
+          { value: '185', label: 'Countries covered' },
+          { value: '5x', label: 'Cheaper FX than banks' },
+          { value: '0.25%', label: 'Markup above interbank' },
+        ].map((stat) => (
+          <div class="text-center">
+            <p class="text-[2rem] md:text-[2.5rem] font-bold text-brand-green leading-none">{stat.value}</p>
+            <p class="text-[0.875rem] text-text-muted mt-2 font-medium">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Get started in minutes</h2>
+        <p class="section-subheading mx-auto">No IT resources needed. No training required.</p>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
+  <!-- CTA -->
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to do business like a local across 185 countries?"
+    primaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>

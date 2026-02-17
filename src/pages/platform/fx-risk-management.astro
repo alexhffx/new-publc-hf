@@ -1,26 +1,281 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
 
-const page = await getPage('platform/fx-risk-management');
+const processSteps = [
+  {
+    title: 'Connect your data',
+    description: 'Connect your ERP, forecasting tools, or CRM in minutes to get real-time visibility into your actual currency exposures.',
+    icon: 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244',
+  },
+  {
+    title: 'See your FX risks',
+    description: 'Transform raw data into clear risk insights. See exactly how much FX exposure you carry, what it means for your business, and when to act.',
+    icon: 'M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+  {
+    title: 'Execute with confidence',
+    description: 'Implement hedging policies, get expert recommendations, and execute easily. Manage treasury in 35 currencies from one platform.',
+    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  },
+];
+
+const steps = [
+  { number: 1, title: 'Set goals', description: 'Book a free consultation with our experts to discuss your FX risks and formulate clear objectives.' },
+  { number: 2, title: 'Connect data', description: 'Connect your accounting or ERP system in minutes for real-time visibility and alerts.' },
+  { number: 3, title: 'Implement & monitor', description: 'Configure hedging strategies, alerts, and reports with guidance from our experts.' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'FX Risk Management'}
-  description={page?.seoDescription || 'Manage currency risk with confidence using HedgeFlows.'}
+  title="FX Risk Management | HedgeFlows"
+  description="Expert FX risk management for CFOs who want clarity, not complexity. Connect data, see risks, execute hedging strategies with confidence."
 >
+  <!-- Hero -->
   <Hero
-    title={page?.heroTitle || 'Manage currency risk with confidence'}
-    subtitle={page?.heroSubtitle || 'Identify exposures, set hedging strategies, and execute FX trades from a single platform.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Expert FX risk management for CFOs who want clarity, not complexity"
+    subtitle="Most finance teams manage currency risk like driving in fog. HedgeFlows gives you the visibility to see what's ahead — and the tools to act on it."
+    primaryCta={{ label: 'See Your FX Risk', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <!-- Hero Image -->
+  <section class="bg-white -mt-8 md:-mt-14 relative z-10 pb-12">
+    <div class="container-content">
+      <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+        <img
+          src="/assets/images/platform/fx-risk-hero.png"
+          alt="HedgeFlows FX risk management - hedged rate analysis"
+          class="w-full h-auto"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <TrustBar />
+
+  <!-- 3-Step Process Cards -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Let your facts — not market moves — drive your decisions</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {processSteps.map((s, i) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm relative">
+            <div class="absolute top-6 right-6 w-8 h-8 bg-brand-green-pale rounded-full flex items-center justify-center text-brand-green font-bold text-sm">
+              {i + 1}
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={s.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards Bar -->
+  <section class="section-padding-sm bg-white border-y border-gray-100">
+    <div class="container-content">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+        <div class="flex items-center gap-4">
+          <img src="/assets/logos/clients/tmi.jpg" alt="TMI Awards 2025" class="w-14 h-14 rounded-xl object-cover" />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.875rem]">Best Risk Management</p>
+            <p class="text-[0.75rem] text-text-muted">TMI Awards 2025</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="/assets/logos/clients/ttp.jpg" alt="TTP Awards 2026" class="w-14 h-14 rounded-xl object-cover" />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.875rem]">SME Inclusion Initiative</p>
+            <p class="text-[0.75rem] text-text-muted">TTP Awards 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep Dive: Automated Monitoring -->
+  <section class="section-padding bg-white">
+    <div class="container-content space-y-24">
+
+      <!-- Row 1: Automated Risk Monitoring -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Automated Risk Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Monitor FX risk without constant manual oversight
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            No more nasty surprises. Connect your data, set your risk tolerance, and HedgeFlows will automatically monitor and alert you before it's too late to act.
+          </p>
+          <ul class="space-y-3">
+            {[
+              'Continuous monitoring of all currency exposures',
+              'Configurable alerts based on your risk tolerance',
+              'Automatic notifications when action is needed',
+              'Complete audit trail of all risk decisions',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+          <img
+            src="/assets/images/platform/fx-monitoring.png"
+            alt="Automated FX risk monitoring dashboard"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Row 2: Connected Data (reversed) -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+          <img
+            src="/assets/images/platform/cashflow-plan.png"
+            alt="Connected currency data and cash flow forecasting"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Connected Currency Data</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Get the visibility to beat volatility
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Go beyond the FX budget buffer on projects. Gain critical early visibility of your entire pipeline and currency needs through integrations with NetSuite, HubSpot, Salesforce, and more.
+          </p>
+          <ul class="space-y-3">
+            {[
+              'Pull exposure data from ERP, CRM, and forecasting tools',
+              'See projected cash flows in every currency',
+              'Quantify exposure before it becomes a problem',
+              'Integrate with Salesforce and HubSpot for pipeline visibility',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Row 3: Hedging Workflows -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">FX Hedging Workflows</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Manage currencies, don't gamble on them
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Easily execute risk management best practices with help from our experts and guidance from our AI-powered Currency Co-pilot. Pre-set hedging options make execution simple.
+          </p>
+          <ul class="space-y-3">
+            {[
+              'Pre-configured hedging strategies tailored to your business',
+              'AI Currency Co-pilot for clear recommendations',
+              'One-click execution of hedging policies',
+              'Automatic allocation of hedges to underlying invoices',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+          <img
+            src="/assets/images/platform/fx-risk-hero.png"
+            alt="FX hedging workflow with hedged rate analysis"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expert Guidance -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="w-16 h-16 rounded-2xl bg-brand-green-pale flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+          </svg>
+        </div>
+        <h2 class="section-heading">Expert guidance included</h2>
+        <p class="text-[1.0625rem] text-text-body leading-relaxed mb-8">
+          Get a free upfront consultation with our experts to discuss risk and plan an FX risk management process that's right for the industry, size, and specific needs of your business. We don't just sell software — we help you build a strategy.
+        </p>
+        <a href="/treasury-health-check" class="btn-primary text-[1.0625rem] px-8 py-4">
+          Book a Free Consultation
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Getting started is straightforward</h2>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section class="section-padding-sm bg-[#F8FAFB] border-y border-gray-100">
+    <div class="container-content">
+      <div class="flex items-center gap-6 max-w-2xl mx-auto">
+        <div class="w-16 h-16 bg-brand-green-pale rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-8 h-8 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+        </div>
+        <div>
+          <p class="font-semibold text-text-heading text-[1rem]">Bank-grade security</p>
+          <p class="text-[0.875rem] text-text-body leading-relaxed">
+            HedgeFlows is an FCA-regulated institution (FRN: 1008699) with role-based access controls, multi-factor authentication, and enterprise-grade data protection.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to turn FX risk into FX resilience?"
+    primaryCta={{ label: 'See Your FX Risk', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>

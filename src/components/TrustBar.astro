@@ -1,5 +1,6 @@
 ---
 import { getClientLogos, urlFor } from '../lib/sanity';
+import { staticClientLogos } from '../data/clientLogos';
 
 interface Props {
   label?: string;
@@ -11,15 +12,16 @@ const {
   logos: logosFromProps,
 } = Astro.props;
 
-// Use provided logos (curated for this page), or fetch all from CMS
+// Use provided logos, or fetch from CMS, or fall back to static logos
 let logos: any[] = [];
 if (logosFromProps && logosFromProps.length > 0) {
   logos = logosFromProps;
 } else {
   try {
-    logos = (await getClientLogos()) || [];
+    const sanityLogos = (await getClientLogos()) || [];
+    logos = sanityLogos.length > 0 ? sanityLogos : staticClientLogos;
   } catch (e) {
-    /* graceful fallback — empty state */
+    logos = staticClientLogos;
   }
 }
 ---
@@ -33,14 +35,14 @@ if (logosFromProps && logosFromProps.length > 0) {
       <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
         {logos.map((item: any) => {
           const imgUrl = item.logo
-            ? urlFor(item.logo).height(32).auto('format').url()
+            ? (typeof item.logo === 'string' ? item.logo : urlFor(item.logo).height(32).auto('format').url())
             : null;
 
           const inner = imgUrl ? (
             <img
               src={imgUrl}
               alt={item.name}
-              class="h-7 md:h-8 w-auto object-contain"
+              class="max-h-9 md:max-h-10 max-w-[130px] md:max-w-[150px] w-auto object-contain"
               loading="lazy"
             />
           ) : (

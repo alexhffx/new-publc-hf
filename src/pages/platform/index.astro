@@ -1,26 +1,591 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
+import { getClientLogos } from '../../lib/sanity';
+import { staticClientLogos } from '../../data/clientLogos';
 
-const page = await getPage('platform');
+let clientLogos: any[] = [];
+try {
+  const sanityLogos = await getClientLogos() || [];
+  clientLogos = sanityLogos.length > 0 ? sanityLogos : staticClientLogos;
+} catch (e) {
+  clientLogos = staticClientLogos;
+}
+
+/* ─────────────────────────── Icon SVG paths (Heroicons outline) ─────────────────────────── */
+const iconPaths: Record<string, string> = {
+  wallet: 'M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3',
+  send: 'M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5',
+  'bar-chart': 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  shield: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  plug: 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244',
+  desktop: 'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25',
+  bolt: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  globe: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+  clock: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z',
+  check: 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+};
+
+/* ─────────────────────────── Feature cards data ─────────────────────────── */
+const features = [
+  {
+    icon: 'wallet',
+    title: 'Connected Global Account',
+    description: 'One account to pay and get paid in 35 currencies across 185 countries. Pre-bookable FX rates, local IBANs, and costs up to 5x cheaper than banks.',
+    href: '/platform/connected-account',
+    stat: '35 currencies',
+  },
+  {
+    icon: 'send',
+    title: 'Payments & AP Automation',
+    description: 'Process multi-currency payment runs in minutes instead of hours. Auto-reconcile to your accounting software with a full audit trail.',
+    href: '/platform/payments',
+    stat: '10x faster',
+  },
+  {
+    icon: 'bar-chart',
+    title: 'Cash Management',
+    description: 'Real-time visibility across all accounts, entities, and currencies. Forecast accurately and unlock better returns on spare working capital.',
+    href: '/platform/cash-management',
+    stat: 'Real-time',
+  },
+  {
+    icon: 'shield',
+    title: 'FX Risk Management',
+    description: 'See your true currency exposure, get clear hedging recommendations, and execute with confidence. Turn FX risk into FX resilience.',
+    href: '/platform/fx-risk-management',
+    stat: 'AI-powered',
+  },
+  {
+    icon: 'plug',
+    title: 'Integrations',
+    description: 'Connect your Xero, NetSuite, QuickBooks, or Business Central in minutes. Plus 2,000+ international bank connections via Open Banking.',
+    href: '/platform/integrations',
+    stat: '2,000+ banks',
+  },
+];
+
+/* ─────────────────────────── Stats data ─────────────────────────── */
+const stats = [
+  { value: '3,000+', label: 'Businesses served' },
+  { value: '185', label: 'Countries covered' },
+  { value: '35', label: 'Currencies supported' },
+  { value: '0.25%', label: 'Markup above interbank' },
+];
+
+/* ─────────────────────────── How it works steps ─────────────────────────── */
+const steps = [
+  {
+    number: 1,
+    title: 'Connect your accounting',
+    description: 'Link Xero, NetSuite, QuickBooks, or Business Central in under 3 minutes. No IT support needed.',
+  },
+  {
+    number: 2,
+    title: 'See your full picture',
+    description: 'Get real-time visibility into cash positions, FX exposure, and payment flows across all accounts.',
+  },
+  {
+    number: 3,
+    title: 'Act on recommendations',
+    description: 'Execute hedging strategies, schedule payment runs, and manage cash — all from one dashboard.',
+  },
+  {
+    number: 4,
+    title: 'Automate and scale',
+    description: 'Reconcile automatically, set up alerts, and let the platform handle the repetitive work.',
+  },
+];
+
+/* ─────────────────────────── Differentiators ─────────────────────────── */
+const differentiators = [
+  {
+    icon: 'bolt',
+    title: 'No IT resources needed',
+    description: 'Connect to any cloud-based ERP or accounting system in 3 minutes — no developers, no tickets.',
+  },
+  {
+    icon: 'check',
+    title: 'No training required',
+    description: 'Intuitive workflows let anyone on your team get started seamlessly from day one.',
+  },
+  {
+    icon: 'globe',
+    title: 'Built for international',
+    description: 'Unlike bolt-on FX tools, HedgeFlows was designed from the ground up for multi-currency businesses.',
+  },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Platform Overview'}
-  description={page?.seoDescription || 'Technology that makes treasury advice actionable for international businesses.'}
+  title="Treasury Platform | HedgeFlows"
+  description="Mission control for multi-currency businesses. Payments, FX risk, cash management, and accounting integrations — all in one platform."
 >
+  <!-- Hero -->
   <Hero
-    title={page?.heroTitle || 'Technology that makes treasury advice actionable'}
-    subtitle={page?.heroSubtitle || 'A unified platform combining advisory intelligence with powerful treasury tools.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Mission control for multi-currency businesses"
+    subtitle="Stop bridging gaps between your bank, payments, accounting software, and FX provider. HedgeFlows connects and automates them all in one smart dashboard."
+    primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <!-- Trust Bar -->
+  <TrustBar label="Trusted by international businesses:" logos={clientLogos} />
+
+  <!-- Stats Bar -->
+  <section class="section-padding-sm bg-white">
+    <div class="container-content">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <p class="text-[2rem] md:text-[2.5rem] font-bold text-brand-green leading-none">{stat.value}</p>
+            <p class="text-[0.875rem] text-text-muted mt-2 font-medium">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Features Grid -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">
+          Everything you need to run international finances
+        </h2>
+        <p class="section-subheading mx-auto">
+          Five powerful modules that work together — or standalone — to give your finance team superpowers.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((feature) => (
+          <a
+            href={feature.href}
+            class="group bg-white rounded-2xl border border-gray-100 p-8
+                   shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
+                   hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
+                   hover:border-brand-green/20 transition-all duration-300 flex flex-col"
+          >
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[feature.icon] || iconPaths['desktop']} />
+                </svg>
+              </div>
+              <span class="text-[0.75rem] font-semibold text-brand-green bg-brand-green-pale px-2.5 py-1 rounded-full">
+                {feature.stat}
+              </span>
+            </div>
+
+            <h3 class="text-[1.25rem] font-bold text-text-heading mb-3 group-hover:text-brand-green transition-colors duration-200">
+              {feature.title}
+            </h3>
+
+            <p class="text-[0.9375rem] text-text-body leading-relaxed flex-1">
+              {feature.description}
+            </p>
+
+            <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.875rem] mt-6 group-hover:gap-2.5 transition-all duration-200">
+              Learn more
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Screenshot / Visual -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-12">
+        <h2 class="section-heading">
+          One dashboard to replace the spreadsheet chaos
+        </h2>
+        <p class="section-subheading mx-auto">
+          See cash positions, FX exposure, pending payments, and reconciliation status at a glance.
+        </p>
+      </div>
+
+      <!-- Platform visual placeholder -->
+      <div class="max-w-4xl mx-auto rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] border border-brand-green/10 overflow-hidden shadow-lg">
+        <div class="p-8 md:p-12">
+          <!-- Mock dashboard header -->
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-3 h-3 rounded-full bg-red-400/60"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-400/60"></div>
+            <div class="w-3 h-3 rounded-full bg-green-400/60"></div>
+            <span class="text-[0.8125rem] font-medium text-brand-green/50 ml-2">HedgeFlows Dashboard</span>
+          </div>
+
+          <!-- Mock dashboard content -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white/80 rounded-xl p-4 text-center">
+              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">Total Balance</p>
+              <p class="text-[1.25rem] font-bold text-text-heading">$2.4M</p>
+            </div>
+            <div class="bg-white/80 rounded-xl p-4 text-center">
+              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">FX Exposure</p>
+              <p class="text-[1.25rem] font-bold text-text-heading">$840K</p>
+            </div>
+            <div class="bg-white/80 rounded-xl p-4 text-center">
+              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">Pending</p>
+              <p class="text-[1.25rem] font-bold text-text-heading">12 payments</p>
+            </div>
+            <div class="bg-white/80 rounded-xl p-4 text-center">
+              <p class="text-[0.6875rem] text-text-muted uppercase tracking-wider mb-1">Hedged</p>
+              <p class="text-[1.25rem] font-bold text-brand-green">78%</p>
+            </div>
+          </div>
+
+          <!-- Mock chart area -->
+          <div class="bg-white/60 rounded-xl p-6 flex items-center justify-center h-40 md:h-52">
+            <svg class="w-16 h-16 text-brand-green/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Up and running in minutes, not months</h2>
+        <p class="section-subheading mx-auto">
+          No IT project. No migration. Just connect your existing tools and start managing.
+        </p>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
+  <!-- Feature Deep-Dive: Connected Account + Payments (alternating 2-col) -->
+  <section class="section-padding bg-white">
+    <div class="container-content space-y-24">
+
+      <!-- Row 1: Connected Account -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Connected Global Account</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Do business like a local across 185 countries
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Pay and get paid at scale in any of 35 currencies. With FX costs up to 5x cheaper than high-street banks and pre-bookable exchange rates to guarantee costs in advance.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Local IBANs in major currencies for seamless collections',
+              'Pre-book guaranteed FX rates days or weeks in advance',
+              'Auto-reconcile paid bills and invoices to your ledger',
+              'Import invoices directly from your accounting software',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/connected-account" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about Connected Account
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
+          <div class="text-center">
+            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.wallet} />
+            </svg>
+            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Payments (reversed) -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
+          <div class="text-center">
+            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.send} />
+            </svg>
+            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Payments & AP Automation</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Save hours on multi-currency payment runs
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Process domestic and international payments in minutes. Approve, schedule, and pay — then watch everything reconcile automatically back to your ledger.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Flexible approval workflows with full audit trail',
+              'Confirmation of Payee and bank account validation',
+              'Embed FX or pay from currency balances you hold',
+              'Auto-post payments and FX gains/losses in real time',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/payments" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about Payments
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Row 3: Cash Management -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Cash Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Real-time forecasting across every account and entity
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            See all your entities and bank accounts in one place, consolidated across currencies in real time. Make faster, better-informed decisions driven by actual data.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Consolidated view across all entities, accounts, and currencies',
+              'Cash flow planning with embedded currency management',
+              'Diversify deposits and improve yield with less banking risk',
+              'Access working capital solutions from integrated partners',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/cash-management" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about Cash Management
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
+          <div class="text-center">
+            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths['bar-chart']} />
+            </svg>
+            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: FX Risk (reversed) -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-2xl bg-gradient-to-br from-brand-green-pale to-[#d4f0e4] p-8 lg:p-10 flex items-center justify-center min-h-[300px]">
+          <div class="text-center">
+            <svg class="w-20 h-20 text-brand-green/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.shield} />
+            </svg>
+            <p class="text-brand-green/40 text-sm font-medium">Platform screenshot coming soon</p>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">FX Risk Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Master FX without the effort
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Most finance teams manage currency risk like driving in fog. HedgeFlows gives you clear visibility into your true exposure, AI-powered recommendations, and simple execution tools.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Automated exposure monitoring with configurable alerts',
+              'Connected data from ERP, CRM, and forecasting tools',
+              'AI Currency Co-pilot for hedging recommendations',
+              'Expert consultation included for strategy setup',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/fx-risk-management" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about FX Risk Management
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations Section -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">
+          Don't change a thing. Just connect.
+        </h2>
+        <p class="section-subheading mx-auto">
+          Connect in minutes, not weeks, with off-the-shelf integrations to your existing accounts and software.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {[
+          { name: 'Xero', category: 'Accounting' },
+          { name: 'QuickBooks', category: 'Accounting' },
+          { name: 'NetSuite', category: 'ERP' },
+          { name: 'Business Central', category: 'ERP' },
+          { name: 'HubSpot', category: 'CRM' },
+          { name: 'Salesforce', category: 'CRM' },
+        ].map((integration) => (
+          <div class="bg-white rounded-xl border border-gray-100 p-5 text-center hover:border-brand-green/20 hover:shadow-md transition-all duration-200">
+            <div class="w-12 h-12 rounded-xl bg-[#F8FAFB] flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths.plug} />
+              </svg>
+            </div>
+            <p class="text-[0.875rem] font-semibold text-text-heading">{integration.name}</p>
+            <p class="text-[0.75rem] text-text-muted mt-0.5">{integration.category}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <p class="text-text-muted text-[0.9375rem] mb-4">
+          Plus 2,000+ international bank connections via Open Banking
+        </p>
+        <a href="/platform/integrations" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+          See all integrations
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why HedgeFlows (Differentiators) -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">
+          Built by treasury experts, for finance teams
+        </h2>
+        <p class="section-subheading mx-auto">
+          Our team has 25+ years managing risk for multinational banks and businesses. We built the platform we wished existed.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {differentiators.map((d) => (
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-2xl bg-brand-green-pale flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[d.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-semibold text-text-heading mb-2">{d.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed max-w-xs mx-auto">{d.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Regulation -->
+  <section class="section-padding-sm bg-[#F8FAFB] border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x md:divide-gray-200">
+        <!-- TMI Awards 2025 -->
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/tmi.jpg"
+            alt="TMI Awards 2025 for Innovation & Excellence"
+            class="w-16 h-16 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">Best Risk Management</p>
+            <p class="text-[0.8125rem] text-text-muted">TMI Awards 2025</p>
+          </div>
+        </div>
+        <!-- TTP Awards 2026 -->
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/ttp.jpg"
+            alt="TTP Awards 2026"
+            class="w-16 h-16 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">SME Inclusion Initiative</p>
+            <p class="text-[0.8125rem] text-text-muted">TTP Awards 2026</p>
+          </div>
+        </div>
+        <!-- FCA -->
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <div class="w-16 h-16 bg-brand-green-pale rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">FCA Regulated</p>
+            <p class="text-[0.8125rem] text-text-muted">Firm Reference Number: 1008699</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Teaser -->
+  <section class="section-padding bg-white">
+    <div class="container-content text-center">
+      <h2 class="section-heading">Start today from just &pound;99 a month</h2>
+      <p class="section-subheading mx-auto mb-10">
+        No lock-in contracts. No hidden fees. Scale up as your business grows.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/pricing" class="btn-secondary text-[1.0625rem] px-8 py-4">
+          View pricing plans
+        </a>
+        <a href="/treasury-health-check" class="btn-primary text-[1.0625rem] px-8 py-4">
+          Book a Demo
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
   <CTASection
     headline="Ready to take control of your international finances?"
     primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
   />
 </PageLayout>

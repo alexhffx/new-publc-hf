@@ -10,6 +10,7 @@ import CTASection from './CTASection.astro';
 import ImageSection from './ImageSection.astro';
 import TwoColumnSection from './TwoColumnSection.astro';
 import { getBlogPosts, getTeamMembers, getClientLogos, urlFor } from '../lib/sanity';
+import { staticClientLogos } from '../data/clientLogos';
 
 interface Props {
   sections: any[];
@@ -210,7 +211,7 @@ const columnClasses: Record<string, string> = {
 
   /* ─── Trust Bar ─── */
   if (_type === 'sectionTrustBar') {
-    const trustLogos = section.logos?.length > 0 ? section.logos : allClientLogos || [];
+    const trustLogos = section.logos?.length > 0 ? section.logos : (allClientLogos && allClientLogos.length > 0 ? allClientLogos : staticClientLogos);
     return <TrustBar label={section.label} logos={trustLogos} />;
   }
 

@@ -1,26 +1,198 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
-import { getPage } from '../../lib/sanity';
 
-const page = await getPage('platform/payments');
+const features = [
+  {
+    title: 'Real-time workflows',
+    description: 'Connect your ERP and easily select bills and payroll to approve, schedule, and pay. Flexible processes with a full audit trail.',
+    icon: 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z',
+  },
+  {
+    title: 'Domestic & cross-border',
+    description: 'Robust workflows for domestic and foreign payments, with flexibility to embed FX or fund from currency balances you hold.',
+    icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+  },
+  {
+    title: 'Automated bookkeeping',
+    description: 'Relax as we apply payments to processed invoices, calculate FX gains & losses, and post to your ledgers in real time.',
+    icon: 'M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z',
+  },
+];
+
+const fraudFeatures = [
+  'Flexible multi-level approval process',
+  'Confirmation of Payee (CoP) checks',
+  'Bank account validation before payment',
+  'Real-time fraud monitoring & alerts',
+];
+
+const steps = [
+  { number: 1, title: 'Sign up for free', description: 'Create your account in minutes — no credit card required.' },
+  { number: 2, title: 'Connect your accounting', description: 'Link Xero, QuickBooks, NetSuite, or Business Central instantly.' },
+  { number: 3, title: 'Register your business', description: 'Quick compliance check and you\'re ready to process payments.' },
+  { number: 4, title: 'Run your first payment', description: 'Select invoices, approve, and pay — then watch it all reconcile.' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Payments & AP Automation'}
-  description={page?.seoDescription || 'Send and receive international payments with ease.'}
+  title="Payments & AP Automation | HedgeFlows"
+  description="Save hours on multi-currency payment runs. Process domestic and international payments in minutes with automatic reconciliation to your accounting software."
 >
+  <!-- Hero -->
   <Hero
-    title={page?.heroTitle || 'Send and receive international payments with ease'}
-    subtitle={page?.heroSubtitle || 'Streamline your accounts payable with automated international payment workflows.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
+    title="Save time on multi-currency payments & reconciliations"
+    subtitle="Remove routine tasks and easily automate payments and reconciliations across multiple currencies. HedgeFlows delivers the same ease in 35 currencies that other providers only offer domestically."
+    primaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
-  <PageSections sections={page?.sections || []} />
+
+  <!-- Interactive Demo -->
+  <section class="bg-white -mt-8 md:-mt-14 relative z-10 pb-12">
+    <div class="container-content">
+      <div class="max-w-4xl mx-auto">
+        <script async src="https://js.storylane.io/js/v2/storylane.js"></script>
+        <div class="sl-embed" style="position:relative;padding-bottom:calc(56.72% + 25px);width:100%;height:0;transform:scale(1)">
+          <iframe loading="lazy" class="sl-demo" src="https://hedgeflows.storylane.io/demo/gblttheqbgj9?embed=inline" name="sl-embed" allow="fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%!important;height:100%!important;border:1px solid rgba(63,95,172,0.35);box-shadow: 0px 0px 18px rgba(26, 19, 72, 0.15);border-radius:10px;box-sizing:border-box;"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <TrustBar />
+
+  <!-- 3 Feature Cards -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="grid md:grid-cols-3 gap-8">
+        {features.map((f) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={f.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{f.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{f.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section-padding-sm bg-white">
+    <div class="container-content">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        {[
+          { value: '80-90%', label: 'Time savings on payment runs' },
+          { value: '~9s', label: 'From funding to reconciliation' },
+          { value: '0.25%', label: 'Markup above interbank rate' },
+          { value: '100', label: 'Free local payments included' },
+        ].map((stat) => (
+          <div class="text-center">
+            <p class="text-[2rem] md:text-[2.5rem] font-bold text-brand-green leading-none">{stat.value}</p>
+            <p class="text-[0.875rem] text-text-muted mt-2 font-medium">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep Dive: Automation -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Payment Automation</p>
+          <h2 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Process payment runs in minutes, not hours
+          </h2>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Import bills from your accounting system, select and approve in bulk, embed FX where needed, and pay. Everything reconciles automatically — no manual uploads, downloads, or bank templates.
+          </p>
+          <ul class="space-y-3">
+            {[
+              'No more time-consuming bank templates',
+              'No more clunky BACS files or CSV uploads',
+              'No more waiting for bank feeds to reconcile',
+              'No extra training required — intuitive workflows',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+          <img
+            src="/assets/images/platform/cashflow-plan.png"
+            alt="Payment run workflow in HedgeFlows"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bank Account Validation / Fraud -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+          <img
+            src="/assets/images/platform/validation.png"
+            alt="Bank account validation and fraud prevention"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Fraud Prevention</p>
+          <h2 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Validate accounts and prevent payment fraud
+          </h2>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Authorised Push Payment fraud is a growing business risk. HedgeFlows validates every payee before you send a penny, with multiple layers of protection built into every payment.
+          </p>
+          <ul class="space-y-3">
+            {fraudFeatures.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Get started in minutes</h2>
+        <p class="section-subheading mx-auto">No IT resources needed. Connect in 3 minutes to any cloud-based accounting system.</p>
+      </div>
+      <StepProcess steps={steps} />
+    </div>
+  </section>
+
+  <!-- CTA -->
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to save hours on every payment run?"
+    primaryCta={{ label: 'Start Free Trial', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>
