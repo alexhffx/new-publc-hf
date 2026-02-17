@@ -1,26 +1,243 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.astro';
-import PageSections from '../components/PageSections.astro';
 import CTASection from '../components/CTASection.astro';
-import { getPage } from '../lib/sanity';
 
-const page = await getPage('pricing');
+/* ── What's included ──────────────────────────────────────── */
+const included = [
+  {
+    icon: 'chat',
+    title: 'Treasury advisory',
+    description: 'Expert guidance on FX risk, cash management, banking, and working capital — from a team with 40+ years of institutional experience.',
+  },
+  {
+    icon: 'device',
+    title: 'Platform & automation',
+    description: 'Multi-currency payments, FX execution, cash management dashboards, and accounting integrations — all in one place.',
+  },
+  {
+    icon: 'plug',
+    title: 'ERP & accounting integrations',
+    description: 'Connect Xero, QuickBooks, NetSuite, or Business Central. Your data flows automatically.',
+  },
+  {
+    icon: 'shield',
+    title: 'Risk management tools',
+    description: 'Exposure mapping, hedging strategy, forward contracts, and real-time monitoring to protect your margins.',
+  },
+  {
+    icon: 'chart',
+    title: 'Reporting & analytics',
+    description: 'Real-time visibility into FX costs, cash positions, and payment status across all your accounts.',
+  },
+  {
+    icon: 'users',
+    title: 'Ongoing support',
+    description: 'Regular reviews, market updates, and a dedicated point of contact. We work as your fractional treasury team.',
+  },
+];
+
+/* ── Comparison rows ──────────────────────────────────────── */
+const comparison = [
+  { item: 'FX margin', hedgeflows: '0.25%', bank: '0.5% – 2%+' },
+  { item: 'Advisory fees', hedgeflows: 'Included', bank: '£500 – £2,000/hr' },
+  { item: 'Platform subscription', hedgeflows: 'Included', bank: '£10k – £50k/yr' },
+  { item: 'Local payments', hedgeflows: 'Free (100/mo)', bank: '£0.20 – £1.50 each' },
+  { item: 'SWIFT payments', hedgeflows: 'Low fixed fee', bank: '£15 – £40 each' },
+  { item: 'Onboarding', hedgeflows: 'Free', bank: '£2k – £10k setup' },
+  { item: 'Accounting integration', hedgeflows: 'Included', bank: 'Extra cost / manual' },
+  { item: 'Dedicated support', hedgeflows: 'Included', bank: 'Premium tier only' },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Pricing'}
-  description={page?.seoDescription || 'Transparent pricing for HedgeFlows advisory and platform services.'}
+  title="Pricing | HedgeFlows"
+  description="No advisory fees. No platform subscriptions. Transparent FX pricing at 0.25% — everything included. See how HedgeFlows compares to your bank."
 >
   <Hero
-    title={page?.heroTitle || 'Transparent pricing for advisory and platform'}
-    subtitle={page?.heroSubtitle || 'Simple, clear pricing with no hidden fees. Choose the plan that fits your business.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
-  />
-  <PageSections sections={page?.sections || []} />
-  <CTASection
-    headline="Ready to take control of your international finances?"
+    title="No fees. No subscriptions. Just transparent pricing."
+    subtitle="Advisory, platform, and integrations — all included. You only pay a transparent 0.25% margin on FX execution. That's it."
     primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'See what you could save', href: '#compare' }}
+  />
+
+  {/* ── How it works ──────────────────────────────────────── */}
+  <section class="section-padding">
+    <div class="container-content max-w-4xl mx-auto text-center">
+      <h2 class="section-heading mb-6">One transparent cost</h2>
+      <p class="text-[1.125rem] text-text-body leading-relaxed max-w-2xl mx-auto mb-12">
+        Most providers charge advisory fees, platform subscriptions, setup costs, and then hide their real margin in the exchange rate. We don't. Everything is included in a single transparent FX margin.
+      </p>
+
+      {/* Big number */}
+      <div class="bg-gradient-to-br from-brand-green-pale via-brand-green-pale/60 to-white rounded-3xl p-10 md:p-14 border border-brand-green/10">
+        <p class="text-[0.875rem] font-medium uppercase tracking-wider text-brand-green mb-3">FX execution margin</p>
+        <p class="text-[4rem] md:text-[5rem] font-bold text-text-heading leading-none">0.25%</p>
+        <p class="text-[1.0625rem] text-text-body mt-4 max-w-lg mx-auto leading-relaxed">
+          Compared to the 0.5% – 2%+ that most banks charge (often hidden in the rate). On £1m of annual FX volume, that's a saving of £2,500 – £17,500.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ── What's included ──────────────────────────────────── */}
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Everything included</h2>
+        <p class="section-subheading mx-auto">
+          No add-ons, no premium tiers, no surprises
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {included.map((item) => (
+          <div class="bg-white p-7 rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+            <div class="w-10 h-10 rounded-lg bg-brand-green-pale flex items-center justify-center mb-4">
+              {item.icon === 'chat' && (
+                <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              )}
+              {item.icon === 'device' && (
+                <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              )}
+              {item.icon === 'plug' && (
+                <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+              )}
+              {item.icon === 'shield' && (
+                <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              )}
+              {item.icon === 'chart' && (
+                <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              )}
+              {item.icon === 'users' && (
+                <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-[1rem] font-bold text-text-heading mb-2">{item.title}</h3>
+            <p class="text-[0.875rem] text-text-body leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Comparison table ─────────────────────────────────── */}
+  <section class="section-padding" id="compare">
+    <div class="container-content max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">HedgeFlows vs. your bank</h2>
+        <p class="section-subheading mx-auto">
+          See what you're really paying — and what you could save
+        </p>
+      </div>
+      <div class="rounded-2xl border border-gray-200 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="bg-[#F8FAFB]">
+              <th class="px-6 py-4 text-[0.8125rem] font-semibold text-text-heading uppercase tracking-wider"></th>
+              <th class="px-6 py-4 text-[0.8125rem] font-semibold text-brand-green uppercase tracking-wider">HedgeFlows</th>
+              <th class="px-6 py-4 text-[0.8125rem] font-semibold text-text-muted uppercase tracking-wider">Typical bank</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((row, i) => (
+              <tr class:list={[i % 2 === 0 ? 'bg-white' : 'bg-[#FCFCFD]']}>
+                <td class="px-6 py-4 text-[0.9375rem] font-medium text-text-heading">{row.item}</td>
+                <td class="px-6 py-4 text-[0.9375rem] text-brand-green font-semibold">{row.hedgeflows}</td>
+                <td class="px-6 py-4 text-[0.9375rem] text-text-muted">{row.bank}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-[0.8125rem] text-text-muted mt-6">
+        Exact savings depend on your FX volume, currencies, and current provider. Book a treasury review for a personalised cost analysis.
+      </p>
+    </div>
+  </section>
+
+  {/* ── FAQ ───────────────────────────────────────────────── */}
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content max-w-3xl mx-auto">
+      <h2 class="section-heading text-center mb-12">Common questions</h2>
+      <div class="space-y-6">
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">How do you make money if there are no fees?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            We charge a transparent 0.25% margin on FX execution. That's our only revenue. No advisory fees, no platform subscriptions, no hidden charges. Our incentives are aligned with yours — we do well when you trade, so we're motivated to help you grow internationally.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">What if I only need advisory, not the platform?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            Our advisory service is modular. You can start with a treasury review and adopt only the services you need — whether that's FX risk strategy, cash management policy, or bank benchmarking. The platform is there when you're ready to act on the recommendations.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">Is there a minimum FX volume?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            We work best with businesses that have at least £500k in annual international payments. Below that, the savings may not justify the onboarding effort — but we're happy to chat and point you in the right direction.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">How does the treasury review work?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            It's a free 30-minute call. We map your current setup — currencies, volumes, banking relationships, and processes — then show you exactly where you're overpaying and what we'd recommend. No commitment, no sales pitch.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">Are you regulated?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            Yes. HedgeFlows Ltd is authorised and regulated by the Financial Conduct Authority as an Authorised Payment Institution (Firm Reference Number: 1008699). Your funds are safeguarded in line with FCA requirements.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Find out what you could save"
+    primaryCta={{ label: 'Book a Free Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Learn about our advisory', href: '/advisory' }}
   />
 </PageLayout>
