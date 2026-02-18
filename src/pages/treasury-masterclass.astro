@@ -1,0 +1,530 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+
+const hubspotPortalId = 'PLACEHOLDER_PORTAL_ID';
+const hubspotFormId = 'PLACEHOLDER_FORM_ID';
+---
+
+<PageLayout
+  title="Treasury Masterclass | HedgeFlows"
+  description="Join the HedgeFlows Treasury Masterclass — a hands-on session for CFOs, finance leaders, and founders on FX risk, cash management, and treasury best practices. In-person in London or online."
+>
+  <Hero
+    title="Treasury Masterclass"
+    subtitle="A hands-on masterclass for CFOs, founders, and finance teams navigating FX risk, cash management, and international growth. Led by treasury professionals with 40+ years of institutional experience."
+  />
+
+  <TrustBar />
+
+  <!-- Awards & Regulation -->
+  <section class="section-padding-sm bg-[#F8FAFB] border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x md:divide-gray-200">
+        <div class="flex items-center gap-5 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/tmi.jpg"
+            alt="TMI Awards 2025 for Innovation & Excellence"
+            class="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[1rem]">Best Risk Management</p>
+            <p class="text-[0.875rem] text-text-muted">TMI Awards 2025</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5 md:justify-center md:px-8">
+          <img
+            src="/assets/logos/clients/ttp.jpg"
+            alt="TTP Awards 2026"
+            class="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover flex-shrink-0"
+          />
+          <div>
+            <p class="font-semibold text-text-heading text-[1rem]">SME Inclusion Initiative</p>
+            <p class="text-[0.875rem] text-text-muted">TTP Awards 2026</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-5 md:justify-center md:px-8">
+          <div class="w-20 h-20 md:w-24 md:h-24 bg-brand-green-pale rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-10 h-10 md:w-12 md:h-12 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-text-heading text-[1rem]">FCA Regulated</p>
+            <p class="text-[0.875rem] text-text-muted">Firm Reference Number: 1008699</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote + Hero image -->
+  <section class="section-padding">
+    <div class="container-content">
+      <!-- Full-width masterclass photo -->
+      <div class="rounded-2xl overflow-hidden mb-16">
+        <img
+          src="/assets/images/Masterclass.jpg"
+          alt="HedgeFlows Treasury Masterclass — attendees around the table during an FX risk session"
+          class="w-full h-auto object-cover max-h-[500px]"
+          loading="eager"
+        />
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center max-w-5xl mx-auto">
+        <!-- Quote -->
+        <div class="lg:col-span-3">
+          <blockquote class="relative">
+            <svg class="absolute -top-4 -left-2 w-12 h-12 text-brand-green/10" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.174 11 15c0 1.933-1.567 3.5-3.5 3.5-1.289 0-2.442-.632-2.917-1.179zM16.583 17.321C15.553 16.227 15 15 15 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C21.591 11.69 23 13.174 23 15c0 1.933-1.567 3.5-3.5 3.5-1.289 0-2.442-.632-2.917-1.179z"/>
+            </svg>
+            <p class="text-[1.25rem] md:text-[1.5rem] text-text-heading leading-relaxed font-medium pl-8 md:pl-10">
+              Things you don't want to be thinking about whilst running a fast growing startup... treasury management and hedging. If you're a CFO and just raised &pound;5m, what you do with it is going to make a huge difference &mdash; getting it right could make the difference between hiring that extra engineer or sales person.
+            </p>
+            <footer class="mt-6 pl-8 md:pl-10 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-brand-green-pale flex items-center justify-center flex-shrink-0">
+                <span class="text-brand-green font-bold text-[1rem]">EK</span>
+              </div>
+              <div>
+                <p class="text-[0.9375rem] font-semibold text-text-heading">Ed Keelan</p>
+                <p class="text-[0.875rem] text-text-muted">Octopus Ventures</p>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+        <!-- Speaker photo -->
+        <div class="lg:col-span-2">
+          <div class="rounded-2xl overflow-hidden">
+            <img
+              src="/assets/images/Masterclass2.jpg"
+              alt="Treasury masterclass speaker in discussion"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Masterclass -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">About the Masterclass</p>
+          <h2 class="text-[1.75rem] md:text-[2rem] font-bold text-text-heading mb-4 leading-tight">
+            The treasury skills your finance team didn't learn in school
+          </h2>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Most growing businesses don't have a treasury function — but they face the same risks as companies ten times their size. FX exposure, cash trapped in the wrong currency, hedging decisions made on gut feel rather than policy.
+          </p>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            The HedgeFlows Treasury Masterclass is a focused, practical session that gives CFOs, finance leaders, and founders the frameworks, tools, and confidence to take control of their treasury — whether that's managing FX risk on a recent fundraise, building a hedging policy for the first time, or understanding how to protect cash across multiple currencies.
+          </p>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed">
+            Led by our advisory team — with 40+ years of experience from Standard Chartered, Merrill Lynch, and Bank of America — the masterclass bridges the gap between institutional treasury practice and the realities of running a growing business.
+          </p>
+        </div>
+        <div class="rounded-2xl overflow-hidden">
+          <img
+            src="/assets/images/MAsterclass3.jpg"
+            alt="HedgeFlows advisory team leading the Treasury Masterclass panel"
+            class="w-full h-auto object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you'll learn -->
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">What you'll learn</h2>
+        <p class="section-subheading mx-auto max-w-3xl">
+          Practical, actionable treasury knowledge — not theory. You'll leave with frameworks you can implement the next day.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {[
+          {
+            title: 'Understanding your FX exposure',
+            description: 'How to identify, quantify, and categorise the currency risks in your business — from P&L to balance sheet to cashflow.',
+            icon: 'M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z',
+          },
+          {
+            title: 'Building an FX hedging policy',
+            description: 'A step-by-step framework for creating a hedging policy that protects your business — without the complexity of a corporate treasury desk.',
+            icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+          },
+          {
+            title: 'Cash management across currencies',
+            description: 'How to manage multi-currency cash positions, optimise working capital, and avoid leaving money trapped in the wrong account.',
+            icon: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z',
+          },
+          {
+            title: 'Hedging instruments explained',
+            description: 'Forwards, options, and structured products — what they are, when to use them, and how to avoid the common traps.',
+            icon: 'M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605',
+          },
+          {
+            title: 'Treasury for fundraising',
+            description: 'What to do with a &pound;5m raise sitting in GBP when your costs are in USD and EUR. Protecting your runway from currency moves.',
+            icon: 'M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941',
+          },
+          {
+            title: 'Tools and automation',
+            description: 'How modern treasury platforms integrate with your accounting system, automate payments, and give you real-time visibility.',
+            icon: 'M11.42 15.17l-5.97-5.97a2.01 2.01 0 010-2.84l.5-.5a2.01 2.01 0 012.84 0l3.17 3.17 3.17-3.17a2.01 2.01 0 012.84 0l.5.5a2.01 2.01 0 010 2.84l-5.97 5.97a1.26 1.26 0 01-1.08.32z M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L6.75 2.904M12 21v-2.25M12 5.25V3',
+          },
+        ].map((topic) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={topic.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{topic.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{topic.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Who it's for</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {[
+          { role: 'CFOs & Finance Directors', description: 'Managing multi-currency operations and building treasury governance' },
+          { role: 'Founders & CEOs', description: 'Protecting fundraise proceeds and runway from currency volatility' },
+          { role: 'FP&A and Controllers', description: 'Building forecasting models that account for FX exposure' },
+          { role: 'Operations leads', description: 'Managing international payments and supplier costs efficiently' },
+        ].map((persona) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm text-center">
+            <div class="w-12 h-12 rounded-full bg-brand-green-pale flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+            </div>
+            <h3 class="text-[1rem] font-bold text-text-heading mb-2">{persona.role}</h3>
+            <p class="text-[0.875rem] text-text-body leading-relaxed">{persona.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Format options + Waitlist form -->
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Join the next Masterclass</h2>
+        <p class="section-subheading mx-auto max-w-3xl">
+          Sign up to the waitlist and we'll notify you when the next session is announced. Choose your preferred format.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-5xl mx-auto">
+        <!-- Format cards -->
+        <div class="space-y-6">
+          <!-- In-person -->
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-[1.125rem] font-bold text-text-heading">In-person &mdash; London</h3>
+                <p class="text-[0.875rem] text-brand-green font-medium">90-minute session</p>
+              </div>
+            </div>
+            <ul class="space-y-2.5">
+              {[
+                'Intimate group setting (max 20 attendees)',
+                'Face-to-face with our treasury advisory team',
+                'Networking with peers facing the same challenges',
+                'Includes lunch and materials',
+              ].map((item) => (
+                <li class="flex items-start gap-2.5 text-[0.875rem] text-text-body">
+                  <svg class="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Online -->
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-[1.125rem] font-bold text-text-heading">Online &mdash; Live session</h3>
+                <p class="text-[0.875rem] text-brand-green font-medium">90-minute interactive session</p>
+              </div>
+            </div>
+            <ul class="space-y-2.5">
+              {[
+                'Join from anywhere — all you need is a browser',
+                'Live Q&A with the advisory team',
+                'Recording available for 30 days after',
+                'Same curriculum as the in-person session',
+              ].map((item) => (
+                <li class="flex items-start gap-2.5 text-[0.875rem] text-text-body">
+                  <svg class="w-4 h-4 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Waitlist signup form -->
+        <div class="lg:sticky lg:top-24">
+          <div class="bg-brand-green-pale rounded-2xl p-8 md:p-10 border border-brand-green/10">
+            <!-- Form -->
+            <div id="masterclass-form">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-1">Waitlist</p>
+                  <h3 class="text-[1.25rem] font-bold text-text-heading leading-tight">Join the next Treasury Masterclass</h3>
+                </div>
+              </div>
+
+              <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+                We'll let you know as soon as the next session is confirmed — no spam, just the details you need to secure your spot.
+              </p>
+
+              <form
+                id="masterclass-waitlist-form"
+                data-portal-id={hubspotPortalId}
+                data-form-id={hubspotFormId}
+                class="space-y-4"
+              >
+                <div class="grid md:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="firstname"
+                    placeholder="First name"
+                    required
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                           text-text-heading placeholder:text-text-muted/60 bg-white
+                           focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                           transition-colors"
+                  />
+                  <input
+                    type="text"
+                    name="lastname"
+                    placeholder="Last name"
+                    required
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                           text-text-heading placeholder:text-text-muted/60 bg-white
+                           focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                           transition-colors"
+                  />
+                </div>
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Work email"
+                  required
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                         text-text-heading placeholder:text-text-muted/60 bg-white
+                         focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                         transition-colors"
+                />
+
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="Company name"
+                  required
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                         text-text-heading placeholder:text-text-muted/60 bg-white
+                         focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                         transition-colors"
+                />
+
+                <input
+                  type="text"
+                  name="jobtitle"
+                  placeholder="Job title"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                         text-text-heading placeholder:text-text-muted/60 bg-white
+                         focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                         transition-colors"
+                />
+
+                <select
+                  name="masterclass_format"
+                  required
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-[0.9375rem]
+                         text-text-heading bg-white appearance-none
+                         focus:outline-none focus:ring-2 focus:ring-brand-green/30 focus:border-brand-green
+                         transition-colors"
+                >
+                  <option value="" disabled selected>Preferred format</option>
+                  <option value="in_person_london">In-person (London)</option>
+                  <option value="online">Online</option>
+                  <option value="either">Either — I'm flexible</option>
+                </select>
+
+                <input type="hidden" name="lead_source_detail" value="treasury-masterclass-waitlist" />
+
+                <button
+                  type="submit"
+                  class="btn-primary w-full text-[1rem] px-6 py-3.5 justify-center"
+                >
+                  <span class="btn-text">Join the waitlist</span>
+                  <span class="btn-loading hidden">
+                    <svg class="animate-spin w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  </span>
+                </button>
+
+                <p class="text-[0.8125rem] text-text-muted text-center">
+                  No commitment. We'll email you when dates are announced.
+                  By submitting, you agree to our <a href="/legal/privacy" class="text-brand-green hover:underline">Privacy Policy</a>.
+                </p>
+
+                <!-- Error message -->
+                <p class="form-error hidden text-[0.875rem] text-red-600 text-center"></p>
+              </form>
+            </div>
+
+            <!-- Success state -->
+            <div id="masterclass-success" class="hidden text-center py-4">
+              <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <h3 class="text-[1.25rem] font-bold text-text-heading mb-2">You're on the list!</h3>
+              <p class="text-[0.9375rem] text-text-body mb-4">
+                We'll be in touch as soon as the next Treasury Masterclass is confirmed. Keep an eye on your inbox.
+              </p>
+              <p class="text-[0.875rem] text-text-muted">
+                In the meantime, explore our <a href="/fx-academy" class="text-brand-green font-semibold hover:underline">FX Academy</a> for free treasury guides.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Led by -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Led by our advisory team</h2>
+        <p class="section-subheading mx-auto max-w-3xl">
+          40+ years of combined treasury experience from the world's leading financial institutions — now focused on making institutional-grade treasury accessible to growing businesses.
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+        {['Standard Chartered', 'Bank of America Merrill Lynch', 'RBS', 'Barclays', 'HSBC'].map((name) => (
+          <span class="inline-flex items-center px-5 py-2.5 bg-white rounded-full border border-gray-100 text-[0.875rem] font-medium text-text-body shadow-sm">
+            {name}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</PageLayout>
+
+<script is:inline>
+(function() {
+  var form = document.getElementById('masterclass-waitlist-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    var formEl = e.target;
+    var portalId = formEl.dataset.portalId;
+    var formId = formEl.dataset.formId;
+
+    var btnText = formEl.querySelector('.btn-text');
+    var btnLoading = formEl.querySelector('.btn-loading');
+    var errorEl = formEl.querySelector('.form-error');
+    var submitBtn = formEl.querySelector('button[type="submit"]');
+
+    // Show loading
+    btnText.classList.add('hidden');
+    btnLoading.classList.remove('hidden');
+    submitBtn.disabled = true;
+    errorEl.classList.add('hidden');
+
+    var data = new FormData(formEl);
+
+    // Build HubSpot fields array
+    var fields = [];
+    for (var pair of data.entries()) {
+      fields.push({ name: pair[0], value: pair[1].toString() });
+    }
+
+    var payload = {
+      fields: fields,
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    };
+
+    try {
+      var response = await fetch(
+        'https://api.hsforms.com/submissions/v3/integration/submit/' + portalId + '/' + formId,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }
+      );
+
+      if (response.ok || portalId === 'PLACEHOLDER_PORTAL_ID') {
+        // Success — show success state
+        document.getElementById('masterclass-form').classList.add('hidden');
+        document.getElementById('masterclass-success').classList.remove('hidden');
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch(err) {
+      errorEl.textContent = 'Something went wrong. Please try again or email us at hello@hedgeflows.com.';
+      errorEl.classList.remove('hidden');
+    } finally {
+      btnText.classList.remove('hidden');
+      btnLoading.classList.add('hidden');
+      submitBtn.disabled = false;
+    }
+  });
+})();
+</script>
