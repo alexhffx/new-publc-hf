@@ -5,11 +5,13 @@ import { staticClientLogos } from '../data/clientLogos';
 interface Props {
   label?: string;
   logos?: any[];
+  slider?: boolean;
 }
 
 const {
   label = 'Trusted by international businesses:',
   logos: logosFromProps,
+  slider = false,
 } = Astro.props;
 
 // Use provided logos, or fetch from CMS, or fall back to static logos
@@ -27,52 +29,100 @@ if (logosFromProps && logosFromProps.length > 0) {
 ---
 
 <section class="py-12 md:py-16 bg-white border-y border-gray-100">
-  <div class="container-content">
+  <div class={slider ? 'max-w-7xl mx-auto px-6' : 'container-content'}>
     <p class="text-[0.8125rem] font-medium text-text-muted text-center uppercase tracking-wider mb-8">
       {label}
     </p>
     {logos.length > 0 ? (
-      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
-        {logos.map((item: any) => {
-          const imgUrl = item.logo
-            ? (typeof item.logo === 'string' ? item.logo : urlFor(item.logo).height(32).auto('format').url())
-            : null;
+      slider ? (
+        /* ── Infinite scroll slider ── */
+        <div class="logo-slider-wrapper overflow-hidden relative">
+          <div class="logo-slider-track flex items-center gap-14">
+            {/* Render logos twice for seamless loop */}
+            {[...logos, ...logos].map((item: any) => {
+              const imgUrl = item.logo
+                ? (typeof item.logo === 'string' ? item.logo : urlFor(item.logo).height(36).auto('format').url())
+                : null;
+              return (
+                <div class="flex-shrink-0 h-10 flex items-center justify-center" title={item.name}>
+                  {imgUrl ? (
+                    <img
+                      src={imgUrl}
+                      alt={item.name}
+                      class="max-h-9 md:max-h-10 max-w-[140px] w-auto object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="bg-gray-300 rounded h-7 flex items-center justify-center px-4">
+                      <span class="text-[0.6875rem] font-semibold text-gray-500 whitespace-nowrap">{item.name}</span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          {/* Fade edges */}
+          <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10"></div>
+        </div>
+      ) : (
+        /* ── Static flex-wrap grid (used on sub-pages) ── */
+        <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
+          {logos.map((item: any) => {
+            const imgUrl = item.logo
+              ? (typeof item.logo === 'string' ? item.logo : urlFor(item.logo).height(32).auto('format').url())
+              : null;
 
-          const inner = imgUrl ? (
-            <img
-              src={imgUrl}
-              alt={item.name}
-              class="max-h-9 md:max-h-10 max-w-[130px] md:max-w-[150px] w-auto object-contain"
-              loading="lazy"
-            />
-          ) : (
-            <div class="bg-gray-300 rounded h-7 flex items-center justify-center px-4">
-              <span class="text-[0.6875rem] font-semibold text-gray-500 whitespace-nowrap">{item.name}</span>
-            </div>
-          );
+            const inner = imgUrl ? (
+              <img
+                src={imgUrl}
+                alt={item.name}
+                class="max-h-9 md:max-h-10 max-w-[130px] md:max-w-[150px] w-auto object-contain"
+                loading="lazy"
+              />
+            ) : (
+              <div class="bg-gray-300 rounded h-7 flex items-center justify-center px-4">
+                <span class="text-[0.6875rem] font-semibold text-gray-500 whitespace-nowrap">{item.name}</span>
+              </div>
+            );
 
-          return item.url ? (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="h-8 px-1 flex items-center justify-center opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
-              title={item.name}
-            >
-              {inner}
-            </a>
-          ) : (
-            <div
-              class="h-8 px-1 flex items-center justify-center opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
-              title={item.name}
-            >
-              {inner}
-            </div>
-          );
-        })}
-      </div>
+            return item.url ? (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="h-8 px-1 flex items-center justify-center opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+                title={item.name}
+              >
+                {inner}
+              </a>
+            ) : (
+              <div
+                class="h-8 px-1 flex items-center justify-center opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+                title={item.name}
+              >
+                {inner}
+              </div>
+            );
+          })}
+        </div>
+      )
     ) : (
       <p class="text-center text-text-muted text-sm">Client logos coming soon.</p>
     )}
   </div>
 </section>
+
+<style>
+  @keyframes logo-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .logo-slider-track {
+    animation: logo-scroll 40s linear infinite;
+    width: max-content;
+  }
+  .logo-slider-wrapper:hover .logo-slider-track {
+    animation-play-state: paused;
+  }
+</style>

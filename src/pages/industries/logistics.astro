@@ -3,6 +3,11 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
+import { getLogosByIndustry } from '../../data/clientLogos';
+import { xeroStats, getReviewsByTag } from '../../data/xeroReviews';
+
+const industryLogos = getLogosByIndustry('logistics');
+const reviews = getReviewsByTag('logistics');
 
 const painPoints = [
   {
@@ -22,20 +27,6 @@ const painPoints = [
   },
 ];
 
-const testimonials = [
-  {
-    quote: 'I can\'t praise the Hedgeflows team highly enough. They have worked tirelessly to give us good exchange rates and have a system that works really well for us.',
-    name: 'Sharon',
-    role: 'Finance Manager',
-    company: 'KTL',
-  },
-  {
-    quote: 'After starting to use Hedgeflows recently, we have not only saved a huge amount of time and effort but also created a super slick process.',
-    name: 'Chris',
-    role: 'Managing Director',
-    company: 'FirstPoint Logistics',
-  },
-];
 ---
 
 <PageLayout
@@ -49,7 +40,7 @@ const testimonials = [
     secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
   />
 
-  <TrustBar />
+  {industryLogos.length > 0 && <TrustBar logos={industryLogos} slider={true} />}
 
   <!-- Pain Points -->
   <section class="section-padding bg-[#F8FAFB]">
@@ -129,25 +120,47 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Xero Reviews -->
   <section class="section-padding bg-[#F8FAFB]">
     <div class="container-content">
       <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 bg-white border border-gray-100 rounded-full px-4 py-2 mb-5">
+          <div class="flex items-center gap-0.5">
+            {[...Array(5)].map(() => (
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <span class="text-[0.8125rem] font-semibold text-text-heading">{xeroStats.rating}/5 on Xero App Store</span>
+        </div>
         <h2 class="section-heading">Trusted by logistics businesses globally</h2>
       </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {testimonials.map((t) => (
-          <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-            <svg class="w-8 h-8 text-brand-green/20 mb-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/>
-            </svg>
-            <p class="text-[0.9375rem] text-text-body leading-relaxed mb-4 italic">"{t.quote}"</p>
+      <div class="max-w-2xl mx-auto">
+        {reviews.map((r) => (
+          <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center">
+            <div class="flex items-center justify-center gap-0.5 mb-4">
+              {[...Array(5)].map(() => (
+                <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">"{r.quote}"</p>
             <div>
-              <p class="font-semibold text-text-heading text-[0.9375rem]">{t.name}</p>
-              <p class="text-[0.8125rem] text-text-muted">{t.role}, {t.company}</p>
+              <p class="font-semibold text-text-heading text-[0.9375rem]">{r.name}</p>
+              {(r.role || r.company) && (
+                <p class="text-[0.8125rem] text-text-muted">{r.role ? `${r.role}, ${r.company}` : r.company}</p>
+              )}
             </div>
           </div>
         ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href={xeroStats.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-green font-semibold text-[0.875rem] hover:gap-3 transition-all duration-200">
+          Read all {xeroStats.totalReviews} reviews on Xero
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+        </a>
       </div>
     </div>
   </section>

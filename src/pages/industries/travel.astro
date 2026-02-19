@@ -3,6 +3,9 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
+import { getLogosByIndustry } from '../../data/clientLogos';
+
+const industryLogos = getLogosByIndustry('travel');
 
 const painPoints = [
   {
@@ -43,7 +46,7 @@ const testimonials = [
     secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
   />
 
-  <TrustBar />
+  {industryLogos.length > 0 && <TrustBar logos={industryLogos} slider={true} />}
 
   <!-- Pain Points -->
   <section class="section-padding bg-[#F8FAFB]">
