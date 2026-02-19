@@ -1,19 +1,260 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
-import { getPage } from '../../lib/sanity';
-
-const page = await getPage('legal/terms');
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Terms & Conditions'}
-  description={page?.seoDescription || 'HedgeFlows terms and conditions of service.'}
+  title="Terms & Conditions | HedgeFlows"
+  description="HedgeFlows terms and conditions of service."
 >
-  <Hero
-    title={page?.heroTitle || 'Terms & Conditions'}
-    subtitle={page?.heroSubtitle || 'Please read these terms carefully before using our services.'}
-  />
-  <PageSections sections={page?.sections || []} />
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-brand-green-pale to-white py-16 md:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-text-heading text-center">Terms &amp; Conditions</h1>
+      <p class="mt-4 text-lg text-text-body text-center">Please read these terms carefully before using our services.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 md:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 prose prose-lg prose-gray max-w-none
+                [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                [&_a]:text-brand-green [&_a]:underline">
+
+      <p class="text-sm text-gray-500">Last updated March 31, 2022</p>
+
+      <h2>1. Agreement to Terms</h2>
+
+      <p><strong>1.1</strong> These Terms and Conditions constitute a legally binding agreement between you (whether personal or on behalf of an entity) and HedgeFlows Ltd, operating as HedgeFlows, located at 4th Floor Tuition House, 27-37 St George's Road, London, SW19 4EU, United Kingdom.</p>
+
+      <p>The Site (HedgeFlows.com at <a href="https://hedgeflows.com">https://hedgeflows.com</a>) and related applications provide: Software as a service (SaaS) that provides financial services for currency risk-management analytics and cross-border payments for commercial use only.</p>
+
+      <p>If you do not agree with all of these Terms and Conditions, then you are prohibited from using the Site and Services and you must discontinue use immediately.</p>
+
+      <p><strong>1.2</strong> Supplemental policies in Section 1.7, plus any additional terms posted on the Site, are incorporated by reference.</p>
+
+      <p><strong>1.3</strong> The company may modify these Terms and Conditions at any time. The updated version of these Terms and Conditions will be indicated by an updated 'Revised' date and the updated version will be effective as soon as it is accessible. Continued use indicates acceptance of changes.</p>
+
+      <p><strong>1.4</strong> The Site may be updated to reflect product changes, user needs, and business priorities.</p>
+
+      <p><strong>1.5</strong> The Site is directed to United Kingdom residents. Information is not intended for distribution where it would violate law or require registration.</p>
+
+      <p><strong>1.6</strong> The Site is intended for users at least 18 years old. Minors need parental permission.</p>
+
+      <p><strong>1.7</strong> Additional applicable policies:</p>
+      <ul>
+        <li><a href="/legal/privacy">Privacy Notice</a></li>
+        <li><a href="/legal/cookies">Cookie Policy</a></li>
+        <li>Terms and conditions of supply</li>
+      </ul>
+
+      <h2>2. Acceptable Use</h2>
+
+      <p><strong>2.1</strong> The Site may not be used for purposes other than those provided, or in connection with commercial endeavors not endorsed by HedgeFlows.</p>
+
+      <p><strong>2.2</strong> Users agree not to:</p>
+      <ul>
+        <li>Systematically retrieve data or other content from the Site to compile a database or directory without written permission from us</li>
+        <li>Make unauthorized use, including collecting usernames/email addresses for unsolicited contact or creating false accounts</li>
+        <li>Use buying or purchasing agents</li>
+        <li>Advertise or sell goods and services</li>
+        <li>Circumvent security features</li>
+        <li>Engage in unauthorized framing or linking</li>
+        <li>Defraud or mislead users or staff</li>
+        <li>Misuse support services or submit false abuse reports</li>
+        <li>Use automated systems, scripts, data mining tools, robots, or similar extraction tools</li>
+        <li>Interfere with Site operations or connected networks</li>
+        <li>Impersonate others or use another's username</li>
+        <li>Sell or transfer profiles</li>
+        <li>Harass, abuse, or harm others using Site information</li>
+        <li>Compete with the company or create revenue-generating endeavors</li>
+        <li>Decipher, decompile, disassemble, or reverse engineer any of the software comprising or in any way making up a part of the Site</li>
+        <li>Access restricted Site portions</li>
+        <li>Harass, annoy, intimidate, or threaten employees, agents, or users</li>
+        <li>Delete copyright or proprietary notices</li>
+        <li>Copy or adapt Site software (Flash, PHP, HTML, JavaScript, etc.)</li>
+        <li>Upload or transmit viruses, Trojan horses, or other material that interferes with any party's uninterrupted use and enjoyment of the Site</li>
+        <li>Disparage or harm the company or Site</li>
+        <li>Use the Site inconsistently with applicable laws</li>
+        <li>Threaten users with negative feedback for positive feedback exchanges</li>
+        <li>Misrepresent experience, skills, or user information</li>
+        <li>Advertise unapproved products or services</li>
+        <li>Falsely imply a relationship with us or another company with whom you do not have a relationship</li>
+      </ul>
+
+      <h2>3. Information You Provide</h2>
+
+      <p><strong>3.1</strong> Users represent and warrant that:</p>
+      <ul>
+        <li>Registration information is true, accurate, current, and complete</li>
+        <li>Information will be kept accurate with prompt updates</li>
+        <li>Passwords will remain confidential; user is responsible for account use</li>
+        <li>User has legal capacity and agrees to these Terms</li>
+        <li>User is not a minor or has parental permission</li>
+      </ul>
+
+      <p>If you know or suspect that anyone other than you knows your user information (such as an identification code or user name) and/or password you must promptly notify us at <a href="mailto:info@hedgeflows.com">info@hedgeflows.com</a>.</p>
+
+      <p><strong>3.2</strong> False, inaccurate, outdated, or incomplete information may result in account suspension or termination. Inappropriate usernames may be changed or removed.</p>
+
+      <p><strong>3.3</strong> Users may link accounts with third-party service providers by providing login information or granting access. Users represent they can disclose this information without breaching third-party terms and without triggering fees or usage limitations.</p>
+
+      <p><strong>3.4</strong> By granting access to Third Party Accounts, HedgeFlows may:</p>
+      <ul>
+        <li>Access, make available, and store Third Party Account content (including friend lists) for display through the Site</li>
+        <li>Submit and receive additional information to Third Party Accounts as notified</li>
+      </ul>
+
+      <p>Availability of personally identifiable information depends on Third Party Account privacy settings. Please note that if a Third Party Account or associated service becomes unavailable or our access to such Third Party Account is terminated by the third party service provider, then Social Network Content may no longer be available on and through the Site.</p>
+
+      <p>Users can disable connections between Site accounts and Third Party Accounts at any time. Please note that your relationship with the third party service providers associated with your third party accounts is governed solely by your agreement(s) with such third party service providers.</p>
+
+      <p>HedgeFlows does not review Social Network Content for accuracy, legality, or non-infringement and bears no responsibility for it.</p>
+
+      <p>You acknowledge and agree that we may access your email address book associated with a Third Party Account and your contacts list stored on your mobile device or tablet computer solely for purposes of identifying and informing you of those contacts who have also registered to use the Site.</p>
+
+      <p>At user request (<a href="mailto:info@hedgeflows.com">info@hedgeflows.com</a>) or through account settings, HedgeFlows will deactivate the Site-Third Party Account connection and attempt to delete obtained information, except username and profile picture associated with the account.</p>
+
+      <h2>4. Our Content</h2>
+
+      <p><strong>4.1</strong> Unless otherwise indicated, the Site and Services, including source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics, are owned or licensed to HedgeFlows and protected by copyright and trademark laws.</p>
+
+      <p><strong>4.2</strong> Except as expressly provided in these Terms and Conditions, no part of the Site, Services or Our Content may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.</p>
+
+      <p><strong>4.3</strong> Eligible users receive a limited license to access and use the Site, Services, and Content, and to download or print copies for personal, non-commercial use only.</p>
+
+      <p><strong>4.4</strong> Users shall not:</p>
+      <ul>
+        <li>Attempt unauthorized Site access or access connected networks, servers, or systems</li>
+        <li>Modify, adapt, add to, or enhance the Site or Content for any purpose, including error correction</li>
+      </ul>
+
+      <p><strong>4.5</strong> HedgeFlows shall:</p>
+      <ul>
+        <li>Prepare the Site and Content with reasonable skill and care</li>
+        <li>Use industry-standard virus detection software to block virus-containing uploads</li>
+      </ul>
+
+      <p><strong>4.6</strong> The content on the Site is provided for general information only. It is not intended to amount to advice on which you should rely. You must obtain professional or specialist advice before taking, or refraining from taking, any action on the basis of the content on the Site.</p>
+
+      <p><strong>4.7</strong> Although we make reasonable efforts to update the information on our site, we make no representations, warranties or guarantees, whether express or implied, that Our Content on the Site is accurate, complete or up to date.</p>
+
+      <h2>5. Site Management</h2>
+
+      <p><strong>5.1</strong> HedgeFlows reserves the right to:</p>
+      <ul>
+        <li>Monitor the Site for Terms and Conditions breaches</li>
+        <li>Take appropriate legal action against those breaching applicable laws or these Terms</li>
+        <li>Remove or disable excessively large files or content burdensome to systems</li>
+        <li>Otherwise manage the Site to protect rights and property and facilitate proper functioning</li>
+      </ul>
+
+      <p><strong>5.2</strong> HedgeFlows does not guarantee Site security or freedom from bugs or viruses.</p>
+
+      <p><strong>5.3</strong> Users are responsible for configuring their information technology, computer programs, and platforms to access the Site and should use their own virus protection software.</p>
+
+      <h2>6. Modifications to and Availability of the Site</h2>
+
+      <p><strong>6.1</strong> HedgeFlows reserves the right to change, modify, or remove Site contents at any time for any reason without notice. The company also reserves the right to modify or discontinue all or part of Services without notice.</p>
+
+      <p><strong>6.2</strong> We cannot guarantee the Site and Services will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance related to the Site, resulting in interruptions, delays, or errors. Users agree HedgeFlows has no liability for loss, damage, or inconvenience caused by inability to access or use the Site or Services during downtime or discontinuance. The company is not obliged to maintain and support the Site or Services or supply corrections, updates, or releases.</p>
+
+      <p><strong>6.3</strong> The Site may contain typographical errors, inaccuracies, or omissions relating to Services, including descriptions, pricing, and availability. HedgeFlows reserves the right to correct errors, inaccuracies, or omissions and change or update information at any time without notice.</p>
+
+      <h2>7. Disclaimer / Limitation of Liability</h2>
+
+      <p><strong>7.1</strong> The Site and Services are provided on an as-is and as-available basis. You agree that your use of the Site and/or Services will be at your sole risk except as expressly set out in these Terms and Conditions.</p>
+
+      <p>All warranties, terms, conditions and undertakings, express or implied (including by statute, custom or usage, a course of dealing, or common law) in connection with the Site and Services and your use thereof including, without limitation, the implied warranties of satisfactory quality, fitness for a particular purpose and non-infringement are excluded to the fullest extent permitted by applicable law.</p>
+
+      <p>HedgeFlows makes no warranties regarding Site content accuracy or completeness and is not liable for:</p>
+      <ul>
+        <li>Errors or content omissions</li>
+        <li>Unauthorized access to or use of servers and personal/financial information</li>
+        <li>Transmission interruption or cessation</li>
+        <li>Bugs, viruses, trojans, or similar malware</li>
+      </ul>
+
+      <p>We will not be responsible for any delay or failure to comply with our obligations under these Terms and Conditions if such delay or failure is caused by an event beyond our reasonable control.</p>
+
+      <p><strong>7.2</strong> Responsibility for loss or damage:</p>
+
+      <h3>For both consumer and business users:</h3>
+      <ul>
+        <li>HedgeFlows does not exclude or limit liability where unlawful, including for death, personal injury from negligence, or fraud/fraudulent misrepresentation</li>
+        <li>If the company fails to comply with these Terms, it is responsible only for direct loss or damage, not indirect or consequential loss or damage</li>
+      </ul>
+
+      <p>Liability is limited to the lower of: (a) £1000 or (b) amounts paid by the user for Services/Site during the six months before the cause of action. Different limitations apply to product supply liability, set out in Terms and conditions of supply.</p>
+
+      <h3>For business users specifically:</h3>
+      <p>HedgeFlows will not be liable for loss or damage in contract, tort (including negligence), breach of statutory duty, or otherwise, even if foreseeable, arising under or in connection with:</p>
+      <ul>
+        <li>Use of or inability to use the Site/Services</li>
+        <li>Use of or reliance on displayed content</li>
+      </ul>
+
+      <p>The company is not liable for:</p>
+      <ul>
+        <li>Loss of profits, sales, business, or revenue</li>
+        <li>Business interruption</li>
+        <li>Loss of anticipated savings</li>
+        <li>Loss of business opportunity, goodwill, or reputation</li>
+        <li>Any indirect or consequential loss or damage</li>
+      </ul>
+
+      <h2>8. Term and Termination</h2>
+
+      <p><strong>8.1</strong> These Terms and Conditions remain in full force while users use the Site or Services. You may terminate your use or participation at any time, for any reason, by following the instructions for terminating user accounts in your account settings, if available, or by contacting us at <a href="mailto:info@hedgeflows.com">info@hedgeflows.com</a>.</p>
+
+      <p><strong>8.2</strong> HedgeFlows reserves the right to deny Site and Services access (including blocking IP addresses) to anyone for any reason, including Terms and Conditions breach or applicable law violation, without notice or liability.</p>
+
+      <p>If we determine, in our sole discretion, that your use of the Site/Services is in breach of these Terms and Conditions or of any applicable law or regulation, we may terminate your use or participation in the Site and the Services or delete your profile and any content or information that you posted at any time, without warning, in our sole discretion.</p>
+
+      <p><strong>8.3</strong> Users whose accounts are terminated or suspended cannot register new accounts under their name, fake names, or third-party names, even on their behalf. Beyond termination or suspension, HedgeFlows reserves the right to pursue appropriate legal action, including civil, criminal, and injunctive redress.</p>
+
+      <h2>9. General</h2>
+
+      <p><strong>9.1</strong> Visiting the Site, emailing the company, and completing online forms constitute electronic communications. Users consent to receive electronic communications and agree that all agreements, notices, disclosures, and communications provided electronically, via email, or on the Site satisfy legal writing requirements.</p>
+
+      <p>You hereby agree to the use of electronic signatures, contracts, orders and other records and to electronic delivery of notices, policies and records of transactions initiated or completed by us or via the Site. Users waive rights or requirements under any statutes, regulations, rules, ordinances, or laws requiring original signatures, non-electronic record delivery or retention, or credit granting by non-electronic means.</p>
+
+      <p><strong>9.2</strong> These Terms and Conditions and policies or operating rules posted on the Site constitute the entire agreement and understanding between users and HedgeFlows.</p>
+
+      <p><strong>9.3</strong> The company's failure to exercise or enforce any right or provision does not operate as a waiver of that right or provision.</p>
+
+      <p><strong>9.4</strong> HedgeFlows may assign any or all of its rights and obligations to others at any time.</p>
+
+      <p><strong>9.5</strong> The company is not responsible or liable for loss, damage, delay, or failure to act caused by any cause beyond its reasonable control.</p>
+
+      <p><strong>9.6</strong> If any provision or part thereof is unlawful, void, or unenforceable, that provision or part is deemed severable and does not affect remaining provisions' validity and enforceability.</p>
+
+      <p><strong>9.7</strong> No joint venture, partnership, employment, or agency relationship exists between users and HedgeFlows as a result of these Terms and Conditions or Site/Services use.</p>
+
+      <p><strong>9.8</strong> For business users only: These Terms and Conditions, their subject matter and their formation (and any non-contractual disputes or claims) are governed by English Law. We both agree to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+      <p><strong>9.9</strong> HedgeFlows Ltd trade marks include UK00003575323 (United Kingdom trademark). Users may not use them without approval unless the Site explicitly permits such use.</p>
+
+      <p><strong>9.10</strong> A person who is not a party to these Terms and Conditions shall have no right under the Contracts (Rights of Third Parties) Act 1999 to enforce any term of these Terms and Conditions.</p>
+
+      <p><strong>9.11</strong> For complaints regarding Services or further information:</p>
+
+      <p>
+        HedgeFlows Ltd<br>
+        4th Floor Tuition House, 27-37 St George's Road<br>
+        London, SW19 4EU<br>
+        United Kingdom<br>
+        Email: <a href="mailto:info@hedgeflows.com">info@hedgeflows.com</a>
+      </p>
+
+      <hr class="my-10 border-gray-200">
+
+      <p class="text-sm text-gray-500">HedgeFlows Ltd, company number 12689184 (England registered), is authorised and regulated by the Financial Conduct Authority as an Authorised Payment Institution (Firm Reference Number: 1008699) for the provision of payment services under the Payment Service Regulations 2017.</p>
+
+      <p class="text-sm text-gray-500">&copy; 2021 HedgeFlows Ltd. All rights reserved.</p>
+    </div>
+  </section>
 </PageLayout>

@@ -1,19 +1,130 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import Hero from '../../components/Hero.astro';
-import PageSections from '../../components/PageSections.astro';
-import { getPage } from '../../lib/sanity';
-
-const page = await getPage('legal/complaints');
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Complaints Policy'}
-  description={page?.seoDescription || 'HedgeFlows complaints policy and resolution process.'}
+  title="Complaints Policy | HedgeFlows"
+  description="HedgeFlows complaints policy and resolution process."
 >
-  <Hero
-    title={page?.heroTitle || 'Complaints Policy'}
-    subtitle={page?.heroSubtitle || 'Our process for handling complaints fairly and promptly.'}
-  />
-  <PageSections sections={page?.sections || []} />
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-brand-green-pale to-white py-16 md:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-text-heading text-center">Complaints Handling Procedure</h1>
+      <p class="mt-4 text-lg text-text-body text-center">Our process for handling complaints fairly and promptly.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 md:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 prose prose-lg prose-gray max-w-none
+                [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                [&_a]:text-brand-green [&_a]:underline">
+
+      <h2>1. Introduction</h2>
+
+      <p>HedgeFlows is committed to treating every customer complaint seriously and taking appropriate action. We view a complaint as an opportunity to turn an unhappy customer into a satisfied long-term client. A dissatisfied customer who finds their issues dealt with swiftly and professionally will frequently have more respect for us than where their experience is smooth and untroubled.</p>
+
+      <p>If we do not deal with your complaint to your satisfaction, you may have the right to refer the complaint to the Financial Ombudsman Service (FOS) whose decision is binding on us.</p>
+
+      <h2>2. Who Will Handle Complaints</h2>
+
+      <p>All complaints can be directed to:</p>
+
+      <p>
+        <strong>Mr Alex Axentiev</strong><br>
+        By email: <a href="mailto:info@hedgeflows.com">info@hedgeflows.com</a><br>
+        By post: 4th Floor Tuition House, 27-37 St George's Road, Wimbledon, London, England, SW19 4EU
+      </p>
+
+      <p>We would prefer to receive complaints by email so we can deal with them in a more timely manner.</p>
+
+      <h2>3. What Information Is Required</h2>
+
+      <ul>
+        <li>Full details of the complaint and any relevant or supporting documentation</li>
+        <li>Your name and contact telephone number</li>
+        <li>Your HedgeFlows client identification number</li>
+      </ul>
+
+      <h2>4. The HedgeFlows Complaints Process and Timescales</h2>
+
+      <h3>4.1. The 3 Day Rule</h3>
+
+      <p>Where and if possible, HedgeFlows will resolve your complaint by the end of three business days following receipt of the complaint. Usually most complaints can and should be addressed within these 3 days. We will confirm our resolution in writing to you.</p>
+
+      <h3>4.2. What happens if HedgeFlows Ltd are unable to resolve your complaint by the end of three business days?</h3>
+
+      <p>Within 5 business days of receiving the original complaint we will write and provide you with details of our complaint handling procedures (this document) and confirm the name and the contact details of the person investigating the complaint (usually Mr. Alex Axentiev).</p>
+
+      <p>If investigations into the complaint have been concluded at this stage HedgeFlows Ltd will provide you with a final written response.</p>
+
+      <h3>4.3. What happens if we have not resolved your complaint within 15 business days?</h3>
+
+      <p>If we are unable to resolve the matter on the 15th business day (of receipt of the original complaint) we will write and inform you to this effect and should advise when we anticipate we will be able to respond.</p>
+
+      <h3>4.4. What happens if we have not resolved your complaint within 35 business days?</h3>
+
+      <p>If 35 business days have passed (from receipt of the original complaint) and our investigations are ongoing, and we are not yet able to resolve the matter, we will write and inform you to this effect and will advise when we anticipate we will be able to respond.</p>
+
+      <p>At this stage, you may refer your complaint to the Financial Ombudsman Service, if you wish to.</p>
+
+      <p>The Financial Ombudsman Service details are:</p>
+
+      <p>
+        The Financial Ombudsman Service<br>
+        Exchange Tower<br>
+        London E14 9SR<br>
+        Telephone: 0800 023 4567 or 0300 123 9 123 and (+44) 20 7964 0500 (from abroad)<br>
+        Email: <a href="mailto:complaint.info@financial-ombudsman.org.uk">complaint.info@financial-ombudsman.org.uk</a><br>
+        Website: <a href="https://www.financial-ombudsman.org.uk" target="_blank" rel="noopener noreferrer">financial-ombudsman.org.uk</a>
+      </p>
+
+      <h3>4.5. What happens when we complete our investigation?</h3>
+
+      <p>Upon conclusion of our investigation we will provide you with our final response in writing. Our report will present details of our investigation and confirmation of whether your complaint has been upheld or declined. If it has been upheld, we will ensure that we offer you an appropriate redress or resolution. We will also provide you with information relating to the Financial Ombudsman Service and their explanatory leaflet (if applicable).</p>
+
+      <h3>4.6. If you are still not happy with our final response, what else can we offer?</h3>
+
+      <p>If you are not satisfied with our final response, you may be entitled to refer the matter to the Financial Ombudsman Service (FOS).</p>
+
+      <p>The FOS can be contacted on:</p>
+
+      <p>
+        The Financial Ombudsman Service<br>
+        Exchange Tower<br>
+        London E14 9SR<br>
+        Telephone: 0800 023 4567 or 0300 123 9 123 and (+44) 20 7964 0500 (from abroad)<br>
+        Email: <a href="mailto:complaint.info@financial-ombudsman.org.uk">complaint.info@financial-ombudsman.org.uk</a><br>
+        Website: <a href="https://www.financial-ombudsman.org.uk" target="_blank" rel="noopener noreferrer">financial-ombudsman.org.uk</a>
+      </p>
+
+      <h3>4.7. How will the Financial Ombudsman Service help you?</h3>
+
+      <p>If the FOS deem the complaint to be eligible for further investigation, the FOS will impartially assess what you are complaining about and the facts surrounding the complaint. The FOS will consider if you have been treated fairly by us. If the FOS believe you were not treated fairly, they will offer a resolution and make things right for you.</p>
+
+      <h3>4.8. Are all complaints eligible for investigation by the Financial Ombudsman Service?</h3>
+
+      <p>Whilst the majority of complaints are eligible for further investigation by the FOS, it is important that you are aware this does not apply in every instance. If you are in any doubt about whether your complaint is eligible for further investigation you should contact the FOS directly for clarification. Details of the types of complaints the FOS will not consider are given on their website.</p>
+
+      <h2>5. Complaint Recording</h2>
+
+      <p>We will keep records of each complaint we receive and the measures we have taken to resolve the matter. The records will be kept for 3 years.</p>
+
+      <h2>6. Eligible Complainants</h2>
+
+      <p>The FOS service is available to:</p>
+      <ul>
+        <li>Consumers</li>
+        <li>Micro Enterprises</li>
+        <li>Small Businesses (with less than £6.5 million annual turnover, and less than 50 employees or balance sheet of less than £5 million)</li>
+        <li>Small Charities (with less than £1 million annual income at time of complaint)</li>
+        <li>Small Trusts (with net asset value less than £1 million at time of complaint)</li>
+      </ul>
+
+    </div>
+  </section>
 </PageLayout>
