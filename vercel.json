@@ -1,0 +1,45 @@
+{
+  "redirects": [
+    { "source": "/connected-business-account", "destination": "/platform/connected-account", "permanent": true },
+    { "source": "/global-bulk-payments", "destination": "/platform/payments", "permanent": true },
+    { "source": "/multi-currency-payment-runs", "destination": "/platform/payments", "permanent": true },
+    { "source": "/multi-currency-payables-automation", "destination": "/platform/payments", "permanent": true },
+    { "source": "/cash-management", "destination": "/platform/cash-management", "permanent": true },
+    { "source": "/fx-risk-management", "destination": "/platform/fx-risk-management", "permanent": true },
+    { "source": "/automated-ap-ar-reconciliations", "destination": "/platform/connected-account", "permanent": true },
+    { "source": "/automated-ap-savings", "destination": "/pricing", "permanent": true },
+
+    { "source": "/book-a-demo", "destination": "/treasury-health-check", "permanent": true },
+
+    { "source": "/fx-and-treasury-academy", "destination": "/fx-academy", "permanent": true },
+    { "source": "/fx-and-treasury-academy/foreign-exchange-for-businesses-101", "destination": "/fx-academy/foreign-exchange-101", "permanent": true },
+    { "source": "/fx-and-treasury-academy/fx-markets-and-financial-instruments", "destination": "/fx-academy/fx-markets-and-instruments", "permanent": true },
+    { "source": "/fx-and-treasury-academy/how-to-construct-a-hedging-programme", "destination": "/fx-academy/hedging-programme", "permanent": true },
+    { "source": "/fx-and-treasury-academy/balance-sheet-hedging-training", "destination": "/fx-academy/balance-sheet-hedging", "permanent": true },
+    { "source": "/fx-and-treasury-academy/fx-cashflow-hedging-training", "destination": "/fx-academy/cashflow-hedging", "permanent": true },
+    { "source": "/fx-and-treasury-academy/structured-fx-products", "destination": "/fx-academy/structured-fx-products", "permanent": true },
+
+    { "source": "/currency-solutions-for-accountants", "destination": "/partners/accountants", "permanent": true },
+    { "source": "/parternship-opportunities-with-hedgeflows", "destination": "/partners", "permanent": true },
+
+    { "source": "/treasury-risk-management-platfrom-for-scaleups", "destination": "/solutions/scaleups", "permanent": true },
+    { "source": "/global-payments-solutions-for-travel-agencies", "destination": "/industries/travel", "permanent": true },
+    { "source": "/global-payments-solutions-for-freight-forwarders", "destination": "/industries/logistics", "permanent": true },
+
+    { "source": "/payments-and-currency-management-inside-business-central", "destination": "/platform/integrations/business-central", "permanent": true },
+    { "source": "/global-payables-and-currency-management-for-netsuite", "destination": "/platform/integrations/netsuite", "permanent": true },
+    { "source": "/multi-currency-payments-app-for-xero", "destination": "/platform/integrations/xero", "permanent": true },
+
+    { "source": "/compare/hedgeflows-vs-xe", "destination": "/platform", "permanent": true },
+    { "source": "/invoice-risk-calculator", "destination": "/fx-academy", "permanent": true },
+    { "source": "/guides", "destination": "/fx-academy", "permanent": true },
+
+    { "source": "/case-studies/jbm", "destination": "/case-studies", "permanent": true },
+    { "source": "/case-studies/cable-analytics", "destination": "/case-studies", "permanent": true },
+
+    { "source": "/privacy-policy", "destination": "/legal/privacy", "permanent": true },
+    { "source": "/terms-of-use", "destination": "/legal/terms", "permanent": true },
+    { "source": "/terms-and-conditions", "destination": "/legal/terms", "permanent": true },
+    { "source": "/cookie-policy", "destination": "/legal/cookies", "permanent": true }
+  ]
+}
