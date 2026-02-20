@@ -80,10 +80,9 @@ const page = await getPage('treasury-health-check');
 
   if (consent && consent.marketing) {
     loadCalendly();
-  } else if (consent && !consent.marketing) {
+  } else {
     showPlaceholder();
   }
-  // If no consent yet, widget div stays visible but empty (banner is showing)
 
   // Listen for consent changes
   window.addEventListener('hf:consent', function(e) {
