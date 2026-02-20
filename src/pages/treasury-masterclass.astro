@@ -3,8 +3,8 @@ import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
 
-const hubspotPortalId = 'PLACEHOLDER_PORTAL_ID';
-const hubspotFormId = 'PLACEHOLDER_FORM_ID';
+const hubspotPortalId = '8698300';
+const hubspotFormId = '4c5f7770-79c8-4df9-b0c5-38c6691fd790';
 ---
 
 <PageLayout
@@ -510,7 +510,7 @@ const hubspotFormId = 'PLACEHOLDER_FORM_ID';
         }
       );
 
-      if (response.ok || portalId === 'PLACEHOLDER_PORTAL_ID') {
+      if (response.ok) {
         // Success — show success state
         document.getElementById('masterclass-form').classList.add('hidden');
         document.getElementById('masterclass-success').classList.remove('hidden');

@@ -36,30 +36,32 @@ if (logosFromProps && logosFromProps.length > 0) {
     {logos.length > 0 ? (
       slider ? (
         /* ── Infinite scroll slider ── */
-        <div class="logo-slider-wrapper overflow-hidden relative">
-          <div class="logo-slider-track flex items-center gap-14">
-            {/* Render logos twice for seamless loop */}
-            {[...logos, ...logos].map((item: any) => {
-              const imgUrl = item.logo
-                ? (typeof item.logo === 'string' ? item.logo : urlFor(item.logo).height(36).auto('format').url())
-                : null;
-              return (
-                <div class="flex-shrink-0 h-10 flex items-center justify-center" title={item.name}>
-                  {imgUrl ? (
-                    <img
-                      src={imgUrl}
-                      alt={item.name}
-                      class="max-h-9 md:max-h-10 max-w-[140px] w-auto object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div class="bg-gray-300 rounded h-7 flex items-center justify-center px-4">
-                      <span class="text-[0.6875rem] font-semibold text-gray-500 whitespace-nowrap">{item.name}</span>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+        <div class="logo-slider-wrapper overflow-hidden relative" data-logo-slider>
+          <div class="logo-slider-track flex items-center" data-logo-track>
+            {/* First set — used to measure exact width */}
+            <div class="flex items-center gap-14 flex-shrink-0" data-logo-set>
+              {logos.map((item: any) => {
+                const imgUrl = item.logo
+                  ? (typeof item.logo === 'string' ? item.logo : urlFor(item.logo).height(36).auto('format').url())
+                  : null;
+                return (
+                  <div class="flex-shrink-0 h-10 flex items-center justify-center" title={item.name}>
+                    {imgUrl ? (
+                      <img
+                        src={imgUrl}
+                        alt={item.name}
+                        class="max-h-9 md:max-h-10 max-w-[140px] w-auto object-contain opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
+                      />
+                    ) : (
+                      <div class="bg-gray-300 rounded h-7 flex items-center justify-center px-4">
+                        <span class="text-[0.6875rem] font-semibold text-gray-500 whitespace-nowrap">{item.name}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            {/* Second set — cloned via JS for pixel-perfect loop */}
           </div>
           {/* Fade edges */}
           <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
@@ -114,15 +116,67 @@ if (logosFromProps && logosFromProps.length > 0) {
 </section>
 
 <style>
-  @keyframes logo-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
   .logo-slider-track {
-    animation: logo-scroll 40s linear infinite;
     width: max-content;
+    will-change: transform;
+  }
+  .logo-slider-track.is-scrolling {
+    animation: logo-scroll var(--scroll-duration, 40s) linear infinite;
   }
   .logo-slider-wrapper:hover .logo-slider-track {
     animation-play-state: paused;
   }
+  @keyframes logo-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(var(--scroll-distance)); }
+  }
 </style>
+
+<script>
+  function initLogoSliders() {
+    document.querySelectorAll('[data-logo-slider]').forEach((wrapper) => {
+      const track = wrapper.querySelector('[data-logo-track]') as HTMLElement;
+      const firstSet = wrapper.querySelector('[data-logo-set]') as HTMLElement;
+      if (!track || !firstSet) return;
+
+      // Remove any previously cloned sets (for view-transition re-runs)
+      track.querySelectorAll('[data-logo-clone]').forEach(el => el.remove());
+      track.classList.remove('is-scrolling');
+
+      // Wait for images to load so measurement is accurate
+      const images = firstSet.querySelectorAll('img');
+      const loaded = Array.from(images).map(img =>
+        img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })
+      );
+
+      Promise.all(loaded).then(() => {
+        // Get the gap value (gap-14 = 3.5rem)
+        const gap = parseFloat(getComputedStyle(firstSet).columnGap) || 56;
+        // Measure exact pixel width of one logo set + one trailing gap
+        const setWidth = firstSet.offsetWidth + gap;
+
+        // Clone enough sets to fill viewport + overflow
+        const clonesNeeded = Math.ceil(wrapper.clientWidth / setWidth) + 1;
+        for (let i = 0; i < clonesNeeded; i++) {
+          const clone = firstSet.cloneNode(true) as HTMLElement;
+          clone.setAttribute('data-logo-clone', '');
+          clone.setAttribute('aria-hidden', 'true');
+          clone.style.marginLeft = `${gap}px`;
+          track.appendChild(clone);
+        }
+
+        // Set precise scroll distance and speed (pixels per second)
+        const pxPerSecond = 50;
+        const duration = setWidth / pxPerSecond;
+        track.style.setProperty('--scroll-distance', `-${setWidth}px`);
+        track.style.setProperty('--scroll-duration', `${duration}s`);
+        track.classList.add('is-scrolling');
+      });
+    });
+  }
+
+  // Run on initial load
+  initLogoSliders();
+  // Re-run on Astro view transitions
+  document.addEventListener('astro:after-swap', initLogoSliders);
+</script>
