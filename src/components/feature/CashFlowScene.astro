@@ -1,0 +1,293 @@
+---
+/**
+ * CashFlowScene — Cash position summary card with mini area chart + forecast badge.
+ * Used in the Cash Management feature row on platform page.
+ */
+---
+
+<div class="cashflow-scene" aria-hidden="true">
+  <!-- Main cash position card -->
+  <div class="cashflow-scene__main glass-card scene-enter">
+    <div class="cashflow-scene__header">
+      <span class="cashflow-scene__label">Cash Position</span>
+      <span class="cashflow-scene__period">30-day forecast</span>
+    </div>
+
+    <p class="cashflow-scene__total">£1.24M</p>
+    <p class="cashflow-scene__sub">Consolidated across 4 entities</p>
+
+    <!-- Mini area chart -->
+    <svg class="cashflow-scene__chart" viewBox="0 0 280 80" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="cashGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#038458" stop-opacity="0.12" />
+          <stop offset="100%" stop-color="#038458" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <!-- Forecast area -->
+      <path
+        d="M0,55 L40,48 L80,50 L120,38 L160,42 L200,30 L240,25 L280,28 L280,80 L0,80Z"
+        fill="url(#cashGrad)"
+      />
+      <!-- Actual line (solid) -->
+      <path
+        d="M0,55 L40,48 L80,50 L120,38 L160,42"
+        fill="none"
+        stroke="#038458"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="cashflow-scene__line"
+      />
+      <!-- Forecast line (dashed) -->
+      <path
+        d="M160,42 L200,30 L240,25 L280,28"
+        fill="none"
+        stroke="#038458"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-dasharray="6 4"
+        opacity="0.5"
+      />
+    </svg>
+
+    <div class="cashflow-scene__legend">
+      <span class="cashflow-scene__legend-item">
+        <span class="cashflow-scene__legend-line cashflow-scene__legend-line--solid"></span>
+        Actual
+      </span>
+      <span class="cashflow-scene__legend-item">
+        <span class="cashflow-scene__legend-line cashflow-scene__legend-line--dashed"></span>
+        Forecast
+      </span>
+    </div>
+    <p class="cashflow-scene__disclaimer">Sample data</p>
+  </div>
+
+  <!-- Entity count badge -->
+  <div class="cashflow-scene__entities glass-card scene-enter scene-float" style="--delay: 0.4s; --float-dur: 6.5s">
+    <span class="cashflow-scene__entities-value">4</span>
+    <span class="cashflow-scene__entities-label">Entities</span>
+  </div>
+
+  <!-- Yield badge -->
+  <div class="cashflow-scene__yield glass-card scene-enter scene-float" style="--delay: 0.6s; --float-dur: 5.5s">
+    <svg class="cashflow-scene__yield-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+    </svg>
+    <div>
+      <p class="cashflow-scene__yield-value">4.2%</p>
+      <p class="cashflow-scene__yield-label">Avg yield</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-enter {
+    opacity: 0;
+    animation: sceneEnter 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneEnter 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .cashflow-scene {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .cashflow-scene__main {
+    padding: 1.25rem 1.5rem;
+    max-width: 320px;
+  }
+
+  .cashflow-scene__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .cashflow-scene__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7280;
+  }
+
+  .cashflow-scene__period {
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: #9CA3AF;
+  }
+
+  .cashflow-scene__total {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #343A40;
+    line-height: 1.2;
+  }
+
+  .cashflow-scene__sub {
+    font-size: 0.75rem;
+    color: #6B7280;
+    margin-top: 0.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cashflow-scene__chart {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 0.5rem;
+  }
+
+  .cashflow-scene__line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawLine 1.5s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  .cashflow-scene__legend {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cashflow-scene__legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.625rem;
+    color: #6B7280;
+  }
+
+  .cashflow-scene__legend-line {
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+  }
+
+  .cashflow-scene__legend-line--solid {
+    background: #038458;
+  }
+
+  .cashflow-scene__legend-line--dashed {
+    background: repeating-linear-gradient(
+      90deg,
+      #038458 0,
+      #038458 4px,
+      transparent 4px,
+      transparent 7px
+    );
+    opacity: 0.5;
+  }
+
+  .cashflow-scene__disclaimer {
+    font-size: 0.625rem;
+    color: #9CA3AF;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* Entity count badge */
+  .cashflow-scene__entities {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.625rem 1rem;
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  .cashflow-scene__entities-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #038458;
+    line-height: 1;
+  }
+
+  .cashflow-scene__entities-label {
+    font-size: 0.6875rem;
+    color: #6B7280;
+  }
+
+  /* Yield badge */
+  .cashflow-scene__yield {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+  }
+
+  .cashflow-scene__yield-icon {
+    width: 18px;
+    height: 18px;
+    color: #038458;
+    flex-shrink: 0;
+  }
+
+  .cashflow-scene__yield-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #343A40;
+    line-height: 1.2;
+  }
+
+  .cashflow-scene__yield-label {
+    font-size: 0.625rem;
+    color: #6B7280;
+  }
+
+  @media (max-width: 1023px) {
+    .cashflow-scene {
+      min-height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .cashflow-scene__entities,
+    .cashflow-scene__yield {
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+    }
+  }
+
+  @keyframes sceneEnter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+</style>

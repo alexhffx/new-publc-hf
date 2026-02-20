@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import IndustryScene from '../../components/hero/IndustryScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 import { getLogosByIndustry } from '../../data/clientLogos';
@@ -38,7 +39,9 @@ const painPoints = [
     subtitle="Multi-currency invoicing, real-time cash visibility, and expert advisory — so your finance team can focus on growing the business, not chasing payments."
     primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'See the Platform', href: '/platform' }}
-  />
+  >
+    <IndustryScene slot="scene" industry="Professional Services" />
+  </Hero>
 
   {industryLogos.length > 0 && <TrustBar logos={industryLogos} slider={true} />}
 

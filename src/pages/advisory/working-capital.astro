@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import AdvisoryScene from '../../components/hero/AdvisoryScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -28,7 +29,18 @@ const steps = [
     title="Growth capital beyond your bank's overdraft"
     subtitle="Independent advice on bank and non-bank facilities. We recommend what's best for you — because we're not a lender."
     primaryCta={{ label: 'Book a Working Capital Review', href: '/treasury-health-check' }}
-  />
+  >
+    <AdvisoryScene
+      slot="scene"
+      advisorName="Sarah Chen"
+      advisorRole="Capital Advisor"
+      advisorInitials="SC"
+      message="I've mapped three non-bank options that match your cash flow profile. Let's compare terms."
+      metricLabel="Facilities reviewed"
+      metricValue="12+"
+      metricSub="Providers compared"
+    />
+  </Hero>
 
   <TrustBar slider={true} />
 

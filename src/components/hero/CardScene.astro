@@ -1,0 +1,169 @@
+---
+/**
+ * CardScene — positions the four floating dashboard cards in the hero right column.
+ * Each card floats with an independent CSS animation loop.
+ * On mobile, collapses to a horizontal scroll strip.
+ */
+import ExposureCard from './ExposureCard.astro';
+import HedgeRatioCard from './HedgeRatioCard.astro';
+import AdvisorCard from './AdvisorCard.astro';
+import RateMonitorCard from './RateMonitorCard.astro';
+---
+
+<!-- Desktop: absolutely positioned floating cards -->
+<div class="card-scene" aria-hidden="true">
+  <div class="card-scene__card card-scene__card--advisor">
+    <AdvisorCard />
+  </div>
+  <div class="card-scene__card card-scene__card--hedge">
+    <HedgeRatioCard />
+  </div>
+  <div class="card-scene__card card-scene__card--exposure">
+    <ExposureCard />
+  </div>
+  <div class="card-scene__card card-scene__card--rate">
+    <RateMonitorCard />
+  </div>
+</div>
+
+<!-- Mobile: horizontal scroll strip -->
+<div class="card-strip" aria-hidden="true">
+  <div class="card-strip__inner">
+    <div class="card-strip__item"><ExposureCard /></div>
+    <div class="card-strip__item"><HedgeRatioCard /></div>
+    <div class="card-strip__item"><RateMonitorCard /></div>
+  </div>
+</div>
+
+<style>
+  /* ── Shared glass card style ── */
+  .card-scene__card > :global(*),
+  .card-strip__item > :global(*) {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    transition: transform 0.3s ease;
+  }
+
+  .card-scene__card:hover > :global(*) {
+    transform: translateY(-4px);
+  }
+
+  /* ── Desktop scene ── */
+  .card-scene {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+  }
+
+  @media (min-width: 1024px) {
+    .card-scene {
+      display: block;
+    }
+  }
+
+  .card-scene__card {
+    position: absolute;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards, cardFloat 6s ease-in-out infinite;
+    animation-delay: 0.4s, 1.2s;
+  }
+
+  /* Card 1 — Exposure (largest, top-right) */
+  .card-scene__card--exposure {
+    top: 20px;
+    right: 0;
+    animation-delay: 0.2s, 1.0s;
+  }
+
+  /* Card 2 — Hedge Ratio (mid-left, overlapping) */
+  .card-scene__card--hedge {
+    top: 200px;
+    right: 320px;
+    animation-delay: 0.4s, 1.4s;
+  }
+
+  /* Card 3 — Advisor (top-left) */
+  .card-scene__card--advisor {
+    top: 20px;
+    right: 370px;
+    animation-delay: 0.6s, 1.8s;
+  }
+
+  /* Card 4 — Rate Monitor (bottom-right) */
+  .card-scene__card--rate {
+    bottom: 20px;
+    right: 20px;
+    animation-delay: 0.8s, 2.2s;
+  }
+
+  /* Vary float durations */
+  .card-scene__card--exposure { --float-dur: 6s; }
+  .card-scene__card--hedge    { --float-dur: 7s; }
+  .card-scene__card--advisor  { --float-dur: 5.5s; }
+  .card-scene__card--rate     { --float-dur: 7.5s; }
+
+  /* ── Mobile strip ── */
+  .card-strip {
+    display: block;
+    margin-top: 2rem;
+    overflow: hidden;
+  }
+
+  @media (min-width: 1024px) {
+    .card-strip {
+      display: none;
+    }
+  }
+
+  .card-strip__inner {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide scrollbar but keep scroll */
+  .card-strip__inner::-webkit-scrollbar {
+    display: none;
+  }
+  .card-strip__inner {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .card-strip__item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  /* ── Keyframes ── */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cardFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+</style>

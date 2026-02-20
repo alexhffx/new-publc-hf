@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import PlatformScene from '../../components/hero/PlatformScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -92,8 +93,15 @@ const steps = [
     title="Manage your cash flow, effortlessly"
     subtitle="Say goodbye to manual cash flow tracking and guesswork. Streamline cash management with real-time insights across multiple currencies and entities."
     primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
-  />
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/platform/cash-mgmt-hero.png"
+      screenshotAlt="HedgeFlows cash management dashboard"
+      accentLabel="Multi-currency"
+    />
+  </Hero>
 
   <!-- Hero Image -->
   <section class="bg-white -mt-8 md:-mt-14 relative z-10 pb-12">
@@ -204,6 +212,6 @@ const steps = [
   <CTASection
     headline="Ready for real-time visibility across all your accounts?"
     primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
   />
 </PageLayout>

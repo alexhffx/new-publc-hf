@@ -1,0 +1,341 @@
+---
+/**
+ * FxRiskScene — Exposure donut + hedge recommendation card + AI co-pilot badge.
+ * Used in the FX Risk Management feature row on platform page.
+ */
+---
+
+<div class="fxrisk-scene" aria-hidden="true">
+  <!-- Main exposure card with donut -->
+  <div class="fxrisk-scene__main glass-card scene-enter">
+    <div class="fxrisk-scene__header">
+      <span class="fxrisk-scene__label">FX Exposure</span>
+      <span class="fxrisk-scene__live">
+        <span class="fxrisk-scene__dot"></span>
+        Monitoring
+      </span>
+    </div>
+
+    <div class="fxrisk-scene__body">
+      <div class="fxrisk-scene__donut-wrap">
+        <svg class="fxrisk-scene__donut" viewBox="0 0 100 100">
+          <!-- Track -->
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#E8F8F0" stroke-width="8" />
+          <!-- Hedged portion -->
+          <circle
+            cx="50" cy="50" r="40"
+            fill="none"
+            stroke="#038458"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-dasharray="251.3"
+            stroke-dashoffset="69.1"
+            transform="rotate(-90 50 50)"
+            class="fxrisk-scene__donut-fill"
+          />
+        </svg>
+        <div class="fxrisk-scene__donut-center">
+          <span class="fxrisk-scene__donut-value">72%</span>
+          <span class="fxrisk-scene__donut-label">Hedged</span>
+        </div>
+      </div>
+
+      <div class="fxrisk-scene__breakdown">
+        <div class="fxrisk-scene__breakdown-row">
+          <span class="fxrisk-scene__breakdown-dot fxrisk-scene__breakdown-dot--hedged"></span>
+          <span class="fxrisk-scene__breakdown-text">Hedged</span>
+          <span class="fxrisk-scene__breakdown-val">£1.73M</span>
+        </div>
+        <div class="fxrisk-scene__breakdown-row">
+          <span class="fxrisk-scene__breakdown-dot fxrisk-scene__breakdown-dot--open"></span>
+          <span class="fxrisk-scene__breakdown-text">Open</span>
+          <span class="fxrisk-scene__breakdown-val">£670K</span>
+        </div>
+      </div>
+    </div>
+    <p class="fxrisk-scene__disclaimer">Sample data</p>
+  </div>
+
+  <!-- AI recommendation card -->
+  <div class="fxrisk-scene__rec glass-card scene-enter scene-float" style="--delay: 0.4s; --float-dur: 7s">
+    <div class="fxrisk-scene__rec-icon-wrap">
+      <svg class="fxrisk-scene__rec-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
+      </svg>
+    </div>
+    <div>
+      <p class="fxrisk-scene__rec-title">AI Co-pilot</p>
+      <p class="fxrisk-scene__rec-text">Hedge EUR exposure — rate is 2.1% above 90-day average</p>
+    </div>
+  </div>
+
+  <!-- Alert badge -->
+  <div class="fxrisk-scene__alert glass-card scene-enter scene-float" style="--delay: 0.6s; --float-dur: 5.5s">
+    <svg class="fxrisk-scene__alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+    </svg>
+    <span class="fxrisk-scene__alert-text">3 alerts active</span>
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-enter {
+    opacity: 0;
+    animation: sceneEnter 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneEnter 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .fxrisk-scene {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .fxrisk-scene__main {
+    padding: 1.25rem 1.5rem;
+    max-width: 300px;
+  }
+
+  .fxrisk-scene__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .fxrisk-scene__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7280;
+  }
+
+  .fxrisk-scene__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: #038458;
+  }
+
+  .fxrisk-scene__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #038458;
+    animation: pulse 2s ease infinite;
+  }
+
+  .fxrisk-scene__body {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .fxrisk-scene__donut-wrap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+
+  .fxrisk-scene__donut {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fxrisk-scene__donut-fill {
+    animation: donutFill 1.5s ease forwards;
+    stroke-dashoffset: 251.3;
+  }
+
+  .fxrisk-scene__donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fxrisk-scene__donut-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #343A40;
+    line-height: 1.2;
+  }
+
+  .fxrisk-scene__donut-label {
+    font-size: 0.625rem;
+    color: #6B7280;
+  }
+
+  .fxrisk-scene__breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .fxrisk-scene__breakdown-row {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .fxrisk-scene__breakdown-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .fxrisk-scene__breakdown-dot--hedged {
+    background: #038458;
+  }
+
+  .fxrisk-scene__breakdown-dot--open {
+    background: #E8F8F0;
+    border: 1px solid #038458;
+  }
+
+  .fxrisk-scene__breakdown-text {
+    font-size: 0.6875rem;
+    color: #6B7280;
+    min-width: 3rem;
+  }
+
+  .fxrisk-scene__breakdown-val {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #343A40;
+  }
+
+  .fxrisk-scene__disclaimer {
+    font-size: 0.625rem;
+    color: #9CA3AF;
+    margin-top: 0.75rem;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* AI recommendation card */
+  .fxrisk-scene__rec {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    padding: 0.875rem 1rem;
+    max-width: 260px;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+  }
+
+  .fxrisk-scene__rec-icon-wrap {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #E8F8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .fxrisk-scene__rec-icon {
+    width: 16px;
+    height: 16px;
+    color: #038458;
+  }
+
+  .fxrisk-scene__rec-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #038458;
+    line-height: 1.2;
+  }
+
+  .fxrisk-scene__rec-text {
+    font-size: 0.6875rem;
+    color: #343A40;
+    line-height: 1.4;
+    margin-top: 0.125rem;
+  }
+
+  /* Alert badge */
+  .fxrisk-scene__alert {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  .fxrisk-scene__alert-icon {
+    width: 14px;
+    height: 14px;
+    color: #D97706;
+  }
+
+  .fxrisk-scene__alert-text {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: #D97706;
+  }
+
+  @media (max-width: 1023px) {
+    .fxrisk-scene {
+      min-height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .fxrisk-scene__rec,
+    .fxrisk-scene__alert {
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+    }
+  }
+
+  @keyframes sceneEnter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  @keyframes donutFill {
+    to { stroke-dashoffset: 69.1; }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import AdvisoryScene from '../../components/hero/AdvisoryScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -36,7 +37,18 @@ const steps = [
     subtitle="Automated payments, approval workflows, audit trails, and real-time reporting. Connected to your accounting system. Live in days."
     primaryCta={{ label: 'Connect Your Accounting System', href: 'https://app.hedgeflows.com' }}
     secondaryCta={{ label: 'Book a Process Audit', href: '/treasury-health-check' }}
-  />
+  >
+    <AdvisoryScene
+      slot="scene"
+      advisorName="Tom Harper"
+      advisorRole="Treasury Operations"
+      advisorInitials="TH"
+      message="Your Xero integration is live. Payments now reconcile automatically — no more manual matching."
+      metricLabel="Time saved"
+      metricValue="4 days"
+      metricSub="Per month on payments"
+    />
+  </Hero>
 
   <TrustBar slider={true} />
 

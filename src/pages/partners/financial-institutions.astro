@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import PartnersScene from '../../components/hero/PartnersScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 
@@ -79,7 +80,9 @@ const whyPartner = [
     subtitle="Banks and FX brokers know the SME opportunity is huge — but the economics of serving them with treasury, risk management, and cash solutions don't stack up. We change that. Partner with us to extend institutional-grade capabilities to your SME clients, on your terms."
     primaryCta={{ label: 'Explore a Partnership', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'Email Our Team', href: 'mailto:partners@hedgeflows.com' }}
-  />
+  >
+    <PartnersScene slot="scene" partnerType="Financial Institutions" metricValue="5.5M" metricLabel="UK SMEs underserved on treasury" />
+  </Hero>
 
   <TrustBar slider={true} />
 

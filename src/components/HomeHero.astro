@@ -1,0 +1,209 @@
+---
+/**
+ * HomeHero — two-column hero section with floating dashboard cards.
+ * Left: headline, subtitle, CTAs, eyebrow pill.
+ * Right: floating card scene (desktop) / scroll strip (mobile).
+ * No copy changes from original.
+ */
+import HeroBackground from './HeroBackground.astro';
+import CardScene from './hero/CardScene.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}
+
+const { title, subtitle, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section class="home-hero">
+  <HeroBackground />
+
+  <div class="home-hero__inner container-content">
+    <!-- Left column: copy -->
+    <div class="home-hero__copy">
+      <!-- Eyebrow pill -->
+      <div class="home-hero__eyebrow">
+        <span class="home-hero__eyebrow-dot"></span>
+        FCA-authorised payments platform
+      </div>
+
+      <h1 class="home-hero__title">{title}</h1>
+
+      {subtitle && (
+        <p class="home-hero__subtitle">{subtitle}</p>
+      )}
+
+      {(primaryCta || secondaryCta) && (
+        <div class="home-hero__ctas">
+          {primaryCta && (
+            <a href={primaryCta.href} class="btn-primary text-[1.0625rem] px-8 py-4">
+              {primaryCta.label}
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          )}
+          {secondaryCta && (
+            <a href={secondaryCta.href} class="btn-secondary text-[1.0625rem] px-8 py-4">
+              {secondaryCta.label}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+
+    <!-- Right column: card scene -->
+    <div class="home-hero__cards">
+      <CardScene />
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .home-hero {
+      padding-top: 7rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-hero {
+      padding-top: 7rem;
+      padding-bottom: 6rem;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .home-hero__inner {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .home-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+  }
+
+  /* ── Left column: copy ── */
+  .home-hero__copy {
+    opacity: 0;
+    animation: heroFadeUp 0.8s ease forwards;
+  }
+
+  .home-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232, 248, 240, 0.8);
+    border: 1px solid rgba(3, 132, 88, 0.15);
+    border-radius: 9999px;
+    padding: 0.375rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #038458;
+    margin-bottom: 1.5rem;
+  }
+
+  .home-hero__eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #038458;
+    animation: pulse 2s ease infinite;
+  }
+
+  .home-hero__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #343A40;
+    max-width: 36rem;
+  }
+
+  @media (min-width: 768px) {
+    .home-hero__title {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-hero__title {
+      font-size: 3.5rem;
+    }
+  }
+
+  .home-hero__subtitle {
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #4B5563;
+    max-width: 32rem;
+  }
+
+  @media (min-width: 768px) {
+    .home-hero__subtitle {
+      font-size: 1.25rem;
+    }
+  }
+
+  .home-hero__ctas {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .home-hero__ctas {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  /* ── Right column: cards ── */
+  .home-hero__cards {
+    position: relative;
+  }
+
+  @media (min-width: 1024px) {
+    .home-hero__cards {
+      min-height: 520px;
+    }
+  }
+
+  /* ── Keyframes ── */
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+</style>

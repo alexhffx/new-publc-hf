@@ -1,0 +1,169 @@
+---
+/**
+ * FX Exposure Summary card — largest card in the hero scene.
+ * Shows currency exposure bars with animated fills.
+ */
+interface Props {
+  totalExposure?: string;
+  quarter?: string;
+  currencies?: Array<{
+    code: string;
+    amount: string;
+    share: number; // 0–100 percentage
+  }>;
+}
+
+const {
+  totalExposure = '£2.4M',
+  quarter = 'Q1 2026',
+  currencies = [
+    { code: 'EUR', amount: '€890K', share: 68 },
+    { code: 'USD', amount: '$420K', share: 42 },
+    { code: 'CHF', amount: 'CHF 195K', share: 22 },
+    { code: 'JPY', amount: '¥12.1M', share: 15 },
+  ],
+} = Astro.props;
+---
+
+<div class="exposure-card">
+  <div class="exposure-card__header">
+    <span class="exposure-card__label">FX Exposure Summary</span>
+    <span class="exposure-card__live">
+      <span class="exposure-card__dot"></span>
+      Live
+    </span>
+  </div>
+
+  <p class="exposure-card__total">{totalExposure}</p>
+  <p class="exposure-card__sub">Total open exposure · {quarter}</p>
+
+  <div class="exposure-card__bars">
+    {currencies.map((c, i) => (
+      <div class="exposure-card__row">
+        <span class="exposure-card__code">{c.code}</span>
+        <div class="exposure-card__track">
+          <div
+            class="exposure-card__fill"
+            style={`width: ${c.share}%; animation-delay: ${0.3 + i * 0.15}s;`}
+          ></div>
+        </div>
+        <span class="exposure-card__amount">{c.amount}</span>
+      </div>
+    ))}
+  </div>
+
+  <p class="exposure-card__disclaimer">Sample data</p>
+</div>
+
+<style>
+  .exposure-card {
+    width: 340px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .exposure-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .exposure-card__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7280;
+  }
+
+  .exposure-card__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: #038458;
+  }
+
+  .exposure-card__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #038458;
+    animation: pulse 2s ease infinite;
+  }
+
+  .exposure-card__total {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #343A40;
+    line-height: 1.2;
+  }
+
+  .exposure-card__sub {
+    font-size: 0.75rem;
+    color: #6B7280;
+    margin-top: 0.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .exposure-card__bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exposure-card__row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .exposure-card__code {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #343A40;
+    width: 2rem;
+    flex-shrink: 0;
+  }
+
+  .exposure-card__track {
+    flex: 1;
+    height: 6px;
+    background: #E8F8F0;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .exposure-card__fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #038458, #17A977);
+    animation: barFill 1.2s ease both;
+  }
+
+  .exposure-card__amount {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #4B5563;
+    min-width: 4rem;
+    text-align: right;
+  }
+
+  .exposure-card__disclaimer {
+    font-size: 0.625rem;
+    color: #9CA3AF;
+    margin-top: 0.75rem;
+    text-align: right;
+    font-style: italic;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  @keyframes barFill {
+    from { width: 0; }
+  }
+</style>

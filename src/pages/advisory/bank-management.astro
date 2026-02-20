@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import AdvisoryScene from '../../components/hero/AdvisoryScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -35,7 +36,18 @@ const steps = [
     title="Your banking relationships shape what's possible — and what you're overpaying for"
     subtitle="Benchmarked pricing, diversified risk, and the leverage that comes from knowing your options."
     primaryCta={{ label: 'Book a Banking Review', href: '/treasury-health-check' }}
-  />
+  >
+    <AdvisoryScene
+      slot="scene"
+      advisorName="David Osei"
+      advisorRole="Banking Advisor"
+      advisorInitials="DO"
+      message="Your FX spreads are 40% above market. We can renegotiate or diversify providers."
+      metricLabel="Potential saving"
+      metricValue="£32K"
+      metricSub="Annual bank costs"
+    />
+  </Hero>
 
   <TrustBar slider={true} />
 
@@ -93,10 +105,10 @@ const steps = [
           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
         </svg>
         <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6 italic">
-          "We had no idea we were paying 1.2% on every FX transaction. HedgeFlows benchmarked us, helped us negotiate, and introduced a specialist provider. Saved over £100k in year one."
+          "We had no idea we were paying 1.2% on every FX hedge. HedgeFlows benchmarked us, helped us negotiate, and introduced a specialist provider. Saved over £100k in year one."
         </p>
-        <p class="text-[0.9375rem] font-semibold text-text-heading">[Client Name]</p>
-        <p class="text-[0.8125rem] text-text-muted">CEO, [E-commerce company]</p>
+        <p class="text-[0.9375rem] font-semibold text-text-heading">Confidential client</p>
+        <p class="text-[0.8125rem] text-text-muted">CFO, e-commerce company</p>
       </div>
     </div>
   </section>

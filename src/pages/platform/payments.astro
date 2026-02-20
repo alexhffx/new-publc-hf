@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import PlatformScene from '../../components/hero/PlatformScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -46,9 +47,16 @@ const steps = [
   <Hero
     title="Save time on multi-currency payments & reconciliations"
     subtitle="Remove routine tasks and easily automate payments and reconciliations across multiple currencies. HedgeFlows delivers the same ease in 35 currencies that other providers only offer domestically."
-    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
     secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-  />
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/platform/payments-hero.png"
+      screenshotAlt="HedgeFlows payments automation"
+      accentLabel="35 currencies"
+    />
+  </Hero>
 
   <!-- Interactive Demo -->
   <section class="bg-white -mt-8 md:-mt-14 relative z-10 pb-12">
@@ -210,7 +218,7 @@ const steps = [
   <!-- CTA -->
   <CTASection
     headline="Ready to save hours on every payment run?"
-    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
     secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>

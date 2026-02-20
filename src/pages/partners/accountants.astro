@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import PartnersScene from '../../components/hero/PartnersScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 
@@ -32,7 +33,9 @@ const painPoints = [
     subtitle="Delight your clients with modern service and deliver accessible payment solutions with no compromises. Global payables accelerated, with control and confidence."
     primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'Contact Us', href: '/contact' }}
-  />
+  >
+    <PartnersScene slot="scene" partnerType="Accountants" metricValue="4 days" metricLabel="saved per month on AP" />
+  </Hero>
 
   <TrustBar slider={true} />
 

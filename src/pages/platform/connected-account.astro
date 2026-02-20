@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import PlatformScene from '../../components/hero/PlatformScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -62,23 +63,16 @@ const steps = [
   <Hero
     title="Connected global account to do business with the world"
     subtitle="Pay and get paid at scale in any currency, with FX costs up to 5x cheaper than banks and pre-bookable exchange rates to secure guaranteed costs in advance."
-    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
     secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-  />
-
-  <!-- Hero Image -->
-  <section class="bg-white -mt-8 md:-mt-14 relative z-10 pb-12">
-    <div class="container-content">
-      <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden">
-        <img
-          src="/assets/images/dashboard.png"
-          alt="HedgeFlows connected global account dashboard"
-          class="w-full h-auto"
-          loading="eager"
-        />
-      </div>
-    </div>
-  </section>
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/dashboard.png"
+      screenshotAlt="HedgeFlows connected global account"
+      accentLabel="185 countries"
+    />
+  </Hero>
 
   <!-- Trust Bar -->
   <TrustBar slider={true} />
@@ -187,7 +181,7 @@ const steps = [
   <!-- CTA -->
   <CTASection
     headline="Ready to do business like a local across 185 countries?"
-    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
     secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>

@@ -1,0 +1,246 @@
+---
+/**
+ * AdvisoryScene — Advisor card with initials avatar + message bubble, plus a small metric card.
+ * Used on advisory pages.
+ */
+interface Props {
+  advisorName?: string;
+  advisorRole?: string;
+  advisorPhoto?: string;
+  advisorInitials?: string;
+  message?: string;
+  metricLabel?: string;
+  metricValue?: string;
+  metricSub?: string;
+}
+
+const {
+  advisorName = 'Sarah Chen',
+  advisorRole = 'Treasury Advisor',
+  advisorPhoto,
+  advisorInitials = 'SC',
+  message = 'Your EUR exposure is up 12% this quarter — let\'s review your hedging strategy.',
+  metricLabel = 'Hedge Ratio',
+  metricValue = '72%',
+  metricSub = 'EUR/GBP',
+} = Astro.props;
+---
+
+<div class="advisory-scene" aria-hidden="true">
+  <!-- Advisor card -->
+  <div class="advisory-scene__advisor glass-card scene-fade scene-float" style="--delay: 0.2s; --float-dur: 6s">
+    <div class="advisory-scene__profile">
+      {advisorPhoto ? (
+        <img src={advisorPhoto} alt={advisorName} class="advisory-scene__avatar" />
+      ) : (
+        <div class="advisory-scene__initials">{advisorInitials}</div>
+      )}
+      <div>
+        <p class="advisory-scene__name">{advisorName}</p>
+        <p class="advisory-scene__role">{advisorRole}</p>
+      </div>
+    </div>
+    <div class="advisory-scene__bubble">
+      <p>{message}</p>
+    </div>
+  </div>
+
+  <!-- Metric card -->
+  <div class="advisory-scene__metric glass-card scene-fade scene-float" style="--delay: 0.5s; --float-dur: 7.5s">
+    <span class="advisory-scene__metric-label">{metricLabel}</span>
+    <p class="advisory-scene__metric-value">{metricValue}</p>
+    <p class="advisory-scene__metric-sub">{metricSub}</p>
+  </div>
+
+  <!-- Decorative: small pulsing dot card -->
+  <div class="advisory-scene__status glass-card scene-fade scene-float" style="--delay: 0.7s; --float-dur: 5.5s">
+    <span class="advisory-scene__dot"></span>
+    <span class="advisory-scene__status-text">Advisor online</span>
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-fade {
+    opacity: 0;
+    animation: sceneFadeUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneFadeUp 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .advisory-scene {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 1024px) {
+    .advisory-scene {
+      display: block;
+      min-height: 380px;
+    }
+
+    .advisory-scene__advisor {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .advisory-scene__metric {
+      position: absolute;
+      top: 200px;
+      right: 240px;
+    }
+
+    .advisory-scene__status {
+      position: absolute;
+      top: 10px;
+      right: 280px;
+    }
+  }
+
+  /* Advisor card */
+  .advisory-scene__advisor {
+    padding: 1.25rem;
+    max-width: 260px;
+    transform: rotate(-1deg);
+  }
+
+  .advisory-scene__profile {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .advisory-scene__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .advisory-scene__initials {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #E8F8F0;
+    color: #038458;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .advisory-scene__name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #343A40;
+    line-height: 1.2;
+  }
+
+  .advisory-scene__role {
+    font-size: 0.6875rem;
+    color: #6B7280;
+    line-height: 1.2;
+  }
+
+  .advisory-scene__bubble {
+    background: #E8F8F0;
+    border-radius: 10px;
+    padding: 0.75rem;
+  }
+
+  .advisory-scene__bubble p {
+    font-size: 0.75rem;
+    color: #343A40;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Metric card */
+  .advisory-scene__metric {
+    padding: 1.125rem;
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .advisory-scene__metric-label {
+    font-size: 0.625rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7280;
+  }
+
+  .advisory-scene__metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #343A40;
+    line-height: 1.2;
+    margin-top: 0.25rem;
+  }
+
+  .advisory-scene__metric-sub {
+    font-size: 0.6875rem;
+    color: #6B7280;
+    margin-top: 0.125rem;
+  }
+
+  /* Status card */
+  .advisory-scene__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+  }
+
+  .advisory-scene__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #038458;
+    animation: pulse 2s ease infinite;
+  }
+
+  .advisory-scene__status-text {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: #038458;
+  }
+
+  @keyframes sceneFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import IndustryScene from '../../components/hero/IndustryScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 import { getLogosByIndustry } from '../../data/clientLogos';
@@ -43,8 +44,10 @@ const testimonials = [
     title="Financial mission control for international travel"
     subtitle="Global finance automation platform for busy travel agencies to streamline supplier payments and simplify cash and currency management."
     primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
-  />
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+  >
+    <IndustryScene slot="scene" industry="Travel" />
+  </Hero>
 
   {industryLogos.length > 0 && <TrustBar logos={industryLogos} slider={true} />}
 

@@ -1,0 +1,130 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import PartnersScene from '../../components/hero/PartnersScene.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const valueProps = [
+  {
+    title: 'Instant client insights',
+    description: 'Connect your client\'s accounting system and get instant visibility into FX exposures, cash flows, and risk profiles. No spreadsheets or questionnaires needed.',
+    icon: 'M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605',
+  },
+  {
+    title: 'Best-practice frameworks',
+    description: 'Access proven treasury management frameworks and tools. Deliver institutional-grade advice to businesses of any size, backed by real-time data.',
+    icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  },
+  {
+    title: 'Expert network',
+    description: 'Tap into HedgeFlows\' network of FX and treasury specialists. Collaborate on complex client situations with experienced practitioners.',
+    icon: 'M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155',
+  },
+  {
+    title: 'Client pipeline',
+    description: 'Access a community of high-potential international businesses looking for treasury guidance. Grow your practice with qualified leads.',
+    icon: 'M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z',
+  },
+];
+---
+
+<PageLayout
+  title="Advisors | HedgeFlows"
+  description="Independent treasury advisors: leverage HedgeFlows' platform for instant client insights, best-practice frameworks, and access to an expert network and client pipeline."
+>
+  <Hero
+    title="Your expertise. Our platform. Better outcomes for your clients."
+    subtitle="Leverage HedgeFlows' platform for instant client insights — no spreadsheets or questionnaires. Implement best practices, tap into our expert network, and grow your practice with high-potential clients."
+    primaryCta={{ label: 'Apply to Join', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Contact Us', href: '/contact' }}
+  >
+    <PartnersScene slot="scene" partnerType="Advisors" metricValue="10x faster" metricLabel="client onboarding" />
+  </Hero>
+
+  <TrustBar slider={true} />
+
+  <!-- Value Propositions -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Built for independent advisors</h2>
+        <p class="section-subheading mx-auto">Everything you need to deliver better treasury advice, faster</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {valueProps.map((s) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={s.icon} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-3">{s.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section-padding">
+    <div class="container-content space-y-24">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Smart Tools</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            From data to insight in minutes, not weeks
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Connect your client's accounting system and instantly see their FX exposures, payment patterns, and risk profile. Run scenario analyses, model hedging strategies, and present recommendations — all from one platform.
+          </p>
+          <ul class="space-y-3">
+            {['Real-time FX exposure dashboards', 'Scenario analysis & hedge modelling', 'Automated risk reports for clients', 'White-label client presentations'].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl overflow-hidden">
+          <img src="/assets/images/platform/fx-risk-hero.png" alt="FX risk management platform for advisors" class="w-full h-auto" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
+          <img src="/assets/images/platform/cashflow-plan.png" alt="Advisor network and community" class="w-full h-auto" loading="lazy" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Community</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Join a network of forward-thinking advisors
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Be part of a growing community of independent treasury advisors. Share knowledge, access training, and connect with businesses that need your expertise. HedgeFlows handles the execution — you focus on the advice.
+          </p>
+          <ul class="space-y-3">
+            {['Referral commissions on client activity', 'Ongoing training & certification', 'Co-marketing opportunities', 'Dedicated partner support'].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Ready to transform your advisory practice?"
+    primaryCta={{ label: 'Apply to Join', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Contact Us', href: '/contact' }}
+  />
+</PageLayout>

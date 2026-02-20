@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/Hero.astro';
+import HomeHero from '../components/HomeHero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import StepProcess from '../components/StepProcess.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
@@ -11,7 +11,7 @@ import { getCollection } from 'astro:content';
 import { staticClientLogos } from '../data/clientLogos';
 import { xeroStats, getReviewsByTag } from '../data/xeroReviews';
 
-const homepageReviews = getReviewsByTag('homepage').slice(0, 8);
+const homepageReviews = getReviewsByTag('homepage').slice(0, 4);
 
 // Fetch real blog posts from Markdown content collection
 const mdEntries = await getCollection('blog');
@@ -64,22 +64,22 @@ const steps = [
 
 const testimonials = [
   {
-    quote: "HedgeFlows has made managing multi-currency payments and FX risk much easier. The automation around allocating hedges to invoices and making payments has cut out a lot of manual work. It's now a core part of how we run our finance operations.",
-    personName: 'Nick',
-    personRole: 'Finance Director',
-    companyName: 'Pact Coffee',
+    quote: "We switched to HedgeFlows from Wise for international payment runs, and we haven't looked back. The Xero integration works flawlessly, taking care of reconciliations and saving us hours every week.",
+    personName: 'Michal Jahns',
+    personRole: 'Finance Manager',
+    companyName: 'E-commerce company',
   },
   {
-    quote: "The HedgeFlows team were instrumental in helping us develop our treasury strategy. We appreciated that they didn't try to sell us their platform over other providers, but helped us find the best solution for our needs.",
+    quote: "The Hedgeflows team have been instrumental in helping us to develop our treasury strategy and guiding us through its implementation. We really appreciated that they did not try to 'sell' us their platform or services over other providers, but instead helped us find the best solution for our bespoke needs.",
     personName: 'Harry Young',
     personRole: 'Global Finance Director',
     companyName: 'Journey',
   },
   {
-    quote: "HedgeFlows is a real game changer. It's saved us loads of time and effort, completely revolutionising how we handle payments. The outstanding support and quick response times truly set them apart.",
-    personName: 'Mohammad',
-    personRole: 'Finance Director',
-    companyName: 'VogaCloset',
+    quote: "We had been spending incredible amounts on bank fees for foreign payments. HedgeFlows has already saved us hundreds in just a couple of transactions. The system is incredibly easy to use.",
+    personName: 'Sophie Dale',
+    personRole: 'Finance Manager',
+    companyName: 'International business',
   },
 ];
 
@@ -90,12 +90,11 @@ const testimonials = [
   description="Expert treasury advisory and technology for businesses that trade internationally. FX risk management, cash management, and payments automation — without the cost of a full treasury function."
 >
   <!-- Section 1: Hero -->
-  <Hero
+  <HomeHero
     title="Unlock global treasury expertise — and the platform to act on it"
     subtitle="So your finance team can handle the FX risk, cross-border complexity, and board questions that come with international growth."
     primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'See the Platform', href: '/platform' }}
-    large={true}
   />
 
   <!-- Section 2: Trust Bar (slider) -->
@@ -241,7 +240,32 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Section 5: Xero Reviews Social Proof -->
+  <!-- Section 5: Featured Testimonials -->
+  <section class="section-padding">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Trusted by finance leaders</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {testimonials.map((t) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm flex flex-col">
+            <svg class="w-8 h-8 text-brand-green/20 mb-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z" />
+            </svg>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed flex-1 mb-6">
+              {t.quote}
+            </p>
+            <div class="border-t border-gray-100 pt-4">
+              <p class="text-[0.9375rem] font-semibold text-text-heading">{t.personName}</p>
+              <p class="text-[0.8125rem] text-text-muted">{t.personRole}, {t.companyName}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Xero Reviews Social Proof -->
   <section class="section-padding">
     <div class="container-content">
       <!-- Header with Xero badge -->

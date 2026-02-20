@@ -1,0 +1,137 @@
+---
+/**
+ * SolutionsScene — Tiered stack of feature cards that grow with complexity.
+ * startups → 2 cards, scaleups → 3, mid-market → 4.
+ */
+interface Props {
+  tier?: 'startup' | 'scaleup' | 'midmarket';
+}
+
+const { tier = 'scaleup' } = Astro.props;
+
+const allFeatures = [
+  { icon: 'globe', label: 'Global Account', sub: 'Pay & get paid in 35 currencies' },
+  { icon: 'shield', label: 'FX Hedging', sub: 'Protect your margins automatically' },
+  { icon: 'chart', label: 'Cash Visibility', sub: 'Real-time multi-currency balances' },
+  { icon: 'user', label: 'Treasury Advisory', sub: 'Institutional-grade expertise on demand' },
+];
+
+const featureCount = tier === 'startup' ? 2 : tier === 'scaleup' ? 3 : 4;
+const features = allFeatures.slice(0, featureCount);
+
+const icons: Record<string, string> = {
+  globe: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+  shield: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  chart: 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  user: 'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z',
+};
+---
+
+<div class="solutions-scene" aria-hidden="true">
+  {features.map((f, i) => (
+    <div
+      class="solutions-scene__card glass-card scene-fade scene-float"
+      style={`--delay: ${0.2 + i * 0.15}s; --float-dur: ${5.5 + i * 0.7}s;`}
+    >
+      <div class="solutions-scene__icon-wrap">
+        <svg class="solutions-scene__icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d={icons[f.icon]} />
+        </svg>
+      </div>
+      <div>
+        <p class="solutions-scene__label">{f.label}</p>
+        <p class="solutions-scene__sub">{f.sub}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-fade {
+    opacity: 0;
+    animation: sceneFadeUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneFadeUp 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .solutions-scene {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .solutions-scene {
+      padding-left: 2rem;
+    }
+  }
+
+  .solutions-scene__card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    max-width: 340px;
+    transition: transform 0.3s ease;
+  }
+
+  .solutions-scene__card:hover {
+    transform: translateY(-4px);
+  }
+
+  .solutions-scene__icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #E8F8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .solutions-scene__icon {
+    width: 20px;
+    height: 20px;
+    color: #038458;
+  }
+
+  .solutions-scene__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #343A40;
+    line-height: 1.3;
+  }
+
+  .solutions-scene__sub {
+    font-size: 0.75rem;
+    color: #6B7280;
+    line-height: 1.4;
+    margin-top: 0.125rem;
+  }
+
+  @keyframes sceneFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+</style>

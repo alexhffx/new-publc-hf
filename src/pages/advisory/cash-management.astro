@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import AdvisoryScene from '../../components/hero/AdvisoryScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -37,7 +38,18 @@ const steps = [
     subtitle="Formal policies, proper controls, and board-ready reporting — without hiring a treasurer."
     primaryCta={{ label: 'Book a Cash Management Review', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'Download Policy Template', href: '#download' }}
-  />
+  >
+    <AdvisoryScene
+      slot="scene"
+      advisorName="Rachel Liu"
+      advisorRole="Cash Management Advisor"
+      advisorInitials="RL"
+      message="Your cash policy is ready for board review. I've flagged two items that need sign-off."
+      metricLabel="Cash Visibility"
+      metricValue="5"
+      metricSub="Accounts consolidated"
+    />
+  </Hero>
 
   <TrustBar slider={true} />
 

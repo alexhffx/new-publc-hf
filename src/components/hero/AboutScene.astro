@@ -1,0 +1,160 @@
+---
+/**
+ * AboutScene — Team photo in glassmorphism frame + stat cards.
+ */
+---
+
+<div class="about-scene" aria-hidden="true">
+  <!-- Team photo card -->
+  <div class="about-scene__photo glass-card scene-fade" style="--delay: 0.2s">
+    <img
+      src="/assets/images/team/founders.jpg"
+      alt="HedgeFlows founding team"
+      class="about-scene__img"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Stat cards -->
+  <div class="about-scene__stat about-scene__stat--1 glass-card scene-fade scene-float" style="--delay: 0.5s; --float-dur: 6s">
+    <p class="about-scene__stat-value">2020</p>
+    <p class="about-scene__stat-label">Founded</p>
+  </div>
+
+  <div class="about-scene__stat about-scene__stat--2 glass-card scene-fade scene-float" style="--delay: 0.65s; --float-dur: 7s">
+    <div class="about-scene__fca-icon">
+      <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    </div>
+    <p class="about-scene__stat-value" style="font-size: 1rem;">FCA Authorised</p>
+    <p class="about-scene__stat-label">Payments platform</p>
+  </div>
+
+  <div class="about-scene__stat about-scene__stat--3 glass-card scene-fade scene-float" style="--delay: 0.8s; --float-dur: 5.5s">
+    <p class="about-scene__stat-value">35+</p>
+    <p class="about-scene__stat-label">Currencies</p>
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-fade {
+    opacity: 0;
+    animation: sceneFadeUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneFadeUp 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .about-scene {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .about-scene {
+      display: block;
+      min-height: 400px;
+    }
+  }
+
+  .about-scene__photo {
+    overflow: hidden;
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .about-scene__photo {
+      max-width: 380px;
+      margin-left: auto;
+    }
+  }
+
+  .about-scene__img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .about-scene__stat {
+    padding: 0.875rem 1rem;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  @media (min-width: 1024px) {
+    .about-scene__stat--1 {
+      position: absolute;
+      bottom: 0;
+      right: 320px;
+    }
+
+    .about-scene__stat--2 {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+    }
+
+    .about-scene__stat--3 {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .about-scene__stat {
+      display: inline-block;
+    }
+
+    .about-scene {
+      align-items: flex-start;
+    }
+  }
+
+  .about-scene__stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #343A40;
+    line-height: 1.2;
+  }
+
+  .about-scene__stat-label {
+    font-size: 0.6875rem;
+    color: #6B7280;
+    margin-top: 0.125rem;
+  }
+
+  .about-scene__fca-icon {
+    margin-bottom: 0.25rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  @keyframes sceneFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+</style>

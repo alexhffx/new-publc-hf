@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import AdvisoryScene from '../../components/hero/AdvisoryScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -45,7 +46,18 @@ const steps = [
     subtitle="Most growing businesses don't have an FX risk framework. They absorb currency moves and hope for the best. We give you the strategy, the policy, and the platform to execute — margins from 0.25%."
     primaryCta={{ label: 'Book an FX Diagnostic', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'Download FX Policy Template', href: '#download' }}
-  />
+  >
+    <AdvisoryScene
+      slot="scene"
+      advisorName="James Ward"
+      advisorRole="FX Risk Specialist"
+      advisorInitials="JW"
+      message="A 5% move on £1m exposure costs you £50K. Let's build a framework to protect your margins."
+      metricLabel="Hedge Ratio"
+      metricValue="72%"
+      metricSub="EUR/GBP"
+    />
+  </Hero>
 
   <TrustBar slider={true} />
 

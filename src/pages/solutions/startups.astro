@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import SolutionsScene from '../../components/hero/SolutionsScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 
@@ -46,8 +47,10 @@ const testimonials = [
     title="Global payments and currency management, simplified"
     subtitle="A global business account, market-leading FX rates, and simple currency tools — everything a startup or small business needs to trade internationally without the complexity."
     primaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
-  />
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+  >
+    <SolutionsScene slot="scene" tier="startup" />
+  </Hero>
 
   <TrustBar slider={true} />
 

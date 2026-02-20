@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import PlatformScene from '../../components/hero/PlatformScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
@@ -40,7 +41,14 @@ const steps = [
     subtitle="Most finance teams manage currency risk like driving in fog. HedgeFlows gives you the visibility to see what's ahead — and the tools to act on it."
     primaryCta={{ label: 'See Your FX Risk', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-  />
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/platform/fx-risk-hero.png"
+      screenshotAlt="HedgeFlows FX risk management dashboard"
+      accentLabel="Live FX monitoring"
+    />
+  </Hero>
 
   <!-- Interactive Demo -->
   <section class="bg-white -mt-8 md:-mt-14 relative z-10 pb-12">

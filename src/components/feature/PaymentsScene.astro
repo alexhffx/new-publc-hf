@@ -1,0 +1,322 @@
+---
+/**
+ * PaymentsScene — Payment run card + approval badge + status indicator.
+ * Used in the Payments feature row on platform page.
+ */
+---
+
+<div class="payments-scene" aria-hidden="true">
+  <!-- Main payment run card -->
+  <div class="payments-scene__main glass-card scene-enter">
+    <div class="payments-scene__header">
+      <span class="payments-scene__label">Payment Run</span>
+      <span class="payments-scene__status-pill">Processing</span>
+    </div>
+
+    <div class="payments-scene__rows">
+      <div class="payments-scene__row">
+        <div class="payments-scene__payee">
+          <span class="payments-scene__payee-avatar">AC</span>
+          <div>
+            <span class="payments-scene__payee-name">Acme Corp</span>
+            <span class="payments-scene__payee-ref">INV-2024-0847</span>
+          </div>
+        </div>
+        <div class="payments-scene__detail">
+          <span class="payments-scene__amount">€12,400</span>
+          <span class="payments-scene__check">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#038458" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </span>
+        </div>
+      </div>
+      <div class="payments-scene__row">
+        <div class="payments-scene__payee">
+          <span class="payments-scene__payee-avatar">TL</span>
+          <div>
+            <span class="payments-scene__payee-name">TechLabs GmbH</span>
+            <span class="payments-scene__payee-ref">INV-2024-0851</span>
+          </div>
+        </div>
+        <div class="payments-scene__detail">
+          <span class="payments-scene__amount">€8,750</span>
+          <span class="payments-scene__check">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#038458" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </span>
+        </div>
+      </div>
+      <div class="payments-scene__row">
+        <div class="payments-scene__payee">
+          <span class="payments-scene__payee-avatar">NS</span>
+          <div>
+            <span class="payments-scene__payee-name">NovaSoft Inc</span>
+            <span class="payments-scene__payee-ref">INV-2024-0855</span>
+          </div>
+        </div>
+        <div class="payments-scene__detail">
+          <span class="payments-scene__amount">$24,100</span>
+          <span class="payments-scene__pending">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="payments-scene__footer">
+      <span class="payments-scene__total-label">Total</span>
+      <span class="payments-scene__total-amount">£38,215</span>
+    </div>
+    <p class="payments-scene__disclaimer">Sample data</p>
+  </div>
+
+  <!-- Approval badge -->
+  <div class="payments-scene__approval glass-card scene-enter scene-float" style="--delay: 0.4s; --float-dur: 6.5s">
+    <svg class="payments-scene__approval-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+    </svg>
+    <span class="payments-scene__approval-text">2 of 2 approved</span>
+  </div>
+
+  <!-- Reconciled badge -->
+  <div class="payments-scene__reconciled glass-card scene-enter scene-float" style="--delay: 0.6s; --float-dur: 5.5s">
+    <span class="payments-scene__reconciled-dot"></span>
+    <span class="payments-scene__reconciled-text">Auto-reconciled</span>
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-enter {
+    opacity: 0;
+    animation: sceneEnter 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneEnter 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .payments-scene {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .payments-scene__main {
+    padding: 1.25rem 1.5rem;
+    max-width: 320px;
+  }
+
+  .payments-scene__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .payments-scene__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7280;
+  }
+
+  .payments-scene__status-pill {
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: #038458;
+    background: #E8F8F0;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+  }
+
+  .payments-scene__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .payments-scene__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .payments-scene__payee {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .payments-scene__payee-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #E8F8F0;
+    color: #038458;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .payments-scene__payee-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #343A40;
+    display: block;
+    line-height: 1.2;
+  }
+
+  .payments-scene__payee-ref {
+    font-size: 0.5625rem;
+    color: #9CA3AF;
+    display: block;
+    line-height: 1.2;
+  }
+
+  .payments-scene__detail {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-shrink: 0;
+  }
+
+  .payments-scene__amount {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #343A40;
+  }
+
+  .payments-scene__check,
+  .payments-scene__pending {
+    display: flex;
+    align-items: center;
+  }
+
+  .payments-scene__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.875rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .payments-scene__total-label {
+    font-size: 0.6875rem;
+    color: #6B7280;
+    font-weight: 500;
+  }
+
+  .payments-scene__total-amount {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #343A40;
+  }
+
+  .payments-scene__disclaimer {
+    font-size: 0.625rem;
+    color: #9CA3AF;
+    margin-top: 0.5rem;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* Approval badge */
+  .payments-scene__approval {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+  }
+
+  .payments-scene__approval-icon {
+    width: 16px;
+    height: 16px;
+    color: #038458;
+  }
+
+  .payments-scene__approval-text {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #038458;
+  }
+
+  /* Reconciled badge */
+  .payments-scene__reconciled {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  .payments-scene__reconciled-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #038458;
+    animation: pulse 2s ease infinite;
+  }
+
+  .payments-scene__reconciled-text {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: #038458;
+  }
+
+  @media (max-width: 1023px) {
+    .payments-scene {
+      min-height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .payments-scene__approval,
+    .payments-scene__reconciled {
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+    }
+  }
+
+  @keyframes sceneEnter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+</style>

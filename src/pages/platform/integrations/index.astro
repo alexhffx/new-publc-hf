@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import Hero from '../../../components/Hero.astro';
+import PlatformScene from '../../../components/hero/PlatformScene.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import CTASection from '../../../components/CTASection.astro';
 
@@ -80,9 +81,17 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
   <Hero
     title="Don't change a thing. Just connect."
     subtitle="Connect in minutes, not weeks, with off-the-shelf integrations to your existing accounting software, ERPs, CRMs, and 2,000+ international banks."
-    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
     secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
-  />
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/dashboard.png"
+      screenshotAlt="HedgeFlows integrations dashboard"
+      accentLabel="2,000+ banks"
+      integrations={['/assets/logos/integrations/Xero_software_logo.svg', '/assets/logos/integrations/quickbooks-sq.svg', '/assets/logos/integrations/netsuite-sq.svg', '/assets/logos/integrations/business-central-sq.svg']}
+    />
+  </Hero>
 
   <!-- Trust Bar -->
   <TrustBar slider={true} />
@@ -245,7 +254,7 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
   <!-- CTA -->
   <CTASection
     headline="Ready to connect your systems and automate your treasury?"
-    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
     secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>

@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import SolutionsScene from '../../components/hero/SolutionsScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 
@@ -47,7 +48,9 @@ const testimonials = [
     subtitle="Mid-market businesses face institutional-level complexity but rarely have institutional-level support. We start with hands-on advisory — establishing policies, optimising banking, and sourcing working capital — then provide the technology to run it day-to-day."
     primaryCta={{ label: 'Schedule a Consultation', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'See Pricing', href: '/pricing' }}
-  />
+  >
+    <SolutionsScene slot="scene" tier="midmarket" />
+  </Hero>
 
   <TrustBar slider={true} />
 

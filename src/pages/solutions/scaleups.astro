@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import SolutionsScene from '../../components/hero/SolutionsScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 
@@ -47,7 +48,9 @@ const testimonials = [
     subtitle="Growing internationally without a treasury strategy is like navigating without a map. We start with advisory — establishing the right policies, optimising your banking, and finding working capital solutions — then give you the technology to execute."
     primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
     secondaryCta={{ label: 'See Pricing', href: '/pricing' }}
-  />
+  >
+    <SolutionsScene slot="scene" tier="scaleup" />
+  </Hero>
 
   <TrustBar slider={true} />
 

@@ -1,9 +1,14 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/Hero.astro';
+import PlatformScene from '../../components/hero/PlatformScene.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import StepProcess from '../../components/StepProcess.astro';
 import CTASection from '../../components/CTASection.astro';
+import BalancesScene from '../../components/feature/BalancesScene.astro';
+import PaymentsScene from '../../components/feature/PaymentsScene.astro';
+import CashFlowScene from '../../components/feature/CashFlowScene.astro';
+import FxRiskScene from '../../components/feature/FxRiskScene.astro';
 import { getClientLogos } from '../../lib/sanity';
 import { staticClientLogos } from '../../data/clientLogos';
 import { xeroStats, getReviewsByTag } from '../../data/xeroReviews';
@@ -131,15 +136,23 @@ const differentiators = [
   <Hero
     title="Mission control for multi-currency businesses"
     subtitle="Stop bridging gaps between your bank, payments, accounting software, and FX provider. HedgeFlows connects and automates them all in one smart dashboard."
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
-    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
-  />
+    primaryCta={{ label: 'See Demo', href: '#demo' }}
+    secondaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/dashboard.png"
+      screenshotAlt="HedgeFlows treasury dashboard"
+      accentLabel="Real-time sync"
+      integrations={['/assets/logos/integrations/Xero_software_logo.svg', '/assets/logos/integrations/quickbooks-sq.svg', '/assets/logos/integrations/netsuite-sq.svg']}
+    />
+  </Hero>
 
   <!-- Trust Bar -->
   <TrustBar label="Trusted by international businesses:" logos={clientLogos} slider={true} />
 
   <!-- Interactive Demo -->
-  <section class="section-padding bg-white">
+  <section id="demo" class="section-padding bg-white scroll-mt-20">
     <div class="container-content">
       <div class="text-center mb-12">
         <h2 class="section-heading">See the platform in action</h2>
@@ -220,36 +233,42 @@ const differentiators = [
         {features.map((feature) => (
           <a
             href={feature.href}
-            class="group bg-white rounded-2xl border border-gray-100 p-8
+            class="feature-card group relative overflow-hidden rounded-2xl border border-gray-100
                    shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.04)]
                    hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_40px_rgba(0,0,0,0.06)]
                    hover:border-brand-green/20 transition-all duration-300 flex flex-col"
           >
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-12 h-12 rounded-xl bg-brand-green-pale flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[feature.icon] || iconPaths['desktop']} />
-                </svg>
+            {/* Gradient accent header */}
+            <div class="feature-card__header relative px-8 pt-7 pb-5">
+              <div class="relative z-10 flex items-center justify-between">
+                <div class="w-14 h-14 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-sm flex items-center justify-center flex-shrink-0">
+                  <svg class="w-7 h-7 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[feature.icon] || iconPaths['desktop']} />
+                  </svg>
+                </div>
+                <span class="text-[0.75rem] font-semibold text-brand-green bg-white/80 backdrop-blur-sm border border-white/60 px-3 py-1.5 rounded-full shadow-sm">
+                  {feature.stat}
+                </span>
               </div>
-              <span class="text-[0.75rem] font-semibold text-brand-green bg-brand-green-pale px-2.5 py-1 rounded-full">
-                {feature.stat}
-              </span>
             </div>
 
-            <h3 class="text-[1.25rem] font-bold text-text-heading mb-3 group-hover:text-brand-green transition-colors duration-200">
-              {feature.title}
-            </h3>
+            {/* Content */}
+            <div class="px-8 pt-5 pb-8 flex-1 flex flex-col bg-white">
+              <h3 class="text-[1.25rem] font-bold text-text-heading mb-3 group-hover:text-brand-green transition-colors duration-200">
+                {feature.title}
+              </h3>
 
-            <p class="text-[0.9375rem] text-text-body leading-relaxed flex-1">
-              {feature.description}
-            </p>
+              <p class="text-[0.9375rem] text-text-body leading-relaxed flex-1">
+                {feature.description}
+              </p>
 
-            <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.875rem] mt-6 group-hover:gap-2.5 transition-all duration-200">
-              Learn more
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
+              <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.875rem] mt-6 group-hover:gap-2.5 transition-all duration-200">
+                Learn more
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </div>
           </a>
         ))}
       </div>
@@ -305,25 +324,13 @@ const differentiators = [
             </svg>
           </a>
         </div>
-        <div class="rounded-2xl overflow-hidden">
-          <img
-            src="/assets/images/platform/balances.jpg"
-            alt="HedgeFlows connected global account with multi-currency balances"
-            class="w-full h-auto"
-            loading="lazy"
-          />
-        </div>
+        <BalancesScene />
       </div>
 
       <!-- Row 2: Payments (reversed) -->
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
-          <img
-            src="/assets/images/platform/payments-hero.png"
-            alt="HedgeFlows payment automation and AP workflows"
-            class="w-full h-auto"
-            loading="lazy"
-          />
+        <div class="order-2 lg:order-1">
+          <PaymentsScene />
         </div>
         <div class="order-1 lg:order-2">
           <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Payments & AP Automation</p>
@@ -389,25 +396,13 @@ const differentiators = [
             </svg>
           </a>
         </div>
-        <div class="rounded-2xl overflow-hidden">
-          <img
-            src="/assets/images/platform/cashflow-plan.png"
-            alt="HedgeFlows cash management and forecasting dashboard"
-            class="w-full h-auto"
-            loading="lazy"
-          />
-        </div>
+        <CashFlowScene />
       </div>
 
       <!-- Row 4: FX Risk (reversed) -->
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1 rounded-2xl overflow-hidden">
-          <img
-            src="/assets/images/platform/fx-risk-hero.png"
-            alt="HedgeFlows FX risk management and exposure monitoring"
-            class="w-full h-auto"
-            loading="lazy"
-          />
+        <div class="order-2 lg:order-1">
+          <FxRiskScene />
         </div>
         <div class="order-1 lg:order-2">
           <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">FX Risk Management</p>
@@ -641,9 +636,40 @@ const differentiators = [
   <CTASection
     headline="Ready to take control of your international finances?"
     primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
-    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com' }}
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
   />
 </PageLayout>
+
+<style>
+  .feature-card__header {
+    background:
+      linear-gradient(160deg, #F0FAF5 0%, #E4F5EC 50%, #F5FBF8 100%);
+  }
+
+  .feature-card__header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(3, 132, 88, 0.07) 1px, transparent 1px);
+    background-size: 16px 16px;
+    pointer-events: none;
+  }
+
+  .feature-card__header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 100% 0%, rgba(3, 132, 88, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 0% 100%, rgba(3, 132, 88, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .feature-card:hover .feature-card__header {
+    background:
+      linear-gradient(160deg, #E4F5EC 0%, #D6F0E2 50%, #EBF8F2 100%);
+  }
+</style>
 
 <script is:inline>
 (function() {

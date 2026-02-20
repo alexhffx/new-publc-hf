@@ -1,0 +1,183 @@
+---
+/**
+ * PlatformScene — Floating screenshot in a glassmorphism frame + accent badge cards.
+ * Used on platform pages.
+ */
+interface Props {
+  screenshot: string;
+  screenshotAlt?: string;
+  accentLabel?: string;
+  integrations?: string[];
+}
+
+const {
+  screenshot,
+  screenshotAlt = 'HedgeFlows platform screenshot',
+  accentLabel,
+  integrations,
+} = Astro.props;
+---
+
+<div class="platform-scene" aria-hidden="true">
+  <!-- Main screenshot card -->
+  <div class="platform-scene__main glass-card scene-fade" style="--delay: 0.2s">
+    <img src={screenshot} alt={screenshotAlt} class="platform-scene__img" loading="eager" />
+  </div>
+
+  <!-- Accent badge -->
+  {accentLabel && (
+    <div class="platform-scene__badge glass-card scene-fade scene-float" style="--delay: 0.5s; --float-dur: 6s">
+      <svg class="platform-scene__badge-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <span>{accentLabel}</span>
+    </div>
+  )}
+
+  <!-- Integration logos cluster -->
+  {integrations && integrations.length > 0 && (
+    <div class="platform-scene__integrations glass-card scene-fade scene-float" style="--delay: 0.7s; --float-dur: 7.5s">
+      <span class="platform-scene__int-label">Connected</span>
+      <div class="platform-scene__int-logos">
+        {integrations.map((logo) => (
+          <img src={logo} alt="" class="platform-scene__int-logo" loading="lazy" />
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  /* Shared glass card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-fade {
+    opacity: 0;
+    animation: sceneFadeUp 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneFadeUp 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .platform-scene {
+    position: relative;
+    min-height: 300px;
+  }
+
+  @media (min-width: 1024px) {
+    .platform-scene {
+      min-height: 380px;
+    }
+  }
+
+  .platform-scene__main {
+    overflow: hidden;
+    padding: 0.5rem;
+    transform: perspective(800px) rotateY(-2deg);
+    transition: transform 0.3s ease;
+  }
+
+  .platform-scene__main:hover {
+    transform: perspective(800px) rotateY(0deg) translateY(-4px);
+  }
+
+  .platform-scene__img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .platform-scene__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #038458;
+    position: absolute;
+    top: -0.75rem;
+    right: 1rem;
+  }
+
+  @media (max-width: 1023px) {
+    .platform-scene__badge {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-top: 0.75rem;
+    }
+  }
+
+  .platform-scene__badge-icon {
+    width: 16px;
+    height: 16px;
+    color: #038458;
+    flex-shrink: 0;
+  }
+
+  .platform-scene__integrations {
+    padding: 0.75rem 1rem;
+    position: absolute;
+    bottom: -1rem;
+    left: 1rem;
+  }
+
+  @media (max-width: 1023px) {
+    .platform-scene__integrations {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      margin-top: 0.75rem;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  .platform-scene__int-label {
+    font-size: 0.625rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7280;
+    display: block;
+    margin-bottom: 0.375rem;
+  }
+
+  .platform-scene__int-logos {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .platform-scene__int-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  @keyframes sceneFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+</style>

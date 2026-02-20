@@ -1,0 +1,71 @@
+/* Hero floating card animations — CSS only, no JS required */
+
+/* Gradient mesh background animation */
+@keyframes meshFloat {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
+}
+
+/* Fade-up entrance for hero content and cards */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gentle float loop for cards */
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Bar fill animation for exposure card */
+@keyframes barFill {
+  from {
+    width: 0;
+  }
+}
+
+/* Donut stroke animation for hedge ratio */
+@keyframes donutFill {
+  from {
+    stroke-dasharray: 0 251.33;
+  }
+}
+
+/* Pulsing live indicator dot */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.4);
+  }
+}
+
+/* Sparkline draw animation */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

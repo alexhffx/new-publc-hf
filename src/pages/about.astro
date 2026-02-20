@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.astro';
+import AboutScene from '../components/hero/AboutScene.astro';
 import CTASection from '../components/CTASection.astro';
 
 /* ── Team data ─────────────────────────────────────────────── */
@@ -65,7 +66,9 @@ const values = [
   <Hero
     title="Making international growth easy & fair"
     subtitle="Managing trade and finances can be painful for any business that buys or sells in global markets. Volatile exchange rates, hidden costs, and complex cross-border payments hold businesses back. We built HedgeFlows to change that."
-  />
+  >
+    <AboutScene slot="scene" />
+  </Hero>
 
   {/* ── Our Story ──────────────────────────────────────────── */}
   <section class="section-padding">

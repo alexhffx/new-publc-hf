@@ -1,0 +1,278 @@
+---
+/**
+ * BalancesScene — Multi-currency balances card + flag badges.
+ * Used in the Connected Account feature row on platform page.
+ */
+---
+
+<div class="balances-scene" aria-hidden="true">
+  <!-- Main balances card -->
+  <div class="balances-scene__main glass-card scene-enter">
+    <div class="balances-scene__header">
+      <span class="balances-scene__label">Multi-Currency Balances</span>
+      <span class="balances-scene__live">
+        <span class="balances-scene__dot"></span>
+        Live
+      </span>
+    </div>
+
+    <div class="balances-scene__rows">
+      <div class="balances-scene__row">
+        <span class="balances-scene__flag">🇬🇧</span>
+        <div class="balances-scene__currency">
+          <span class="balances-scene__code">GBP</span>
+          <span class="balances-scene__name">British Pound</span>
+        </div>
+        <span class="balances-scene__amount">£142,580</span>
+      </div>
+      <div class="balances-scene__row">
+        <span class="balances-scene__flag">🇪🇺</span>
+        <div class="balances-scene__currency">
+          <span class="balances-scene__code">EUR</span>
+          <span class="balances-scene__name">Euro</span>
+        </div>
+        <span class="balances-scene__amount">€89,340</span>
+      </div>
+      <div class="balances-scene__row">
+        <span class="balances-scene__flag">🇺🇸</span>
+        <div class="balances-scene__currency">
+          <span class="balances-scene__code">USD</span>
+          <span class="balances-scene__name">US Dollar</span>
+        </div>
+        <span class="balances-scene__amount">$215,920</span>
+      </div>
+      <div class="balances-scene__row">
+        <span class="balances-scene__flag">🇨🇭</span>
+        <div class="balances-scene__currency">
+          <span class="balances-scene__code">CHF</span>
+          <span class="balances-scene__name">Swiss Franc</span>
+        </div>
+        <span class="balances-scene__amount">CHF 47,100</span>
+      </div>
+    </div>
+    <p class="balances-scene__disclaimer">Sample data</p>
+  </div>
+
+  <!-- Accent: countries badge -->
+  <div class="balances-scene__badge glass-card scene-enter scene-float" style="--delay: 0.4s; --float-dur: 6s">
+    <svg class="balances-scene__badge-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+    </svg>
+    <div>
+      <p class="balances-scene__badge-value">185</p>
+      <p class="balances-scene__badge-label">Countries</p>
+    </div>
+  </div>
+
+  <!-- Accent: savings badge -->
+  <div class="balances-scene__savings glass-card scene-enter scene-float" style="--delay: 0.6s; --float-dur: 7s">
+    <span class="balances-scene__savings-value">Up to 5x</span>
+    <span class="balances-scene__savings-label">cheaper than banks</span>
+  </div>
+</div>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .scene-enter {
+    opacity: 0;
+    animation: sceneEnter 0.8s ease forwards;
+    animation-delay: var(--delay, 0.2s);
+  }
+
+  .scene-float {
+    animation: sceneEnter 0.8s ease forwards, sceneFloat var(--float-dur, 6s) ease-in-out infinite;
+    animation-delay: var(--delay, 0.2s), calc(var(--delay, 0.2s) + 0.8s);
+  }
+
+  .balances-scene {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .balances-scene__main {
+    padding: 1.25rem 1.5rem;
+    max-width: 320px;
+  }
+
+  .balances-scene__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .balances-scene__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6B7280;
+  }
+
+  .balances-scene__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: #038458;
+  }
+
+  .balances-scene__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #038458;
+    animation: pulse 2s ease infinite;
+  }
+
+  .balances-scene__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .balances-scene__row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .balances-scene__flag {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .balances-scene__currency {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .balances-scene__code {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #343A40;
+    display: block;
+    line-height: 1.2;
+  }
+
+  .balances-scene__name {
+    font-size: 0.625rem;
+    color: #9CA3AF;
+    display: block;
+    line-height: 1.2;
+  }
+
+  .balances-scene__amount {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #343A40;
+    flex-shrink: 0;
+  }
+
+  .balances-scene__disclaimer {
+    font-size: 0.625rem;
+    color: #9CA3AF;
+    margin-top: 0.75rem;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* Badge cards */
+  .balances-scene__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+  }
+
+  .balances-scene__badge-icon {
+    width: 20px;
+    height: 20px;
+    color: #038458;
+    flex-shrink: 0;
+  }
+
+  .balances-scene__badge-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #343A40;
+    line-height: 1.2;
+  }
+
+  .balances-scene__badge-label {
+    font-size: 0.625rem;
+    color: #6B7280;
+  }
+
+  .balances-scene__savings {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  .balances-scene__savings-value {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #038458;
+  }
+
+  .balances-scene__savings-label {
+    font-size: 0.6875rem;
+    color: #6B7280;
+  }
+
+  @media (max-width: 1023px) {
+    .balances-scene {
+      min-height: auto;
+    }
+
+    .balances-scene__badge,
+    .balances-scene__savings {
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+    }
+
+    .balances-scene {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+  }
+
+  @keyframes sceneEnter {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes sceneFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+</style>

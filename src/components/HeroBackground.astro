@@ -1,0 +1,113 @@
+---
+/**
+ * Animated gradient mesh + grid overlay background for the hero section.
+ * Pure CSS — no JavaScript.
+ */
+---
+
+<div class="hero-bg" aria-hidden="true">
+  <!-- Gradient mesh blobs -->
+  <div class="hero-bg__blob hero-bg__blob--1"></div>
+  <div class="hero-bg__blob hero-bg__blob--2"></div>
+  <div class="hero-bg__blob hero-bg__blob--3"></div>
+
+  <!-- Grid overlay -->
+  <div class="hero-bg__grid"></div>
+
+  <!-- Concentric arcs (decorative) -->
+  <div class="hero-bg__arc hero-bg__arc--1"></div>
+  <div class="hero-bg__arc hero-bg__arc--2"></div>
+</div>
+
+<style>
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Gradient mesh blobs */
+  .hero-bg__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    will-change: transform, opacity;
+    animation: meshFloat 12s ease-in-out infinite alternate;
+  }
+
+  .hero-bg__blob--1 {
+    width: 600px;
+    height: 600px;
+    top: -15%;
+    right: -5%;
+    background: radial-gradient(circle, rgba(3, 132, 88, 0.10) 0%, transparent 70%);
+    animation-duration: 14s;
+  }
+
+  .hero-bg__blob--2 {
+    width: 500px;
+    height: 500px;
+    bottom: -10%;
+    left: -5%;
+    background: radial-gradient(circle, rgba(23, 169, 119, 0.08) 0%, transparent 70%);
+    animation-duration: 12s;
+    animation-delay: -4s;
+  }
+
+  .hero-bg__blob--3 {
+    width: 400px;
+    height: 400px;
+    top: 40%;
+    left: 40%;
+    background: radial-gradient(circle, rgba(232, 248, 240, 0.5) 0%, transparent 70%);
+    animation-duration: 13s;
+    animation-delay: -7s;
+  }
+
+  /* Grid overlay */
+  .hero-bg__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(3, 132, 88, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(3, 132, 88, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 60% 60% at 60% 40%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 60% at 60% 40%, black 20%, transparent 70%);
+  }
+
+  /* Concentric arcs */
+  .hero-bg__arc {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(3, 132, 88, 0.06);
+    pointer-events: none;
+  }
+
+  .hero-bg__arc--1 {
+    width: 700px;
+    height: 700px;
+    top: -10%;
+    right: -15%;
+  }
+
+  .hero-bg__arc--2 {
+    width: 500px;
+    height: 500px;
+    top: 5%;
+    right: -10%;
+  }
+
+  @keyframes meshFloat {
+    0% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0.8;
+      transform: scale(1.15);
+    }
+  }
+</style>
