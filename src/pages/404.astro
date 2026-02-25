@@ -1,0 +1,35 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Page not found | HedgeFlows"
+  description="The page you're looking for doesn't exist or has been moved."
+  noIndex={true}
+>
+  <section class="pt-24 pb-32 md:pt-32 md:pb-40">
+    <div class="container-content max-w-2xl mx-auto text-center">
+      <p class="text-[5rem] md:text-[7rem] font-bold text-brand-green/15 leading-none mb-2">404</p>
+      <h1 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-4">
+        Page not found
+      </h1>
+      <p class="text-[1.0625rem] text-text-body leading-relaxed mb-10 max-w-md mx-auto">
+        The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/"
+          class="px-8 py-3 text-[0.9375rem] font-semibold bg-brand-green text-white rounded-full hover:bg-brand-green-dark transition-colors duration-200"
+        >
+          Go to homepage
+        </a>
+        <a
+          href="/platform"
+          class="px-8 py-3 text-[0.9375rem] font-semibold border-2 border-brand-green text-brand-green bg-white rounded-full hover:bg-brand-green hover:text-white transition-all duration-200"
+        >
+          Explore the platform
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
