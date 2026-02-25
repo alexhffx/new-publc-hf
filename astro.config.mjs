@@ -11,4 +11,11 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     sitemap(),
   ],
+  vite: {
+    server: {
+      fs: {
+        allow: ['../..'],
+      },
+    },
+  },
 });
