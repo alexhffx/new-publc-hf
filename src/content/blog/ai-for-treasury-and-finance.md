@@ -5,7 +5,7 @@ description: "Artificial Intelligence (AI) is reshaping industries across the bo
 date: "2025-05-02"
 author: "Alex Axentiev"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Untitled%20design%20(25).png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Untitled%20design%20(25).png"
 ---
 
 Artificial Intelligence (AI) is reshaping industries across the board, and Treasury and Finance are no exceptions. With its ability to enhance decision-making, streamline processes, and unlock valuable insights, enterprise AI is quickly becoming an essential tool for industry leaders. HedgeFlows has recently hosted an expert panel discussion on AI in the Treasury and Finance space, and we wanted to share some key learnings and insights that could help executives understand and leverage AI effectively within their organisations.

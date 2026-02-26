@@ -6,7 +6,7 @@ date: "2022-06-03"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/technology-accountants-smes.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/technology-accountants-smes.jpg"
 ---
 
 For the first time in decades, the world economy enters a potentially prolonged period of economic uncertainty - not simply because of Covid-19 and the war in Ukraine.  The last two decades saw developed economies, including the UK, enjoy a goldilocks-like environment of universally low and stable inflation and interest rates, only occasionally interrupted by painful but temporary calamities such as the Global Financial Crisis and Brexit. 

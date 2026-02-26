@@ -5,7 +5,7 @@ description: "Discover the top five areas where you can cut the financial costs 
 date: "2024-09-06"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/cutcosts.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/cutcosts.jpg"
 ---
 
 Managing finances for a business involved in international trade introduces complexities and hidden costs that can affect profitability. To safeguard your financial outcomes, it’s crucial to identify and mitigate these expenses. Here are five key strategies to help finance teams optimize costs in cross-border operations.

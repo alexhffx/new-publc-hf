@@ -6,7 +6,7 @@ date: "2023-05-03"
 updated: "2023-05-05"
 author: "Neh Thaker"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/bamboo%20pots.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/bamboo%20pots.jpg"
 ---
 
 Many SMEs aspire to grow as quickly and resiliently as bamboo does. And one of the main ways of achieving this is by doing business internationally. However, SMEs don't get the right tools and advice to do so in an easy and safe way.

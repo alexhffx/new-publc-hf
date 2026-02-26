@@ -5,7 +5,7 @@ description: "Trump secured strong concessions, and his public comments about pr
 date: "2025-08-01"
 author: "Alex Axentiev"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/overseas-funding.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/overseas-funding.jpg"
 ---
 
 **Bottom Line Up Front:** July delivered a masterclass in trade diplomacy. Trump secured strong concessions from Japan and Europe while the dollar surged 3-5% against G10 currencies. But here's the twist: Trump's public comments about preferring a weak dollar suggest the administration's currency strategy is just getting started.

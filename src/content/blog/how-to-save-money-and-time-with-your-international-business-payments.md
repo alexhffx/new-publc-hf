@@ -5,7 +5,7 @@ description: "Strategies to optimise international business payments. Learn how 
 date: "2023-08-18"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/international-business-payments.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/international-business-payments.png"
 ---
 
 In the realm of international business payments, the intricacies of managing payments can significantly impact your bottom line. From selecting the ideal payment method to navigating foreign exchange expenses and enhancing negotiation tactics with suppliers, this article delves into ways you can economise on foreign currency transactions, all while ensuring the seamless flow of international business payments.

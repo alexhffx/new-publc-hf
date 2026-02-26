@@ -6,7 +6,7 @@ date: "2022-12-19"
 updated: "2023-01-02"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/international-payments-fraud.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/international-payments-fraud.jpg"
 ---
 
 _“What do you mean you did not get our payment?!”_  Your heart sinks as you realise you may have been a victim of payment fraud. This faceless crime affects thousands of individuals and businesses in the UK. Every day a total of several million pounds are unknowingly misdirected to accounts held by criminals.

@@ -5,7 +5,7 @@ description: "Most CFO teams plan budgets with a single FX rate assumption. Here
 date: "2025-11-18"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/rollercoaster.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/rollercoaster.jpg"
 ---
 
 It's Q4, which means finance teams across mid-market and high-growth businesses are deep in budget planning mode. Revenue models are being stress-tested. Hiring plans are being justified. Marketing ROI is being debated.

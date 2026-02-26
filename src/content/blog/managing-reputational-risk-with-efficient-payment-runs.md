@@ -6,7 +6,7 @@ date: "2023-10-09"
 updated: "2023-10-10"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/payment-runs.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/payment-runs.jpg"
 ---
 
 Risk assessment and its management are pivotal components of treasury management and the overall success of any fast-growing SME. As your company continues to grow you are certain to pay diligent attention to liquidity risk, forex risk, and cyber security risk whilst managing its bottom line. 

@@ -5,7 +5,7 @@ description: "Virtual wallets and payment automation solutions. Learn how Hedgef
 date: "2023-07-28"
 author: "Glen Foster"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/payment-automation.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/payment-automation.png"
 ---
 
 As the financial landscape continues to evolve, the adoption of Open Banking and the emergence of virtual wallets are reshaping how businesses manage their finances. In this article, we'll explore the differences between Open Banking and Virtual Wallets, and why HedgeFlows has chosen to integrate virtual wallets and payment automation solutions into its platform to better serve its international trading customers.

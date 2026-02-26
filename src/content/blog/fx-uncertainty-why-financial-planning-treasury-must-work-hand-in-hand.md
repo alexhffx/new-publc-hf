@@ -5,7 +5,7 @@ description: "FP&A and treasury teams must work in tandem. Collaborative action 
 date: "2025-04-08"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/xero-bulk-payments.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/xero-bulk-payments.jpg"
 ---
 
 The ongoing macroeconomic and foreign exchange (FX) volatility presents a critical challenge for international businesses. Its impact on earnings predictability, liquidity, and solvency demands a proactive and strategic approach. While Financial Planning & Analysis (FP&A) teams focus on forecasting and scenario planning, CFOs or finance executives managing Treasury are tasked with safeguarding the business against catastrophic scenarios.

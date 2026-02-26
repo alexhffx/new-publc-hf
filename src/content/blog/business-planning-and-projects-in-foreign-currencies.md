@@ -6,7 +6,7 @@ date: "2021-06-20"
 updated: "2022-12-06"
 author: "Alex Axentiev"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/planning-foreign-currencies.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/planning-foreign-currencies.jpg"
 ---
 
 Small and medium-sized companies (SMEs) often have limited resources and must decide how to use them most effectively.  The biggest advantage of [hedging](/glossary/what-is-a-currency-hedge) may come not just from removing financial risks, but from improving the accuracy of financial results. SME owners will be able to make the correct strategic decisions for projects in foreign currencies. Below is an illustration of how FX rates can muddy the waters for international entrepreneurs and how this can be overcome.

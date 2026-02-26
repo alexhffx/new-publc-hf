@@ -6,7 +6,7 @@ date: "2022-09-09"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/international-payments-guide.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/international-payments-guide.jpg"
 ---
 
 _Although international transfers have become a lot faster and cheaper over the last decade, now and then an occasional payment takes longer than usual and depending on your chosen provider and mode of payment it may be possible and useful to track the progress. This short article explains how._

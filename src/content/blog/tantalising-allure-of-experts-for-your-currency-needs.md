@@ -6,7 +6,7 @@ date: "2023-03-18"
 updated: "2023-03-31"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/fx-brokers.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/fx-brokers.jpg"
 ---
 
 Would you trust a stranger with your finance decisions? Many businesses trust someone who barely knows their business because of their perceived “expertise" in currency markets. Hounded by daily calls from FX specialists (brokers), they give in to the idea of trusting their promise of better prices and service. 

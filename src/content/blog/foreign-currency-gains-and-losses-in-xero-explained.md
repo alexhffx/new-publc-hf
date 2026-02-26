@@ -6,7 +6,7 @@ date: "2023-03-02"
 updated: "2024-01-12"
 author: "HedgeFlows"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/gains-losses.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/gains-losses.jpg"
 ---
 
 Whenever you do business with overseas suppliers or buyers, you will likely buy or sell goods or services in foreign currencies. Such foreign invoices and payments usually result in a real financial impact on your business that accounting systems report in the form of foreign currency gains or losses. Such effect can come from both exchange rate fluctuations and, surprising to many, fees charged by your bank or payments provider for currency conversions. This article explains the primary sources of foreign exchange gains and losses and the best ways to manage them.

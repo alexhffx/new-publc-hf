@@ -5,7 +5,7 @@ description: "The reasons behind the untapped potential of SMEs in global trade 
 date: "2023-06-06"
 author: "Neh Thaker"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/money%202020.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/money%202020.png"
 ---
 
 HedgeFlows has been invited to take the prestigious Close Up stage at [Money20/20.](https://www.money2020.com/) Our Co-Founder, Neh Thaker, used his time on stage to delve into the reasons behind the untapped potential of SMEs in global trade and how HedgeFlows aims to bridge the gap, and empower these businesses to thrive.

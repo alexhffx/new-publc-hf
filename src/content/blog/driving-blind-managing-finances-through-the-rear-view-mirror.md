@@ -5,7 +5,7 @@ description: "Why most SMEs manage finances like driving through a rear-view mir
 date: "2025-08-22"
 author: "Alex Axentiev"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Compliance%20Rear%20View.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Compliance%20Rear%20View.png"
 ---
 
 Picture this: You're driving down a busy highway, but instead of looking ahead at the road, you're making all your steering decisions based solely on what you can see in your rear-view mirror. Sounds terrifying, right? Yet this is exactly how most small and medium enterprises (SMEs) manage their business finances.

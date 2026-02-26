@@ -5,7 +5,7 @@ description: "FX Averaging can be an effective strategy for short-term FX risks,
 date: "2024-06-20"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Average.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Average.jpg"
 ---
 
 FX Averaging helps remove the risk of picking the wrong timing for your FX transactions.  Instead of risking the uncertainty of selecting the wrong day or time for your currency purchase, where you may encounter an unfavourable exchange rate, FX averaging breaks down the transaction into smaller increments, spreading them evenly over a designated period. Businesses commonly opt for monthly averaging, although the timeframe can be adjusted to suit individual business requirements. This approach ultimately results in more consistent exchange rates, steering clear of the short-term highs and lows of currency fluctuations:

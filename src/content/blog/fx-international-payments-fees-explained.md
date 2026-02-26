@@ -6,7 +6,7 @@ date: "2022-09-12"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/fx-international%20payments-fees.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/fx-international%20payments-fees.jpg"
 ---
 
 Costs of making international payments, especially when they involve paying or collecting in foreign currencies are often a point of frustration and uncertainty for many small businesses and their accountants.  We shed the light on the most frequent charges that arise when a business sends or collects currencies internationally.

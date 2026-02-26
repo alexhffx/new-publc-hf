@@ -6,7 +6,7 @@ date: "2024-02-06"
 updated: "2024-02-08"
 author: "HedgeFlows"
 category: "news"
-featuredImage: "https://blog.hedgeflows.com/hubfs/TMI-awards%20(2).jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/TMI-awards%20(2).jpg"
 ---
 
 We, at HedgeFlows are delighted to announce that our dedication to innovation and excellence has been recognised with the prestigious TMI Award for Innovation in Treasury Management Solutions.

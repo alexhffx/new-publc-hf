@@ -6,7 +6,7 @@ date: "2024-06-09"
 updated: "2024-07-05"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/overseas-funding.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/overseas-funding.jpg"
 ---
 
 Fundraising is an international endeavour for many startups and scale-ups. According to DealRoom.co, 42% of Venture Capital invested in 2022 went to countries other than the VCs’ home market.

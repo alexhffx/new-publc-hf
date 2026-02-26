@@ -5,7 +5,7 @@ description: "The impact of the second Trump administration on UK companies and 
 date: "2025-01-29"
 author: "Neh Thaker"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/OIP%20(1).jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/OIP%20(1).jpg"
 ---
 
 Column miles rather than column inches have been devoted over the last few weeks to what the second Trump presidency means for the world. Now, one week after his inauguration, we take stock. The opening days have been filled with more than 100 executive orders, some referencing obscure American laws. However so far most have primarily impacted the domestic scene from promoting fossil fuels and deporting undocumented migrants to challenging diversity initiatives. We await the first round of promised tariffs on Mexico, Canada and China on Saturday. In this blog, we distil the potential risks to UK companies.

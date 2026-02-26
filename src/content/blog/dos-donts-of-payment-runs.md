@@ -5,7 +5,7 @@ description: "Streamline your financial operations with batch processing for acc
 date: "2023-10-12"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/dos%20and%20donts%20-%20payment%20runs.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/dos%20and%20donts%20-%20payment%20runs.jpg"
 ---
 
 Managing [accounts payable](/glossary/accounts-payable) is a critical component of financial operations for businesses. Efficiently handling numerous invoices and payments can be a daunting task, but with the right process it becomes streamlined and automated. This article delves into the world of [payment runs](/multi-currency-payment-runs), shedding light on its benefits, best practices, and potential pitfalls to avoid.

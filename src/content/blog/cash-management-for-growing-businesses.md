@@ -5,7 +5,7 @@ description: "Learn how a reliable cash management strategy enables cash forecas
 date: "2023-11-21"
 author: "HedgeFlows"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/cashflow%20management.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/cashflow%20management.jpg"
 ---
 
 Effective cash management is vital for financially constrained businesses. It guarantees timely fulfillment of financial obligations to employees, suppliers, and creditors. Therefore, implementing a robust cash planning procedure is a crucial step for finance directors or CFOs to guide their company to financial success.

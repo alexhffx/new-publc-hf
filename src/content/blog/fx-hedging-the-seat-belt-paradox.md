@@ -6,7 +6,7 @@ date: "2024-09-03"
 updated: "2024-09-12"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Seatbelt.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Seatbelt.jpg"
 ---
 
 The vast majority of multinational corporations proactively manage their currency risks.  Between [balance sheet hedging](/balance-sheet-hedging-training), [cashflow hedging](/fx-cashflow-hedging-training), and other strategies - well-accepted frameworks and straightforward processes help businesses achieve specific objectives.

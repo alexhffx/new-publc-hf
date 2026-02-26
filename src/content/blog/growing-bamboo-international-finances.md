@@ -5,7 +5,7 @@ description: "Bamboos grow steadily, quickly and resiliently. Find out how you c
 date: "2023-02-24"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/growing%20like%20bamboo.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/growing%20like%20bamboo.jpg"
 ---
 
 If growing your business overseas is on your key priority list, then we need to talk about bamboos. Why? They grow quickly and resiliently. Two values we're sure you'd like for your own business. In this article, we explain how you can unlock international growth to compete safely by making the right decisions with your finances.

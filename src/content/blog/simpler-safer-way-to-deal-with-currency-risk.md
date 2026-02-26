@@ -6,7 +6,7 @@ date: "2022-04-29"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/safer-currency-risk.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/safer-currency-risk.jpg"
 ---
 
 > Pound Sterling continued to plunge to new multi-year lows against the US Dollar this week and yet again many UK businesses active in international trade are feeling the squeeze. Numerous industries such as importers, and travel and logistics businesses are watching their profit margins being eroded or even wiped out by the effect of these currency moves.

@@ -5,7 +5,7 @@ description: ""
 date: "2022-09-23"
 author: "Neh Thaker"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/WrongQ.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/WrongQ.jpg"
 ---
 
 *Content to be added.*

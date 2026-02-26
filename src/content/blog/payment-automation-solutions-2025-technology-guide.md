@@ -5,7 +5,7 @@ description: "This article explores bulk payment or accounts payable automation 
 date: "2025-02-02"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Automation.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Automation.png"
 ---
 
 Despite the rise of new technologies, many small and mid-sized businesses continue to rely on outdated, manual processes for vendor payments and payroll. 

@@ -6,7 +6,7 @@ date: "2023-03-09"
 updated: "2023-03-10"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/potential-savings-fx-booking.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/potential-savings-fx-booking.jpg"
 ---
 
 Imagine the world where hotels or airlines only allow you to buy their services when you're about to use them and room rates or ticket prices fluctuate all the time. Otherwise pleasant anticipation of your next holiday in Greece or Spain will most likely be ruined by the stress of not knowing how much this holiday may cost, seeing prices go up or down as you helplessly wait. 

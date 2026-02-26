@@ -5,7 +5,7 @@ description: "HedgeFlows Joins Barclays' Rise Growth Academy 2023. Shaping the f
 date: "2023-10-26"
 author: "HedgeFlows"
 category: "news"
-featuredImage: "https://blog.hedgeflows.com/hubfs/barclays-hedgeflows-rise-growth-academy%20(2).jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/barclays-hedgeflows-rise-growth-academy%20(2).jpg"
 ---
 
 ### HedgeFlows Joins The 2023 Barclays Rise Growth Academy

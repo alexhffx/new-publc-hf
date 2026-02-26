@@ -6,7 +6,7 @@ date: "2023-08-16"
 updated: "2024-11-23"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/accounts-payable-process.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/accounts-payable-process.png"
 ---
 
 In the intricate web of business operations, the finance team often remains in the shadows when it comes to process enhancement and technological upgrades. Nevertheless, their role is pivotal in maintaining operational smoothness and nurturing strong supplier relationships. Despite their time constraints, these teams are entrusted with the responsibility of prompt payments, fraud prevention, error rectification, payment planning, and working capital optimisation.
