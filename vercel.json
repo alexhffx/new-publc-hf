@@ -36,9 +36,6 @@
     { "source": "/invoice-risk-calculator", "destination": "/fx-academy", "permanent": true },
     { "source": "/guides", "destination": "/fx-academy", "permanent": true },
 
-    { "source": "/case-studies/jbm", "destination": "/case-studies", "permanent": true },
-    { "source": "/case-studies/cable-analytics", "destination": "/case-studies", "permanent": true },
-
     { "source": "/privacy-policy", "destination": "/legal/privacy", "permanent": true },
     { "source": "/terms-of-use", "destination": "/legal/terms-of-use", "permanent": true },
     { "source": "/terms-and-conditions", "destination": "/legal/terms", "permanent": true },
