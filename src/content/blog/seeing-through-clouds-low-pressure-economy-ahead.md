@@ -6,7 +6,7 @@ date: "2022-07-05"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/low-pressure-economy.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/low-pressure-economy.jpg"
 ---
 
 The stormy weather continues - stock markets and central bankers saying the same thing: more turbulence ahead.

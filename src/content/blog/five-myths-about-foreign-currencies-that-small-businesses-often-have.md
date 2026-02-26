@@ -6,7 +6,7 @@ date: "2023-03-16"
 updated: "2023-03-17"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/5-myths-foreign-currencies.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/5-myths-foreign-currencies.jpg"
 ---
 
 **![Myth: Managing currency management is not for small businesses](/blog/hs-fs/hubfs/2-2.jpg?width=1584&name=2-2.jpg)Myth**: Managing currency risks is not for small businesses

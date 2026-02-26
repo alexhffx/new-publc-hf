@@ -6,7 +6,7 @@ date: "2025-01-19"
 updated: "2025-01-25"
 author: "Neh Thaker"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Finance%20leaders.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Finance%20leaders.png"
 ---
 
 As we start the new year in earnest, our clients have been telling us how they want to transform finance in their companies, from trusted advisors to strategic transformers in 2025. Everyone agrees that finance teams are undergoing a seismic shift. To stay ahead, they must transcend traditional career paths and become dynamic enablers of strategy and digital transformation.

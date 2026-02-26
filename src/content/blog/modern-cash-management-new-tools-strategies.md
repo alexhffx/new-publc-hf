@@ -5,7 +5,7 @@ description: "Learn about cash management best practices with the guide for scal
 date: "2025-01-14"
 author: "Neh Thaker"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Cash-management%20(1).jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Cash-management%20(1).jpg"
 ---
 
 Cash management isn’t just about tracking pennies — it’s about making every penny work smarter. At its core, it’s the art of collecting, managing, and optimising cash and liquid assets to keep a company running smoothly and financially secure. The goal? Striking the perfect balance to meet obligations, fund operations, and seize new opportunities, all while minimising idle cash and maximising returns.

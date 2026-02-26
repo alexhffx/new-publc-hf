@@ -5,7 +5,7 @@ description: "To determine whether managing currency risk is worthwhile, it’s 
 date: "2025-03-10"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Move%20in%20GBP%20vs%20US%20Dollar%20FX%20rate%20over%2090%20days.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Move%20in%20GBP%20vs%20US%20Dollar%20FX%20rate%20over%2090%20days.png"
 ---
 
 Quantifying FX risk is one of the most challenging aspects of foreign exchange risk management. To determine whether managing currency risk is worthwhile, it’s essential to understand exactly what you’re protecting against. This knowledge is key to making informed decisions.

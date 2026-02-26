@@ -5,7 +5,7 @@ description: "HedgeFlows partners with Travelex to allow UK customers to secure 
 date: "2023-04-19"
 author: "HedgeFlows"
 category: "news"
-featuredImage: "https://blog.hedgeflows.com/hubfs/travelex.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/travelex.jpg"
 ---
 
 Our passion for helping people navigate the world of volatile exchange rates with confidence is now reaching new corners. Although we have kept this as a secret for a good few months, we've partnered with [Travelex](https://www.travelex.co.uk/) to bring all the benefits of secure exchange rates to UK holidaymakers.

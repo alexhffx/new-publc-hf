@@ -5,7 +5,7 @@ description: "The line between prudent risk management and gambling can seem fru
 date: "2025-09-17"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Lloyds.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Lloyds.jpg"
 ---
 
 _"I'm not gambling, I'm hedging!" How many times have you heard this in the world of Foreign exchange?  The confusion between hedging and speculation isn't new—it nearly destroyed the insurance industry in the 1700s._

@@ -6,7 +6,7 @@ date: "2024-03-26"
 updated: "2024-05-03"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/hedging%20gambling%20(1).jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/hedging%20gambling%20(1).jpg"
 ---
 
 Many finance professionals in small corporations find dealing with foreign currencies quite challenging. Surprisingly, only 4% of UK SME exporters hedge their currency risks, while some businesses still consider FX forwards to be a form of gambling.

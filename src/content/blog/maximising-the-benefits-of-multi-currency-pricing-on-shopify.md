@@ -5,7 +5,7 @@ description: "Discover how to combine multi-currency pricing on Shopify with Hed
 date: "2025-02-25"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Shopify2%202.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Shopify2%202.png"
 ---
 
 Multi-currency pricing has become a must-have feature for Shopify e-commerce stores, offering a seamless shopping experience. By displaying prices in a customer’s local currency, it eliminates the need for guesswork or manual conversions, making the buying process smoother. At the same time, store owners benefit by receiving payments in their preferred currency as long as they’re using Shopify Payments.

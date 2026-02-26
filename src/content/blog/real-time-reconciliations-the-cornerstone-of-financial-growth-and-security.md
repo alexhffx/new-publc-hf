@@ -5,7 +5,7 @@ description: "Automating reconciliations is more than technological fashion; it'
 date: "2024-02-18"
 author: "Alex Axentiev"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/reconciliation.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/reconciliation.png"
 ---
 
 In the often labyrinthine world of finance and accounting, real-time reconciliations may just seem like another industry buzzword—clumsily thrown around by those keen on the latest bells and whistles for their balance sheets. However, beneath the jargon lies an indispensable foundation for organisations aspiring to safe, agile, and robust financial operations. It's more than technological fashion; it's about securing a future for your business that is as dynamic as it is secure.

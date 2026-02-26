@@ -6,7 +6,7 @@ date: "2023-07-25"
 updated: "2023-07-28"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/hidden-fees.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/hidden-fees.png"
 ---
 
 Last week a group of 15 well-known fintechs, including Wise, Klarna, and Revolut, called on the UK government to "stop hidden fees in cross-border payments once and for all". They estimate that consumers and SMEs in the UK lost "a total of £5.6 billion in 2022 alone" due to these hidden charges. This is the latest proof that customers and businesses still have to pay attention to currency conversion charges for their cross-border payments. Despite reforms, regulations and increasing competition over the past decades, banks can still overcharge everyone but their biggest clients on foreign exchange transactions. More needs to be done by the industry to demonstrate the transparency that clients deserve and regulators expect.

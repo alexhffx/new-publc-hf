@@ -5,7 +5,7 @@ description: "HedgeFlows has been announced as winner of the 'Best New Business'
 date: "2023-03-14"
 author: "HedgeFlows"
 category: "news"
-featuredImage: "https://blog.hedgeflows.com/hubfs/best%20business%20awards-1.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/best%20business%20awards-1.png"
 ---
 
 HedgeFlows has been announced as winner of the **'_Best New Business_'** and 'Best Innovation' categories at the 2023 Best Business Awards.

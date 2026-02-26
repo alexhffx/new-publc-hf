@@ -5,7 +5,7 @@ description: "Five trends in international business payments, from international
 date: "2023-08-14"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/1-Aug-11-2023-06-28-11-6217-AM.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/1-Aug-11-2023-06-28-11-6217-AM.png"
 ---
 
 International business payments can be a time-consuming and stressful task. Luckily, technology never stands still, and modern apps can improve your productivity, remove mundane tasks and simplify complicated ones.

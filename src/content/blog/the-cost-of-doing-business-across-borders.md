@@ -6,7 +6,7 @@ date: "2022-11-10"
 updated: "2022-11-16"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/cost-business-abroad.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/cost-business-abroad.png"
 ---
 
 Few small businesses and their accountants proactively manage the costs of doing business internationally. Some turn to fintechs such as Wise, WorldFirst and Airwallex to reduce the costs of international transfers and collections, but this still leaves a wide gap compared to how large businesses get to manage their international finances. HedgeFlows offers a flexible toolkit that helps cross this gap for businesses of any size.

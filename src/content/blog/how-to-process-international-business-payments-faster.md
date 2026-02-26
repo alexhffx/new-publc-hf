@@ -6,7 +6,7 @@ date: "2022-02-23"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/process-international-business-payments-faster.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/process-international-business-payments-faster.jpg"
 ---
 
 HedgeFlows' mission is to make international growth simpler and safer for any business. Yet, if you deal with international payments regularly, you probably know that those are anything but simple.  

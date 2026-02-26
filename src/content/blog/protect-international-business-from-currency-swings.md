@@ -6,7 +6,7 @@ date: "2022-10-13"
 updated: "2022-12-30"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/currency-swings.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/currency-swings.jpg"
 ---
 
 We've started the new season with appalling news for Pound Sterling. It's kind of nostalgic now to think back about the spring when the economy was more or less blossoming shily despite all the circumstances surrounding us. In reality, businesses don't have the time to get nostalgic and need to act quickly to avoid unexpected falls. In this article, we explore the importance of managing currency cashflows to improve profits and explore the solutions available for SMEs. 

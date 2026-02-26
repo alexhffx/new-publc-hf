@@ -6,7 +6,7 @@ date: "2022-05-03"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "news"
-featuredImage: "https://blog.hedgeflows.com/hubfs/xero-integration.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/xero-integration.jpg"
 ---
 
 PRESS RELEASE:  The innovative fintech platform Hedgeflows has become a certified Xero app ahead of its public launch at Accountex 2022. The platform has a unique approach to helping UK businesses trade safely and grow internationally. Founded by financial markets heavyweights, it manages the risks faced by growing businesses when they buy and sell goods or services in foreign currencies.

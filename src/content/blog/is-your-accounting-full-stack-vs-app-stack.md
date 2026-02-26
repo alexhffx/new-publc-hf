@@ -5,7 +5,7 @@ description: "At HedgeFlows we believe the best accountants will master the Full
 date: "2024-06-05"
 author: "Alex Axentiev"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/fullstack%20(1).jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/fullstack%20(1).jpg"
 ---
 
 Being an accountant or finance executive in this era is both thrilling and demanding.

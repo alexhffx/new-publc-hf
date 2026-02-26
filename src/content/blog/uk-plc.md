@@ -6,7 +6,7 @@ date: "2022-09-25"
 updated: "2022-10-13"
 author: "Neh Thaker"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/uk-mini-budget.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/uk-mini-budget.jpg"
 ---
 
 Following the UK mini-budget on Thursday, markets have not been kind to U.K. plc with shares, bonds and the Pound all selling off simultaneously leading commentators to make unkind comparisons with fragile emerging market economies.

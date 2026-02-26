@@ -5,7 +5,7 @@ description: "Natural hedging is a useful technique when it comes to managing ca
 date: "2024-01-28"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/7-1.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/7-1.png"
 ---
 
 As finance managers, directors and business owners tap-dance their way around the whims of the international currency market, the term 'natural hedging' serenades as a harmonious solution for currency management. It's appealing, it's suave, and it puts up a dazzling front of cost-savings—yet, as we slip behind the curtains, we unveil the unnoticed missteps that could cost the finale.

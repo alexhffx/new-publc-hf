@@ -6,7 +6,7 @@ date: "2023-10-19"
 updated: "2023-11-04"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/batch-payments-xero.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/batch-payments-xero.jpg"
 ---
 
 ### What is Batch processing?

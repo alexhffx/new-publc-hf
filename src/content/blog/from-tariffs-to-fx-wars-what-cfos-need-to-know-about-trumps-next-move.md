@@ -5,7 +5,7 @@ description: "The recent dollar weakness isn't some accident. Trump's advisors t
 date: "2025-07-10"
 author: "Alex Axentiev"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/rollercoaster.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/rollercoaster.jpg"
 ---
 
 Here's a number that should grab your attention: The US dollar just dropped 10.8% in the first six months of 2025. That's the worst performance since 1973 - back when currencies first started floating freely.

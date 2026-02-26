@@ -6,7 +6,7 @@ date: "2023-12-20"
 updated: "2024-01-12"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Invoices-collections-pounds-1.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Invoices-collections-pounds-1.png"
 ---
 
 Most businesses that trade internationally have FX gains and losses in their accounting systems and, if they are material enough, in their statutory reports.  Their accountants often shy away from explaining these numbers to them. Even fewer would dare to guide their clients on minimising such losses.  Yet, the answer is often simple - a straightforward Balance Sheet hedging programme.

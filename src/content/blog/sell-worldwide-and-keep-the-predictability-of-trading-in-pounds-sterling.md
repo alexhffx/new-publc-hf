@@ -5,7 +5,7 @@ description: "Today’s small businesses can access solutions that reduce the co
 date: "2022-10-25"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Open%20for%20global%20business.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Open%20for%20global%20business.jpg"
 ---
 
 Everyone in international trade prefers to stick to doing business in their currency. However, when buyers and sellers are from different countries, someone usually has to give in. Usually, it is a small business with few alternatives and less negotiating power that has to yield.  Yet, selling internationally when you are small can be akin to the sword of Damocles.  You can stick to quoting & invoicing in your home currency and risk losing your customers who leave you for someone willing to quote them in their currency.

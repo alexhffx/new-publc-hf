@@ -6,7 +6,7 @@ date: "2021-06-20"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/keeping-business-safe.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/keeping-business-safe.jpg"
 ---
 
 New business models, from companies such as TransferWise and Revolut, have transformed the cross-border payments market over the last 5 years. They have thrust greater transparency onto the fees charged for foreign currency payments. Retail clients can now exchange and transfer currencies faster and cheaper from anywhere in the world. Although some entrepreneurs and small businesses have benefited from this innovation, a tremendous gap remains between the products and services they receive from their banks or FX brokers and what their larger business competitors receive from Corporate Banking divisions.

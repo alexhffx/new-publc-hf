@@ -6,7 +6,7 @@ date: "2023-10-18"
 updated: "2023-11-04"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/ap-automation.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/ap-automation.jpg"
 ---
 
 Accounts Payable automation, also known as AP automation, streamlines and improves the processing of invoices, payments, and other financial transactions. Automation can make the accounts payable process more efficient, accurate, and cost-effective by reducing manual tasks and human error. According to independent research by [Aberdeen Group](https://www.aberdeen.com/blogposts/managing-your-supply-chain-with-ap-automation/), teams employing AP automation can process 4.11x as many invoices compared to a manual process. The benefits are even higher for international payments due to added complexity. Foreign exchange, complex payment instructions, regulatory compliance, and surprise fees and charges all add to the risk of manual errors, which automation can help overcome.

@@ -6,7 +6,7 @@ date: "2023-01-24"
 updated: "2023-01-26"
 author: "HedgeFlows"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/international-trade-iceberg.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/international-trade-iceberg.png"
 ---
 
 _Last week, our co-founder [Neh Thaker](https://www.linkedin.com/in/neh-thaker-87680810/) was invited to discuss how the UK SMEs could start winning with fintech as part of the toolkit launch by the [Confederation of British Industry (CBI)](https://www.cbi.org.uk/) and [Finastra](https://www.finastra.com/)._ 

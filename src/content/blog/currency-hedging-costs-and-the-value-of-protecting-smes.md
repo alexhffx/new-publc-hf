@@ -6,7 +6,7 @@ date: "2021-06-20"
 updated: "2024-09-28"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/cost-currency-management.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/cost-currency-management.jpg"
 ---
 
 The approach of small and medium-sized businesses towards FX risk management is very different from that of large public firms and foreign currency hedging costs are to blame.  We look at hedging of foreign currency Accounts Payables and Accounts Receivables and how to think about the value of hedging relative to its costs below.

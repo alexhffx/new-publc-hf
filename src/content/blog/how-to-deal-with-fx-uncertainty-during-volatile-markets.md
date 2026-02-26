@@ -6,7 +6,7 @@ date: "2022-07-28"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/market-currency-risks.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/market-currency-risks.jpg"
 ---
 
 The US Fed has delivered its 2nd consecutive hike of 0.75%, maintaining its position as one of the most aggressive central banks in an ongoing battle to control inflation worldwide.  However, financial markets have reacted with relief as the Fed Chair hinted about the slower pace of future rate hikes - both equity and bond markets performed strongly, and the US dollar has weakened against all major currencies.

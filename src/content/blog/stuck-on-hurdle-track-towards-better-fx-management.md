@@ -5,7 +5,7 @@ description: "Learn how to simplify your FX risk management with these three key
 date: "2024-04-30"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/HurdleTrack%20(1).jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/HurdleTrack%20(1).jpg"
 ---
 
 Numerous banks and FX brokers promote FX forwards and other more complex solutions to their business clients, aiming for improved currency risk management. However, they frequently overlook a crucial step in their quest for increased transactions: educating their clients on the genuine benefits of FX hedging for their business. Consequently, this often leads to cognitive dissonance among clients, who believe they are mitigating FX risks yet feel they are still gambling.

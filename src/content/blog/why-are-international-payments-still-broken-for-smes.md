@@ -6,7 +6,7 @@ date: "2023-01-02"
 updated: "2023-01-06"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/international-payments-smes.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/international-payments-smes.jpg"
 ---
 
 _Regulators have been pushing for more fairness and transparency, and new players and technologies have driven the costs of international payments down for retail and corporate clients. However, foreign payments are still too difficult and costly for most small businesses. Fortunately, fixing this is easier than most people think._

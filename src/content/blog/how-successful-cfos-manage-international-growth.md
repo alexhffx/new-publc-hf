@@ -5,7 +5,7 @@ description: "Optimising finances for international growth used by successful CF
 date: "2023-06-22"
 author: "Alex Axentiev"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/cfos-international-growth.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/cfos-international-growth.jpg"
 ---
 
 _Lessons from working with ambitious global companies, big and small -_ _by [Alex Axentiev](https://www.linkedin.com/in/axentiev/)._

@@ -6,7 +6,7 @@ date: "2022-10-31"
 updated: "2022-11-01"
 author: "HedgeFlows"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/trade-internationally-one-currency.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/trade-internationally-one-currency.jpg"
 ---
 
 If doing business in one currency sounds like a dream, you're not alone. Trading internationally as a small business can seem complicated, unclear and even risky. In this blog article, we explore why this is and the options available to trade globally in a fair and simple way.

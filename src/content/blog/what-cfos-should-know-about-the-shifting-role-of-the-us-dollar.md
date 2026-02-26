@@ -5,7 +5,7 @@ description: "Discover how global tariffs unleashed by Trump and tensions betwee
 date: "2025-04-14"
 author: "Alex Axentiev"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Waves.png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Waves.png"
 ---
 
 For decades, the U.S. dollar has reigned supreme as the world’s reserve currency, underpinning global trade, investment, and economic stability. This dominant position, often referred to as the “exorbitant privilege,” has enabled the U.S. to maintain cheaper borrowing costs, predictable exchange rates, and larger deficits without significant economic fallout.

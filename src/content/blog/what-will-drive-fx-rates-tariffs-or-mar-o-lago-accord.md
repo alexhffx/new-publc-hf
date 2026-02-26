@@ -5,7 +5,7 @@ description: "Trump talks about the currency being a lever in his policy arsenal
 date: "2025-03-04"
 author: "Alex Axentiev"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Mar-o-lago%20(1).png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Mar-o-lago%20(1).png"
 ---
 
 Trump’s tariffs arrive today (in Canada and Mexico at least), and while U.S. equities dipped slightly yesterday, the resilient U.S. Dollar remains firmly within its recent range against the Pound Sterling and, to some extent, the Euro. So, how should your finance and treasury teams approach foreign exchange rates in light of these developments?

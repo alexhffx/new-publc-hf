@@ -6,7 +6,7 @@ date: "2022-05-17"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/currency-uncertainty-fx.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/currency-uncertainty-fx.jpg"
 ---
 
 **What’s driving the markets**

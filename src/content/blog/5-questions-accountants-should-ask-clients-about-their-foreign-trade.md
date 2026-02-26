@@ -6,7 +6,7 @@ date: "2022-04-01"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "treasury-cash"
-featuredImage: "https://blog.hedgeflows.com/hubfs/questions-accountants-should-ask.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/questions-accountants-should-ask.jpg"
 ---
 
 Accountants and independent finance directors are among the most trusted sources that small businesses turn to for help with their finances and risks, including those arising from their international trade.  As with anything, asking the right questions can help give the most relevant advice. We list below the top 5 questions that help better understand the risks, pain-points and costs from foreign trade that a company may have.

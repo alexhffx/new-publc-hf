@@ -5,7 +5,7 @@ description: "How to use FX hedge ratios and budget FX rates. How the HedgeFlows
 date: "2023-04-05"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/hedge-ratios.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/hedge-ratios.jpg"
 ---
 
 Businesses that trade internationally often must plan to protect their cashflows and profit margins from currency swings in coming months and quarters. For many experienced finance managers and directors, this starts with planning their budget rates for upcoming periods. 

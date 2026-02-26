@@ -5,7 +5,7 @@ description: "Discover emerging trends and new tools to combat payment fraud for
 date: "2024-11-18"
 author: "Alex Axentiev"
 category: "payments-ops"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Preventing_APP_Fraud_banner.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Preventing_APP_Fraud_banner.jpg"
 ---
 
 As most banking and payments moved online, the risk of payment fraud has increased dramatically, posing significant threats to businesses and individuals alike. Our recent report sheds light on the two main types of payment fraud: Unauthorized Fraud and Authorized Push Payment (APP) Fraud, emphasising the importance of vigilance and protective measures.

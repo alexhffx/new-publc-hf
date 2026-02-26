@@ -6,7 +6,7 @@ date: "2022-02-16"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
-featuredImage: "https://blog.hedgeflows.com/hubfs/timing-currency-purchases.jpg"
+featuredImage: "https://8698300.hs-sites.com/hubfs/timing-currency-purchases.jpg"
 ---
 
 It is common practice for businesses who trade internationally to try and "time the currency markets". They wait and purchase foreign currency in large amounts when exchange rates “look attractive” and then draw on the purchased balance to pay currency invoices in the following weeks or months.

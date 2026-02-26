@@ -6,7 +6,7 @@ date: "2025-05-21"
 updated: "2025-06-10"
 author: "Alex Axentiev"
 category: "markets"
-featuredImage: "https://blog.hedgeflows.com/hubfs/Mar-o-lago%20(1).png"
+featuredImage: "https://8698300.hs-sites.com/hubfs/Mar-o-lago%20(1).png"
 ---
 
 Currency swings from global trade disputes can undercut service business profits - but often, the true impact is only noticed months down the line. While manufacturers may brace for tariffs and supply disruptions, service-based firms from SaaS startups to international consultancies are just as exposed to the shifting tides of foreign exchange (FX) markets. Yet, without the right tools and awareness, these risks might go unseen until it’s too late.
