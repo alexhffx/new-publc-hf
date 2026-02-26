@@ -1,0 +1,57 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const articleHtml = `<p>Whenever you do business with overseas suppliers or buyers, you will likely buy or sell goods or services in foreign currencies. Such foreign invoices and payments usually have a real financial impact on your business that accounting systems report as foreign currency gains or losses. The effect can come from both exchange rate fluctuations and, surprising to many, fees charged by your bank or payment provider for currency conversions. Unfortunately, mainstream accounting systems don’t have much in terms of helping finance teams and business owners understand what drives these numbers in an easy-to-use way.</p> 
+ <h3>Introducing FX Gains &amp; Losses Explainer report</h3> <p>HedgeFlows FX Gains &amp; Losses Explainer report is a great tool for anyone using Xero to understand the big picture and specific details about how currencies impact your cashflows and profits. It is an automated report available to HedgeFlows users and comes with periodic email alerts to notify you when you want to review the numbers.</p> <h3>Main section - comparing Xero PnL and HedgeFlows </h3> <p>The first view that you see when you visit FX Gains &amp; Losses report is the comparison between Xero FX Gains &amp; Losses number and what HedgeFlows can explain in greater detail (due to some limitations, we often can’t fully explain the numbers but more often than not can identify the key drivers).</p> <p>The graph on the right shows period by period breakdown of the numbers from two systems. You can change the period that you wish to analyse using the dropdown selector in the top left section.</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/Backtester1.png" alt="HedgeFlows FX Gains &amp; losses explained - overview" width="2998" height="1480" loading="lazy"></p> <p>Hovering over the graph can be useful to show the overall number from Xero for each month and how HedgeFlows breaks it down to specific currencies:</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/backtester2.png" alt="backtester2" width="1932" height="848" loading="lazy"></p> <h3>Key numbers &amp; Definitions explained</h3> <p>The top left section also contains an overall period comparison - What Xero reported as PnL gains and Losses and the breakdown : </p> <p><strong>Realised Impact from foreign currency bills &amp; invoices</strong> - changes in the value of foreign cashflows due to exchange rate fluctuations between the accrual date and the payment date for each cashflow. </p> <p><strong>Transaction cost</strong> - estimated costs of exchanging currencies based on the difference between the official FX rates (Bank of England data) on each payment date and the actual rates used for each cashflows payment in Xero.</p> <p><strong>Unrealised Impact from foreign currency bills &amp; invoices</strong> - changes in the value of foreign cashflows due to exchange rate fluctuations between the accrual date and the last business day.</p> <p><strong>Explained gains and losses</strong> - the sum of realised and unrealised market impact as well as transaction costs.</p> <p>If you want to investigate a specific period, you can simply click on the graph, and the bottom table will list all foreign transactions that contributed to the explained PnL in a given month.</p> <p>Should you wish to review gains &amp; losses from a specific currency, simply choose it from the currency selector. You have a choice of Realised and Unrealised graphs as well as FX volumes in a given currency.</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/backtester3.png" alt="backtester3" width="2816" height="982" loading="lazy"><br><br></p> <h3>Find the biggest drivers.</h3> <p>If you need to understand further what drove a given number in any period or currency, you can use the bottom table section to sort by the biggest contributors to Gains &amp; Losses. We calculate Realised or unrealised gains &amp; losses for each invoice and estimated transaction costs for paid invoices and bank transfers with foreign exchange. You can sort by the relevant column to see the biggest contributors and drill into specific transactions.</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/Backterster%205.png" alt="Backterster 5" width="2790" height="668" loading="lazy"><br><br></p> <h3>Review transaction-level details.</h3> <p>You can click on the gains &amp; loss number for a specific transaction, and our system will show your further details. We explain why a specific invoice contributed to FX gains &amp; losses and break it down between market impact (due to currency fluctuations) and estimated transaction costs:</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/backtester%206.png" alt="backtester 6" width="2820" height="1312" loading="lazy"></p> <h3>Known limitations.</h3> <p>Several known limitations may contribute to differences between Xero and HedgeFlows numbers, but for most of our clients, they don’t change the big picture - being able to understand the impact of currencies on one’s business. These limitations include:</p> 
+ <ol> 
+ <li aria-level="1">Invoices with multiple linked payments will use the exchange rate from the final payment</li> 
+ <li aria-level="1">The explainer calculations do not include FX impact from bank balances (as well as other assets and liabilities beyond AP/ARs).</li> 
+ <li aria-level="1">Certain currencies (such as CAD and a number of EM currencies) are currently excluded.</li> 
+ </ol>`;
+---
+
+<PageLayout
+  title="How to use FX Gains &amp; Losses explainer report for Xero | Help Centre | HedgeFlows"
+  description="How to use FX Gains &amp; Losses explainer report for Xero - HedgeFlows Help Centre"
+>
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">
+        <a href="/help" class="hover:text-brand-green transition-colors">Help Centre</a>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a href="/help/#integrations" class="hover:text-brand-green transition-colors">Integrations</a>
+      </nav>
+
+      <h1 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-8">How to use FX Gains &amp; Losses explainer report for Xero</h1>
+
+      <div class="prose prose-lg prose-gray max-w-none
+                  [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-text-heading [&_h4]:mt-6 [&_h4]:mb-2
+                  [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                  [&_a]:text-brand-green [&_a]:underline
+                  [&_table]:w-full [&_table]:border-collapse [&_table]:mb-6
+                  [&_th]:bg-gray-50 [&_th]:px-4 [&_th]:py-2.5 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-heading [&_th]:border [&_th]:border-gray-200
+                  [&_td]:px-4 [&_td]:py-2.5 [&_td]:text-sm [&_td]:text-text-body [&_td]:border [&_td]:border-gray-200
+                  [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:my-6
+                  [&_iframe]:rounded-xl [&_iframe]:my-6 [&_iframe]:w-full [&_iframe]:aspect-video">
+        <Fragment set:html={articleHtml} />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/help" class="inline-flex items-center gap-2 text-[0.9375rem] text-brand-green font-medium hover:underline">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Back to Help Centre
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
