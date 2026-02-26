@@ -1,0 +1,125 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const articleHtml = `<p>Local payments via HedgeFlows are the way to transfer funds internationally leveraging our partner network with access to the local payment scheme. This can be a cost-effective and fast alternative to traditional SWIFT payments. All pricing plants HedgeFlows include a set number of complimentary Local payments.</p> 
+ <h3>Local Payments in Euros = SEPA payments</h3> <p>Sending Euros via the Single Euro Payment Area (SEPA) is one of the most popular Local payments routes. The following countries are included in SEPA:</p> 
+ <table> 
+ <tbody> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ad.svg" width="40" height="30" loading="lazy"> Andorra</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/gr.svg" width="40" height="30" loading="lazy"> Greece</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/no.svg" width="40" height="30" loading="lazy"> Norway</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/at.svg" width="40" height="30" loading="lazy"> Austria</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/hu.svg" width="40" height="30" loading="lazy"> Hungary</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/pl.svg" width="40" height="30" loading="lazy"> Poland</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/be.svg" width="40" height="30" loading="lazy"> Belgium</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/is.svg" width="40" height="30" loading="lazy"> Iceland</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/pt.svg" width="40" height="30" loading="lazy"> Portugal <sup>5</sup></td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/bg.svg" width="40" height="30" loading="lazy"> Bulgaria</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ie.svg" width="40" height="30" loading="lazy"> Ireland</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ro.svg" width="40" height="30" loading="lazy"> Romania</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/cy.svg" width="40" height="30" loading="lazy"> Cyprus</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/it.svg" width="40" height="30" loading="lazy"> Italy</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/sm.svg" width="40" height="30" loading="lazy"> San Marino</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/cr.svg" width="40" height="30" loading="lazy"> Croatia</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/lv.svg" width="40" height="30" loading="lazy"> Latvia</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/sk.svg" width="40" height="30" loading="lazy"> Slovakia</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/cz.svg" width="40" height="30" loading="lazy"> Czech Republic</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/li.svg" width="40" height="30" loading="lazy"> Liechtenstein</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/si.svg" width="40" height="30" loading="lazy"> Slovenia</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/dk.svg" width="40" height="30" loading="lazy"> Denmark <sup>1</sup></td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/lt.svg" width="40" height="30" loading="lazy"> Lithuania</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/es.svg" width="40" height="30" loading="lazy"> Spain <sup>6</sup></td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ee.svg" width="40" height="30" loading="lazy"> Estonia</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/lu.svg" width="40" height="30" loading="lazy"> Luxembourg</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/se.svg" width="40" height="30" loading="lazy"> Sweden</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/fi.svg" width="40" height="30" loading="lazy"> Finland <sup>2</sup></td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/mt.svg" width="40" height="30" loading="lazy"> Malta</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ch.svg" width="40" height="30" loading="lazy"> Switzerland</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/fr.svg" width="40" height="30" loading="lazy"> France <sup>3</sup></td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/mn.svg" width="40" height="30" loading="lazy"> Monaco</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/gb.svg" width="40" height="30" loading="lazy"> United Kingdom <sup>7</sup></td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/de.svg" width="40" height="30" loading="lazy"> Germany</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/nl.svg" width="39" height="29" loading="lazy"> Netherlands <sup>4</sup></td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/va.svg" width="40" height="30" loading="lazy"> Vatican City</td> 
+ </tr> 
+ </tbody> 
+ </table> <h3>Notes for SEPA Countries table above:</h3> 
+ <ol> 
+ <li>Excluding the Faroe Islands and Greenland.</li> 
+ <li>Including the Aland Islands.</li> 
+ <li>Including Martinique, Guadeloupe, French Guiana, Réunion, St Pierre et Miquelon, Mayotte, Saint Martin and Saint Barthélemy but excluding New Caledonia and Dependencies, French Polynesia, French Southern and Antarctic Territories, and the Wallis and Futuna Islands.</li> 
+ <li>Excluding Aruba and the Netherlands Antilles.</li> 
+ <li>Including Azores and Madeira.</li> 
+ <li>Including the Canary Islands, Ceuta and Melilla.</li> 
+ <li>Including Gibraltar, the Isle of Man, Guernsey, Jersey, but excluding Anguilla, Cayman Islands, Falkland Islands, South Georgia and the South Sandwich Islands, Montserrat, Pitcairn, Saint Helena and Dependencies, British Antarctic Territory, British Indian Ocean Territory, Turks and Caicos Islands, and the British Virgin Islands.</li> 
+ </ol> <p><strong>Please note:</strong> Kosovo and Montenegro use the Euro as their domestic currency but do not belong to SEPA or fall under the Payment Service Directive.</p> <h3>Other local payment schemes</h3> <p>Other Local payment schemes cover US Dollar (ACH), Canadian Dollar, Hong Kong Dollar, Australian Dollar, Singapore Dollar, Swedish Krona, Danish Krona, Norwegian Krona, Indian Rupee</p> <p><strong>The information on this page is correct as of 01/12/2021. It is intended as a general guide only.</strong></p>`;
+---
+
+<PageLayout
+  title="What are Local payments and where are they available? | Help Centre | HedgeFlows"
+  description="What are Local payments and where are they available? - HedgeFlows Help Centre"
+>
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">
+        <a href="/help" class="hover:text-brand-green transition-colors">Help Centre</a>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a href="/help/#payments" class="hover:text-brand-green transition-colors">Payments & Transfers</a>
+      </nav>
+
+      <h1 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-8">What are Local payments and where are they available?</h1>
+
+      <div class="prose prose-lg prose-gray max-w-none
+                  [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-text-heading [&_h4]:mt-6 [&_h4]:mb-2
+                  [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                  [&_a]:text-brand-green [&_a]:underline
+                  [&_table]:w-full [&_table]:border-collapse [&_table]:mb-6
+                  [&_th]:bg-gray-50 [&_th]:px-4 [&_th]:py-2.5 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-heading [&_th]:border [&_th]:border-gray-200
+                  [&_td]:px-4 [&_td]:py-2.5 [&_td]:text-sm [&_td]:text-text-body [&_td]:border [&_td]:border-gray-200
+                  [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:my-6
+                  [&_iframe]:rounded-xl [&_iframe]:my-6 [&_iframe]:w-full [&_iframe]:aspect-video">
+        <Fragment set:html={articleHtml} />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/help" class="inline-flex items-center gap-2 text-[0.9375rem] text-brand-green font-medium hover:underline">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Back to Help Centre
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

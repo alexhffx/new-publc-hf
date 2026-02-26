@@ -1,0 +1,274 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const articleHtml = `<p>Our foreign exchange (FX) schedules tell you everything you need to know to make your conversion on time. As long as you create your conversion before the given cutoff time, the conversions will settle on the same day.</p> 
+ <p>Buy US Dollars (USD) against UK Sterling, and Euros are subject to the following Cutoff times:</p> 
+ <table> 
+ <thead> 
+ <tr> 
+ <th>Selling</th> 
+ <th>Buying</th> 
+ <th>Cutoff time (UK Time)</th> 
+ </tr> 
+ </thead> 
+ <tbody> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/gb.svg" width="25" height="19" loading="lazy"> UK Sterling (GBP)</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/us.svg" width="25" height="19" loading="lazy"> US Dollar (USD)</td> 
+ <td>15:30</td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/eu.svg" width="25" height="19" loading="lazy"> Euro (EUR)</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/us.svg" width="25" height="19" loading="lazy"> US Dollar (USD)</td> 
+ <td>15:30</td> 
+ </tr> 
+ </tbody> 
+ </table> <p>For all other currencies, when using the table below, the cutoff time of the currency with the higher rank applies. For example, if you want to buy Australian Dollars (AUD) with UK Sterling (GBP). Australian Dollars (AUD) has a cutoff time of 13:00, while UK Sterling (GBP) has a cutoff time of 14:20. Since AUD has a higher rank in this table, the cutoff for converting on the same day will be 13:00. If you miss the cutoff time, the conversion will settle on the next business day.</p> 
+ <table> 
+ <thead> 
+ <tr> 
+ <th>Rank</th> 
+ <th>Currency <em>(ISO)</em></th> 
+ <th>Cutoff time (UK Time)</th> 
+ </tr> 
+ </thead> 
+ <tbody> 
+ <tr> 
+ <td>1</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/cn.svg" width="40" height="30" loading="lazy"> Chinese Yuan <em>(CNY)</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>2</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/th.svg" width="40" height="30" loading="lazy"> Thai Baht <em>(THB)</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>3</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ug.svg" width="40" height="30" loading="lazy"> Ugandan Shilling <em>(UGX)</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>4</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/au.svg" width="40" height="30" loading="lazy"> Australian Dollar <em>(AUD)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>5</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/bh.svg" width="40" height="30" loading="lazy"> Bahrain Dinar <em>(BHD)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>6</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/hk.svg" width="40" height="30" loading="lazy"> Hong Kong Dollar <em>(HKD)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>7</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/il.svg" width="40" height="30" loading="lazy"> Israeli Shekel <em>(ILS)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>8</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/jp.svg" width="40" height="30" loading="lazy"> Japanese Yen <em>(JPY)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>9</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ke.svg" width="40" height="30" loading="lazy"> Kenyan Shilling <em>(KES)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>10</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/kw.svg" width="40" height="30" loading="lazy"> Kuwait Dinar <em>(KWD)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>11</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/nz.svg" width="40" height="30" loading="lazy"> New Zealand Dollar <em>(NZD)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>12</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/om.svg" width="40" height="30" loading="lazy"> Omani Rial <em>(OMR)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>13</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/qa.svg" width="40" height="30" loading="lazy"> Qatar Rial <em>(QAR)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>14</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/sa.svg" width="40" height="30" loading="lazy"> Saudi Riyal <em>(SAR)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>15</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/sg.svg" width="40" height="30" loading="lazy"> Singapore Dollar <em>(SGD)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>16</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ae.svg" width="40" height="30" loading="lazy"> United Arab Emirates Dirham <em>(AED)</em></td> 
+ <td>13:00</td> 
+ </tr> 
+ <tr> 
+ <td>17</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/hr.svg" width="40" height="30" loading="lazy"> Croatian Kuna <em>(HRK)</em></td> 
+ <td>15:00</td> 
+ </tr> 
+ <tr> 
+ <td>18</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/bg.svg" width="40" height="30" loading="lazy"> Bulgarian Lev <em>(BGN)</em></td> 
+ <td>15:30</td> 
+ </tr> 
+ <tr> 
+ <td>19</td> 
+ <td><img src="https://assets.currencycloud.com/wp-content/uploads/2018/09/indian-flag-510x382.png" width="40" height="30" loading="lazy"> Indian Rupee <em>(INR)**</em></td> 
+ <td>16:30</td> 
+ </tr> 
+ <tr> 
+ <td>20</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/id.svg" width="40" height="30" loading="lazy"> Indonesian Rupiah <em>(IDR)**</em></td> 
+ <td>16:30</td> 
+ </tr> 
+ <tr> 
+ <td>21</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/my.svg" width="40" height="30" loading="lazy"> Malaysian Ringgit <em>(MYR)**</em></td> 
+ <td>16:30</td> 
+ </tr> 
+ <tr> 
+ <td>22</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ph.svg" width="40" height="30" loading="lazy"> Philippine Peso <em>(PHP)**</em></td> 
+ <td>16:30</td> 
+ </tr> 
+ <tr> 
+ <td>23</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/cz.svg" width="40" height="30" loading="lazy"> Czech Koruna <em>(CZK)</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>24</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/hu.svg" width="40" height="30" loading="lazy"> Hungarian Forint <em>(HUF)</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>25</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/mx.svg" width="40" height="30" loading="lazy"> Mexican Peso <em>(MXN)</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>26</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ro.svg" width="40" height="30" loading="lazy"> Romanian Leu <em>(RON)</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>27</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ru.svg" width="40" height="30" loading="lazy"> Russian Ruble <em> (RUB)***</em></td> 
+ <td>08:00</td> 
+ </tr> 
+ <tr> 
+ <td>28</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/pl.svg" width="40" height="30" loading="lazy"> Polish Zloty <em>(PLN)</em></td> 
+ <td>08:30</td> 
+ </tr> 
+ <tr> 
+ <td>29</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/tr.svg" width="40" height="30" loading="lazy"> Turkish Lira <em>(TRY)</em></td> 
+ <td>08:30</td> 
+ </tr> 
+ <tr> 
+ <td>30</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/dk.svg" width="40" height="30" loading="lazy"> Danish Krone <em>(DKK)</em></td> 
+ <td>09:30</td> 
+ </tr> 
+ <tr> 
+ <td>31</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/no.svg" width="40" height="30" loading="lazy"> Norwegian Krone <em>(NOK)</em></td> 
+ <td>09:30</td> 
+ </tr> 
+ <tr> 
+ <td>32</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/za.svg" width="40" height="30" loading="lazy"> South African Rand <em>(ZAR)</em></td> 
+ <td>09:30</td> 
+ </tr> 
+ <tr> 
+ <td>33</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/se.svg" width="40" height="30" loading="lazy"> Swedish Krona <em>(SEK)</em></td> 
+ <td>09:30</td> 
+ </tr> 
+ <tr> 
+ <td>34</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ch.svg" width="40" height="30" loading="lazy"> Swiss franc <em>(CHF)</em></td> 
+ <td>09:30</td> 
+ </tr> 
+ <tr> 
+ <td>35</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/eu.svg" width="40" height="30" loading="lazy"> Euro <em>(EUR)</em></td> 
+ <td>13:50</td> 
+ </tr> 
+ <tr> 
+ <td>36</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/gb.svg" width="40" height="30" loading="lazy"> UK Sterling <em>(GBP)</em></td> 
+ <td>14:20</td> 
+ </tr> 
+ <tr> 
+ <td>37</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/us.svg" width="40" height="30" loading="lazy"> US Dollar <em>(USD)</em></td> 
+ <td>15:50</td> 
+ </tr> 
+ <tr> 
+ <td>38</td> 
+ <td><img src="https://www.currencycloud.com/wp-content/themes/Divi-Child/img/svg/ca.svg" width="40" height="30" loading="lazy"> Canadian Dollar <em>(CAD)</em></td> 
+ <td>16:20</td> 
+ </tr> 
+ </tbody> 
+ </table>`;
+---
+
+<PageLayout
+  title="Foreign Exchange Cut-off Times | Help Centre | HedgeFlows"
+  description="Foreign Exchange Cut-off Times - HedgeFlows Help Centre"
+>
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">
+        <a href="/help" class="hover:text-brand-green transition-colors">Help Centre</a>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a href="/help/#fx-trading" class="hover:text-brand-green transition-colors">FX & Currency</a>
+      </nav>
+
+      <h1 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-8">Foreign Exchange Cut-off Times</h1>
+
+      <div class="prose prose-lg prose-gray max-w-none
+                  [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-text-heading [&_h4]:mt-6 [&_h4]:mb-2
+                  [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                  [&_a]:text-brand-green [&_a]:underline
+                  [&_table]:w-full [&_table]:border-collapse [&_table]:mb-6
+                  [&_th]:bg-gray-50 [&_th]:px-4 [&_th]:py-2.5 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-heading [&_th]:border [&_th]:border-gray-200
+                  [&_td]:px-4 [&_td]:py-2.5 [&_td]:text-sm [&_td]:text-text-body [&_td]:border [&_td]:border-gray-200
+                  [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:my-6
+                  [&_iframe]:rounded-xl [&_iframe]:my-6 [&_iframe]:w-full [&_iframe]:aspect-video">
+        <Fragment set:html={articleHtml} />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/help" class="inline-flex items-center gap-2 text-[0.9375rem] text-brand-green font-medium hover:underline">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Back to Help Centre
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

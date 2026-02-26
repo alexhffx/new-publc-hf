@@ -1,0 +1,59 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const articleHtml = `<h3>How do I update my data from Xero?</h3> <p>Most of the data is updated automatically shortly after it has been saved in Xero.</p> 
+ <p>You can also manually update data from Xero by clicking on the Refresh data link above the Invoices table or in the Xero section of the Settings page:</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/RefreshData.png.png" alt="RefreshData.png" width="2692" height="1040" loading="lazy"></p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/Settings_Config_highlighted1.png" alt="Settings_Config_highlighted1" width="1920" height="662" loading="lazy"></p> <h3>How do I disconnect from Xero?</h3> <p>You can disconnect HedgeFlows from your Xero account in the Xero section of our Settings page:</p>  <h3><img src="https://help.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/Settings_Config_Highlight3.png" alt="Settings_Config_Highlight3" width="1920" height="662" loading="lazy"></h3> <h3>Why can't I see my paid invoices?</h3> <p>By default, we filter out paid and voided invoices from the Invoice table. You can include them in the table by clicking "All" in the top section of the table:</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/PaidInvoicesFAQ.png.png" alt="PaidInvoicesFAQ.png" width="2774" height="768" loading="lazy"></p> <h3>Xero can't handle bulk payments in foreign currencies. Can you process them and write back to Xero?</h3> <p>Yes, we support bulk payments and aggregating invoices to the same beneficiary via our Bulk payments flow. Simply choose the invoices you want to pay from the Invoices table. We will process them in bulk and record individual currency payments with correct exchange rates and currency amounts back to Xero:</p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/Screenshot_bulk_payments.png.png" alt="Screenshot_bulk_payments.png" width="3024" height="1730" loading="lazy"></p> <h3>What doesn’t your integration do?</h3> <p>We currently don't offer the following:</p> 
+ <ol> 
+ <li>Importing sales and purchase orders (comings soon)</li> 
+ <li>Updating details for saved Contacts using data from Xero. If you want to import updated contact details into HedgeFlows you need to set up a new contact in our system.</li> 
+ <li>Importing invoices, bills etc. in home currency (coming soon)</li> 
+ <li>Automatically recording bank transfers from your bank to HedgeFlows for you in Xero (coming soon).</li> 
+ <li>Recording Collections and Conversion transactions (coming soon).</li> 
+ </ol> <p>If you can't find the feature that you would like to see, please send an email to <a href="/help/index">support@hedgeflows.com</a></p> <h3>Where in Xero should I see payments done via HedgeFlows?</h3> <p>Provided you have permitted us to do so doing Xero integration setup we will automatically record foreign currency payments executed from your HedgeFlows account in Xero. Regular currency transfers are recorded in HedgeFlows Clearing Account. You will need to add a funding transfer from your bank account to the HedgeFlows account manually.</p>  <h3>How do payment processing fees appear in Xero?</h3> <p>Payment processing fees will appear on the HedgeFlows Clearing account.</p>`;
+---
+
+<PageLayout
+  title="Xero integration - FAQs | Help Centre | HedgeFlows"
+  description="Xero integration - FAQs - HedgeFlows Help Centre"
+>
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">
+        <a href="/help" class="hover:text-brand-green transition-colors">Help Centre</a>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a href="/help/#integrations" class="hover:text-brand-green transition-colors">Integrations</a>
+      </nav>
+
+      <h1 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-8">Xero integration - FAQs</h1>
+
+      <div class="prose prose-lg prose-gray max-w-none
+                  [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-text-heading [&_h4]:mt-6 [&_h4]:mb-2
+                  [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                  [&_a]:text-brand-green [&_a]:underline
+                  [&_table]:w-full [&_table]:border-collapse [&_table]:mb-6
+                  [&_th]:bg-gray-50 [&_th]:px-4 [&_th]:py-2.5 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-heading [&_th]:border [&_th]:border-gray-200
+                  [&_td]:px-4 [&_td]:py-2.5 [&_td]:text-sm [&_td]:text-text-body [&_td]:border [&_td]:border-gray-200
+                  [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:my-6
+                  [&_iframe]:rounded-xl [&_iframe]:my-6 [&_iframe]:w-full [&_iframe]:aspect-video">
+        <Fragment set:html={articleHtml} />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/help" class="inline-flex items-center gap-2 text-[0.9375rem] text-brand-green font-medium hover:underline">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Back to Help Centre
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

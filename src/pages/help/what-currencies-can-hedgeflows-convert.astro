@@ -1,0 +1,133 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const articleHtml = `<p>We can convert and send transfers in the following currencies. Most popular currencies are available by default in all modules on our platform.</p> 
+ <p>If you see the currency you need in the list below but are unable to find it on our platform, please contact support, and we may be able to enable it for your specific account.</p> 
+ <table> 
+ <tbody> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/au.svg" width="40" height="30" loading="lazy"> Australian Dollar (AUD)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/il.svg" width="40" height="30" loading="lazy"> Israeli Shekel (ILS)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ru.svg" width="40" height="30" loading="lazy"> Russian Ruble (RUB) **</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/bh.svg" width="40" height="30" loading="lazy"> Bahrain Dinar (BHD)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/jp.svg" width="40" height="30" loading="lazy"> Japanese Yen (JPY)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/sa.svg" width="40" height="30" loading="lazy"> Saudi Riyal (SAR)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/bg.svg" width="40" height="30" loading="lazy"> Bulgarian Lev (BGN)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ke.svg" width="40" height="30" loading="lazy"> Kenyan Shilling (KES)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/sg.svg" width="40" height="30" loading="lazy"> Singapore Dollar (SGD)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ca.svg" width="41" height="31" loading="lazy"> Canadian Dollar (CAD)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/kw.svg" width="40" height="30" loading="lazy"> Kuwait Dinar (KWD)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/za.svg" width="40" height="30" loading="lazy"> South African Rand (ZAR)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/cn.svg" width="40" height="30" loading="lazy"> Chinese Yuan (CNH)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/my.svg" width="40" height="30" loading="lazy"> Malaysian Ringgit (MYR) <em>*</em></p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/se.svg" width="40" height="30" loading="lazy"> Swedish Krona (SEK)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/cz.svg" width="40" height="30" loading="lazy"> Czech Koruna (CZK)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/mx.svg" width="40" height="30" loading="lazy">Mexican Peso (MXN)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ch.svg" width="40" height="30" loading="lazy">Swiss Franc (CHF)</p> </td> 
+ </tr> 
+ <tr> 
+ <td><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/dk.svg" width="40" height="30" loading="lazy"> Danish Krone (DKK)</td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/nz.svg" width="40" height="30" loading="lazy"> New Zealand Dollar (NZD)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/th.svg" width="40" height="30" loading="lazy"> Thai Baht (THB)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/eu.svg" width="40" height="30" loading="lazy"> Euro (EUR)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/no.svg" width="40" height="30" loading="lazy"> Norwegian Krone (NOK)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/tr.svg" width="40" height="30" loading="lazy"> Turkish Lira (TRY)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/hk.svg" width="41" height="31" loading="lazy"> Hong Kong Dollar (HKD)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/om.svg" width="40" height="30" loading="lazy"> Omani Rial (OMR)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ug.svg" width="41" height="31" loading="lazy"> Ugandan Shilling (UGX)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/hu.svg" width="40" height="30" loading="lazy"> Hungarian Forint (HUF)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ph.svg" width="40" height="30" loading="lazy"> Philippine Peso (PHP) <em>*</em></p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/gb.svg" width="40" height="30" loading="lazy"> UK Sterling (GBP)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> 
+ <div> 
+ <div>
+ 
+ <img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/in.svg" width="40" height="30" loading="lazy"> Indian Rupee (INR) 
+ <em>*</em>
+ </div> 
+ </div> 
+ <div> 
+ <div>
+ 
+ </div> 
+ </div> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/pl.svg" width="41" height="31" loading="lazy"> Polish Zloty (PLN)</p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ae.svg" width="40" height="30" loading="lazy"> United Arab Emirates Dirham (AED)</p> </td> 
+ </tr> 
+ <tr> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/id.svg" width="40" height="30" loading="lazy"> Indonesian Rupiah (IDR) <em>*</em></p> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/qa.svg" width="40" height="30" loading="lazy"> Qatar Rial (QAR)</p> </td> 
+ <td><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/us.svg" width="40" height="30" loading="lazy"> US Dollar (USD)</td> 
+ </tr> 
+ <tr> 
+ <td> </td> 
+ <td> <p><img src="https://go.currencycloud.com/hubfs/Marketing/Help%20Centre/Flag%20Icons/ro.svg" width="41" height="31" loading="lazy"> Romanian Leu (RON)</p> </td> 
+ <td> </td> 
+ </tr> 
+ </tbody> 
+ </table> <p><em>* Restricted currencies</em></p> <p><em>** Russian Ruble (RUB) - Please note that we’re not currently supporting RUB transactions due to the conflict in Ukraine. </em></p>`;
+---
+
+<PageLayout
+  title="What currencies can HedgeFlows convert? | Help Centre | HedgeFlows"
+  description="What currencies can HedgeFlows convert? - HedgeFlows Help Centre"
+>
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">
+        <a href="/help" class="hover:text-brand-green transition-colors">Help Centre</a>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a href="/help/#fx-trading" class="hover:text-brand-green transition-colors">FX & Currency</a>
+      </nav>
+
+      <h1 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-8">What currencies can HedgeFlows convert?</h1>
+
+      <div class="prose prose-lg prose-gray max-w-none
+                  [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-text-heading [&_h4]:mt-6 [&_h4]:mb-2
+                  [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                  [&_a]:text-brand-green [&_a]:underline
+                  [&_table]:w-full [&_table]:border-collapse [&_table]:mb-6
+                  [&_th]:bg-gray-50 [&_th]:px-4 [&_th]:py-2.5 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-heading [&_th]:border [&_th]:border-gray-200
+                  [&_td]:px-4 [&_td]:py-2.5 [&_td]:text-sm [&_td]:text-text-body [&_td]:border [&_td]:border-gray-200
+                  [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:my-6
+                  [&_iframe]:rounded-xl [&_iframe]:my-6 [&_iframe]:w-full [&_iframe]:aspect-video">
+        <Fragment set:html={articleHtml} />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/help" class="inline-flex items-center gap-2 text-[0.9375rem] text-brand-green font-medium hover:underline">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Back to Help Centre
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

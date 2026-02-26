@@ -1,0 +1,62 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const articleHtml = `<p>MS Dynamics Business Central users must create Bank accounts, a dedicated Posting Account and Payment Journals for all currencies to export payments and transactions from HedgeFlows via API. This will allow HedgeFlows to automatically export detailed information about transactions and payments instructed via our platform directly into Business Dynamics. For example, Vendor invoices paid via HedgeFlows can have the payment automatically applied to them in your G/L and Vendor journals. Automating this process can save time and remove the risk of manual errors such as paying duplicate invoices or sending incorrect payments.</p> 
+ <p>The following step must be implemented by experienced Dynamics Business Central users. If in doubt, please contact your accounting specialist or Microsoft consultant to assist with this process. HedgeFlows support team can provide assistance with technical integration issues but can't provide guidance on accounting treatment or company specific set up in Business Dynamics. </p> <p>The following steps are required to prepare Dynamics successful imports from HedgeFlows:</p> 
+ <ol> 
+ <li><a href="/help/index">Create a dedicated posting group</a> </li> 
+ <li><a href="/help/index">Create a G/L account for HedgeFlows</a></li> 
+ <li><a href="/help/index">Create a Bank account for each currency</a></li> 
+ <li><a href="/help/index">Create a Payment Journal for each currency</a></li> 
+ </ol> <a id="create-positing-group"></a> <h3>1) Create a dedicated Posting GROUP for HedgeFlows</h3> <p>Creating dedicated Payment Journals and Posting Group will ensure that correct entries are written by HedgeFlows in a compliant manner. They are recorded in all relevant journals in a fashion, similar to how they would be recorded by Dynamics users manually. For example, creating a G/L Posting Group with direct posting disabled restricts entries into G/L without matching entries in Vendor Ledgers or Bank Ledgers.</p> <p>To create the posting group, click on the <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" height="17" aria-hidden="true">
+ <g id="Search1_layer">
+ <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+ </g>
+ </svg> icon in Business Central and search for "Bank Account Posting Groups".</p> <p>Create a new posting group - enter a Code to name the group such as "HedgeFlows", go to the G/L Account no. column, and Click on +New to add:</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-Oct-05-2023-04-43-52-0146-AM.png" loading="lazy"></p> <a id="create-accounts"></a> <h3>2) Create a G/L Account for HedgeFlows</h3> <p>We recommend entering HedgeFlows as a separate Posting Account as an Asset on your Balance Sheet and disabling Direct Posting by clicking on the relevant toggle:</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-Oct-05-2023-04-48-57-4631-AM.png" loading="lazy"></p> <p>Make sure the newly created account is mapped to your Posting group:</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-Oct-05-2023-05-08-41-7329-AM.png" loading="lazy"></p> <h3> </h3> <a id="create-bank-accounts"></a> <h3>3) CREATE A BANK ACCOUNT FOR HEDGEFLOWS IN EACH CURRENCY</h3> <p>Go to the <strong>Cash Management</strong> section in Business Central and select Bank Accounts. Click on +New to start creating a new bank account :</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-3.png" loading="lazy"></p> <p>Enter the number and name of the account. We recommend including the currency of the account in its name to simplify the Payments Journal mapping that will follow.</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-4.png" loading="lazy"></p> <p>Select the correct currency for this account in Posting &gt; Currency Code. For your main reporting currency, you can leave the Currency Code field empty: </p> <p><img src="https://help.hedgeflows.com/hs-fs/hubfs/image-png-Oct-05-2023-05-20-34-9599-AM.png" width="635" height="276" loading="lazy"></p> <p>Next, Select Posting Group for HedgeFlows in Posting &gt; Bank Acc. Posting Group:</p> <h3><img src="https://help.hedgeflows.com/hs-fs/hubfs/image-png-Oct-05-2023-05-09-30-3247-AM.png" width="838" height="301" loading="lazy"></h3> <p>Complete this process for all currencies you wish to have Bank Accounts for in Business Central:</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-Oct-05-2023-05-23-57-5054-AM.png" loading="lazy"></p> <h3> </h3> <a id="create-journals"></a> <h3>4) Create a payment journal for HedgeFlows in each currency.</h3> <p>Go to the <strong>Cash Management</strong> section in Business Central and select Bank Accounts. Click on +New to start creating a new Payment Journal :</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-Oct-05-2023-05-24-56-3194-AM.png" loading="lazy"></p> <p>Enter the Name, Description for a Payment Journal in each currency and make sure to map it to Balancing Account Type "Bank Account" and Bal. Account No. that matches the accounts created in Step 3:</p> <p><img src="https://help.hedgeflows.com/hubfs/image-png-Oct-05-2023-05-34-00-6153-AM.png" loading="lazy"></p> <p>Once you have confirmed these settings, you are ready to complete mapping in HedgeFlows as described in Step 5 of our <a href="/help/business-central-integration-how-to-get-started">Business Central integration settings</a> guide.</p>`;
+---
+
+<PageLayout
+  title="MS Dynamics Business Central - how to prepare for hedgeflow API feed | Help Centre | HedgeFlows"
+  description="MS Dynamics Business Central - how to prepare for hedgeflow API feed - HedgeFlows Help Centre"
+>
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-text-muted mb-8">
+        <a href="/help" class="hover:text-brand-green transition-colors">Help Centre</a>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a href="/help/#integrations" class="hover:text-brand-green transition-colors">Integrations</a>
+      </nav>
+
+      <h1 class="text-[1.75rem] md:text-[2.25rem] font-bold text-text-heading leading-tight mb-8">MS Dynamics Business Central - how to prepare for hedgeflow API feed</h1>
+
+      <div class="prose prose-lg prose-gray max-w-none
+                  [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-text-heading [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-text-heading [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-text-heading [&_h4]:mt-6 [&_h4]:mb-2
+                  [&_p]:text-text-body [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul_li]:text-text-body [&_ul_li]:mb-2
+                  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_ol_li]:text-text-body [&_ol_li]:mb-2
+                  [&_a]:text-brand-green [&_a]:underline
+                  [&_table]:w-full [&_table]:border-collapse [&_table]:mb-6
+                  [&_th]:bg-gray-50 [&_th]:px-4 [&_th]:py-2.5 [&_th]:text-left [&_th]:text-sm [&_th]:font-semibold [&_th]:text-text-heading [&_th]:border [&_th]:border-gray-200
+                  [&_td]:px-4 [&_td]:py-2.5 [&_td]:text-sm [&_td]:text-text-body [&_td]:border [&_td]:border-gray-200
+                  [&_img]:rounded-xl [&_img]:shadow-sm [&_img]:my-6
+                  [&_iframe]:rounded-xl [&_iframe]:my-6 [&_iframe]:w-full [&_iframe]:aspect-video">
+        <Fragment set:html={articleHtml} />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/help" class="inline-flex items-center gap-2 text-[0.9375rem] text-brand-green font-medium hover:underline">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Back to Help Centre
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
