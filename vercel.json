@@ -4,6 +4,8 @@
     { "source": "/global-bulk-payments", "destination": "/platform/payments", "permanent": true },
     { "source": "/multi-currency-payment-runs", "destination": "/platform/payments", "permanent": true },
     { "source": "/multi-currency-payables-automation", "destination": "/platform/payments", "permanent": true },
+    { "source": "/multi-currency-batch-payments-for-xero", "destination": "/platform/payments", "permanent": true },
+    { "source": "/foreign-currency-payment-runs", "destination": "/platform/payments", "permanent": true },
     { "source": "/cash-management", "destination": "/platform/cash-management", "permanent": true },
     { "source": "/fx-risk-management", "destination": "/platform/fx-risk-management", "permanent": true },
     { "source": "/automated-ap-ar-reconciliations", "destination": "/platform/connected-account", "permanent": true },
