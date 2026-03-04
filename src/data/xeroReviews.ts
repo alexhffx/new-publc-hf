@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   Xero App Store Reviews — 22 verified reviews, all 5-star
+   Xero App Store Reviews — 24 verified reviews, all 5-star
    Source: https://apps.xero.com/uk/app/hedgeflows/reviews
    ─────────────────────────────────────────────────────────────────────────── */
 
@@ -16,7 +16,7 @@ export interface XeroReview {
 
 export const xeroStats = {
   rating: 5.0,
-  totalReviews: 22,
+  totalReviews: 24,
   fiveStarPercent: 100,
   url: 'https://apps.xero.com/uk/app/hedgeflows/reviews',
 };
