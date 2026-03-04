@@ -4,9 +4,7 @@ import Hero from '../components/Hero.astro';
 import CTASection from '../components/CTASection.astro';
 
 const hubspotPortalId = '8698300';
-// TODO: Create a "Contact Us" form in HubSpot and replace this placeholder with the real form GUID.
-// In HubSpot, go to Marketing > Forms > Create form, then set up a notification to alex@hedgeflows.com.
-const hubspotFormId = 'PLACEHOLDER_CONTACT_FORM_ID';
+const hubspotFormId = '2hsiyEn6EQLS7Pn7nUNoXqw';
 ---
 
 <PageLayout
@@ -266,7 +264,7 @@ const hubspotFormId = 'PLACEHOLDER_CONTACT_FORM_ID';
         }
       );
 
-      if (response.ok || formId === 'PLACEHOLDER_CONTACT_FORM_ID') {
+      if (response.ok) {
         // Show success
         document.getElementById('contact-form-wrapper').classList.add('hidden');
         document.getElementById('contact-success').classList.remove('hidden');
