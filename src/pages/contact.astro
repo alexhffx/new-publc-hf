@@ -4,7 +4,7 @@ import Hero from '../components/Hero.astro';
 import CTASection from '../components/CTASection.astro';
 
 const hubspotPortalId = '8698300';
-const hubspotFormId = '2hsiyEn6EQLS7Pn7nUNoXqw';
+const hubspotFormId = '86c8b212-7e84-40b4-bb3e-7ee750da17ab';
 ---
 
 <PageLayout
@@ -269,11 +269,14 @@ const hubspotFormId = '2hsiyEn6EQLS7Pn7nUNoXqw';
         document.getElementById('contact-form-wrapper').classList.add('hidden');
         document.getElementById('contact-success').classList.remove('hidden');
       } else {
-        throw new Error('Submission failed');
+        var body = await response.text();
+        console.error('HubSpot error:', response.status, body);
+        throw new Error(body || 'Submission failed');
       }
     } catch (err) {
       errorEl.textContent = 'Something went wrong. Please try again.';
       errorEl.classList.remove('hidden');
+      console.error('Form submission error:', err);
     } finally {
       btnText.classList.remove('hidden');
       btnLoading.classList.add('hidden');
