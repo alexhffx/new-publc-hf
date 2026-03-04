@@ -1,26 +1,465 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import Hero from '../../../components/Hero.astro';
-import PageSections from '../../../components/PageSections.astro';
+import PlatformScene from '../../../components/hero/PlatformScene.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import StepProcess from '../../../components/StepProcess.astro';
 import CTASection from '../../../components/CTASection.astro';
-import { getPage } from '../../../lib/sanity';
+import PaymentsScene from '../../../components/feature/PaymentsScene.astro';
+import CashFlowScene from '../../../components/feature/CashFlowScene.astro';
+import FxRiskScene from '../../../components/feature/FxRiskScene.astro';
+import { getClientLogos } from '../../../lib/sanity';
+import { staticClientLogos } from '../../../data/clientLogos';
 
-const page = await getPage('platform/integrations/quickbooks');
+let clientLogos: any[] = [];
+try {
+  const sanityLogos = await getClientLogos() || [];
+  clientLogos = sanityLogos.length > 0 ? sanityLogos : staticClientLogos;
+} catch (e) {
+  clientLogos = staticClientLogos;
+}
+
+/* ─────────── Icon SVG paths (Heroicons outline) ─────────── */
+const iconPaths: Record<string, string> = {
+  sync: 'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182',
+  send: 'M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5',
+  'bar-chart': 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  shield: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  book: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  bolt: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  check: 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  globe: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+};
+
+/* ─────────── Benefits ─────────── */
+const benefits = [
+  {
+    icon: 'sync',
+    title: 'Auto-sync invoices & bills',
+    description: 'Import your foreign currency bills and invoices from QuickBooks in real time. No copy-pasting, no spreadsheets.',
+  },
+  {
+    icon: 'send',
+    title: 'Pay internationally in bulk',
+    description: 'Process multi-currency payment runs in minutes. Approve, schedule, and pay — then watch everything reconcile automatically back to QuickBooks.',
+  },
+  {
+    icon: 'shield',
+    title: 'Manage FX risk effortlessly',
+    description: 'See your true currency exposure, get AI-powered hedging recommendations, and lock in rates to protect your margins.',
+  },
+  {
+    icon: 'book',
+    title: 'Automated bookkeeping',
+    description: 'Payments, exchange rates, and bank fees are posted back to QuickBooks automatically — keeping your ledger accurate and audit-ready.',
+  },
+];
+
+/* ─────────── How it works steps ─────────── */
+const steps = [
+  {
+    number: 1,
+    title: 'Sign up for HedgeFlows',
+    description: 'Create your free account and complete a quick onboarding. No credit card required.',
+  },
+  {
+    number: 2,
+    title: 'Connect QuickBooks',
+    description: 'Link your QuickBooks Online account in under 3 minutes — no IT resources needed.',
+  },
+  {
+    number: 3,
+    title: 'Import & manage',
+    description: 'Your bills, invoices, and contacts sync automatically. Set your preferences for what to import and write back.',
+  },
+  {
+    number: 4,
+    title: 'Pay, hedge & reconcile',
+    description: 'Execute payments, lock in FX rates, and let HedgeFlows reconcile everything back to QuickBooks.',
+  },
+];
+
+/* ─────────── Stats ─────────── */
+const stats = [
+  { value: '3 min', label: 'To connect QuickBooks' },
+  { value: '35', label: 'Currencies supported' },
+  { value: '185', label: 'Countries covered' },
+  { value: '0', label: 'IT resources needed' },
+];
+
+/* ─────────── Data flow rows (for diagram) ─────────── */
+const dataFlows = [
+  { num: 1, left: 'Company & User Name', right: 'Account details', bidir: true },
+  { num: 2, left: 'Contacts & bank details', right: 'Contacts', bidir: true },
+  { num: 3, left: 'Invoices & Orders', right: 'Bills, Invoices, Orders', bidir: true },
+  { num: 4, left: 'Account for Bank fees', right: 'Chart of Accounts', bidir: true },
+  { num: 5, left: 'Clearing and FX accounts', right: 'Chart of Accounts', bidir: false },
+  { num: 6, left: 'Booked Exchange Rates', right: 'Bills, Invoices', bidir: false },
+  { num: 7, left: 'Transfers', right: 'Payments', bidir: false },
+  { num: 8, left: 'Payment fees', right: 'Bank Transactions', bidir: false },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'QuickBooks Integration'}
-  description={page?.seoDescription || 'Connect HedgeFlows with QuickBooks for automated treasury management.'}
+  title="QuickBooks Online Integration | HedgeFlows"
+  description="Connect QuickBooks Online with HedgeFlows to automate international payments, FX risk management, and multi-currency reconciliation. Sign up free."
 >
+  <!-- Hero -->
   <Hero
-    title={page?.heroTitle || 'Connect HedgeFlows with QuickBooks'}
-    subtitle={page?.heroSubtitle || 'Sync invoices, bills, and payments between QuickBooks and HedgeFlows automatically.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
-  />
-  <PageSections sections={page?.sections || []} />
+    title="International payments & FX management for QuickBooks"
+    subtitle="Stop juggling bank portals and spreadsheets. HedgeFlows connects to your QuickBooks Online to automate multi-currency payments, FX hedging, and reconciliation — so you can focus on growing your business."
+    primaryCta={{ label: 'Sign Up Free', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/dashboard.png"
+      screenshotAlt="HedgeFlows dashboard connected to QuickBooks"
+      accentLabel="QuickBooks sync"
+      integrations={['/assets/logos/integrations/quickbooks-sq.svg']}
+    />
+  </Hero>
+
+  <!-- Trust Bar -->
+  <TrustBar label="Trusted by international businesses:" logos={clientLogos} slider={true} />
+
+  <!-- Benefits Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-3 bg-white border border-gray-100 rounded-full px-5 py-2.5 mb-6 shadow-sm">
+          <img src="/assets/logos/integrations/quickbooks-sq.svg" alt="QuickBooks" class="w-7 h-7" />
+          <span class="text-[0.8125rem] font-semibold text-text-heading">Built for QuickBooks Online</span>
+        </div>
+        <h2 class="section-heading">Everything QuickBooks doesn't do for international</h2>
+        <p class="section-subheading mx-auto">
+          QuickBooks is great for domestic accounting. HedgeFlows adds the multi-currency superpowers your finance team needs.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {benefits.map((b) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm hover:shadow-md hover:border-brand-green/20 transition-all duration-200">
+            <div class="w-12 h-12 rounded-2xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[b.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-2">{b.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="section-padding-sm bg-[#F8FAFB] border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        {stats.map((s) => (
+          <div class="text-center">
+            <p class="text-[2rem] md:text-[2.5rem] font-bold text-brand-green leading-none">{s.value}</p>
+            <p class="text-[0.875rem] text-text-muted mt-2 font-medium">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Up and running in minutes, not months</h2>
+        <p class="section-subheading mx-auto">
+          No IT project. No developers. Connect QuickBooks and start managing international payments today.
+        </p>
+      </div>
+      <StepProcess steps={steps} />
+      <div class="text-center mt-12">
+        <a href="https://app.hedgeflows.com/signup" class="btn-primary text-[1.0625rem] px-8 py-4">
+          Get started for free
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Deep-Dives -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content space-y-24">
+
+      <!-- Payments -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Payments & AP Automation</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Pay international suppliers in minutes, not hours
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Import bills from QuickBooks, approve payment runs with your team, and execute — domestically or internationally. Everything reconciles back to your QuickBooks ledger automatically.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Bulk payment runs across multiple currencies',
+              'Flexible approval workflows with full audit trail',
+              'FX rates up to 5x cheaper than high-street banks',
+              'Auto-reconcile paid invoices back to QuickBooks',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/payments" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about Payments
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+        <PaymentsScene />
+      </div>
+
+      <!-- Cash Management (reversed) -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <CashFlowScene />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Cash Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            See all your money in one place
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            QuickBooks shows you your books. HedgeFlows shows you your cash — across every bank account, currency, and entity in real time. Forecast accurately and make smarter decisions.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Consolidated multi-currency cash position',
+              'Connect 2,000+ bank accounts via Open Banking',
+              'Cash flow forecasting with FX overlay',
+              'Works alongside QuickBooks — no duplication',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/cash-management" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about Cash Management
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- FX Risk -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">FX Risk Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Protect your margins from currency swings
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Most QuickBooks users only discover FX losses when the bank statement arrives. HedgeFlows gives you real-time visibility into exposure, AI-powered hedging recommendations, and simple tools to act.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Automated exposure tracking from your QuickBooks data',
+              'AI Currency Co-pilot for hedging recommendations',
+              'Pre-book rates to guarantee costs in advance',
+              'Expert consultation included — no FX expertise needed',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/fx-risk-management" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about FX Risk
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+        <FxRiskScene />
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Flow Diagram -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">How the integration works</h2>
+        <p class="section-subheading mx-auto">
+          A two-way integration that keeps HedgeFlows and QuickBooks in perfect sync.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto rounded-2xl bg-gray-50 border border-gray-100 p-5 md:p-10">
+        <!-- Logo Header -->
+        <div class="flex justify-between items-end mb-8 md:mb-10 px-6 md:px-14">
+          <div class="flex flex-col items-center gap-2">
+            <img src="/assets/logos/HF-logo-gr.svg" alt="HedgeFlows" class="h-8 md:h-11 w-auto" />
+            <span class="text-xs md:text-sm font-bold text-text-heading">HedgeFlows</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <img src="/assets/logos/integrations/qb-logo.svg" alt="QuickBooks" class="h-10 md:h-14 w-auto" />
+            <span class="text-xs md:text-sm font-bold text-text-heading">QuickBooks</span>
+          </div>
+        </div>
+
+        <!-- Flow Rows -->
+        <div class="space-y-2.5 md:space-y-3">
+          {dataFlows.map((row) => (
+            <div class="flex items-center gap-1.5 md:gap-3">
+              <div class="w-7 h-7 md:w-9 md:h-9 rounded-full bg-brand-green text-white flex items-center justify-center text-xs md:text-sm font-bold shrink-0">{row.num}</div>
+              <div class="flex-1 bg-brand-green text-white font-medium text-[0.65rem] md:text-sm rounded-lg px-2 md:px-4 py-2 md:py-2.5 text-center whitespace-nowrap">{row.left}</div>
+              <div class="shrink-0 flex items-center justify-center w-8 md:w-16">
+                {row.bidir ? (
+                  <svg class="w-full" viewBox="0 0 60 12" fill="none"><line x1="8" y1="6" x2="52" y2="6" stroke="#1f2937" stroke-width="1.5"/><polygon points="0,6 8,2 8,10" fill="#1f2937"/><polygon points="60,6 52,2 52,10" fill="#1f2937"/></svg>
+                ) : (
+                  <svg class="w-full" viewBox="0 0 60 12" fill="none"><line x1="0" y1="6" x2="52" y2="6" stroke="#1f2937" stroke-width="1.5"/><polygon points="60,6 52,2 52,10" fill="#1f2937"/></svg>
+                )}
+              </div>
+              <div class="flex-1 bg-[#2CA01C] text-white font-medium text-[0.65rem] md:text-sm rounded-lg px-2 md:px-4 py-2 md:py-2.5 text-center whitespace-nowrap">{row.right}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/help/quickbooks-integration-what-does-it-do" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+          See full integration details
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why HedgeFlows -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Built by treasury experts, for finance teams</h2>
+        <p class="section-subheading mx-auto">
+          Our team has 25+ years managing risk for multinational banks and businesses. We built the platform we wished existed.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          {
+            icon: 'bolt',
+            title: 'No IT resources needed',
+            description: 'Connect QuickBooks Online in 3 minutes — no developers, no tickets, no project plan.',
+          },
+          {
+            icon: 'check',
+            title: 'No training required',
+            description: 'Intuitive workflows let anyone on your team get started from day one.',
+          },
+          {
+            icon: 'globe',
+            title: 'Built for international',
+            description: 'Unlike bolt-on FX tools, HedgeFlows was designed from the ground up for multi-currency businesses.',
+          },
+        ].map((d) => (
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-2xl bg-brand-green-pale flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[d.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-semibold text-text-heading mb-2">{d.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed max-w-xs mx-auto">{d.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Regulation -->
+  <section class="section-padding-sm bg-white border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x md:divide-gray-200">
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img src="/assets/logos/clients/tmi.jpg" alt="TMI Awards 2025" class="w-16 h-16 rounded-2xl object-cover flex-shrink-0" />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">Best Risk Management</p>
+            <p class="text-[0.8125rem] text-text-muted">TMI Awards 2025</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img src="/assets/logos/clients/ttp.jpg" alt="TTP Awards 2026" class="w-16 h-16 rounded-2xl object-cover flex-shrink-0" />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">SME Inclusion Initiative</p>
+            <p class="text-[0.8125rem] text-text-muted">TTP Awards 2026</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <div class="w-16 h-16 bg-brand-green-pale rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">FCA Regulated</p>
+            <p class="text-[0.8125rem] text-text-muted">Firm Reference Number: 1008699</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Help Resources -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">QuickBooks help & resources</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {[
+          { title: 'Getting started', description: 'Step-by-step guide to connecting your QuickBooks Online account.', href: '/help/quickbooks-integration-how-to-get-started' },
+          { title: 'What does it do?', description: 'Full overview of data syncing between HedgeFlows and QuickBooks.', href: '/help/quickbooks-integration-what-does-it-do' },
+          { title: 'FAQs', description: 'Common questions about the integration, data, and troubleshooting.', href: '/help/quickbooks-integration-faqs' },
+        ].map((link) => (
+          <a href={link.href} class="group bg-gray-50 rounded-2xl border border-gray-100 p-6 hover:border-brand-green/20 hover:shadow-md transition-all duration-200">
+            <h3 class="text-[1rem] font-bold text-text-heading mb-2 group-hover:text-brand-green transition-colors">{link.title}</h3>
+            <p class="text-[0.875rem] text-text-body leading-relaxed mb-3">{link.description}</p>
+            <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.8125rem] group-hover:gap-2.5 transition-all duration-200">
+              Read more
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to automate international payments with QuickBooks?"
+    primaryCta={{ label: 'Sign Up Free', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>
