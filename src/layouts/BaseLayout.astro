@@ -141,6 +141,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
 
       function loadHubSpot() {
         if (document.getElementById('hs-script-loader')) return;
+        // Disable HubSpot chat widget — we use Tidio instead
+        window.hsConversationsSettings = { loadImmediately: false };
         var s = document.createElement('script');
         s.id = 'hs-script-loader';
         s.src = '//js.hs-scripts.com/' + HS_PORTAL + '.js';
