@@ -255,7 +255,7 @@ const hubspotFormId = '86c8b212-7e84-40b4-bb3e-7ee750da17ab';
     // Add lead source as a separate field
     fields.push({ name: 'lead_source_detail', value: 'contact-page' });
 
-    // Build context with hutk cookie if available
+    // Build context with hutk cookie and IP address
     var context = {
       pageUri: window.location.href,
       pageName: document.title,
@@ -264,6 +264,13 @@ const hubspotFormId = '86c8b212-7e84-40b4-bb3e-7ee750da17ab';
     if (hutk) {
       context.hutk = hutk;
     }
+
+    // Fetch visitor IP for HubSpot analytics
+    try {
+      var ipResp = await fetch('https://api.ipify.org?format=json');
+      var ipData = await ipResp.json();
+      if (ipData.ip) context.ipAddress = ipData.ip;
+    } catch(e) { /* IP is optional — continue without it */ }
 
     var payload = {
       fields: fields,

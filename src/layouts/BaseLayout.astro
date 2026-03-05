@@ -162,7 +162,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
     })();
     </script>
 
-    <!-- HubSpot Tracking — consent-gated (marketing category) -->
+    <!-- HubSpot Tracking — consent-gated (analytics category) -->
     <script is:inline>
     (function() {
       var HS_PORTAL = '8698300';
@@ -181,12 +181,12 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
       // Check existing consent on page load
       try {
         var consent = JSON.parse(localStorage.getItem(STORAGE_KEY));
-        if (consent && consent.marketing) loadHubSpot();
+        if (consent && consent.analytics) loadHubSpot();
       } catch(e) {}
 
       // Listen for consent changes
       window.addEventListener('hf:consent', function(e) {
-        if (e.detail && e.detail.marketing) loadHubSpot();
+        if (e.detail && e.detail.analytics) loadHubSpot();
       });
     })();
     </script>
