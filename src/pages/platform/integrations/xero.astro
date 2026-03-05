@@ -1,26 +1,466 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import Hero from '../../../components/Hero.astro';
-import PageSections from '../../../components/PageSections.astro';
+import PlatformScene from '../../../components/hero/PlatformScene.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import StepProcess from '../../../components/StepProcess.astro';
 import CTASection from '../../../components/CTASection.astro';
-import { getPage } from '../../../lib/sanity';
+import PaymentsScene from '../../../components/feature/PaymentsScene.astro';
+import CashFlowScene from '../../../components/feature/CashFlowScene.astro';
+import FxRiskScene from '../../../components/feature/FxRiskScene.astro';
+import { getClientLogos } from '../../../lib/sanity';
+import { staticClientLogos } from '../../../data/clientLogos';
+import { xeroStats } from '../../../data/xeroReviews';
 
-const page = await getPage('platform/integrations/xero');
+let clientLogos: any[] = [];
+try {
+  const sanityLogos = await getClientLogos() || [];
+  clientLogos = sanityLogos.length > 0 ? sanityLogos : staticClientLogos;
+} catch (e) {
+  clientLogos = staticClientLogos;
+}
+
+/* ─────────── Icon SVG paths (Heroicons outline) ─────────── */
+const iconPaths: Record<string, string> = {
+  sync: 'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182',
+  send: 'M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5',
+  'bar-chart': 'M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z',
+  shield: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z',
+  book: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25',
+  bolt: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+  check: 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  globe: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418',
+  stack: 'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3',
+};
+
+/* ─────────── Benefits ─────────── */
+const benefits = [
+  {
+    icon: 'send',
+    title: 'Bulk international payment runs',
+    description: 'Select outstanding bills in Xero, approve with your team, and send multi-currency payments in a single run. No more processing invoices one by one.',
+  },
+  {
+    icon: 'sync',
+    title: 'Auto-sync invoices & bills',
+    description: 'Import your foreign currency bills and invoices from Xero in real time. No manual exports, no spreadsheets, no copy-pasting.',
+  },
+  {
+    icon: 'shield',
+    title: 'Manage FX risk effortlessly',
+    description: 'See your true currency exposure, get AI-powered hedging recommendations, and lock in rates to protect your margins — all from your Xero data.',
+  },
+  {
+    icon: 'book',
+    title: 'Automated reconciliation',
+    description: 'Payments, exchange rates, and bank fees reconcile back to Xero automatically — keeping your books accurate and audit-ready.',
+  },
+];
+
+/* ─────────── How it works steps ─────────── */
+const steps = [
+  {
+    number: 1,
+    title: 'Sign up for HedgeFlows',
+    description: 'Create your free account and complete a quick onboarding. No credit card required.',
+  },
+  {
+    number: 2,
+    title: 'Connect Xero',
+    description: 'Link your Xero account in under 3 minutes with a secure OAuth connection — no IT resources needed.',
+  },
+  {
+    number: 3,
+    title: 'Import & configure',
+    description: 'Your bills, invoices, and contacts sync automatically. Choose what to import and how to write back.',
+  },
+  {
+    number: 4,
+    title: 'Pay, hedge & reconcile',
+    description: 'Run bulk payments, lock in FX rates, and let HedgeFlows reconcile everything back to Xero.',
+  },
+];
+
+/* ─────────── Stats ─────────── */
+const stats = [
+  { value: '3 min', label: 'To connect Xero' },
+  { value: '35', label: 'Currencies supported' },
+  { value: '185', label: 'Countries covered' },
+  { value: `${xeroStats.rating}`, label: `Stars on Xero App Store (${xeroStats.totalReviews} reviews)` },
+];
+
+/* ─────────── Xero reviews (handpicked for this page) ─────────── */
+const featuredReviews = [
+  {
+    name: 'Michal Jahns',
+    quote: "We've switched to HedgeFlows from Wise for international payment runs, and we haven't looked back. The Xero integration works flawlessly, taking care of reconciliations and saving time.",
+  },
+  {
+    name: 'Chris Standeven',
+    role: 'Managing Director, FirstPoint Logistics',
+    quote: 'After starting to use HedgeFlows we have saved a huge amount of time and effort and created a super slick process that has literally changed the way we do international payment runs forever!',
+  },
+  {
+    name: 'Chris Morris',
+    quote: "HedgeFlows has made our weekly payment runs far quicker and easier, and is a great workaround to Xero's restrictions on only creating payment runs for GBP.",
+  },
+];
 ---
 
 <PageLayout
-  title={page?.seoTitle || page?.title || 'Xero Integration'}
-  description={page?.seoDescription || 'Connect HedgeFlows with Xero for automated treasury management.'}
+  title="Xero Bulk Payments & International FX Management | HedgeFlows"
+  description="Run bulk international payments from Xero with automated reconciliation, FX risk management, and multi-currency cash visibility. Certified Xero app with 5-star ratings. Sign up free."
 >
+  <!-- Hero -->
   <Hero
-    title={page?.heroTitle || 'Connect HedgeFlows with Xero'}
-    subtitle={page?.heroSubtitle || 'Sync invoices, bills, and payments between Xero and HedgeFlows automatically.'}
-    primaryCta={page?.primaryCta}
-    secondaryCta={page?.secondaryCta}
-  />
-  <PageSections sections={page?.sections || []} />
+    title="Bulk international payments & FX management for Xero"
+    subtitle="HedgeFlows bridges Xero and your banking — automating bulk payment runs, multi-currency cash management, and FX risk so your finance team can focus on growing the business."
+    primaryCta={{ label: 'Sign Up Free', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+  >
+    <PlatformScene
+      slot="scene"
+      screenshot="/assets/images/dashboard.png"
+      screenshotAlt="HedgeFlows dashboard connected to Xero"
+      accentLabel="Xero synced"
+      integrations={['/assets/logos/integrations/Xero_software_logo.svg']}
+    />
+  </Hero>
+
+  <!-- Trust Bar -->
+  <TrustBar label="Trusted by international businesses:" logos={clientLogos} slider={true} />
+
+  <!-- Xero Reviews -->
+  <section class="section-padding-sm bg-white border-b border-gray-100">
+    <div class="container-content">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center gap-3 mb-3">
+          <div class="flex gap-0.5">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <span class="text-[1rem] font-bold text-text-heading">{xeroStats.rating} / 5</span>
+        </div>
+        <p class="text-[0.875rem] text-text-muted">
+          <a href={xeroStats.url} target="_blank" rel="noopener noreferrer" class="text-brand-green hover:underline font-medium">{xeroStats.totalReviews} verified reviews</a> on the Xero App Store
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {featuredReviews.map((r) => (
+          <div class="bg-gray-50 rounded-2xl border border-gray-100 p-6">
+            <div class="flex gap-0.5 mb-3">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed mb-4 italic">"{r.quote}"</p>
+            <p class="text-[0.8125rem] font-semibold text-text-heading">{r.name}</p>
+            {r.role && <p class="text-[0.75rem] text-text-muted">{r.role}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-3 bg-white border border-gray-100 rounded-full px-6 py-3 mb-6 shadow-sm">
+          <img src="/assets/logos/integrations/Xero_software_logo.svg" alt="Xero" class="h-10" />
+          <span class="text-[0.875rem] font-semibold text-text-heading">Certified Xero App</span>
+        </div>
+        <h2 class="section-heading">Connecting Xero to your international banking</h2>
+        <p class="section-subheading mx-auto">
+          HedgeFlows sits between Xero and your banks, automating bulk payments, cash management, and FX risk — making international finances easy.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {benefits.map((b) => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm hover:shadow-md hover:border-brand-green/20 transition-all duration-200">
+            <div class="w-12 h-12 rounded-2xl bg-brand-green-pale flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[b.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-2">{b.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed">{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="section-padding-sm bg-[#F8FAFB] border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        {stats.map((s) => (
+          <div class="text-center">
+            <p class="text-[2rem] md:text-[2.5rem] font-bold text-brand-green leading-none">{s.value}</p>
+            <p class="text-[0.875rem] text-text-muted mt-2 font-medium">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Up and running in minutes, not months</h2>
+        <p class="section-subheading mx-auto">
+          No IT project. No developers. Connect Xero and start running bulk international payments today.
+        </p>
+      </div>
+      <StepProcess steps={steps} />
+      <div class="text-center mt-12">
+        <a href="https://app.hedgeflows.com/signup" class="btn-primary text-[1.0625rem] px-8 py-4">
+          Get started for free
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Deep-Dives -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content space-y-24">
+
+      <!-- Payments & Bulk Processing -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Bulk Payments & AP Automation</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Run bulk international payments from Xero in minutes
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Xero handles domestic accounting brilliantly, but multi-currency payment runs are where most teams lose time. HedgeFlows lets you import bills from Xero, approve batch payment runs with your team, and send payments to suppliers worldwide — all at better FX rates than your bank. Everything reconciles back to Xero automatically.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Batch payment runs across multiple currencies in one go',
+              'Flexible approval workflows with full audit trail',
+              'FX rates up to 5x cheaper than high-street banks',
+              'Auto-reconcile paid invoices and credit notes back to Xero',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/payments" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about Payments
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+        <PaymentsScene />
+      </div>
+
+      <!-- Cash Management (reversed) -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <CashFlowScene />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">Cash Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            See all your money in one place
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            Bring together your Xero data and bank accounts in one view. See your cash position across every currency and entity in real time, forecast accurately, and make smarter decisions about when to convert and pay.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Consolidated multi-currency cash position',
+              'Connect 2,000+ bank accounts via Open Banking',
+              'Cash flow forecasting with FX overlay',
+              'Works alongside Xero — no duplication',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/cash-management" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about Cash Management
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- FX Risk -->
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="text-[0.75rem] font-semibold text-brand-green uppercase tracking-wider mb-3">FX Risk Management</p>
+          <h3 class="text-[1.5rem] md:text-[1.75rem] font-bold text-text-heading mb-4 leading-tight">
+            Protect your margins from currency swings
+          </h3>
+          <p class="text-[0.9375rem] text-text-body leading-relaxed mb-6">
+            HedgeFlows automatically analyses your Xero data to give you real-time visibility into currency exposure, AI-powered hedging recommendations, and simple tools to protect your margins — no FX expertise required.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Automated exposure tracking from your Xero data',
+              'AI Currency Co-pilot for hedging recommendations',
+              'Pre-book rates to guarantee costs in advance',
+              'Expert consultation included — treasury-grade advice without the cost',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="text-[0.9375rem] text-text-body">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/platform/fx-risk-management" class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.9375rem] hover:gap-2.5 transition-all duration-200">
+            Learn more about FX Risk
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+        <FxRiskScene />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why HedgeFlows -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-14">
+        <h2 class="section-heading">Built for businesses with real international volumes</h2>
+        <p class="section-subheading mx-auto">
+          If your business processes meaningful volumes of international payments and needs more than just a bank account, HedgeFlows is the platform your finance team has been looking for.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          {
+            icon: 'stack',
+            title: 'Treasury-grade, not enterprise-heavy',
+            description: 'Institutional-quality FX, hedging, and cash management tools — without the six-month implementation or enterprise price tag.',
+          },
+          {
+            icon: 'bolt',
+            title: 'Beyond basic bank connections',
+            description: 'Unlike tools that just offer bank accounts or simple transfers, HedgeFlows delivers bulk payment processing, FX risk management, and real-time cash visibility.',
+          },
+          {
+            icon: 'globe',
+            title: 'Native Xero integration',
+            description: 'Designed from the ground up to work with Xero — two-way sync, automated reconciliation, and bulk payments that flow straight back to your books.',
+          },
+        ].map((d) => (
+          <div class="text-center">
+            <div class="w-14 h-14 rounded-2xl bg-brand-green-pale flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[d.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-[1.125rem] font-semibold text-text-heading mb-2">{d.title}</h3>
+            <p class="text-[0.9375rem] text-text-body leading-relaxed max-w-xs mx-auto">{d.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Regulation -->
+  <section class="section-padding-sm bg-[#F8FAFB] border-y border-gray-100">
+    <div class="container-content">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x md:divide-gray-200">
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img src="/assets/logos/clients/tmi.jpg" alt="TMI Awards 2025" class="w-16 h-16 rounded-2xl object-cover flex-shrink-0" />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">Best Risk Management</p>
+            <p class="text-[0.8125rem] text-text-muted">TMI Awards 2025</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <img src="/assets/logos/clients/ttp.jpg" alt="TTP Awards 2026" class="w-16 h-16 rounded-2xl object-cover flex-shrink-0" />
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">SME Inclusion Initiative</p>
+            <p class="text-[0.8125rem] text-text-muted">TTP Awards 2026</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 md:justify-center md:px-8">
+          <div class="w-16 h-16 bg-brand-green-pale rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-text-heading text-[0.9375rem]">FCA Regulated</p>
+            <p class="text-[0.8125rem] text-text-muted">Firm Reference Number: 1008699</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Help Resources -->
+  <section class="section-padding bg-white">
+    <div class="container-content">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Xero integration help & resources</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {[
+          { title: 'Getting started', description: 'Step-by-step guide to connecting your Xero account to HedgeFlows.', href: '/help/xero-integration-how-to-get-started' },
+          { title: 'What does it do?', description: 'Full overview of how data syncs between HedgeFlows and Xero.', href: '/help/xero-integration-what-does-it-do' },
+          { title: 'FAQs', description: 'Common questions about the Xero integration, data sync, and troubleshooting.', href: '/help/xero-integration-faqs' },
+        ].map((link) => (
+          <a href={link.href} class="group bg-gray-50 rounded-2xl border border-gray-100 p-6 hover:border-brand-green/20 hover:shadow-md transition-all duration-200">
+            <h3 class="text-[1rem] font-bold text-text-heading mb-2 group-hover:text-brand-green transition-colors">{link.title}</h3>
+            <p class="text-[0.875rem] text-text-body leading-relaxed mb-3">{link.description}</p>
+            <span class="inline-flex items-center gap-1.5 text-brand-green font-semibold text-[0.8125rem] group-hover:gap-2.5 transition-all duration-200">
+              Read more
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <!-- Additional Resources -->
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/help/xero-how-to-set-up-separate-user-connection" class="text-[0.875rem] text-brand-green font-medium hover:underline">Separate user connections</a>
+        <span class="text-gray-300">|</span>
+        <a href="/help/how-to-use-fx-gains-losses-explainer-for-xero" class="text-[0.875rem] text-brand-green font-medium hover:underline">FX gains & losses explainer</a>
+        <span class="text-gray-300">|</span>
+        <a href="/blog/a-guide-to-xero-batch-payments" class="text-[0.875rem] text-brand-green font-medium hover:underline">Guide to Xero batch payments</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
   <CTASection
-    headline="Ready to take control of your international finances?"
-    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    headline="Ready to automate bulk payments and treasury for Xero?"
+    primaryCta={{ label: 'Sign Up Free', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
   />
 </PageLayout>
