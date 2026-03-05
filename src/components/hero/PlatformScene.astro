@@ -38,7 +38,7 @@ const {
   {integrations && integrations.length > 0 && (
     <div class="platform-scene__integrations glass-card scene-fade scene-float" style="--delay: 0.7s; --float-dur: 7.5s">
       <span class="platform-scene__int-label">Connected</span>
-      <div class="platform-scene__int-logos">
+      <div class={`platform-scene__int-logos ${integrations.length === 1 ? 'platform-scene__int-logos--single' : ''}`}>
         {integrations.map((logo) => (
           <img src={logo} alt="" class="platform-scene__int-logo" loading="lazy" />
         ))}
@@ -169,6 +169,13 @@ const {
     height: 24px;
     border-radius: 4px;
     object-fit: contain;
+  }
+
+  /* Single integration: show full wordmark logo at a legible size */
+  .platform-scene__int-logos--single .platform-scene__int-logo {
+    width: auto;
+    height: 32px;
+    max-width: 140px;
   }
 
   @keyframes sceneFadeUp {
