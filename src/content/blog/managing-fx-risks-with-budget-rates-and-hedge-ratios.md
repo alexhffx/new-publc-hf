@@ -5,6 +5,7 @@ description: "How to use FX hedge ratios and budget FX rates. How the HedgeFlows
 date: "2023-04-05"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/hedge-ratios.jpg"
 ---
 

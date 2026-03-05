@@ -5,6 +5,7 @@ description: "FX Averaging can be an effective strategy for short-term FX risks,
 date: "2024-06-20"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Average.jpg"
 ---
 

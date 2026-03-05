@@ -6,6 +6,7 @@ date: "2023-03-18"
 updated: "2023-03-31"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/fx-brokers.jpg"
 ---
 

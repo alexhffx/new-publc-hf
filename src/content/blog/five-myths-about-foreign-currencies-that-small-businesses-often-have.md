@@ -6,6 +6,7 @@ date: "2023-03-16"
 updated: "2023-03-17"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/5-myths-foreign-currencies.jpg"
 ---
 

@@ -5,6 +5,7 @@ description: "This article explores bulk payment or accounts payable automation 
 date: "2025-02-02"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Automation.png"
 ---
 

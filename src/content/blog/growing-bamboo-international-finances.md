@@ -5,6 +5,7 @@ description: "Bamboos grow steadily, quickly and resiliently. Find out how you c
 date: "2023-02-24"
 author: "HedgeFlows"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/growing%20like%20bamboo.jpg"
 ---
 

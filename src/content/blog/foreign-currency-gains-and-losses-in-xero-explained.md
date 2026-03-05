@@ -6,6 +6,7 @@ date: "2023-03-02"
 updated: "2024-01-12"
 author: "HedgeFlows"
 category: "treasury-cash"
+pillar: "currency-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/gains-losses.jpg"
 ---
 

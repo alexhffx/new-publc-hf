@@ -5,6 +5,7 @@ description: "Today’s small businesses can access solutions that reduce the co
 date: "2022-10-25"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Open%20for%20global%20business.jpg"
 ---
 

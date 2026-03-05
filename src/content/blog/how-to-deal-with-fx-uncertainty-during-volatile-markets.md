@@ -6,6 +6,7 @@ date: "2022-07-28"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/market-currency-risks.jpg"
 ---
 

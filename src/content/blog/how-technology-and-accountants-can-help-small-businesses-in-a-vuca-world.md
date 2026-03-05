@@ -6,6 +6,7 @@ date: "2022-06-03"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/technology-accountants-smes.jpg"
 ---
 

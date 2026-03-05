@@ -6,6 +6,7 @@ date: "2021-06-20"
 updated: "2022-12-06"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "currency-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/planning-foreign-currencies.jpg"
 ---
 

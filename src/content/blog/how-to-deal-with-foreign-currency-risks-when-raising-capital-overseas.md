@@ -6,6 +6,7 @@ date: "2024-06-09"
 updated: "2024-07-05"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/overseas-funding.jpg"
 ---
 

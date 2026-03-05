@@ -6,6 +6,7 @@ date: "2022-10-13"
 updated: "2022-12-30"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/currency-swings.jpg"
 ---
 

@@ -6,6 +6,7 @@ date: "2023-07-25"
 updated: "2023-07-28"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/hidden-fees.png"
 ---
 

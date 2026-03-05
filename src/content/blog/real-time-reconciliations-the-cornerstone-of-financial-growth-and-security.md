@@ -5,6 +5,7 @@ description: "Automating reconciliations is more than technological fashion; it'
 date: "2024-02-18"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/reconciliation.png"
 ---
 

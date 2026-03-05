@@ -6,6 +6,7 @@ date: "2025-02-11"
 updated: "2025-01-25"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Hedging%20is%20a%20journey%20with%20destination.png"
 ---
 

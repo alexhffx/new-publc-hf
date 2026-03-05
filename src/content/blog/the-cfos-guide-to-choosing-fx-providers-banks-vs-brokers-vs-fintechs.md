@@ -5,6 +5,7 @@ description: "Complete FX provider comparison guide for CFOs. Compare banks vs F
 date: "2025-08-06"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Markets.png"
 ---
 

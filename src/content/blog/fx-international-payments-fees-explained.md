@@ -6,6 +6,7 @@ date: "2022-09-12"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/fx-international%20payments-fees.jpg"
 ---
 

@@ -5,6 +5,7 @@ description: "The finance industry has a fundamental communication problem that 
 date: "2025-08-28"
 author: "Neh Thaker"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/AI-Generated%20Media/Images/The%20image%20portrays%20a%20modern%20corporate%20office%20setting%20with%20a%20diverse%20group%20of%20finance%20professionals%20engaged%20in%20a%20lively%20discussion%20around%20a%20large%20oval%20conference%20table%20Sunlight%20streams%20through%20expansive%20windows%20casting%20a%20warm%20glow%20on%20the%20sleek%20minimal.png"
 ---
 

@@ -5,6 +5,7 @@ description: "We were supposed to have self-driving cars everywhere by 2020. Soo
 date: "2025-10-03"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/ChatGPT%20Image%20Oct%203%2c%202025%2c%2010_57_28%20AM.png"
 ---
 

@@ -5,6 +5,7 @@ description: "Discover the top five areas where you can cut the financial costs 
 date: "2024-09-06"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/cutcosts.jpg"
 ---
 

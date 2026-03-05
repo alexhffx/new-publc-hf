@@ -5,6 +5,7 @@ description: "Learn how a reliable cash management strategy enables cash forecas
 date: "2023-11-21"
 author: "HedgeFlows"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/cashflow%20management.jpg"
 ---
 

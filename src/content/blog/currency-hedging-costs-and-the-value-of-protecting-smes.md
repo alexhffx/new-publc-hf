@@ -6,6 +6,7 @@ date: "2021-06-20"
 updated: "2024-09-28"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/cost-currency-management.jpg"
 ---
 

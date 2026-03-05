@@ -5,6 +5,7 @@ description: "Artificial Intelligence (AI) is reshaping industries across the bo
 date: "2025-05-02"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Untitled%20design%20(25).png"
 ---
 

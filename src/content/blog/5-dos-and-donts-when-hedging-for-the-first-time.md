@@ -6,6 +6,7 @@ date: "2025-01-28"
 updated: "2025-01-25"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Mistake_banner.png"
 ---
 

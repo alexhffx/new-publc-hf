@@ -6,6 +6,7 @@ date: "2024-01-14"
 updated: "2024-09-29"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Mistakes%20(1).png"
 ---
 

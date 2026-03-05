@@ -5,6 +5,7 @@ description: "Learn about cash management best practices with the guide for scal
 date: "2025-01-14"
 author: "Neh Thaker"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Cash-management%20(1).jpg"
 ---
 

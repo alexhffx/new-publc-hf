@@ -5,6 +5,7 @@ description: "Discover how to combine multi-currency pricing on Shopify with Hed
 date: "2025-02-25"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Shopify2%202.png"
 ---
 

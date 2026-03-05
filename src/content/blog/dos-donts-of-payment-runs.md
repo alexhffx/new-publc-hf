@@ -5,6 +5,7 @@ description: "Streamline your financial operations with batch processing for acc
 date: "2023-10-12"
 author: "HedgeFlows"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/dos%20and%20donts%20-%20payment%20runs.jpg"
 ---
 
