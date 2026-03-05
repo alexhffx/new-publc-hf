@@ -196,7 +196,7 @@ const successId = `download-success-${sourceTag}`;
       // Add source tag as a field
       fields.push({ name: 'lead_source_detail', value: sourceTag || '' });
 
-      // Build context with hutk cookie if available
+      // Build context with hutk cookie and IP address
       const context: Record<string, string> = {
         pageUri: window.location.href,
         pageName: document.title,
@@ -205,6 +205,13 @@ const successId = `download-success-${sourceTag}`;
       if (hutk) {
         context.hutk = hutk;
       }
+
+      // Fetch visitor IP for HubSpot analytics
+      try {
+        const ipResp = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResp.json();
+        if (ipData.ip) context.ipAddress = ipData.ip;
+      } catch(e) { /* IP is optional — continue without it */ }
 
       const payload = {
         fields,
