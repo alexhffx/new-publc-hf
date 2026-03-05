@@ -6,6 +6,7 @@ date: "2023-05-03"
 updated: "2023-05-05"
 author: "Neh Thaker"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/bamboo%20pots.jpg"
 ---
 

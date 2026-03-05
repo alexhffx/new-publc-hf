@@ -5,6 +5,7 @@ description: "At HedgeFlows we believe the best accountants will master the Full
 date: "2024-06-05"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/fullstack%20(1).jpg"
 ---
 

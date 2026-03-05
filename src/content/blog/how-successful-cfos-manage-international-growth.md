@@ -5,6 +5,7 @@ description: "Optimising finances for international growth used by successful CF
 date: "2023-06-22"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/cfos-international-growth.jpg"
 ---
 

@@ -6,6 +6,7 @@ date: "2023-01-02"
 updated: "2023-01-06"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/international-payments-smes.jpg"
 ---
 

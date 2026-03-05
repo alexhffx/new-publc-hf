@@ -5,6 +5,7 @@ description: "To determine whether managing currency risk is worthwhile, it’s 
 date: "2025-03-10"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Move%20in%20GBP%20vs%20US%20Dollar%20FX%20rate%20over%2090%20days.png"
 ---
 

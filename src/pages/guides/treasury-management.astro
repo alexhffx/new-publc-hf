@@ -1,0 +1,259 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getCollection } from 'astro:content';
+import { hubGlossaryTerms, hubHelpPages, hubProductLinks } from '../../data/hubPages';
+
+/* ── Blog posts for this hub ── */
+const allPosts = await getCollection('blog');
+const pillarPosts = allPosts
+  .filter((p) => p.data.pillar === 'treasury-management')
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 12);
+
+/* ── Glossary terms ── */
+const allGlossary = await getCollection('glossary');
+const glossarySlugs = hubGlossaryTerms['treasury-management'] || [];
+const glossaryTerms = glossarySlugs
+  .map((slug) => allGlossary.find((g) => g.data.slug === slug))
+  .filter(Boolean) as typeof allGlossary;
+
+const helpPages = hubHelpPages['treasury-management'] || [];
+const productLinks = hubProductLinks['treasury-management'] || [];
+
+/* ── JSON-LD ── */
+const siteUrl = 'https://hedgeflows.com';
+const pageUrl = `${siteUrl}/guides/treasury-management`;
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Treasury Management Guide',
+  description: 'A comprehensive treasury management guide for scaling international businesses — cash management, FX risk, and financial planning.',
+  url: pageUrl,
+  publisher: {
+    '@type': 'Organization',
+    name: 'HedgeFlows',
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/logos/hf-logo-green.svg` },
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: `${siteUrl}/guides` },
+    { '@type': 'ListItem', position: 3, name: 'Treasury Management', item: pageUrl },
+  ],
+};
+---
+
+<PageLayout
+  title="Treasury Management Guide for Scaling International Businesses | HedgeFlows"
+  description="Build treasury capabilities as your business scales internationally. Covering cash management, FX risk, financial planning, reconciliation, and modern treasury technology for mid-market companies."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <Hero
+    title="Treasury Management for Scaling International Businesses"
+    subtitle="Build the cash management, risk oversight, and financial planning capabilities your growing business needs — without a dedicated treasury team."
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+  />
+
+  <!-- Intro Content -->
+  <section class="section-padding">
+    <div class="container-content max-w-3xl mx-auto">
+      <div class="prose-guide">
+        <h2>What is treasury for the mid-market?</h2>
+        <p>
+          In large corporations, treasury is a dedicated function with specialist teams managing cash, funding, FX risk, and bank relationships. In growing businesses, these responsibilities typically fall to the CFO, finance director, or even the founder — often on top of everything else.
+        </p>
+        <p>
+          Yet the challenges are just as real. International businesses with multi-currency revenues and costs face cash visibility gaps, FX exposure, complex reconciliations, and the operational burden of managing multiple bank accounts and payment channels. Getting treasury right means getting the fundamentals in place: knowing where your cash is, what your exposures are, and having the tools to act on that information quickly.
+        </p>
+
+        <h2>Three pillars of modern treasury</h2>
+        <p>
+          Effective treasury for mid-market businesses rests on three pillars. First, <strong>cash visibility</strong> — aggregating balances across all banks and currencies in real time so you can make informed decisions. Second, <strong>risk management</strong> — understanding your FX exposures, setting budget rates, and hedging where it makes sense. Third, <strong>operational efficiency</strong> — automating reconciliations, payment workflows, and reporting so your finance team spends less time on data entry and more time on analysis.
+        </p>
+        <p>
+          None of these require a large team or enterprise-grade systems. Modern fintech platforms and accounting integrations bring institutional-quality treasury capabilities to businesses with a fraction of the resources. The key is choosing the right tools and building the right processes.
+        </p>
+
+        <h2>Building capabilities at scale</h2>
+        <p>
+          As your business grows internationally, treasury needs evolve. Early-stage companies often manage with a single bank and manual spreadsheets. By the time you are processing significant cross-border volumes, you need integrated systems that connect your accounting software, banking, and FX management.
+        </p>
+        <p>
+          The shift from reactive to proactive treasury is not about adding headcount — it is about adding the right infrastructure. Start by connecting your bank feeds and accounting software for real-time visibility. Then layer in FX management tools that let you quantify exposures and lock in rates. Finally, build reporting that gives your leadership team the confidence to make strategic decisions.
+        </p>
+        <p>
+          The articles, glossary terms, and resources below cover each stage of this journey — from the basics of cash management to advanced treasury planning with AI.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  {pillarPosts.length > 0 && (
+    <section class="section-padding bg-[#F8FAFB]">
+      <div class="container-content">
+        <div class="text-center mb-14">
+          <h2 class="section-heading">Articles & Insights</h2>
+          <p class="section-subheading mx-auto">
+            Expert perspectives on cash management, treasury technology, financial planning, and scaling international finance operations.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {pillarPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              excerpt={post.data.description}
+              date={post.data.date}
+              href={`/blog/${post.data.slug}`}
+              image={post.data.featuredImage}
+              category={post.data.category}
+            />
+          ))}
+        </div>
+
+        <div class="text-center mt-10">
+          <a href="/blog" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
+            View all articles
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Key Terms -->
+  {glossaryTerms.length > 0 && (
+    <section class="section-padding bg-white">
+      <div class="container-content">
+        <div class="text-center mb-10">
+          <h2 class="section-heading">Key Terms Explained</h2>
+          <p class="section-subheading mx-auto">
+            Treasury and financial market terminology for growing businesses.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+          {glossaryTerms.map((term) => (
+            <a
+              href={`/glossary/${term.data.slug}`}
+              class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full
+                     bg-brand-green-pale/50 text-text-heading text-[0.875rem] font-medium
+                     border border-brand-green/10 hover:border-brand-green/30
+                     hover:bg-brand-green-pale transition-all duration-200"
+            >
+              {term.data.term}
+            </a>
+          ))}
+        </div>
+
+        <div class="text-center mt-8">
+          <a href="/glossary" class="inline-flex items-center gap-2 text-brand-green font-semibold text-[0.875rem] hover:gap-3 transition-all">
+            Browse full glossary
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Practical Resources -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Practical Resources</h2>
+        <p class="section-subheading mx-auto">
+          Help articles and platform features to build your treasury capabilities.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {/* Help articles */}
+        {helpPages.length > 0 && (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+              </svg>
+              Help Centre
+            </h3>
+            <ul class="space-y-3">
+              {helpPages.map((page) => (
+                <li>
+                  <a href={`/help/${page.slug}`} class="text-[0.9375rem] text-text-body hover:text-brand-green transition-colors">
+                    {page.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Product links */}
+        {productLinks.length > 0 && (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+              Platform & Advisory
+            </h3>
+            <ul class="space-y-3">
+              {productLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="group flex items-center justify-between text-[0.9375rem] text-text-body hover:text-brand-green transition-colors">
+                    {link.label}
+                    <svg class="w-4 h-4 text-gray-300 group-hover:text-brand-green transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <a href="/platform/integrations" class="group flex items-center justify-between text-[0.9375rem] text-text-body hover:text-brand-green transition-colors">
+                Accounting Integrations
+                <svg class="w-4 h-4 text-gray-300 group-hover:text-brand-green transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Ready to build treasury capabilities for your growing business?"
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+  />
+</PageLayout>
+
+<style is:global>
+  .prose-guide h2 {
+    @apply text-[1.5rem] font-bold text-text-heading mt-10 mb-4 leading-tight;
+  }
+  .prose-guide h2:first-child {
+    @apply mt-0;
+  }
+  .prose-guide p {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4;
+  }
+</style>

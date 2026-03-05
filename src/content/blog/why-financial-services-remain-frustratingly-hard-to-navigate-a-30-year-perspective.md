@@ -5,6 +5,7 @@ description: "30-year finance veteran reveals why financial services fail custom
 date: "2025-08-19"
 author: "Neh Thaker"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/AI-Generated%20Media/Images/The%20image%20depicts%20an%20office%20environment%20where%20a%20stressed%20CFO%20a%20middleaged%20lady%20in%20a%20tailored%20suit%20sits%20at%20a%20desk%20looking%20over%20papers%20charts%20and%20financial%20reports%20Her%20face%20is%20a%20mix%20of%20frustration%20and%20concentration%20as%20she%20stares%20at%20multiple%20screens%20dis-1-1.png"
 ---
 

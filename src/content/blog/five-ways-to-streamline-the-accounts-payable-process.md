@@ -6,6 +6,7 @@ date: "2023-08-16"
 updated: "2024-11-23"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/accounts-payable-process.png"
 ---
 

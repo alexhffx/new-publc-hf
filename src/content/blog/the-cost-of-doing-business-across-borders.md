@@ -6,6 +6,7 @@ date: "2022-11-10"
 updated: "2022-11-16"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/cost-business-abroad.png"
 ---
 

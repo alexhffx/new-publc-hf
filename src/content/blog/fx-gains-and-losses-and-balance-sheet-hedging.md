@@ -6,6 +6,7 @@ date: "2023-12-20"
 updated: "2024-01-12"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Invoices-collections-pounds-1.png"
 ---
 

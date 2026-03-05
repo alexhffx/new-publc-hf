@@ -5,6 +5,7 @@ description: "FP&A and treasury teams must work in tandem. Collaborative action 
 date: "2025-04-08"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/xero-bulk-payments.jpg"
 ---
 

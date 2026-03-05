@@ -6,6 +6,7 @@ date: "2024-03-26"
 updated: "2024-05-03"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/hedging%20gambling%20(1).jpg"
 ---
 

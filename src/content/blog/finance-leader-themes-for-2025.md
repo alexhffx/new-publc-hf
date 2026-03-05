@@ -6,6 +6,7 @@ date: "2025-01-19"
 updated: "2025-01-25"
 author: "Neh Thaker"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Finance%20leaders.png"
 ---
 

@@ -5,6 +5,7 @@ description: "Natural hedging is a useful technique when it comes to managing ca
 date: "2024-01-28"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/7-1.png"
 ---
 

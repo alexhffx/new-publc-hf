@@ -5,6 +5,7 @@ description: "Virtual wallets and payment automation solutions. Learn how Hedgef
 date: "2023-07-28"
 author: "Glen Foster"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/payment-automation.png"
 ---
 

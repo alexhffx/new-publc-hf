@@ -6,6 +6,7 @@ date: "2023-01-24"
 updated: "2023-01-26"
 author: "HedgeFlows"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/international-trade-iceberg.png"
 ---
 

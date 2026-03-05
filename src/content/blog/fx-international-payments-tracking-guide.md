@@ -6,6 +6,7 @@ date: "2022-09-09"
 updated: "2022-10-13"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/international-payments-guide.jpg"
 ---
 

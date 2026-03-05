@@ -6,6 +6,7 @@ date: "2022-10-31"
 updated: "2022-11-01"
 author: "HedgeFlows"
 category: "treasury-cash"
+pillar: "currency-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/trade-internationally-one-currency.jpg"
 ---
 

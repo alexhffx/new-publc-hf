@@ -6,6 +6,7 @@ date: "2022-04-01"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "treasury-cash"
+pillar: "currency-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/questions-accountants-should-ask.jpg"
 ---
 

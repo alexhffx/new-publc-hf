@@ -5,6 +5,7 @@ description: "The line between prudent risk management and gambling can seem fru
 date: "2025-09-17"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Lloyds.jpg"
 ---
 

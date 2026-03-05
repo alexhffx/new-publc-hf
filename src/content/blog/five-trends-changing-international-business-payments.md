@@ -5,6 +5,7 @@ description: "Five trends in international business payments, from international
 date: "2023-08-14"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/1-Aug-11-2023-06-28-11-6217-AM.png"
 ---
 

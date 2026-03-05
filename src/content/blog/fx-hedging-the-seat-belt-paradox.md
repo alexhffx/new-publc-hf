@@ -6,6 +6,7 @@ date: "2024-09-03"
 updated: "2024-09-12"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Seatbelt.jpg"
 ---
 

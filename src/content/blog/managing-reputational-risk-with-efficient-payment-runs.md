@@ -6,6 +6,7 @@ date: "2023-10-09"
 updated: "2023-10-10"
 author: "HedgeFlows"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/payment-runs.jpg"
 ---
 

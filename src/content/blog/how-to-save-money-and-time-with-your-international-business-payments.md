@@ -5,6 +5,7 @@ description: "Strategies to optimise international business payments. Learn how 
 date: "2023-08-18"
 author: "HedgeFlows"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/international-business-payments.png"
 ---
 

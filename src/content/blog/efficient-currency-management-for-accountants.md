@@ -5,6 +5,7 @@ description: "How Accountants can empower SMEs with secure global growth through
 date: "2023-08-04"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "currency-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/advisory-opportunity-accountants.png"
 ---
 

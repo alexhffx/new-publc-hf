@@ -1,0 +1,256 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getCollection } from 'astro:content';
+import { hubGlossaryTerms, hubHelpPages, hubProductLinks } from '../../data/hubPages';
+
+/* ── Blog posts for this hub ── */
+const allPosts = await getCollection('blog');
+const pillarPosts = allPosts
+  .filter((p) => p.data.pillar === 'international-bulk-payments')
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 12);
+
+/* ── Glossary terms ── */
+const allGlossary = await getCollection('glossary');
+const glossarySlugs = hubGlossaryTerms['international-bulk-payments'] || [];
+const glossaryTerms = glossarySlugs
+  .map((slug) => allGlossary.find((g) => g.data.slug === slug))
+  .filter(Boolean) as typeof allGlossary;
+
+const helpPages = hubHelpPages['international-bulk-payments'] || [];
+const productLinks = hubProductLinks['international-bulk-payments'] || [];
+
+/* ── JSON-LD ── */
+const siteUrl = 'https://hedgeflows.com';
+const pageUrl = `${siteUrl}/guides/international-bulk-payments`;
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'International Bulk Payments Guide',
+  description: 'A comprehensive guide to international bulk payments for growing businesses — how to pay faster, cheaper, and safer at scale.',
+  url: pageUrl,
+  publisher: {
+    '@type': 'Organization',
+    name: 'HedgeFlows',
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/logos/hf-logo-green.svg` },
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: `${siteUrl}/guides` },
+    { '@type': 'ListItem', position: 3, name: 'International Bulk Payments', item: pageUrl },
+  ],
+};
+---
+
+<PageLayout
+  title="International Bulk Payments Guide: Faster, Cheaper, Safer | HedgeFlows"
+  description="How to process international bulk payments faster, cheaper, and safer. Covering AP automation, payment runs, FX fees, fraud prevention, and accounting integration for growing businesses."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <Hero
+    title="International Bulk Payments for Growing Businesses"
+    subtitle="Process cross-border payment runs faster, cut hidden FX fees, and eliminate manual errors — without changing your accounting software."
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+  />
+
+  <!-- Intro Content -->
+  <section class="section-padding">
+    <div class="container-content max-w-3xl mx-auto">
+      <div class="prose-guide">
+        <h2>The challenge at scale</h2>
+        <p>
+          When your business trades internationally, paying a handful of overseas suppliers is manageable. But as volumes grow — 20, 50, 100+ invoices a month across multiple currencies — the cracks start showing. Manual bank transfers eat hours every week. Hidden FX markups quietly erode margins. And the risk of payment errors or fraud rises with every extra step.
+        </p>
+        <p>
+          Most mid-market businesses still run international payment runs the same way they did when they had five suppliers. Spreadsheets, manual bank logins, copy-paste beneficiary details, and prayers that nothing goes wrong. The result? Overpaying on FX by 1–3%, late supplier payments, and finance teams stuck in operational firefighting instead of strategic work.
+        </p>
+
+        <h2>What makes a good bulk payment process</h2>
+        <p>
+          An effective international bulk payment process should be fast, transparent, and integrated with your accounting. That means pulling approved invoices directly from your ERP or accounting software, converting currencies at competitive mid-market rates (not inflated bank spreads), and pushing reconciliation data back automatically.
+        </p>
+        <p>
+          It should also be safe. Proper controls — maker-checker workflows, beneficiary verification, and audit trails — are not optional when you are moving significant sums across borders. The best processes combine automation with human oversight where it matters most.
+        </p>
+
+        <h2>Choosing the right infrastructure</h2>
+        <p>
+          Banks, brokers, and fintech platforms each offer different trade-offs for bulk international payments. Banks provide security and familiarity, but their FX margins and manual processes make them expensive at scale. FX brokers offer better rates, but typically require manual uploads and lack accounting integration. Modern fintech platforms — like HedgeFlows — combine competitive FX rates with direct accounting integration, automated reconciliation, and built-in compliance workflows.
+        </p>
+        <p>
+          The right choice depends on your volume, the currencies you trade in, and how integrated you need your payment and accounting workflows to be. The articles, glossary terms, and resources below cover each of these dimensions in depth.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  {pillarPosts.length > 0 && (
+    <section class="section-padding bg-[#F8FAFB]">
+      <div class="container-content">
+        <div class="text-center mb-14">
+          <h2 class="section-heading">Articles & Insights</h2>
+          <p class="section-subheading mx-auto">
+            Practical guides on payment automation, cross-border fees, fraud prevention, and accounts payable best practices.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {pillarPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              excerpt={post.data.description}
+              date={post.data.date}
+              href={`/blog/${post.data.slug}`}
+              image={post.data.featuredImage}
+              category={post.data.category}
+            />
+          ))}
+        </div>
+
+        <div class="text-center mt-10">
+          <a href="/blog" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
+            View all articles
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Key Terms -->
+  {glossaryTerms.length > 0 && (
+    <section class="section-padding bg-white">
+      <div class="container-content">
+        <div class="text-center mb-10">
+          <h2 class="section-heading">Key Terms Explained</h2>
+          <p class="section-subheading mx-auto">
+            Essential terminology for cross-border payments and international trade.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+          {glossaryTerms.map((term) => (
+            <a
+              href={`/glossary/${term.data.slug}`}
+              class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full
+                     bg-brand-green-pale/50 text-text-heading text-[0.875rem] font-medium
+                     border border-brand-green/10 hover:border-brand-green/30
+                     hover:bg-brand-green-pale transition-all duration-200"
+            >
+              {term.data.term}
+            </a>
+          ))}
+        </div>
+
+        <div class="text-center mt-8">
+          <a href="/glossary" class="inline-flex items-center gap-2 text-brand-green font-semibold text-[0.875rem] hover:gap-3 transition-all">
+            Browse full glossary
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Practical Resources -->
+  <section class="section-padding bg-[#F8FAFB]">
+    <div class="container-content">
+      <div class="text-center mb-10">
+        <h2 class="section-heading">Practical Resources</h2>
+        <p class="section-subheading mx-auto">
+          Step-by-step guides and platform features for processing international payments.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {/* Help articles */}
+        {helpPages.length > 0 && (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+              </svg>
+              Help Centre
+            </h3>
+            <ul class="space-y-3">
+              {helpPages.map((page) => (
+                <li>
+                  <a href={`/help/${page.slug}`} class="text-[0.9375rem] text-text-body hover:text-brand-green transition-colors">
+                    {page.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Product links */}
+        {productLinks.length > 0 && (
+          <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+            <h3 class="text-[1.125rem] font-bold text-text-heading mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+              Platform Features
+            </h3>
+            <ul class="space-y-3">
+              {productLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="group flex items-center justify-between text-[0.9375rem] text-text-body hover:text-brand-green transition-colors">
+                    {link.label}
+                    <svg class="w-4 h-4 text-gray-300 group-hover:text-brand-green transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <a href="/platform/integrations" class="group flex items-center justify-between text-[0.9375rem] text-text-body hover:text-brand-green transition-colors">
+                Accounting Integrations
+                <svg class="w-4 h-4 text-gray-300 group-hover:text-brand-green transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    headline="Ready to process international payments faster and cheaper?"
+    primaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+    secondaryCta={{ label: 'Book a Demo', href: '/treasury-health-check' }}
+  />
+</PageLayout>
+
+<style is:global>
+  .prose-guide h2 {
+    @apply text-[1.5rem] font-bold text-text-heading mt-10 mb-4 leading-tight;
+  }
+  .prose-guide h2:first-child {
+    @apply mt-0;
+  }
+  .prose-guide p {
+    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4;
+  }
+</style>

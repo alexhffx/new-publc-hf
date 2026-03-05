@@ -5,6 +5,7 @@ description: "Why most SMEs manage finances like driving through a rear-view mir
 date: "2025-08-22"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "treasury-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Compliance%20Rear%20View.png"
 ---
 

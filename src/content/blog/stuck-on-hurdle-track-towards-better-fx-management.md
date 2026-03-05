@@ -5,6 +5,7 @@ description: "Learn how to simplify your FX risk management with these three key
 date: "2024-04-30"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/HurdleTrack%20(1).jpg"
 ---
 

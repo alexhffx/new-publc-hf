@@ -5,6 +5,7 @@ description: "Discover emerging trends and new tools to combat payment fraud for
 date: "2024-11-18"
 author: "Alex Axentiev"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Preventing_APP_Fraud_banner.jpg"
 ---
 

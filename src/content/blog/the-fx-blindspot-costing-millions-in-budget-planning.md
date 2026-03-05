@@ -5,6 +5,7 @@ description: "Most CFO teams plan budgets with a single FX rate assumption. Here
 date: "2025-11-18"
 author: "Alex Axentiev"
 category: "fx-risk-hedging"
+pillar: "fx-hedging"
 featuredImage: "https://8698300.hs-sites.com/hubfs/rollercoaster.jpg"
 ---
 

@@ -6,6 +6,7 @@ date: "2022-11-29"
 updated: "2022-12-01"
 author: "Alex Axentiev"
 category: "treasury-cash"
+pillar: "currency-management"
 featuredImage: "https://8698300.hs-sites.com/hubfs/Invoices-collections-pounds-1.png"
 ---
 

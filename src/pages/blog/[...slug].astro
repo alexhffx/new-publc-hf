@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { getHubByPillar } from '../../data/hubPages';
 
 /* ── Generate static paths from Markdown content collection ── */
 export async function getStaticPaths() {
@@ -13,6 +14,8 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const hub = post.data.pillar ? getHubByPillar(post.data.pillar) : undefined;
 
 const categoryLabels: Record<string, string> = {
   'fx-risk-hedging': 'FX Risk & Hedging',
@@ -152,6 +155,21 @@ const breadcrumbSchema = {
       <div class="prose-blog">
         <Content />
       </div>
+
+      {/* Pillar back-link */}
+      {hub && (
+        <div class="mt-10 mb-4 flex items-center gap-3 px-5 py-4 rounded-xl bg-brand-green-pale/40 border border-brand-green/10">
+          <svg class="w-5 h-5 text-brand-green flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.331 0 4.467.89 6.064 2.346m0-12.304a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.346m0-12.304v12.304" />
+          </svg>
+          <span class="text-[0.9375rem] text-text-body">
+            Part of our{' '}
+            <a href={hub.path} class="text-brand-green font-semibold hover:underline">
+              {hub.linkLabel}
+            </a>
+          </span>
+        </div>
+      )}
 
       {/* Advisory CTA */}
       <div class="mt-14 bg-brand-green-pale/50 rounded-2xl p-8 border border-brand-green/10">

@@ -6,6 +6,7 @@ date: "2022-02-23"
 updated: "2022-10-13"
 author: "HedgeFlows"
 category: "payments-ops"
+pillar: "international-bulk-payments"
 featuredImage: "https://8698300.hs-sites.com/hubfs/process-international-business-payments-faster.jpg"
 ---
 
