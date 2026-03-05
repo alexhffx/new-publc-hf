@@ -95,7 +95,7 @@ const hubspotFormId = '86c8b212-7e84-40b4-bb3e-7ee750da17ab';
                   <label for="message" class="block text-[0.8125rem] font-medium text-text-heading mb-1.5">Message</label>
                   <textarea
                     id="message"
-                    name="message"
+                    name="contact_us_message"
                     rows="4"
                     placeholder="How can we help?"
                     required
@@ -220,6 +220,12 @@ const hubspotFormId = '86c8b212-7e84-40b4-bb3e-7ee750da17ab';
   var form = document.getElementById('contact-form');
   if (!form) return;
 
+  // Read HubSpot tracking cookie
+  function getCookie(name) {
+    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -240,18 +246,28 @@ const hubspotFormId = '86c8b212-7e84-40b4-bb3e-7ee750da17ab';
 
     var data = new FormData(formEl);
 
-    // Build HubSpot fields array
+    // Build HubSpot fields array (exclude hidden utility fields)
     var fields = [];
     for (var pair of data.entries()) {
+      if (pair[0] === 'lead_source_detail') continue;
       fields.push({ name: pair[0], value: pair[1].toString() });
+    }
+    // Add lead source as a separate field
+    fields.push({ name: 'lead_source_detail', value: 'contact-page' });
+
+    // Build context with hutk cookie if available
+    var context = {
+      pageUri: window.location.href,
+      pageName: document.title,
+    };
+    var hutk = getCookie('hubspotutk');
+    if (hutk) {
+      context.hutk = hutk;
     }
 
     var payload = {
       fields: fields,
-      context: {
-        pageUri: window.location.href,
-        pageName: document.title,
-      },
+      context: context,
     };
 
     try {
