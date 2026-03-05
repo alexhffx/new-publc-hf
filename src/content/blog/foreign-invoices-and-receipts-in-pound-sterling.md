@@ -21,7 +21,7 @@ Currency moves can have an impact on your cashflows. Removing this uncertainty f
 
 #### SIMPLIFYING YOUR FOREIGN TRANSACTIONS
 
-Integrating HedgeFlows with Xero, Sage50 or Quickbooks makes it easy to fix exchange rates for specific invoices when you quote or invoice your foreign customers. Once HedgeFlows is connected to your accounting system, you can simplify and save on your foreign receipts in four easy steps:
+Integrating HedgeFlows with Xero, Sage50 or QuickBooks makes it easy to fix exchange rates for specific invoices when you quote or invoice your foreign customers. Once HedgeFlows is connected to your accounting system, you can simplify and save on your foreign receipts in four easy steps:
 
 1.  Simply prepare an invoice for your overseas customer in Pounds Sterling,
 2.  [Fix exchange rates](/currency-pre-booking-for-smes) for a specific Amount in GBP due on a future date and get the equivalent Amount Due in foreign currency to include on your invoice,

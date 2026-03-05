@@ -37,7 +37,7 @@
         "bulletPoints": [
           "Pay or get paid in 35 currencies",
           "Prebook guaranteed FX rates in advance",
-          "Import invoices from Xero, Quickbooks, etc.",
+          "Import invoices from Xero, QuickBooks, etc.",
           "Schedule payment runs with or without FX",
           "Auto-reconcile as soon as payments are made"
         ]
@@ -127,7 +127,7 @@
 
     "global-bulk-payments": {
       "url": "https://www.hedgeflows.com/global-bulk-payments",
-      "pageTitle": "Global bulk payments for Xero, Quickbooks, Business Central, Netsuite",
+      "pageTitle": "Global bulk payments for Xero, QuickBooks, Business Central, Netsuite",
       "hero": {
         "headline": "GLOBAL PAYMENT AUTOMATION",
         "subtitle": "Save time on multi-currency payments & reconciliations",
@@ -407,7 +407,7 @@
         { "name": "NetSuite", "url": "https://www.hedgeflows.com/hubfs/Netsuite%20Logo.svg" },
         { "name": "Xero", "url": "https://www.hedgeflows.com/hubfs/Xero%20App%20Logo.svg" },
         { "name": "Sage", "url": "https://www.hedgeflows.com/hubfs/Sage%20Logo.svg" },
-        { "name": "QuickBooks", "url": "https://www.hedgeflows.com/hubfs/Quickbooks%20Logo.svg" }
+        { "name": "QuickBooks", "url": "https://www.hedgeflows.com/hubfs/QuickBooks%20Logo.svg" }
       ],
       "stats": {
         "bankAccounts": "30 bank accounts consolidation"
@@ -433,7 +433,7 @@
         "https://www.hedgeflows.com/hubfs/Netsuite%20Logo.svg",
         "https://www.hedgeflows.com/hubfs/Xero%20App%20Logo.svg",
         "https://www.hedgeflows.com/hubfs/Sage%20Logo.svg",
-        "https://www.hedgeflows.com/hubfs/Quickbooks%20Logo.svg",
+        "https://www.hedgeflows.com/hubfs/QuickBooks%20Logo.svg",
         "https://www.hedgeflows.com/hubfs/HedgeFlows_Logo_white-2.svg"
       ]
     },
@@ -764,7 +764,7 @@
     "https://www.hedgeflows.com/hubfs/Netsuite%20Logo.svg",
     "https://www.hedgeflows.com/hubfs/Xero%20App%20Logo.svg",
     "https://www.hedgeflows.com/hubfs/Sage%20Logo.svg",
-    "https://www.hedgeflows.com/hubfs/Quickbooks%20Logo.svg",
+    "https://www.hedgeflows.com/hubfs/QuickBooks%20Logo.svg",
     "https://www.hedgeflows.com/hubfs/qb-logo-horizontal-reversed.svg",
     "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/xero_Logo_-_White-1-1.png",
     "https://www.hedgeflows.com/hs-fs/hubfs/Imported%20sitepage%20images/bc-logo-copy-1.png",

@@ -17,7 +17,7 @@ Jonathan Gaunt (FD Works): _"FX is becoming more and more important to our clien
 
 Starting with tedious payments and reconciliation processes, foreign currencies are a bug bear for many FinOps teams and book-keepers. Where other solutions have emerged to help streamline these processes in one’s home currency, popular accounting systems don’t offer adequate tools to make foreign payments reconciliations or remittances easy, for example. _“We're not taking advantage of using things like batch payments that we would use for kind of UK, domestic payments”_, adds Jonathan.
 
-HedgeFlows is the first cloud-based solution that supports two-way integrations with Xero, Sage or Quickbooks and offers payments automation to easily process payment runs in up to 30 currencies simultaneously, with or without foreign conversions.
+HedgeFlows is the first cloud-based solution that supports two-way integrations with Xero, Sage or QuickBooks and offers payments automation to easily process payment runs in up to 30 currencies simultaneously, with or without foreign conversions.
 
 #### GAINS AND LOSSES
 
