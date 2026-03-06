@@ -133,6 +133,33 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
     })();
     </script>
 
+    <!-- Leadinfo tracking — consent-gated (analytics category) -->
+    <script is:inline>
+    (function() {
+      var STORAGE_KEY = 'hf-cookie-consent';
+
+      function loadLeadinfo() {
+        if (window.leadinfo) return;
+        (function(l,e,a,d,i,n,f,o){
+          if(!l[i]){l.GlobalLeadinfoNamespace=l.GlobalLeadinfoNamespace||[];
+          l.GlobalLeadinfoNamespace.push(i);l[i]=function(){(l[i].q=l[i].q||[]).push(arguments)};l[i].t=l[i].t||n;
+          l[i].q=l[i].q||[];o=e.createElement(a);f=e.getElementsByTagName(a)[0];o.async=1;o.src=d;f.parentNode.insertBefore(o,f);}
+        }(window,document,'script','https://cdn.leadinfo.net/ping.js','leadinfo','LI-69AA7267849BC'));
+      }
+
+      // Check existing consent on page load
+      try {
+        var consent = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (consent && consent.analytics) loadLeadinfo();
+      } catch(e) {}
+
+      // Listen for consent changes
+      window.addEventListener('hf:consent', function(e) {
+        if (e.detail && e.detail.analytics) loadLeadinfo();
+      });
+    })();
+    </script>
+
     <!-- HubSpot Tracking — consent-gated (analytics category) -->
     <script is:inline>
     (function() {
