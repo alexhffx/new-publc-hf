@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   Xero App Store Reviews — 24 verified reviews, all 5-star
+   Xero App Store Reviews — 25 verified reviews, all 5-star
    Source: https://apps.xero.com/uk/app/hedgeflows/reviews
    ─────────────────────────────────────────────────────────────────────────── */
 
@@ -16,12 +16,20 @@ export interface XeroReview {
 
 export const xeroStats = {
   rating: 5.0,
-  totalReviews: 24,
+  totalReviews: 25,
   fiveStarPercent: 100,
   url: 'https://apps.xero.com/uk/app/hedgeflows/reviews',
 };
 
 export const xeroReviews: XeroReview[] = [
+  {
+    name: 'Joanna',
+    company: 'Pangea',
+    date: 'Mar 2026',
+    title: 'A game-changer for payments and reconciliation',
+    quote: 'Working with HedgeFlows has been a game-changer for our team. What used to take hours to process and reconcile payments is now completed quickly and efficiently, saving us a significant amount of time and reducing manual errors. The platform is intuitive, streamlined, and has dramatically improved our workflow.',
+    tags: ['homepage', 'staffing', 'platform'],
+  },
   {
     name: 'Nick Curran',
     date: 'Feb 2026',
