@@ -18,7 +18,7 @@ const accountingIntegrations = [
     description: 'Simplify international bill payments with bulk processing and automated bookkeeping for QuickBooks Online.',
     href: '/platform/integrations/quickbooks',
     category: 'Accounting',
-    logo: '/assets/logos/integrations/quickbooks-sq.svg',
+    logo: '/assets/logos/integrations/QuickBooks_logo.png',
   },
   {
     name: 'NetSuite',
@@ -89,7 +89,7 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
       screenshot="/assets/images/dashboard.png"
       screenshotAlt="HedgeFlows integrations dashboard"
       accentLabel="2,000+ banks"
-      integrations={['/assets/logos/integrations/Xero_software_logo.svg', '/assets/logos/integrations/quickbooks-sq.svg', '/assets/logos/integrations/netsuite-sq.svg', '/assets/logos/integrations/business-central-sq.svg']}
+      integrations={['/assets/logos/integrations/Xero_software_logo.svg', '/assets/logos/integrations/QuickBooks_logo.png', '/assets/logos/integrations/netsuite-sq.svg', '/assets/logos/integrations/business-central-sq.svg']}
     />
   </Hero>
 
@@ -114,8 +114,8 @@ const iconPath = 'M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.3
                    shadow-sm hover:shadow-md hover:border-brand-green/20 transition-all duration-200 flex flex-col"
           >
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0">
-                <img src={i.logo} alt={i.name} class="w-10 h-10 object-contain" loading="lazy" />
+              <div class="h-12 flex items-center justify-center flex-shrink-0">
+                <img src={i.logo} alt={i.name} class="max-h-10 max-w-[120px] w-auto object-contain" loading="lazy" />
               </div>
               <div>
                 <h3 class="text-[1.125rem] font-bold text-text-heading group-hover:text-brand-green transition-colors">{i.name}</h3>
