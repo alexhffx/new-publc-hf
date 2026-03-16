@@ -46,7 +46,7 @@ Goldman Sachs has raised its 12-month US recession probability to 25%. BCA Resea
 
 ### Central banks are stuck — rate cuts are off the table for now
 
-Before the conflict, markets were pricing in meaningful rate cuts from the Fed, the Bank of England, and the ECB during 2026. That expectation is rapidly unwinding. Goldman has pushed its expected Fed cuts back to September and December. The Bank of England faces a particularly difficult balancing act: a weakening UK economy that needs support, but energy-driven inflation that makes cutting rates risky. BCA warns that higher inflation will erode real income growth and make central banks less willing to provide liquidity — increasing the risk of a global economic downturn. The era of "rates coming to the rescue" may not apply this cycle.
+Before the conflict, markets were pricing in meaningful rate cuts from the Fed and the Bank of England during 2026. That expectation is rapidly unwinding. Goldman has pushed its expected Fed cuts back to September and December. The Bank of England faces a particularly difficult balancing act: a weakening UK economy that needs support, but energy-driven inflation that makes cutting rates risky. BCA warns that higher inflation will erode real income growth and make central banks less willing to provide liquidity — increasing the risk of a global economic downturn. The era of "rates coming to the rescue" may not apply this cycle.
 
 ### Currency markets are being pulled in two directions
 
