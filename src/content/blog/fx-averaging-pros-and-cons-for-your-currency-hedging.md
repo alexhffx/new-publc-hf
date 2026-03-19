@@ -11,7 +11,7 @@ featuredImage: "https://8698300.hs-sites.com/hubfs/Average.jpg"
 
 FX Averaging helps remove the risk of picking the wrong timing for your FX transactions.  Instead of risking the uncertainty of selecting the wrong day or time for your currency purchase, where you may encounter an unfavourable exchange rate, FX averaging breaks down the transaction into smaller increments, spreading them evenly over a designated period. Businesses commonly opt for monthly averaging, although the timeframe can be adjusted to suit individual business requirements. This approach ultimately results in more consistent exchange rates, steering clear of the short-term highs and lows of currency fluctuations:
 
-![Daily GBPUSD FX rates and monthly averaging](/blog/hubfs/Daily%20GBPUSD%20FX%20rates%20and%20monthly%20averaging.svg)
+![Daily GBPUSD FX rates and monthly averaging](https://8698300.hs-sites.com/hubfs/Daily%20GBPUSD%20FX%20rates%20and%20monthly%20averaging.svg)
 
 ## Using FX averaging in practice
 

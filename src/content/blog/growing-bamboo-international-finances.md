@@ -35,7 +35,7 @@ We'll have our experts on hand to help with any questions you may have. Don't be
 
 SMEXPO will take place on the 25th and 26th of April at Excel London. You can grab your free ticket on their website: [here](https://smexpo.co.uk/).
 
- ![stand 244 (1)](/blog/hs-fs/hubfs/stand%20244%20(1).png?width=2700&height=675&name=stand%20244%20(1).png)
+ ![stand 244 (1)](https://8698300.hs-sites.com/hs-fs/hubfs/stand%20244%20(1).png?width=2700&height=675&name=stand%20244%20(1).png)
 
 ### WHO IS TALKING about BAMBOO?
 

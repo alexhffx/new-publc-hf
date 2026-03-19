@@ -50,7 +50,7 @@ This method can be beneficial to finance teams of any size, as individual paymen
 5\. Click on **'Create Payment'** to process the batch payment
 
 
-![batch process image](/blog/hs-fs/hubfs/batch%20process%20image.png?width=800&height=264&name=batch%20process%20image.png)
+![batch process image](https://8698300.hs-sites.com/hs-fs/hubfs/batch%20process%20image.png?width=800&height=264&name=batch%20process%20image.png)
 
 ### How Can I BATCH-PROCESS foreign bills to pay in Xero?
 

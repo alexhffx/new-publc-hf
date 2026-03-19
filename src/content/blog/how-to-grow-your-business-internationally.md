@@ -57,29 +57,29 @@ In a recent survey of UK SME business owners and decision makers, undertaken by 
 
 In our research, 70% of company owners said they will not expand beyond the UK because trading costs remain too high. When asked about the specific areas concerning them they mentioned: currency swings (73%), high and hidden transfer fees (72%), the lack of financial support by their banks (72%), the risks associated with managing international cash flows (68%) as well as a greater risk of fraud (64%).
 
-![graph](/blog/hs-fs/hubfs/graph.png?width=1198&height=280&name=graph.png)
+![graph](https://8698300.hs-sites.com/hs-fs/hubfs/graph.png?width=1198&height=280&name=graph.png)
 
 Of particular interest in the FSB survey on this slide is that those not exporting but considering exporting (the short small light green line) may be somewhat naïve in not considering currency risks to be important until they start exporting and then it jumps to become their #1 main challenge (the long dark green line).
 
-![graph fsb](/blog/hs-fs/hubfs/graph%20fsb.png?width=1052&height=428&name=graph%20fsb.png)
+![graph fsb](https://8698300.hs-sites.com/hs-fs/hubfs/graph%20fsb.png?width=1052&height=428&name=graph%20fsb.png)
 
 This is the current situation: only a very few \[enlightened\] small companies do anything to mitigate these risks. The others just bravely take it on the chin unnecessarily. The implications of this are that they need to hold larger cash reserves and that the true profitability of a piece of foreign business is almost impossible for them to decipher. Good business looks bad and vice versa. 
 
 Big companies simply do the opposite.  
 
-![](/blog/hs-fs/hubfs/undefined-2.png?width=494&height=222&name=undefined-2.png)
+![](https://8698300.hs-sites.com/hs-fs/hubfs/undefined-2.png?width=494&height=222&name=undefined-2.png)
 
 #### UNDERLYING PROFIT FROM FOREIGN BUSINESS
 
 Foreign trade is hard and setting yourself up for it is time-consuming; finding reliable suppliers, customers, distributors, transportation costs and logistics providers all takes time and effort. So imagine you have set all of this up and you start a nice international business with what you think are growing profits. Look at that. You could show that to any investor on the planet and they would say; "I'll have some of that please".
 
-![underlying profit](/blog/hs-fs/hubfs/underlying%20profit.png?width=749&height=337&name=underlying%20profit.png)
+![underlying profit](https://8698300.hs-sites.com/hs-fs/hubfs/underlying%20profit.png?width=749&height=337&name=underlying%20profit.png)
 
  
 
 But what you actually end up with: the profits that actually come through your accounts look like this: 
 
-![underlying profit 2](/blog/hs-fs/hubfs/underlying%20profit%202.png?width=730&height=367&name=underlying%20profit%202.png)
+![underlying profit 2](https://8698300.hs-sites.com/hs-fs/hubfs/underlying%20profit%202.png?width=730&height=367&name=underlying%20profit%202.png)
 
 This is a real example and look what has happened here, particularly in the first 6 months of operation. Having toiled to set everything up, this company then fell into a ditch because they didn’t manage their financial risks. All that wasted work and opportunity.
 

@@ -121,7 +121,7 @@ During the 2023-24 period, interest rates have climbed to normal, but many busin
 
 The key takeaway? Don’t let your hard-earned cash sit idle. Minimise those overnight balances in low-yield business accounts and make your money work harder for you.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXekQAwBCZFiZp-bERflGaefr0xe5k3t8F59JaLV3oewCdjoQfIA6sbrsRcxoYhjgRrZBJlGqqCkLm2l02f8tgiMC49p6EIW_vX1GCNjrNr4pXvFa7f6ueU-ek0s7OsXJejbcNPVUw?key=DolAUmgCAJbpvJmalLg01p29)
+![Interest rate impact on cash balances](/assets/images/blog/cash-management-interest.png)
 
 ### Sweep facilities & pre-programmed payments
 

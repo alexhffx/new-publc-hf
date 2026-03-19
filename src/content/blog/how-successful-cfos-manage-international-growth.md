@@ -27,7 +27,7 @@ Today you can open a single account with one of the fintech providers that can s
 
 Cash flow, liquidity management and hedging have been increasing in importance for CFOs, and if you have a board or VC investors, you can expect the same questions as you grow. 
 
- ![CFO Perspective](/blog/hs-fs/hubfs/CFO%20Perspective.png?width=528&height=370&name=CFO%20Perspective.png)
+ ![CFO Perspective](https://8698300.hs-sites.com/hs-fs/hubfs/CFO%20Perspective.png?width=528&height=370&name=CFO%20Perspective.png)
 
 _Source: HSBC's Corporate Treasury Risk Management Survey 2021_
 

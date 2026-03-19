@@ -21,7 +21,7 @@ For example, the graph below shows the historical distribution of 90-day moves o
 
 As one can see, most potential outcomes are small moves clustered around zero, but in rare outcomes, the exchange rate moved more than 20% over 90 days. 
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXev38he8Wq2ed7xoCq8YJOMUTVHNb9FuMH7kO_FtUs15ZTU7aPzRol2XLgxD-tMMWYg0nS0810N6Uttv2w8cTdIQL4GTsWr9h0S0HUyM24gB4xSJaghiGrIoNY3xCMGdDnkO8w-UQ?key=by54Hl4avT4irWkvI7nXQFIp)
+![Historical distribution of 90-day GBP/USD moves](/assets/images/blog/cfar-distribution.png)
 
 ### Asking the right question
 
@@ -41,7 +41,7 @@ The stability of cash flows or profit margins is often an implicit or explicit h
 
 For example, as shown on the graph below, the likelihood of an FX move of 4% or greater is 20 times higher (probability of 20%) than that of 14.5% (probability of 1%).  
 
-![Likelihood and loss size for GBP vs USD FX rate move in 90 days](/blog/hs-fs/hubfs/Likelihood%20and%20loss%20size%20for%20GBP%20vs%20USD%20FX%20rate%20move%20in%2090%20days.png?width=730&height=451&name=Likelihood%20and%20loss%20size%20for%20GBP%20vs%20USD%20FX%20rate%20move%20in%2090%20days.png)
+![Likelihood and loss size for GBP vs USD FX rate move in 90 days](https://8698300.hs-sites.com/hs-fs/hubfs/Likelihood%20and%20loss%20size%20for%20GBP%20vs%20USD%20FX%20rate%20move%20in%2090%20days.png?width=730&height=451&name=Likelihood%20and%20loss%20size%20for%20GBP%20vs%20USD%20FX%20rate%20move%20in%2090%20days.png)
 
 ### Different risks but the same solution
 

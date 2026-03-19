@@ -17,7 +17,7 @@ HedgeFlows offers automatic SWIFT (BIC) validation and bank look-up when you set
 
 Valid  SWIFT codes consist of 8 to 11 characters, uniquely identifying the beneficiary bank where the funds need to be transferred. The below picture explains the structure of a typical SWIFT code, using HSBC bank in the UK as an example:
 
-![SWIFT_format](/blog/hs-fs/hubfs/SWIFT_format.jpg?width=540&name=SWIFT_format.jpg)
+![SWIFT_format](https://8698300.hs-sites.com/hs-fs/hubfs/SWIFT_format.jpg?width=540&name=SWIFT_format.jpg)
 
 No, the SWIFT (BIC) code belongs to a specific bank and helps identify the recipient bank when making international transfers.  The IBAN number belongs to a specific recipient and is an International Bank Account Number in a specific format in a given country. 
 

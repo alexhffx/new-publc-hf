@@ -20,21 +20,21 @@ When your bank or payments provider, such as PayPal or WorldFirst, converts curr
 
 Most popular accounting systems, such as Xero, will record the cost of currency conversions as part of Foreign Currency Gains and Losses. Accruing a bill or invoice in foreign currency in Xero will take by default the exchange rates from XE.com in the case of Xero (1.1786 in the example below):
 
-![xero foreign currency invoice](/blog/hs-fs/hubfs/xero%20foreign%20currency%20invoice.png?width=2440&name=xero%20foreign%20currency%20invoice.png)
+![xero foreign currency invoice](https://8698300.hs-sites.com/hs-fs/hubfs/xero%20foreign%20currency%20invoice.png?width=2440&name=xero%20foreign%20currency%20invoice.png)
 
 When such a foreign currency invoice is then paid from your home currency account via a currency conversion, [Xero payments](/multi-currency-payments-app-for-xero) are processed using the real exchange rates (1.1500 in the example). This happens even if you accrue and pay the invoice on the same day; you will have two exchange rates recorded:
 
-![xero foreign currency payment](/blog/hs-fs/hubfs/xero%20foreign%20currency%20payment.png?width=1910&name=xero%20foreign%20currency%20payment.png)
+![xero foreign currency payment](https://8698300.hs-sites.com/hs-fs/hubfs/xero%20foreign%20currency%20payment.png?width=1910&name=xero%20foreign%20currency%20payment.png)
 
 The resulting difference is then recorded in Realised Gain and Losses and has a direct impact on your business income:
 
-![xero realised foreign currency gains and losses](/blog/hs-fs/hubfs/xero%20realised%20foreign%20currency%20gains%20and%20losses.png?width=1906&name=xero%20realised%20foreign%20currency%20gains%20and%20losses.png)
+![xero realised foreign currency gains and losses](https://8698300.hs-sites.com/hs-fs/hubfs/xero%20realised%20foreign%20currency%20gains%20and%20losses.png?width=1906&name=xero%20realised%20foreign%20currency%20gains%20and%20losses.png)
 
 ### Invoice payments with credit terms and resulting FX gains and losses
 
 Most Business-to-Business (B2B) trade happens on account (such as 30-day credit terms), and the lag between the invoicing and payment dates often results in a currency impact as foreign exchange rates fluctuate. An average business invoice in the UK takes approximately 45 days to be paid, during which the exchange rate between Pounds Sterling and Euro or US Dollar can easily move 2-3%, for example.  In such case, the impact of exchange rates can be seen even before one pays a foreign invoice - as an unrealised gains & loss on an individual invoice in Xero or in the Unrealised gains and losses section on P&L:
 
-![xero unrealised gains and losses foreign invoice](/blog/hs-fs/hubfs/xero%20unrealised%20gains%20and%20losses%20foreign%20invoice.png?width=2476&name=xero%20unrealised%20gains%20and%20losses%20foreign%20invoice.png)
+![xero unrealised gains and losses foreign invoice](https://8698300.hs-sites.com/hs-fs/hubfs/xero%20unrealised%20gains%20and%20losses%20foreign%20invoice.png?width=2476&name=xero%20unrealised%20gains%20and%20losses%20foreign%20invoice.png)
 
 ### What happens when you pay your foreign currency bill in Xero?
 

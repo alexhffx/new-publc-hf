@@ -36,7 +36,7 @@ Over very short periods of a few days, currency moves are relatively tame and ar
 
 For example, in our scenario of a Euro payment by British buyers, we are interested in how much more the payment would cost in extreme cases. In the worst case, such as in 2009, the payment would have cost almost 20% more. Furthermore, for every one in five past cases the payment lost 3% or more. If a small business wishes to avoid a 3% or greater loss in margins, it should evaluate the option of fixing its currency rates now to avoid such a loss:
 
-![Picture 1-1](/blog/hs-fs/hubfs/Picture%201-1.png?width=840&name=Picture%201-1.png)
+![Picture 1-1](https://8698300.hs-sites.com/hs-fs/hubfs/Picture%201-1.png?width=840&name=Picture%201-1.png)
 
 **GBP/EUR FX Rate and Historical Profit & Loss in GBP**
 **EUR 10,000 payable in 45 days**
@@ -45,7 +45,7 @@ Most of the time currency moves over shorter periods are relatively tame and wou
 
 For instance, in our case of EUR payment by British buyers, we are interested how much more the payment can cost in extreme cases. It turns out that in the worst case (in 2009) such payment costed almost 20% more, and on one in five occasions in the past, such payment could lose 3% or more. If 3% loss is a concern for your own business margins, you can see when such moves happened in the past and evaluate if it likely to happen again:
 
-![Picture 2](/blog/hs-fs/hubfs/Picture%202.png?width=845&name=Picture%202.png)
+![Picture 2](https://8698300.hs-sites.com/hs-fs/hubfs/Picture%202.png?width=845&name=Picture%202.png)
 
 **GBP/EUR FX Rate and Historical Profit & Loss and Excess Loss in GBP**
 **EUR 10,000 payable in 45 days**
