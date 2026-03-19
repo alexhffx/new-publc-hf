@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title?: string;
@@ -74,6 +75,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
     <slot />
     <CookieConsent />
     <Analytics />
+    <SpeedInsights />
 
     <!-- Google Analytics 4 — consent-gated (analytics category) -->
     <script is:inline>
