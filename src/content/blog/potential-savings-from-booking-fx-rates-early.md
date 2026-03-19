@@ -32,7 +32,7 @@ Besides giving the comfort of knowing your costs in advance, HedgeFlows' solutio
 
 Importers or other businesses that need to pay foreign currencies invoices can potentially save by pre-booking early if their home currency weakens against the foreign currency they have to pay. Below is an example of historical data of how much Pound Sterling has fallen against some currencies over different periods in the past.
 
-![mceclip3](/blog/hs-fs/hubfs/Imported%20sitepage%20images/mceclip3.png?width=665&name=mceclip3.png)
+![mceclip3](https://8698300.hs-sites.com/hs-fs/hubfs/Imported%20sitepage%20images/mceclip3.png?width=665&name=mceclip3.png)
 
 Conversely, businesses that are expecting foreign currency payments from their buyers would be better off if they pre-book rates and the foreign currency they are to collect weakens afterwards.  Given the magnitude of falls for some emerging currencies, it may be important for companies to know this as they weight the cost of booking their currency conversions.
 

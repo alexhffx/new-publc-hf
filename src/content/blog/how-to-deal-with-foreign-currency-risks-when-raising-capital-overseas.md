@@ -38,7 +38,7 @@ No matter which currency they raise funds in, a typical startup will spend the r
 
 So when the investment comes in a currency different from the one it will be spent in, there is a currency mismatch. Funding in one currency must be converted into another currency to pay for costs in line with the “burn rate”. Most startups are aware of such currency mismatch when they have it and will convert currencies every so often to ensure they have liquidity to pay their immediate needs:
 
-![Subheading](/blog/hs-fs/hubfs/Subheading.jpg?width=960&height=540&name=Subheading.jpg)
+![Subheading](https://8698300.hs-sites.com/hs-fs/hubfs/Subheading.jpg?width=960&height=540&name=Subheading.jpg)
 
 Such an approach focuses on periodically addressing short-term needs while keeping cash balances in the original funding currency. **Unfortunately, this results in ignoring the biggest FX risks — those from cashflows farther in the future.**
 
@@ -46,7 +46,7 @@ Any committed cash flow that needs to be converted from one currency to another 
 
 Such potential move can be greater for longer periods of time - as exchange rates have more time to move away from current levels. For example, there is a 10% probability that the GBPUSD exchange rate can move 26% over 100 weeks and only 11% over a shorter, four-week period :
 
-![pubchart](/blog/hs-fs/hubfs/Imported%20sitepage%20images/pubchart.png?width=600&height=371&name=pubchart.png)
+![pubchart](https://8698300.hs-sites.com/hs-fs/hubfs/Imported%20sitepage%20images/pubchart.png?width=600&height=371&name=pubchart.png)
 
 Unfortunately, most startups look at converting currencies for cash management needs and while ignoring financial risk management needs.
 
@@ -60,11 +60,11 @@ Unless the startup fixes current exchange rates, either by converting the entire
 
 The risks of such weakness are greatest for the longer-term cash flows: the last 6 months of the 18-month plan are responsible for 45% potential extra “burn” due to currency losses, while the first 6 months - account for a mere 19%:
 
-![pubchart-2](/blog/hs-fs/hubfs/Imported%20sitepage%20images/pubchart-2.png?width=544&height=333&name=pubchart-2.png)
+![pubchart-2](https://8698300.hs-sites.com/hs-fs/hubfs/Imported%20sitepage%20images/pubchart-2.png?width=544&height=333&name=pubchart-2.png)
 
 As a result, there is one in four chance that dollar weakness will wipe out almost two months' worth of runway and a 10% probability it can be as much as 3 months:
 
-![pubchart-1](/blog/hs-fs/hubfs/Imported%20sitepage%20images/pubchart-1.png?width=538&height=333&name=pubchart-1.png)
+![pubchart-1](https://8698300.hs-sites.com/hs-fs/hubfs/Imported%20sitepage%20images/pubchart-1.png?width=538&height=333&name=pubchart-1.png)
 
 ### How to reduce FX risks from raising capital overseas
 

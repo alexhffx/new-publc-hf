@@ -67,7 +67,7 @@ For example, the graph below shows the historical distribution of 90-day moves o
 
 As one can see, most of the potential outcomes are small moves clustered around zero, but in rarer outcomes, the exchange rate moved more than 20% over 90 days.  
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdxjTdmx9liLvC5O5SlnqdiNodaiIqF8GoUOTu1jwIurDDDPK9SRzsI_g30OWREJrN1XUiBhpb54Rj0Iul-M5pIA1hhX2v053fAZuN8q5yibPjZECIfkSkJNfBV39HCkMI1KkVExw?key=NORt7Y7JTqzSlLgdmgEvX8D3)
+![Historical distribution of 90-day GBP/USD moves](/assets/images/blog/fx-uncertainty-distribution.png)
 
 Treasury managers should be most concerned with potential 1 in 100 and 1 in 5 chances (red and orange areas) while FP&A team is focused on the area closer to the middle of the bell curve, trusting that the treasury or risk manager will take care of the tail risk scenarios.
 
