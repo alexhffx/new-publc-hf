@@ -42,7 +42,17 @@
     { "source": "/terms-and-conditions", "destination": "/legal/terms", "permanent": true },
     { "source": "/cookie-policy", "destination": "/legal/cookies", "permanent": true },
 
+    { "source": "/foreign-payment/guide", "destination": "/guides/international-bulk-payments", "permanent": true },
+
+    { "source": "/glossary/:slug*", "has": [{ "type": "host", "value": "blog.hedgeflows.com" }], "destination": "https://hedgeflows.com/glossary/:slug*", "permanent": true },
+    { "source": "/page/:num*", "has": [{ "type": "host", "value": "blog.hedgeflows.com" }], "destination": "https://hedgeflows.com/blog", "permanent": true },
+    { "source": "/tag/:tag*", "has": [{ "type": "host", "value": "blog.hedgeflows.com" }], "destination": "https://hedgeflows.com/blog", "permanent": true },
+    { "source": "/author/:author*", "has": [{ "type": "host", "value": "blog.hedgeflows.com" }], "destination": "https://hedgeflows.com/blog", "permanent": true },
+    { "source": "/all", "has": [{ "type": "host", "value": "blog.hedgeflows.com" }], "destination": "https://hedgeflows.com/blog", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "host", "value": "blog.hedgeflows.com" }], "destination": "https://hedgeflows.com/blog/:path*", "permanent": true },
+
+    { "source": "/page/:num*", "has": [{ "type": "host", "value": "help.hedgeflows.com" }], "destination": "https://hedgeflows.com/help", "permanent": true },
+    { "source": "/tag/:tag*", "has": [{ "type": "host", "value": "help.hedgeflows.com" }], "destination": "https://hedgeflows.com/help", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "host", "value": "help.hedgeflows.com" }], "destination": "https://hedgeflows.com/help/:path*", "permanent": true }
   ]
 }
