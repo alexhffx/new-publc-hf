@@ -8,7 +8,7 @@ relatedTerms:
   - "payment-due-date"
   - "cross-border-payments"
 seoDescription: "Accounts Payable (AP) is money owed by a company to its suppliers for goods or services provided that is shown as a liability on a company's balance sheet."
-lastUpdated: "2022-02-16"
+lastUpdated: "2026-03-21"
 ---
 
 **Accounts Payable** (AP) is money owed by a company to its suppliers for goods or services provided that is shown as a liability on a company's balance sheet.
@@ -28,3 +28,13 @@ While the process of finding suppliers, ordering and receiving goods or services
 3.  **Schedule payment dates**: once approved, invoices can be paid as soon as possible or scheduled for a later date. In certain industries, invoices are paid to align with commercial journeys (e.g. releasing goods or the next contractual step). Organising when you pay invoices can help optimise invoice discounts or preserve working capital. Increasing solutions, such as HedgeFlows, can help schedule payment runs to save time on scheduling and processing multiple invoices.
 4.  **Paying invoices**: centralising payment processing is critical for the safe and robust functioning of the Accounts team. Individuals who are authorised to instruct payments must ensure invoices are approved, payment details used are correct and have not been changed by an erroneous or fraudulent process.
 5.  **Recording payments and reconciling**: Once payments have been processed, the General ledger needs to be updated - debiting accounts payable and crediting cash/bank accounts. Invoices that are paid in the process must be marked as paid.
+
+---
+
+## Multi-Currency Accounts Payable Challenges
+
+When accounts payable involves multiple currencies, the process becomes significantly more complex than domestic AP. Each foreign-currency invoice introduces FX conversion risk — the amount you owe in your functional currency changes with every market move between invoice date and payment date, potentially eroding margins or creating unexpected losses.
+
+Multi-currency AP also complicates reconciliation. Every payment generates FX gains or losses that must be calculated and posted to the general ledger. Payment routing differs by currency and destination country, with varying cut-off times, correspondent bank fees, and regulatory requirements. Validating overseas beneficiary bank details adds another layer of fraud risk that domestic payments rarely face.
+
+Generic AP automation tools are typically built around single-currency, domestic workflows. They may support international payments as a bolt-on module, but often lack integrated FX conversion, real-time rate visibility, or automated multi-currency reconciliation. Specialist platforms like HedgeFlows address these gaps by combining AP automation with integrated FX management — processing payments in up to 35 currencies with transparent interbank rates, automated FX gain/loss posting, and bank account validation to prevent fraud.

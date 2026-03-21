@@ -5,6 +5,7 @@
     { "source": "/multi-currency-payment-runs", "destination": "/platform/payments", "permanent": true },
     { "source": "/multi-currency-payables-automation", "destination": "/platform/payments", "permanent": true },
     { "source": "/multi-currency-batch-payments-for-xero", "destination": "/platform/payments", "permanent": true },
+    { "source": "/multi-currency-payables-app-for-quickbooks", "destination": "/platform/integrations/quickbooks", "permanent": true },
     { "source": "/foreign-currency-payment-runs", "destination": "/platform/payments", "permanent": true },
     { "source": "/cash-management", "destination": "/platform/cash-management", "permanent": true },
     { "source": "/fx-risk-management", "destination": "/platform/fx-risk-management", "permanent": true },

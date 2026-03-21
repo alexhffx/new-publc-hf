@@ -83,12 +83,51 @@ const testimonials = [
   },
 ];
 
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HedgeFlows",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "description": "Multi-currency treasury platform for international businesses. AP automation in 35 currencies, FX risk management, cash visibility, and payment processing — integrated with Xero, NetSuite, QuickBooks and Dynamics.",
+  "url": "https://www.hedgeflows.com",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "GBP",
+    "lowPrice": "0",
+    "highPrice": "2000",
+    "offerCount": "3",
+    "description": "Free trial available. Plans from free to enterprise."
+  },
+  "featureList": [
+    "Multi-currency AP automation in 35 currencies",
+    "Real-time FX risk monitoring and alerts",
+    "Automated hedging workflows with AI-powered recommendations",
+    "Direct integration with Xero, NetSuite, QuickBooks, Dynamics",
+    "Open Banking connectivity to 2,000+ banks",
+    "Multi-currency cash management and forecasting",
+    "Bank account validation for fraud prevention",
+    "Automated reconciliation and FX gain/loss posting"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "HedgeFlows",
+    "url": "https://www.hedgeflows.com"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "25",
+    "bestRating": "5"
+  }
+};
 ---
 
 <PageLayout
   title="HedgeFlows — Treasury Advisory & Technology"
-  description="Expert treasury advisory and technology for businesses that trade internationally. FX risk management, cash management, and payments automation — without the cost of a full treasury function."
+  description="Multi-currency treasury platform for international businesses. AP automation in 35 currencies, FX risk management, cash visibility. Xero & NetSuite integration."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
   <!-- Section 1: Hero -->
   <HomeHero
     title="Unlock global treasury expertise — and the platform to act on it"
