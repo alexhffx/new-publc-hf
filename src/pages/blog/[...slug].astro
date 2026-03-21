@@ -146,8 +146,12 @@ const breadcrumbSchema = {
         <img
           src={post.data.featuredImage}
           alt={post.data.title}
+          width="768"
+          height="480"
           class="w-full rounded-xl shadow-md mb-10"
           loading="eager"
+          decoding="async"
+          fetchpriority="high"
         />
       )}
 
