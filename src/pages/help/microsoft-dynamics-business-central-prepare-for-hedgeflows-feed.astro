@@ -4,10 +4,10 @@ import PageLayout from '../../layouts/PageLayout.astro';
 const articleHtml = `<p>MS Dynamics Business Central users must create Bank accounts, a dedicated Posting Account and Payment Journals for all currencies to export payments and transactions from HedgeFlows via API. This will allow HedgeFlows to automatically export detailed information about transactions and payments instructed via our platform directly into Business Dynamics. For example, Vendor invoices paid via HedgeFlows can have the payment automatically applied to them in your G/L and Vendor journals. Automating this process can save time and remove the risk of manual errors such as paying duplicate invoices or sending incorrect payments.</p> 
  <p>The following step must be implemented by experienced Dynamics Business Central users. If in doubt, please contact your accounting specialist or Microsoft consultant to assist with this process. HedgeFlows support team can provide assistance with technical integration issues but can't provide guidance on accounting treatment or company specific set up in Business Dynamics. </p> <p>The following steps are required to prepare Dynamics successful imports from HedgeFlows:</p> 
  <ol> 
- <li><a href="/help/index">Create a dedicated posting group</a> </li> 
- <li><a href="/help/index">Create a G/L account for HedgeFlows</a></li> 
- <li><a href="/help/index">Create a Bank account for each currency</a></li> 
- <li><a href="/help/index">Create a Payment Journal for each currency</a></li> 
+ <li><a href="#create-positing-group">Create a dedicated posting group</a> </li>
+ <li><a href="#create-accounts">Create a G/L account for HedgeFlows</a></li>
+ <li><a href="#create-bank-accounts">Create a Bank account for each currency</a></li>
+ <li><a href="#create-journals">Create a Payment Journal for each currency</a></li> 
  </ol> <a id="create-positing-group"></a> <h3>1) Create a dedicated Posting GROUP for HedgeFlows</h3> <p>Creating dedicated Payment Journals and Posting Group will ensure that correct entries are written by HedgeFlows in a compliant manner. They are recorded in all relevant journals in a fashion, similar to how they would be recorded by Dynamics users manually. For example, creating a G/L Posting Group with direct posting disabled restricts entries into G/L without matching entries in Vendor Ledgers or Bank Ledgers.</p> <p>To create the posting group, click on the <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" height="17" aria-hidden="true">
  <g id="Search1_layer">
  <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
