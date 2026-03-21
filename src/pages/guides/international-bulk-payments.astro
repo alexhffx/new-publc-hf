@@ -49,14 +49,49 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: 'International Bulk Payments', item: pageUrl },
   ],
 };
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Process International Bulk Payments',
+  description: 'Step-by-step guide to processing multi-currency bulk payments for growing international businesses.',
+  step: [
+    {
+      '@type': 'HowToStep',
+      name: 'Connect your accounting system',
+      text: 'Integrate your ERP or accounting software (Xero, NetSuite, QuickBooks, Dynamics) with your payment platform. HedgeFlows connects in minutes via API.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Select invoices for payment',
+      text: 'Approved invoices appear automatically. Select the invoices to include in your payment run — domestic and international invoices can be batched together.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Review FX rates and approve',
+      text: 'Review transparent FX conversion rates for each currency. Set up approval workflows with maker-checker controls for compliance.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Execute payment run',
+      text: 'Process payments in up to 35 currencies in a single batch. The platform handles currency conversion, payment routing, and beneficiary validation.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Automatic reconciliation',
+      text: 'Payments, FX conversions, and gains/losses are automatically reconciled back to your general ledger. Remittance emails are sent to suppliers.',
+    },
+  ],
+};
 ---
 
 <PageLayout
-  title="International Bulk Payments Guide: Faster, Cheaper, Safer | HedgeFlows"
-  description="How to process international bulk payments faster, cheaper, and safer. Covering AP automation, payment runs, FX fees, fraud prevention, and accounting integration for growing businesses."
+  title="International Bulk Payments Guide | HedgeFlows"
+  description="Guide to international bulk payments. Compare banks, brokers and fintechs. Covers multi-currency payment runs, FX fees, fraud prevention and integration."
 >
   <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
 
   <Hero
     title="International Bulk Payments for Growing Businesses"

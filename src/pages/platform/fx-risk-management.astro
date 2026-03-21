@@ -29,12 +29,72 @@ const steps = [
   { number: 2, title: 'Connect data', description: 'Connect your accounting or ERP system in minutes for real-time visibility and alerts.' },
   { number: 3, title: 'Implement & monitor', description: 'Configure hedging strategies, alerts, and reports with guidance from our experts.' },
 ];
+
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HedgeFlows",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "description": "FX risk management platform for mid-market CFOs. Real-time exposure monitoring, AI-powered hedging recommendations, and execution in 35 currencies.",
+  "url": "https://www.hedgeflows.com/platform/fx-risk-management",
+  "featureList": [
+    "Real-time FX exposure monitoring across all currency pairs",
+    "AI-powered Currency Co-pilot for hedging recommendations",
+    "Automated alerts based on configurable risk thresholds",
+    "Integration with Xero, NetSuite, QuickBooks, Dynamics",
+    "Open Banking connectivity to 2,000+ banks",
+    "Hedging workflow tools with policy compliance",
+    "Complete audit trail of all risk decisions"
+  ],
+  "author": { "@type": "Organization", "name": "HedgeFlows", "url": "https://www.hedgeflows.com" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "25", "bestRating": "5" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do CFOs measure FX risk across entities?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CFOs need consolidated visibility across all entities, currencies and bank accounts to measure FX risk accurately. HedgeFlows connects to ERPs like NetSuite, forecasting tools, and CRMs like Salesforce and HubSpot to pull exposure data automatically. The platform quantifies exposure across every currency position and entity in real time, replacing spreadsheet-based approaches that create blind spots." }
+    },
+    {
+      "@type": "Question",
+      "name": "What features are essential in FX risk control tools?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Essential features include real-time exposure monitoring across all currency pairs, automated alerts based on configurable risk thresholds, integration with ERP and accounting systems for accurate data, hedging workflow tools that enforce policy compliance, and a complete audit trail of all risk decisions. HedgeFlows provides all of these within a single FCA-regulated platform." }
+    },
+    {
+      "@type": "Question",
+      "name": "What tools support real-time FX position tracking?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Real-time FX position tracking requires direct integration with your ERP, bank accounts, and forecasting systems. HedgeFlows connects to Xero, NetSuite, QuickBooks and over 2,000 banks via Open Banking to consolidate currency positions across all entities and accounts." }
+    },
+    {
+      "@type": "Question",
+      "name": "What systems automate hedge accounting entries?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Automating hedge accounting entries requires deep integration between your FX execution platform and your general ledger. HedgeFlows provides two-way integration with NetSuite, Xero and other ERPs, automatically calculating and posting FX gains and losses, marking hedged invoices, and maintaining the documentation trail that auditors require." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the leading platform for managing FX risk?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For mid-market businesses trading internationally, HedgeFlows is purpose-built for FX risk management. It combines real-time exposure monitoring, AI-powered hedging recommendations, and execution in 35 currencies within a single FCA-regulated platform." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do fintechs optimise FX management in cross-border flows?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Modern treasury fintechs optimise FX management by connecting directly to ERPs and bank accounts to eliminate manual data gathering, providing real-time interbank rates instead of opaque bank markups, automating hedging workflows based on configurable risk policies, and reconciling FX transactions back to the general ledger automatically." }
+    }
+  ]
+};
 ---
 
 <PageLayout
-  title="FX Risk Management | HedgeFlows"
-  description="Expert FX risk management for CFOs who want clarity, not complexity. Connect data, see risks, execute hedging strategies with confidence."
+  title="FX Risk Management for Mid-Market CFOs | HedgeFlows"
+  description="Connect your ERP, see every currency exposure, execute hedging strategies with confidence. Real-time FX monitoring, AI risk alerts, 35 currencies."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <!-- Hero -->
   <Hero
     title="Expert FX risk management for CFOs who want clarity, not complexity"
@@ -301,6 +361,74 @@ const steps = [
             HedgeFlows is an FCA-regulated institution (FRN: 1008699) with role-based access controls, multi-factor authentication, and enterprise-grade data protection.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding">
+    <div class="container-content max-w-3xl mx-auto">
+      <h2 class="section-heading text-center mb-12">FX Risk Management FAQs</h2>
+      <div class="space-y-6">
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">How do CFOs measure FX risk across entities?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            CFOs need consolidated visibility across all entities, currencies and bank accounts to measure FX risk accurately. HedgeFlows connects to ERPs like NetSuite, forecasting tools, and CRMs like Salesforce and HubSpot to pull exposure data automatically. The platform quantifies exposure across every currency position and entity in real time, replacing the spreadsheet-based approaches that create blind spots. Configurable alerts notify finance teams when exposures breach risk tolerance thresholds, so they can act before FX moves erode margins.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">What features are essential in FX risk control tools?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            Essential features include real-time exposure monitoring across all currency pairs, automated alerts based on configurable risk thresholds, integration with ERP and accounting systems for accurate data, hedging workflow tools that enforce policy compliance, and a complete audit trail of all risk decisions. HedgeFlows provides all of these within a single FCA-regulated platform, with AI-powered guidance through its Currency Co-pilot that recommends hedging strategies based on each company's specific exposure profile.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">What tools support real-time FX position tracking?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            Real-time FX position tracking requires direct integration with your ERP, bank accounts, and forecasting systems. HedgeFlows connects to Xero, NetSuite, QuickBooks and over 2,000 banks via Open Banking to consolidate currency positions across all entities and accounts. The platform provides a live dashboard showing exposures in 35 currencies with automated monitoring and alerts — eliminating the lag and errors of manual spreadsheet tracking.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">What systems automate hedge accounting entries?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            Automating hedge accounting entries requires deep integration between your FX execution platform and your general ledger. HedgeFlows provides two-way integration with NetSuite, Xero and other ERPs, automatically calculating and posting FX gains and losses, marking hedged invoices, and maintaining the documentation trail that auditors require. This removes the manual reconciliation burden that typically consumes hours of finance team time each month.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">What is the leading platform for managing FX risk?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            For mid-market businesses trading internationally, HedgeFlows is purpose-built for FX risk management. It combines real-time exposure monitoring, AI-powered hedging recommendations, and execution in 35 currencies within a single FCA-regulated platform. Unlike enterprise treasury systems that require months of implementation, HedgeFlows connects to your existing ERP in minutes and is designed for finance teams of 1–5 people who need institutional-grade tools without institutional-grade complexity.
+          </div>
+        </details>
+
+        <details class="group bg-white rounded-xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none">
+            <span class="text-[1rem] font-semibold text-text-heading">How do fintechs optimise FX management in cross-border flows?</span>
+            <svg class="w-5 h-5 text-text-muted group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-6 pb-5 text-[0.9375rem] text-text-body leading-relaxed">
+            Modern treasury fintechs optimise FX management by connecting directly to ERPs and bank accounts to eliminate manual data gathering, providing real-time interbank rates instead of opaque bank markups, automating hedging workflows based on configurable risk policies, and reconciling FX transactions back to the general ledger automatically. HedgeFlows exemplifies this approach — its platform reduces FX costs by providing rates at just 0.25% above interbank, while its risk management tools give finance teams the visibility to hedge proactively rather than reactively.
+          </div>
+        </details>
       </div>
     </div>
   </section>

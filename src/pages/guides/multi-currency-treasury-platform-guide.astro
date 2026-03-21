@@ -1,0 +1,403 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const siteUrl = 'https://hedgeflows.com';
+const pageUrl = `${siteUrl}/guides/multi-currency-treasury-platform-guide`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How to Choose a Multi-Currency Treasury Platform: A Decision Guide for CFOs',
+  description: 'Compare treasury platforms for multi-currency AP, FX risk management and cash visibility. Key features, integration needs and selection criteria for mid-market.',
+  author: { '@type': 'Organization', name: 'HedgeFlows', url: siteUrl },
+  publisher: {
+    '@type': 'Organization',
+    name: 'HedgeFlows',
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/logos/hf-logo-green.svg` },
+  },
+  datePublished: '2026-03-21',
+  dateModified: '2026-03-21',
+  mainEntityOfPage: pageUrl,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: `${siteUrl}/guides` },
+    { '@type': 'ListItem', position: 3, name: 'Multi-Currency Treasury Platform Guide', item: pageUrl },
+  ],
+};
+---
+
+<PageLayout
+  title="Multi-Currency Treasury Platform Guide | HedgeFlows"
+  description="Compare treasury platforms for multi-currency AP, FX risk management and cash visibility. Key features, integration needs and selection criteria for mid-market."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <Hero
+    title="How to Choose a Multi-Currency Treasury Platform"
+    subtitle="A decision guide for CFOs and finance leaders at international businesses evaluating treasury technology — covering AP automation, FX risk management, cash visibility, and ERP integration."
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+  />
+
+  <article class="section-padding">
+    <div class="container-content max-w-3xl mx-auto prose prose-lg prose-headings:text-text-heading prose-p:text-text-body prose-p:leading-relaxed">
+
+      <p>
+        If your business trades internationally, your treasury function is either working for you or quietly working against you. Currency movements, hidden FX markups, fragmented bank accounts, manual payment runs, and spreadsheet-based forecasting all erode margins — often without anyone quantifying the damage.
+      </p>
+      <p>
+        This guide helps CFOs and finance leaders at mid-market international businesses (£2M–£50M revenue) evaluate and choose the right multi-currency treasury platform. It covers what to look for, what to avoid, and how the main categories of provider compare.
+      </p>
+      <p>
+        Two misconceptions shape how growing businesses approach treasury — and both lead to costly delays.
+      </p>
+
+      <h3>Misconception 1: Treasury implementation is expensive and takes months</h3>
+      <p>
+        Enterprise treasury management systems earned this reputation. Kyriba, FIS, and Nomentia implementations can cost six figures and take 6–12 months. But that model was built for FTSE 250 companies with dedicated treasury teams.
+      </p>
+      <p>
+        Modern platforms designed for mid-market businesses can connect to your ERP and go live in days, not months. HedgeFlows, for example, integrates with Xero, NetSuite, QuickBooks and Dynamics in minutes — with no implementation project, no IT department involvement, and no consultant fees. The barrier to starting is far lower than most finance leaders assume, and the right time to implement robust treasury processes is as your business grows — not after a crisis forces it.
+      </p>
+
+      <h3>Misconception 2: Treasury technology adds a cost layer</h3>
+      <p>
+        This is the most expensive misconception in mid-market finance. Successful treasury initiatives don't add costs — they eliminate them. Better currency management reduces the 1–3% hidden in bank FX markups. Efficient liquidity management puts idle cash to work. Automated payment runs free finance teams from hours of manual processing. And proactive risk management prevents the kind of losses that only become visible when someone asks why revenue fell short of forecast.
+      </p>
+      <p>
+        A fractional CFO recently came to HedgeFlows because she couldn't find a £300,000 revenue gap in a professional services client's accounts. The firm was delivering on contracts and invoicing on schedule — everything looked fine operationally. The gap turned out to be currency: the difference between the exchange rate assumed when contracts were signed and the rate when invoices were actually raised. The ERP caught some of it, but the larger portion was invisible — it lives in the space between commercial commitments and accounting entries. Once the multi-currency cashflow picture was mapped, the £300k materialised immediately.
+      </p>
+      <p>
+        For international businesses, treasury technology doesn't add cost. It reveals cost that's already there — and gives you the tools to manage it.
+      </p>
+
+      <!-- ── Core evaluation criteria ── -->
+
+      <h2>What should CFOs look for in a multi-currency treasury platform?</h2>
+      <p>
+        A multi-currency treasury platform should address three interconnected needs: payments, risk management, and visibility. Most providers excel at one and bolt on the others as afterthoughts. The right platform connects all three through your existing data.
+      </p>
+      <p>
+        <strong>Payments:</strong> Can you process multi-currency payment runs directly from your ERP? Can you batch domestic and international invoices in a single run? Are FX conversion rates transparent (interbank + stated markup), or opaque? Does reconciliation flow back to your general ledger automatically?
+      </p>
+      <p>
+        <strong>Risk management:</strong> Can you see your actual currency exposure across all entities and currencies in real time? Can you set risk thresholds and receive alerts before it's too late to act? Can you execute hedging strategies (forwards, pre-booked rates) directly from the platform? Is there an audit trail for all risk decisions?
+      </p>
+      <p>
+        <strong>Visibility:</strong> Can you consolidate cash positions across all bank accounts and entities? Can you forecast cash flows in every currency? Can you connect to your banks via Open Banking for real-time balances? Can your board see the FX impact on margins without waiting for month-end?
+      </p>
+      <p>
+        The most important question is whether the platform connects these three areas through shared data — so that your payment history informs your cash forecast, your cash forecast informs your hedging strategy, and your hedging strategy feeds back into your payment planning. Disconnected tools create disconnected decisions.
+      </p>
+
+      <h2>How do treasury platforms integrate with ERPs like NetSuite and Xero?</h2>
+      <p>
+        Integration quality determines whether a treasury platform saves time or creates another data silo. There are three levels of integration to evaluate.
+      </p>
+      <p>
+        <strong>Level 1: File-based (export/import).</strong> You export data from your ERP, upload it to the platform, and manually import results back. Most FX brokers operate at this level. It works for occasional transactions but collapses at scale — 50+ international invoices per month becomes a full-time data entry job.
+      </p>
+      <p>
+        <strong>Level 2: One-way API connection.</strong> The platform reads data from your ERP (invoices, bills, payment schedules) but you manually reconcile results back. Some AP automation tools and newer FX platforms offer this. Better than file-based, but reconciliation gaps accumulate over time.
+      </p>
+      <p>
+        <strong>Level 3: Two-way real-time sync.</strong> The platform reads approved invoices from your ERP, processes payments and FX conversions, and writes back payment confirmations, FX gains/losses, and reconciliation entries automatically. This is what HedgeFlows provides — a two-way integration with Xero, NetSuite, QuickBooks and Dynamics that keeps your general ledger accurate in real time without manual intervention.
+      </p>
+      <p>
+        When evaluating integration, ask: How long does it take to connect? (Minutes or months?) Does it sync both ways? Does it handle multi-currency reconciliation automatically, including FX gains and losses? Can it support multiple entities on the same ERP instance? And critically — does it work with your ERP as it's actually configured, or does it require you to restructure your chart of accounts first?
+      </p>
+
+      <h2>What is the real cost of FX conversion for mid-market businesses?</h2>
+      <p>
+        Most mid-market businesses don't know what they're paying for foreign exchange — because the cost is hidden in the spread, not shown as a fee.
+      </p>
+      <p>
+        When your bank converts currencies, they quote you a rate that includes their markup above the interbank (mid-market) rate. For most UK business bank accounts, this markup ranges from 1% to 3%. On £5M annual FX volume, that's £50,000 to £150,000 per year in hidden costs. It never appears as a line item on your bank statement — it's simply baked into the rate you receive.
+      </p>
+      <p>
+        FX brokers typically offer better rates than banks — 0.3% to 1% markup — but the improvement is inconsistent. Brokers make money from trading volume, so their incentive is to encourage more transactions, not to help you reduce your FX exposure through better risk management. The rate you're quoted often depends on your relationship, your volume, and how aggressively your broker's salesperson needs to hit their quarterly target.
+      </p>
+      <p>
+        Fintech platforms like Wise Business offer genuine transparency — mid-market rates with a clearly stated fee. But they don't offer forward contracts or hedging products, which means you're exposed to whatever the rate happens to be on the day you need to pay.
+      </p>
+      <p>
+        HedgeFlows charges 0.25% above the interbank rate — transparent, consistent, and visible on every transaction. But the larger saving typically comes from the risk management side: businesses that actively manage their FX exposure through forwards and structured hedging policies often save 2–5x more than the rate improvement alone, because they avoid the large, lumpy losses that come from being unhedged when markets move sharply.
+      </p>
+      <p>
+        The question isn't just "what rate am I getting?" It's "what am I paying in total — including the losses I don't see because I'm not measuring my exposure?"
+      </p>
+
+      <h2>How should you evaluate FX risk management capabilities?</h2>
+      <p>
+        FX risk management is the area where provider categories diverge most sharply. Most providers offer payments. Few offer genuine risk management — and fewer still connect risk management to your actual business data.
+      </p>
+      <p>
+        <strong>Minimum requirements</strong> for a credible FX risk management platform:
+      </p>
+      <ul>
+        <li>Real-time exposure monitoring across all currency pairs, entities, and bank accounts. This means connecting to your ERP, not asking you to manually upload a spreadsheet of your positions.</li>
+        <li>Automated alerts based on configurable risk thresholds — so you know when your USD exposure has crossed a level that could materially impact margins, before you find out at month-end.</li>
+        <li>Hedging workflow tools that enforce your risk policy. If your policy says "hedge 50–75% of projected USD exposure beyond 3 months," the platform should track that, flag breaches, and make execution simple.</li>
+        <li>A complete audit trail of all risk decisions — what was hedged, when, at what rate, and why. This matters for board reporting, audit, and regulatory compliance.</li>
+        <li>Integration with your accounting system so that hedge accounting entries (FX gains/losses, forward valuations, reclassifications from OCI) are posted automatically, not manually calculated in spreadsheets.</li>
+      </ul>
+      <p>
+        <strong>What separates advisory-grade platforms from execution-only tools:</strong> Execution-only platforms let you trade. Advisory-grade platforms help you decide what to trade, when, and how much — based on your specific exposure profile, risk tolerance, and business model. HedgeFlows combines both: its AI-powered Currency Co-pilot recommends hedging strategies based on connected data, while its advisory team (with 25+ years of institutional risk management experience) provides the human expertise that algorithms alone cannot replace.
+      </p>
+
+      <!-- ── Provider comparison ── -->
+
+      <h2>How do the main provider categories compare?</h2>
+
+      <h3>Banks (HSBC, Barclays, NatWest, Lloyds)</h3>
+      <p>
+        Banks are the default choice for FX — and for most mid-market businesses, the most expensive one. Business banking FX markups typically range from 1% to 3%, though they're rarely disclosed explicitly. At £5M annual FX volume, switching from a bank to a transparent platform typically saves £50,000–£100,000 per year.
+      </p>
+      <p>
+        Banks excel at credit facilities, structured products for large corporates, and one-stop-shop convenience. But their FX desks are profit centres designed to cross-subsidise other banking services. Relationship managers change frequently, and the service model is transactional — they don't proactively monitor your currency exposure or advise on hedging strategy unless you're spending enough to warrant a dedicated treasury sales coverage team (typically £50M+ annual FX volume).
+      </p>
+      <p>
+        <strong>Best for:</strong> Large corporates (£500M+) that need credit lines alongside FX execution. Businesses that already have in-house treasury expertise and just need execution infrastructure.
+      </p>
+      <p>
+        <strong>The gap:</strong> No proactive risk management, no integration with your ERP, opaque pricing, and service quality that deteriorates as soon as you fall below the threshold for dedicated coverage.
+      </p>
+
+      <h3>FX brokers (Ebury, Corpay/Cambridge, Xe/Euronet, Monex, OFX)</h3>
+      <p>
+        FX brokers offer better rates than banks — typically 0.3% to 1% markup — and a dedicated relationship manager. For businesses that primarily need spot and forward execution at competitive rates, brokers are a significant step up from banks.
+      </p>
+      <p>
+        The broker market is consolidating rapidly. Corpay acquired Alpha Group for $2.4 billion in 2025, adding to earlier acquisitions of Cambridge Global Payments, AFEX, and Global Reach Group. Santander took a controlling stake in Ebury. Xe is owned by Euronet Worldwide ($4B+ revenue). The independent mid-market broker is becoming rare — most are now subsidiaries of much larger payment corporations.
+      </p>
+      <p>
+        This consolidation matters because the broker business model is inherently conflicted. Brokers earn revenue from trade volume. Their salespeople are incentivised to encourage more transactions, not to help you reduce your need to trade through better risk management. Those "market opportunity" calls from your broker? They're revenue calls, not advisory calls.
+      </p>
+      <p>
+        Brokers also lack integration with your accounting systems. Most require manual file uploads to initiate payments and don't automate reconciliation. As international payment volumes grow beyond 50–100 invoices per month, the operational burden of managing a broker relationship manually becomes significant.
+      </p>
+      <p>
+        <strong>Best for:</strong> Businesses with £1M–£10M annual FX volume, simple and predictable currency needs, and the internal capacity to manage the operational workflow manually.
+      </p>
+      <p>
+        <strong>The gap:</strong> No ERP integration, no automated reconciliation, no real-time exposure monitoring, and an advisory model that's structured around generating trades rather than managing risk. Limited or no technology platform — most interactions happen via phone, email, and manually uploaded spreadsheets.
+      </p>
+
+      <h3>AP automation platforms (Tipalti, Bill.com)</h3>
+      <p>
+        Tipalti and Bill.com are excellent domestic AP automation tools. They handle invoice capture, approval workflows, payment execution, and reconciliation for businesses processing high volumes of domestic invoices.
+      </p>
+      <p>
+        Where they fall short is international payments and multi-currency complexity. International capabilities are typically bolt-on modules rather than core architecture. FX conversion is available but treated as a payment feature, not a risk management function — you can convert currencies at the point of payment, but there's no exposure monitoring, no hedging capability, no forward contracts, and no visibility into what your currency positions look like across the business.
+      </p>
+      <p>
+        For a UK business paying 80% domestic and 20% international invoices, Tipalti or Bill.com may be sufficient. For a business where 30%+ of revenue or costs are in foreign currencies, the gap becomes material — you're solving the automation problem while ignoring the currency problem, which is often the larger source of margin erosion.
+      </p>
+      <p>
+        <strong>Best for:</strong> Businesses with primarily domestic AP needs and occasional international payments where FX exposure is immaterial.
+      </p>
+      <p>
+        <strong>The gap:</strong> No FX risk management, no hedging capability, FX conversion treated as a transactional feature rather than a strategic function, and limited multi-currency reconciliation (particularly for FX gains and losses).
+      </p>
+
+      <h3>Enterprise treasury management systems (Kyriba, FIS, Nomentia)</h3>
+      <p>
+        Enterprise TMS platforms like Kyriba, FIS, and Nomentia are comprehensive treasury suites built for large corporates with dedicated treasury teams. They offer sophisticated cash management, FX risk management, hedge accounting, debt management, and bank connectivity — the full spectrum of treasury functions.
+      </p>
+      <p>
+        The trade-off is cost and complexity. Kyriba implementations typically cost £50,000–£100,000+ annually in license fees, with implementation projects running 6–12 months and costing a further £50,000–£200,000 in consulting and integration fees. They require dedicated treasury staff to operate and maintain, and their complexity is designed for organisations managing billions in cash across dozens of entities and currencies.
+      </p>
+      <p>
+        For a mid-market business with a 1–5 person finance team, an enterprise TMS is the wrong tool. It's over-engineered for the complexity you have today, over-priced for your budget, and over-demanding of the internal resources needed to operate it. You'll spend months implementing a system designed for a treasury department you don't have — and may never need.
+      </p>
+      <p>
+        <strong>Best for:</strong> Global 2000 companies with dedicated treasury departments, £500M+ revenue, and complex multi-entity, multi-currency structures requiring institutional-grade controls.
+      </p>
+      <p>
+        <strong>The gap:</strong> Completely inaccessible to mid-market businesses — by design. The implementation cost alone often exceeds a mid-market company's total annual spend on treasury and FX. And the operational overhead requires headcount that small finance teams simply don't have.
+      </p>
+
+      <h3>Neobanks and fintech payment platforms (Wise Business, Revolut Business)</h3>
+      <p>
+        Wise Business and Revolut Business have transformed international payments for small businesses. Transparent pricing, excellent user experience, instant execution, and genuinely competitive rates make them the right choice for businesses under £1M annual FX volume where the cost of hedging would exceed the benefit.
+      </p>
+      <p>
+        Wise deliberately offers no forward contracts or hedging products — a strategic choice that keeps the product simple but leaves businesses exposed to rate volatility. If your FX volume is small enough that a 5–10% currency swing won't materially impact your margins, that's fine. If you're processing £2M+ in international payments annually and currency movements could wipe out a quarter's profit, it's a significant gap.
+      </p>
+      <p>
+        Revolut Business is the exception among neobanks — it offers FX forwards through its Treasury product. But Revolut's treasury capabilities are still relatively basic compared to specialist platforms, and its focus remains on payment execution rather than strategic risk management.
+      </p>
+      <p>
+        Neither platform offers meaningful ERP integration, automated multi-currency reconciliation, or exposure monitoring. They're payment tools — excellent payment tools — but payment tools nonetheless.
+      </p>
+      <p>
+        <strong>Best for:</strong> Small businesses (&lt;£1M annual FX), startups, freelancers, and businesses where international payments are operational rather than strategic.
+      </p>
+      <p>
+        <strong>The gap:</strong> No risk management (Wise), limited risk management (Revolut), no ERP integration, no automated reconciliation, no exposure monitoring, and no advisory support. If you're scaling internationally and FX is becoming material to your margins, you'll outgrow these platforms.
+      </p>
+
+      <h3>FX automation platforms (Kantox, Bound)</h3>
+      <p>
+        Kantox (now owned by BNP Paribas for €120 million) pioneered dynamic micro-hedging — automatically hedging individual transactions as they're created. Bound targets SMEs with self-service hedging tools and Xero integration, specifically aiming at the 96% of UK SMEs that don't currently hedge.
+      </p>
+      <p>
+        Both are valuable innovations, but they operate as standalone FX automation tools. They automate hedging decisions based on rules, but they don't have the broader context that shapes those decisions — your cash position, your payment schedule, your full multi-currency P&L picture, your funding requirements, or the relationship between your AP, AR, and balance sheet exposures.
+      </p>
+      <p>
+        Hedging without that context is like optimising one variable in a multi-variable equation. You might hedge your EUR payables perfectly while missing that your EUR receivables naturally offset half the exposure — or that your cash forecast shows a GBP shortfall in week 8 that should change your hedging priority entirely.
+      </p>
+      <p>
+        HedgeFlows connects FX risk management to payments, cash management, and accounting data — so hedging decisions are informed by the full picture, not just the FX position in isolation.
+      </p>
+      <p>
+        <strong>Best for:</strong> Businesses that already have good visibility over their cash and exposure positions and need to automate the execution of a well-defined hedging policy.
+      </p>
+      <p>
+        <strong>The gap:</strong> No payments capability, no cash management, no multi-currency AP automation, and no connection to the broader financial data that should inform hedging strategy. They solve the "how to hedge" problem but assume you've already solved the "what to hedge, when, and why" problem.
+      </p>
+
+      <h3>Cash forecasting platforms (Agicap)</h3>
+      <p>
+        Agicap is a strong cash forecasting tool, particularly popular in France and expanding across Europe. It connects to bank accounts and accounting systems to build cash flow forecasts and provides useful visibility over liquidity positions.
+      </p>
+      <p>
+        Where Agicap falls short for international businesses is currency. Cash forecasting in a single functional currency is valuable but incomplete when 30%+ of your flows are in foreign currencies. You need to forecast in multiple currencies, understand the FX exposure embedded in those forecasts, and connect forecasting to hedging and payment decisions. Agicap treats FX as a data point, not as a risk to be actively managed.
+      </p>
+      <p>
+        <strong>Best for:</strong> Domestic businesses or businesses with minimal FX exposure that need better cash visibility and forecasting.
+      </p>
+      <p>
+        <strong>The gap:</strong> No multi-currency risk management, no FX hedging, no international payment processing, and no connection between cash forecasts and currency exposure management.
+      </p>
+
+      <!-- ── Security and compliance ── -->
+
+      <h2>How do you assess vendor security and regulatory compliance?</h2>
+      <p>
+        For any platform handling your money, regulatory status is non-negotiable. In the UK, check three things:
+      </p>
+      <p>
+        <strong>FCA authorisation.</strong> Is the provider directly authorised and regulated by the Financial Conduct Authority? What type of authorisation do they hold — Electronic Money Institution (EMI), Payment Institution (PI), or investment firm authorisation? Each carries different obligations and protections. HedgeFlows is directly FCA-authorised (FRN: 1008699).
+      </p>
+      <p>
+        <strong>Fund safeguarding.</strong> How are your funds protected? FCA-regulated EMIs and PIs must safeguard client funds separately from their own operating capital. Understand where your money sits between initiating a payment and it reaching the beneficiary.
+      </p>
+      <p>
+        <strong>Data security and access controls.</strong> Does the platform offer role-based access, multi-factor authentication, and audit trails? Can you configure approval workflows that match your internal governance requirements? For businesses processing significant payment volumes, these controls are essential — both for fraud prevention and for satisfying your own auditors.
+      </p>
+
+      <!-- ── Implementation ── -->
+
+      <h2>What does implementation look like for mid-market companies?</h2>
+      <p>
+        <strong>Enterprise TMS (Kyriba, FIS, Nomentia):</strong> 6–12 month implementation, £50,000–£200,000 in project costs, dedicated project manager, data migration, custom integrations, staff training programmes, and ongoing support contracts. Requires internal IT and treasury team involvement throughout.
+      </p>
+      <p>
+        <strong>Mid-market platforms (HedgeFlows):</strong> Connect your ERP (Xero, NetSuite, QuickBooks, Dynamics) in minutes via API. No implementation project, no data migration, no IT involvement. Start processing payments and viewing exposure data on day one. Add complexity incrementally — begin with payment automation, layer in cash visibility, then build out risk management as your needs evolve.
+      </p>
+      <p>
+        This is important: it is far easier to implement robust treasury processes organically as your business grows than to retrofit them after years of ad hoc approaches. A platform that takes minutes to connect removes the excuse to wait — and waiting is where the invisible costs accumulate.
+      </p>
+
+      <!-- ── ROI ── -->
+
+      <h2>How do you measure ROI on treasury technology?</h2>
+      <p>
+        ROI on treasury technology comes from four sources, in rough order of magnitude:
+      </p>
+      <p>
+        <strong>FX cost savings.</strong> Switching from bank rates (1–3% markup) to transparent platform rates (0.25% markup at HedgeFlows) on £5M annual FX volume saves £37,500–£137,500 per year. This is the most immediately measurable benefit.
+      </p>
+      <p>
+        <strong>Risk reduction.</strong> Proactive hedging and exposure monitoring prevent the large, unpredictable FX losses that damage quarterly results. The £300,000 revenue gap described earlier in this guide is not unusual — it's typical of what mid-market businesses lose when they don't actively manage currency risk. Quantify your exposure and model the impact of a 10% adverse currency move on your margins — that's the risk you're carrying without treasury technology.
+      </p>
+      <p>
+        <strong>Time savings.</strong> Finance teams using HedgeFlows report saving up to 90% of time previously spent on international payment runs. If your team is spending 5–10 hours per week on manual bank logins, spreadsheet-based payment tracking, copy-paste beneficiary details, and manual reconciliation, that's 250–500 hours per year freed for strategic work.
+      </p>
+      <p>
+        <strong>Better decision-making.</strong> Real-time visibility over cash positions, currency exposures, and payment flows enables faster, more confident decisions. This is the hardest benefit to quantify but often the most valuable — the ability to answer "what's our actual cash position across all currencies and entities?" without waiting for month-end close.
+      </p>
+
+      <!-- ── Decision framework ── -->
+
+      <h2>The decision framework: Which provider fits your business?</h2>
+
+      <div class="not-prose overflow-x-auto mb-8">
+        <table class="w-full text-[0.875rem] text-text-body border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-3 pr-4 font-semibold text-text-heading">Your situation</th>
+              <th class="text-left py-3 pr-4 font-semibold text-text-heading">Right provider category</th>
+              <th class="text-left py-3 font-semibold text-text-heading">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4">&lt;£1M annual FX, simple needs</td>
+              <td class="py-3 pr-4">Wise Business or Revolut Business</td>
+              <td class="py-3">Cost of hedging exceeds benefit; focus on payment efficiency</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4">£1–10M annual FX, stable and predictable</td>
+              <td class="py-3 pr-4">FX broker (Ebury, Corpay, Xe)</td>
+              <td class="py-3">Competitive rates, basic forwards sufficient for simple hedging</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4">£2–50M revenue, 30%+ international, growing complexity</td>
+              <td class="py-3 pr-4 font-semibold text-brand-green">Multi-currency treasury platform (HedgeFlows)</td>
+              <td class="py-3">Need strategy + execution + integration; advisory support for a finance team without in-house treasury expertise</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4">£500M+, multinational, dedicated treasury team</td>
+              <td class="py-3 pr-4">Enterprise TMS (Kyriba, FIS) + banks</td>
+              <td class="py-3">Complex multi-entity structures requiring institutional-grade controls and bank credit facilities</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The nuance is in the middle two rows. Many businesses sit in the £1–10M FX bracket today but are growing into the £10M+ bracket within 12–24 months. Choosing a platform that scales with you — that starts with payment automation and extends into risk management and cash visibility — avoids the pain of switching providers as your needs evolve.
+      </p>
+
+      <!-- ── Five questions ── -->
+
+      <h2>Five questions to ask every provider</h2>
+      <ol>
+        <li><strong>"Can I see my total FX cost — not just your rate, but the all-in impact on my margins?"</strong> If they can only show you their rate versus the interbank rate, they're solving the pricing problem. If they can show you your full currency exposure and the cost of leaving it unmanaged, they're solving the strategic problem.</li>
+        <li><strong>"How does your platform connect to my ERP, and what happens to reconciliation?"</strong> If the answer involves manual file uploads, spreadsheets, or "our team handles reconciliation for you" — that's operational overhead that scales with your transaction volume.</li>
+        <li><strong>"What happens when the market moves 10% against me?"</strong> If they don't have a clear answer about how they'd help you manage that scenario — through pre-existing hedging, alerts, or advisory support — they're an execution tool, not a risk management partner.</li>
+        <li><strong>"How long does implementation take, and what does it cost?"</strong> If the answer is months and six figures, you're looking at an enterprise solution for a mid-market problem.</li>
+        <li><strong>"How do you make money from my account?"</strong> Vague answers mean hidden margins. Every provider has a business model — understand it, because the model determines whether their incentives align with yours. Banks earn from opaque FX spreads. Brokers earn from trade volume. Transparent platforms earn from stated markups and subscriptions.</li>
+      </ol>
+
+      <!-- ── About HedgeFlows ── -->
+
+      <h2>About HedgeFlows</h2>
+      <p>
+        HedgeFlows is an FCA-regulated (FRN: 1008699) treasury platform and advisory service built for mid-market international businesses. It combines multi-currency AP automation (35 currencies), FX risk management with AI-powered recommendations, and real-time cash visibility — all integrated with Xero, NetSuite, QuickBooks and Dynamics.
+      </p>
+      <p>
+        Founded by former heads of FX at Standard Chartered and Merrill Lynch, HedgeFlows brings institutional-grade treasury expertise to businesses with £2–50M revenue and finance teams of 1–5 people. The platform connects to your existing ERP in minutes — no implementation project required.
+      </p>
+      <p>
+        Winner of the TMI Best Risk Management Solution (2025) and TTP SME Inclusion Initiative of the Year (2026).
+      </p>
+    </div>
+  </article>
+
+  <CTASection
+    headline="Ready to see how HedgeFlows compares?"
+    primaryCta={{ label: 'Book a Treasury Review', href: '/treasury-health-check' }}
+    secondaryCta={{ label: 'Start Free Trial', href: 'https://app.hedgeflows.com/signup' }}
+  />
+</PageLayout>

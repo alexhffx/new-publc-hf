@@ -82,12 +82,33 @@ const steps = [
   { number: 2, title: 'Connect your systems & banks', description: 'Link your ERP, accounting software, and bank accounts in minutes.' },
   { number: 3, title: 'Manage your finances', description: 'See, plan, and act on your cash positions across every currency.' },
 ];
+
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HedgeFlows",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "description": "Multi-currency cash management platform. Consolidate cash across bank accounts, entities and currencies in real time with automated forecasting.",
+  "url": "https://www.hedgeflows.com/platform/cash-management",
+  "featureList": [
+    "Real-time cash visibility across all entities and currencies",
+    "Automated cash flow forecasting in 30+ currencies",
+    "Open Banking connectivity to 2,000+ banks",
+    "Multi-entity cash consolidation",
+    "Working capital optimisation",
+    "Diversified deposit management"
+  ],
+  "author": { "@type": "Organization", "name": "HedgeFlows", "url": "https://www.hedgeflows.com" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "25", "bestRating": "5" }
+};
 ---
 
 <PageLayout
-  title="Cash Management | HedgeFlows"
-  description="Manage your cash flow effortlessly with real-time insights across multiple currencies and entities. Consolidated visibility, forecasting, and working capital."
+  title="Multi-Currency Cash Management | Real-Time | HedgeFlows"
+  description="Consolidate cash across all bank accounts, entities and currencies in real time. Automated forecasting, Open Banking connectivity. For international businesses."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
   <!-- Hero -->
   <Hero
     title="Manage your cash flow, effortlessly"

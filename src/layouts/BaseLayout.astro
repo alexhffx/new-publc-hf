@@ -23,6 +23,36 @@ const {
 const siteUrl = 'https://hedgeflows.com';
 const pageTitle = title.includes('HedgeFlows') ? title : `${title} | HedgeFlows — Treasury Advisory & Technology`;
 const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+
+// Dynamic BreadcrumbList — skip homepage and pages that define their own breadcrumbs
+const pathname = Astro.url.pathname;
+const skipBreadcrumb = pathname === '/' || pathname.startsWith('/blog/') || pathname.startsWith('/guides/');
+const segmentLabels: Record<string, string> = {
+  platform: 'Platform', advisory: 'Advisory', integrations: 'Integrations',
+  industries: 'Industries', solutions: 'Solutions', partners: 'Partners',
+  legal: 'Legal', help: 'Help Centre', glossary: 'Glossary',
+  'fx-academy': 'FX Academy', 'case-studies': 'Case Studies',
+  'fx-risk-management': 'FX Risk Management', 'cash-management': 'Cash Management',
+  payments: 'Payments', 'connected-account': 'Connected Account',
+  xero: 'Xero', netsuite: 'NetSuite', quickbooks: 'QuickBooks',
+  'business-central': 'Business Central',
+};
+function buildBreadcrumbs(path: string) {
+  const segments = path.replace(/\/$/, '').split('/').filter(Boolean);
+  const items = [{ "@type": "ListItem" as const, position: 1, name: "Home", item: `${siteUrl}/` }];
+  let accumulated = '';
+  segments.forEach((seg, i) => {
+    accumulated += `/${seg}`;
+    const label = segmentLabels[seg] || seg.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    items.push({ "@type": "ListItem" as const, position: i + 2, name: label, item: `${siteUrl}${accumulated}/` });
+  });
+  return items;
+}
+const breadcrumbSchema = !skipBreadcrumb ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": buildBreadcrumbs(pathname)
+} : null;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).href;
 ---
 
@@ -59,14 +89,42 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "HedgeFlows",
+        "legalName": "HedgeFlows Ltd",
         "url": siteUrl,
         "logo": `${siteUrl}/logos/hf-logo-green.svg`,
-        "description": description,
+        "description": "FCA-regulated treasury advisory and technology platform for mid-market international businesses.",
+        "foundingDate": "2021",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "GB"
+        },
         "sameAs": [
           "https://www.linkedin.com/company/hedgeflows",
           "https://www.youtube.com/@hedgeflows"
+        ],
+        "hasCredential": {
+          "@type": "GovernmentPermit",
+          "name": "FCA Authorisation",
+          "identifier": "FRN: 1008699",
+          "issuedBy": {
+            "@type": "GovernmentOrganization",
+            "name": "Financial Conduct Authority"
+          }
+        },
+        "knowsAbout": [
+          "Foreign exchange risk management",
+          "Multi-currency accounts payable automation",
+          "Treasury management for mid-market businesses",
+          "International payment processing",
+          "Cash flow forecasting",
+          "Hedge accounting"
         ]
       })} />
+    )}
+
+    <!-- Dynamic Breadcrumb (skipped for homepage, blog, and guides which define their own) -->
+    {breadcrumbSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     )}
   </head>
   <body>
