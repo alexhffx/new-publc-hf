@@ -35,7 +35,6 @@
 
     { "source": "/compare/hedgeflows-vs-xe", "destination": "/platform", "permanent": true },
     { "source": "/invoice-risk-calculator", "destination": "/fx-academy", "permanent": true },
-    { "source": "/guides", "destination": "/fx-academy", "permanent": true },
 
     { "source": "/privacy-policy", "destination": "/legal/privacy", "permanent": true },
     { "source": "/terms-of-use", "destination": "/legal/terms-of-use", "permanent": true },
