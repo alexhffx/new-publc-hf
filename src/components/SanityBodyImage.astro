@@ -1,0 +1,28 @@
+---
+import { urlFor } from '../lib/sanity';
+
+interface Props {
+  node: {
+    asset?: any;
+    alt?: string;
+    _type: string;
+  };
+}
+
+const { node } = Astro.props;
+
+const imageUrl = node?.asset
+  ? urlFor(node).width(768).auto('format').url()
+  : null;
+const alt = node?.alt || '';
+---
+
+{imageUrl && (
+  <img
+    src={imageUrl}
+    alt={alt}
+    class="rounded-xl my-8 max-w-full shadow-md"
+    loading="lazy"
+    decoding="async"
+  />
+)}

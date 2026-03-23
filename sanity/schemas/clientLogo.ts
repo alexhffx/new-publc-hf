@@ -24,7 +24,7 @@ export default defineType({
       name: 'url',
       title: 'Website URL',
       type: 'url',
-      description: 'Optional link to the client's website.',
+      description: "Optional link to the client's website.",
     }),
     defineField({
       name: 'displayOrder',

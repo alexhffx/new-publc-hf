@@ -2,20 +2,80 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { getHubByPillar } from '../../data/hubPages';
+import { getBlogPosts, getBlogPost, urlFor } from '../../lib/sanity';
+import PortableText from '../../components/PortableText.astro';
 
-/* ── Generate static paths from Markdown content collection ── */
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.data.slug },
-    props: { post },
+  // Markdown posts
+  const mdEntries = await getCollection('blog');
+  const mdPaths = mdEntries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { source: 'md' as const, mdPost: entry, sanitySlug: null },
   }));
+
+  // Sanity posts — skip any slugs already covered by Markdown
+  let sanityPaths: any[] = [];
+  try {
+    const sanityEntries = await getBlogPosts();
+    const mdSlugs = new Set(mdEntries.map((e) => e.data.slug));
+    sanityPaths = (sanityEntries || [])
+      .filter((p: any) => p.slug?.current && !mdSlugs.has(p.slug.current))
+      .map((p: any) => ({
+        params: { slug: p.slug.current },
+        props: { source: 'sanity' as const, mdPost: null, sanitySlug: p.slug.current },
+      }));
+  } catch {
+    // No Sanity posts yet — that's fine
+  }
+
+  return [...mdPaths, ...sanityPaths];
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
+/* ── Normalise post data from whichever source ── */
+const { source, mdPost, sanitySlug } = Astro.props;
 
-const hub = post.data.pillar ? getHubByPillar(post.data.pillar) : undefined;
+let title = '';
+let date = '';
+let description = '';
+let authorName: string | undefined;
+let featuredImageUrl: string | undefined;
+let category: string | undefined;
+let seoTitle: string | undefined;
+let slug = '';
+let pillar: string | undefined;
+let Content: any = null;
+let sanityBody: any = null;
+let updated: string | undefined;
+
+if (source === 'md' && mdPost) {
+  const { Content: MdContent } = await render(mdPost);
+  Content = MdContent;
+  title = mdPost.data.title;
+  date = mdPost.data.date;
+  description = mdPost.data.description || '';
+  authorName = mdPost.data.author;
+  featuredImageUrl = mdPost.data.featuredImage;
+  category = mdPost.data.category;
+  seoTitle = mdPost.data.seoTitle;
+  slug = mdPost.data.slug;
+  pillar = mdPost.data.pillar;
+  updated = mdPost.data.updated;
+} else {
+  const post = await getBlogPost(sanitySlug!);
+  title = post?.title || '';
+  date = post?.publishedAt || new Date().toISOString();
+  description = post?.excerpt || post?.seoDescription || '';
+  authorName = post?.author?.name;
+  featuredImageUrl = post?.featuredImage
+    ? urlFor(post.featuredImage).width(768).height(432).auto('format').url()
+    : undefined;
+  category = post?.tags?.[0];
+  seoTitle = post?.seoTitle;
+  slug = sanitySlug!;
+  sanityBody = post?.body;
+}
+
+const hub = pillar ? getHubByPillar(pillar) : undefined;
 
 const categoryLabels: Record<string, string> = {
   'fx-risk-hedging': 'FX Risk & Hedging',
@@ -33,26 +93,26 @@ const categoryColors: Record<string, string> = {
   'news': 'bg-rose-50 text-rose-700',
 };
 
-const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
+const formattedDate = new Date(date).toLocaleDateString('en-GB', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
 
 const siteUrl = 'https://hedgeflows.com';
-const pageUrl = `${siteUrl}/blog/${post.data.slug}`;
+const pageUrl = `${siteUrl}/blog/${slug}`;
 
 // BlogPosting structured data
 const blogPostingSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": post.data.title,
-  "description": post.data.description,
-  "datePublished": post.data.date,
-  "dateModified": post.data.updated || post.data.date,
+  "headline": title,
+  "description": description,
+  "datePublished": date,
+  "dateModified": updated || date,
   "author": {
     "@type": "Person",
-    "name": post.data.author || "HedgeFlows",
+    "name": authorName || "HedgeFlows",
   },
   "publisher": {
     "@type": "Organization",
@@ -66,7 +126,7 @@ const blogPostingSchema = {
     "@type": "WebPage",
     "@id": pageUrl,
   },
-  ...(post.data.featuredImage ? { "image": post.data.featuredImage } : {}),
+  ...(featuredImageUrl ? { "image": featuredImageUrl } : {}),
 };
 
 // BreadcrumbList structured data
@@ -89,7 +149,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 3,
-      "name": post.data.title,
+      "name": title,
       "item": pageUrl,
     },
   ],
@@ -97,9 +157,9 @@ const breadcrumbSchema = {
 ---
 
 <PageLayout
-  title={post.data.seoTitle || post.data.title}
-  description={post.data.description}
-  ogImage={post.data.featuredImage}
+  title={seoTitle || title}
+  description={description}
+  ogImage={featuredImageUrl}
   ogType="article"
 >
   {/* Structured Data */}
@@ -112,42 +172,42 @@ const breadcrumbSchema = {
       <nav class="mb-8 text-[0.875rem] text-text-muted" aria-label="Breadcrumb">
         <a href="/blog" class="hover:text-brand-green transition-colors">Blog</a>
         <span class="mx-2">/</span>
-        <span class="text-text-heading font-medium">{post.data.title}</span>
+        <span class="text-text-heading font-medium">{title}</span>
       </nav>
 
       {/* Title & meta */}
       <h1 class="text-[2rem] md:text-[2.75rem] font-bold text-text-heading leading-tight mb-4">
-        {post.data.title}
+        {title}
       </h1>
 
       <div class="flex flex-wrap items-center gap-3 text-[0.8125rem] text-text-muted mb-10">
-        <time datetime={post.data.date}>{formattedDate}</time>
-        {post.data.author && (
+        <time datetime={date}>{formattedDate}</time>
+        {authorName && (
           <>
             <span>·</span>
-            <span>by {post.data.author}</span>
+            <span>by {authorName}</span>
           </>
         )}
-        {post.data.category && categoryLabels[post.data.category] && (
+        {category && categoryLabels[category] && (
           <>
             <span>·</span>
             <span class:list={[
               'text-[0.6875rem] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full',
-              categoryColors[post.data.category] || 'bg-gray-100 text-gray-600'
+              categoryColors[category] || 'bg-gray-100 text-gray-600'
             ]}>
-              {categoryLabels[post.data.category]}
+              {categoryLabels[category]}
             </span>
           </>
         )}
       </div>
 
       {/* Featured image */}
-      {post.data.featuredImage && (
+      {featuredImageUrl && (
         <img
-          src={post.data.featuredImage}
-          alt={post.data.title}
+          src={featuredImageUrl}
+          alt={title}
           width="768"
-          height="480"
+          height="432"
           class="w-full rounded-xl shadow-md mb-10"
           loading="eager"
           decoding="async"
@@ -157,7 +217,7 @@ const breadcrumbSchema = {
 
       {/* Main content */}
       <div class="prose-blog">
-        <Content />
+        {Content ? <Content /> : <PortableText value={sanityBody} />}
       </div>
 
       {/* Pillar back-link */}

@@ -1,5 +1,6 @@
 ---
 import { PortableText as PortableTextRenderer } from 'astro-portabletext';
+import SanityBodyImage from './SanityBodyImage.astro';
 
 interface Props {
   value: any;
@@ -21,6 +22,6 @@ const { value, class: className = '' } = Astro.props;
     'prose-img:rounded-xl prose-img:shadow-md',
     'prose-li:text-text-body',
   ]}>
-    <PortableTextRenderer value={value} />
+    <PortableTextRenderer value={value} components={{ type: { image: SanityBodyImage } }} />
   </div>
 ) : null}
