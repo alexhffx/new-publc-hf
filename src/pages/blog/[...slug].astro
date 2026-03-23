@@ -1,39 +1,16 @@
 ---
+export const prerender = false;
+
 import PageLayout from '../../layouts/PageLayout.astro';
 import { getCollection, render } from 'astro:content';
 import { getHubByPillar } from '../../data/hubPages';
-import { getBlogPosts, getBlogPost, urlFor } from '../../lib/sanity';
+import { getBlogPost, urlFor } from '../../lib/sanity';
 import PortableText from '../../components/PortableText.astro';
 
-export async function getStaticPaths() {
-  // Markdown posts
-  const mdEntries = await getCollection('blog');
-  const mdPaths = mdEntries.map((entry) => ({
-    params: { slug: entry.data.slug },
-    props: { source: 'md' as const, mdPost: entry, sanitySlug: null },
-  }));
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect('/blog');
 
-  // Sanity posts — skip any slugs already covered by Markdown
-  let sanityPaths: any[] = [];
-  try {
-    const sanityEntries = await getBlogPosts();
-    const mdSlugs = new Set(mdEntries.map((e) => e.data.slug));
-    sanityPaths = (sanityEntries || [])
-      .filter((p: any) => p.slug?.current && !mdSlugs.has(p.slug.current))
-      .map((p: any) => ({
-        params: { slug: p.slug.current },
-        props: { source: 'sanity' as const, mdPost: null, sanitySlug: p.slug.current },
-      }));
-  } catch {
-    // No Sanity posts yet — that's fine
-  }
-
-  return [...mdPaths, ...sanityPaths];
-}
-
-/* ── Normalise post data from whichever source ── */
-const { source, mdPost, sanitySlug } = Astro.props;
-
+/* ── Try Markdown first, then Sanity ── */
 let title = '';
 let date = '';
 let description = '';
@@ -41,13 +18,15 @@ let authorName: string | undefined;
 let featuredImageUrl: string | undefined;
 let category: string | undefined;
 let seoTitle: string | undefined;
-let slug = '';
 let pillar: string | undefined;
 let Content: any = null;
 let sanityBody: any = null;
 let updated: string | undefined;
 
-if (source === 'md' && mdPost) {
+const mdEntries = await getCollection('blog');
+const mdPost = mdEntries.find((e) => e.data.slug === slug);
+
+if (mdPost) {
   const { Content: MdContent } = await render(mdPost);
   Content = MdContent;
   title = mdPost.data.title;
@@ -57,22 +36,22 @@ if (source === 'md' && mdPost) {
   featuredImageUrl = mdPost.data.featuredImage;
   category = mdPost.data.category;
   seoTitle = mdPost.data.seoTitle;
-  slug = mdPost.data.slug;
   pillar = mdPost.data.pillar;
   updated = mdPost.data.updated;
 } else {
-  const post = await getBlogPost(sanitySlug!);
-  title = post?.title || '';
-  date = post?.publishedAt || new Date().toISOString();
-  description = post?.excerpt || post?.seoDescription || '';
-  authorName = post?.author?.name;
-  featuredImageUrl = post?.featuredImage
+  const post = await getBlogPost(slug);
+  if (!post) return new Response(null, { status: 404 });
+
+  title = post.title || '';
+  date = post.publishedAt || new Date().toISOString();
+  description = post.excerpt || post.seoDescription || '';
+  authorName = post.author?.name;
+  featuredImageUrl = post.featuredImage
     ? urlFor(post.featuredImage).width(768).height(432).auto('format').url()
     : undefined;
-  category = post?.tags?.[0];
-  seoTitle = post?.seoTitle;
-  slug = sanitySlug!;
-  sanityBody = post?.body;
+  category = post.tags?.[0];
+  seoTitle = post.seoTitle;
+  sanityBody = post.body;
 }
 
 const hub = pillar ? getHubByPillar(pillar) : undefined;
@@ -102,7 +81,6 @@ const formattedDate = new Date(date).toLocaleDateString('en-GB', {
 const siteUrl = 'https://hedgeflows.com';
 const pageUrl = `${siteUrl}/blog/${slug}`;
 
-// BlogPosting structured data
 const blogPostingSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -110,48 +88,23 @@ const blogPostingSchema = {
   "description": description,
   "datePublished": date,
   "dateModified": updated || date,
-  "author": {
-    "@type": "Person",
-    "name": authorName || "HedgeFlows",
-  },
+  "author": { "@type": "Person", "name": authorName || "HedgeFlows" },
   "publisher": {
     "@type": "Organization",
     "name": "HedgeFlows",
-    "logo": {
-      "@type": "ImageObject",
-      "url": `${siteUrl}/logos/hf-logo-green.svg`,
-    },
+    "logo": { "@type": "ImageObject", "url": `${siteUrl}/logos/hf-logo-green.svg` },
   },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": pageUrl,
-  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl },
   ...(featuredImageUrl ? { "image": featuredImageUrl } : {}),
 };
 
-// BreadcrumbList structured data
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": siteUrl,
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": `${siteUrl}/blog`,
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": title,
-      "item": pageUrl,
-    },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteUrl}/blog` },
+    { "@type": "ListItem", "position": 3, "name": title, "item": pageUrl },
   ],
 };
 ---
@@ -162,20 +115,17 @@ const breadcrumbSchema = {
   ogImage={featuredImageUrl}
   ogType="article"
 >
-  {/* Structured Data */}
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <article class="section-padding bg-white">
     <div class="container-content max-w-3xl mx-auto">
-      {/* Breadcrumb */}
       <nav class="mb-8 text-[0.875rem] text-text-muted" aria-label="Breadcrumb">
         <a href="/blog" class="hover:text-brand-green transition-colors">Blog</a>
         <span class="mx-2">/</span>
         <span class="text-text-heading font-medium">{title}</span>
       </nav>
 
-      {/* Title & meta */}
       <h1 class="text-[2rem] md:text-[2.75rem] font-bold text-text-heading leading-tight mb-4">
         {title}
       </h1>
@@ -201,7 +151,6 @@ const breadcrumbSchema = {
         )}
       </div>
 
-      {/* Featured image */}
       {featuredImageUrl && (
         <img
           src={featuredImageUrl}
@@ -215,12 +164,10 @@ const breadcrumbSchema = {
         />
       )}
 
-      {/* Main content */}
       <div class="prose-blog">
         {Content ? <Content /> : <PortableText value={sanityBody} />}
       </div>
 
-      {/* Pillar back-link */}
       {hub && (
         <div class="mt-10 mb-4 flex items-center gap-3 px-5 py-4 rounded-xl bg-brand-green-pale/40 border border-brand-green/10">
           <svg class="w-5 h-5 text-brand-green flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -235,7 +182,6 @@ const breadcrumbSchema = {
         </div>
       )}
 
-      {/* Advisory CTA */}
       <div class="mt-14 bg-brand-green-pale/50 rounded-2xl p-8 border border-brand-green/10">
         <p class="text-[1.0625rem] text-text-body leading-relaxed mb-4">
           Need help managing your international finances? Our advisory team can help you build a treasury strategy that fits your business.
@@ -251,7 +197,6 @@ const breadcrumbSchema = {
         </a>
       </div>
 
-      {/* Back link */}
       <div class="mt-10">
         <a href="/blog" class="inline-flex items-center gap-2 text-brand-green font-semibold hover:gap-3 transition-all">
           <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -265,45 +210,20 @@ const breadcrumbSchema = {
 </PageLayout>
 
 <style is:global>
-  /* Blog prose styles */
-  .prose-blog h2 {
-    @apply text-[1.5rem] font-bold text-text-heading mt-12 mb-4 leading-tight;
-  }
-  .prose-blog h3 {
-    @apply text-[1.25rem] font-bold text-text-heading mt-8 mb-3;
-  }
-  .prose-blog h4 {
-    @apply text-[1.125rem] font-semibold text-text-heading mt-6 mb-2;
-  }
-  .prose-blog p {
-    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4;
-  }
-  .prose-blog ul, .prose-blog ol {
-    @apply text-[1.0625rem] text-text-body leading-relaxed mb-4 pl-6;
-  }
+  .prose-blog h2 { @apply text-[1.5rem] font-bold text-text-heading mt-12 mb-4 leading-tight; }
+  .prose-blog h3 { @apply text-[1.25rem] font-bold text-text-heading mt-8 mb-3; }
+  .prose-blog h4 { @apply text-[1.125rem] font-semibold text-text-heading mt-6 mb-2; }
+  .prose-blog p { @apply text-[1.0625rem] text-text-body leading-relaxed mb-4; }
+  .prose-blog ul, .prose-blog ol { @apply text-[1.0625rem] text-text-body leading-relaxed mb-4 pl-6; }
   .prose-blog ul { @apply list-disc; }
   .prose-blog ol { @apply list-decimal; }
   .prose-blog li { @apply mb-2; }
   .prose-blog strong { @apply text-text-heading font-semibold; }
-  .prose-blog a {
-    @apply text-brand-green underline underline-offset-2 hover:text-brand-green-dark transition-colors;
-  }
-  .prose-blog blockquote {
-    @apply border-l-4 border-brand-green/30 pl-6 italic text-text-muted my-6;
-  }
-  .prose-blog table {
-    @apply w-full border-collapse mb-6 text-[0.9375rem];
-  }
-  .prose-blog thead th {
-    @apply bg-[#F8FAFB] text-text-heading font-semibold text-left px-4 py-3 border border-gray-200;
-  }
-  .prose-blog tbody td {
-    @apply px-4 py-3 border border-gray-200 text-text-body;
-  }
-  .prose-blog img {
-    @apply rounded-xl my-6 max-w-full;
-  }
-  .prose-blog hr {
-    @apply my-8 border-gray-200;
-  }
+  .prose-blog a { @apply text-brand-green underline underline-offset-2 hover:text-brand-green-dark transition-colors; }
+  .prose-blog blockquote { @apply border-l-4 border-brand-green/30 pl-6 italic text-text-muted my-6; }
+  .prose-blog table { @apply w-full border-collapse mb-6 text-[0.9375rem]; }
+  .prose-blog thead th { @apply bg-[#F8FAFB] text-text-heading font-semibold text-left px-4 py-3 border border-gray-200; }
+  .prose-blog tbody td { @apply px-4 py-3 border border-gray-200 text-text-body; }
+  .prose-blog img { @apply rounded-xl my-6 max-w-full; }
+  .prose-blog hr { @apply my-8 border-gray-200; }
 </style>
