@@ -1,6 +1,8 @@
 {
   "redirects": [
     { "source": "/blog/glossary/:slug*", "destination": "/glossary/:slug*", "permanent": true },
+    { "source": "/blog/platform/:path*", "destination": "/platform/:path*", "permanent": true },
+    { "source": "/blog/treasury-masterclass", "destination": "/treasury-masterclass", "permanent": true },
     { "source": "/blog/robots.txt", "destination": "/robots.txt", "permanent": true },
     { "source": "/blog/hs-fs/:path*", "destination": "/", "permanent": true },
     { "source": "/blog/favicon.ico", "destination": "/favicon.png", "permanent": true },
