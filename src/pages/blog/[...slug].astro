@@ -39,7 +39,12 @@ if (mdPost) {
   pillar = mdPost.data.pillar;
   updated = mdPost.data.updated;
 } else {
-  const post = await getBlogPost(slug);
+  let post: any = null;
+  try {
+    post = await getBlogPost(slug);
+  } catch {
+    return new Response(null, { status: 404 });
+  }
   if (!post) return new Response(null, { status: 404 });
 
   title = post.title || '';
