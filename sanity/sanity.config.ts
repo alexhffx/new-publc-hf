@@ -6,6 +6,7 @@ import { schemaTypes } from './schemas';
 export default defineConfig({
   name: 'hedgeflows',
   title: 'HedgeFlows CMS',
+  basePath: '/admin',
   projectId: process.env.SANITY_PROJECT_ID || '9927twz3',
   dataset: process.env.SANITY_DATASET || 'production',
   plugins: [structureTool(), visionTool()],
