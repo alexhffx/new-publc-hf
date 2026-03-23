@@ -31,7 +31,7 @@ try {
       image: post.featuredImage
         ? urlFor(post.featuredImage).width(600).height(375).auto('format').url()
         : undefined,
-      category: 'news' as const, // Default; Sanity posts can have their own category field
+      category: (post.tags?.[0] || 'news') as any,
       source: 'sanity' as const,
     }));
   }

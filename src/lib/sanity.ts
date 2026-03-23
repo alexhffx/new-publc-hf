@@ -27,6 +27,7 @@ export async function getBlogPosts(limit?: number) {
       excerpt,
       publishedAt,
       featuredImage,
+      tags,
       "author": author->{ name, photo }
     }`
   );
