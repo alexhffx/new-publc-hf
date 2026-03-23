@@ -1,5 +1,10 @@
 {
   "redirects": [
+    { "source": "/blog/glossary/:slug*", "destination": "/glossary/:slug*", "permanent": true },
+    { "source": "/blog/robots.txt", "destination": "/robots.txt", "permanent": true },
+    { "source": "/blog/hs-fs/:path*", "destination": "/", "permanent": true },
+    { "source": "/blog/favicon.ico", "destination": "/favicon.png", "permanent": true },
+
     { "source": "/connected-business-account", "destination": "/platform/connected-account", "permanent": true },
     { "source": "/global-bulk-payments", "destination": "/platform/payments", "permanent": true },
     { "source": "/multi-currency-payment-runs", "destination": "/platform/payments", "permanent": true },

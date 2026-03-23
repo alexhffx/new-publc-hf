@@ -43,9 +43,9 @@ if (mdPost) {
   try {
     post = await getBlogPost(slug);
   } catch {
-    return new Response(null, { status: 404 });
+    return new Response(null, { status: 404, headers: { 'X-Astro-Reroute': 'no' } });
   }
-  if (!post) return new Response(null, { status: 404 });
+  if (!post) return new Response(null, { status: 404, headers: { 'X-Astro-Reroute': 'no' } });
 
   title = post.title || '';
   date = post.publishedAt || new Date().toISOString();
