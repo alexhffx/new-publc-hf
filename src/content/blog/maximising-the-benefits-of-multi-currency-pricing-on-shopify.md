@@ -17,6 +17,6 @@ To address this, many stores still rely on manual FX rates or fixed pricing in m
 
 Fortunately, there’s a solution that combines the benefits of multi-currency pricing with protection against currency volatility. HedgeFlows allows store owners to [lock in guaranteed FX rates up to 12 months](/fx-risk-management) in advance. These pre-booked rates can then be used to convert Shopify payouts in foreign currencies at stable, predictable values as sales occur.
 
-As an added bonus, HedgeFlows users can also [save up to 1% on foreign exchange fees](/blog/save-on-shopify-payouts-with-hedgeflows) charged by Shopify Payments. For those on Advanced Shopify or Shopify Plus plans, payouts in up to 8 currencies can be directed to a HedgeFlows account, where market-leading exchange rates and pre-booked FX options ensure both savings and peace of mind.
+As an added bonus, HedgeFlows users can also [save up to 1% on foreign exchange fees](/platform/payments) charged by Shopify Payments. For those on Advanced Shopify or Shopify Plus plans, payouts in up to 8 currencies can be directed to a HedgeFlows account, where market-leading exchange rates and pre-booked FX options ensure both savings and peace of mind.
 
 With HedgeFlows, you can offer a better shopping experience for international customers while safeguarding your profit margins against currency swings. It’s the best of both worlds.  [Book a demo](/book-a-demo) and find out how HedgeFlows helps e-commerce show earn and save money today!
