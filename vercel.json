@@ -1,9 +1,14 @@
 {
   "redirects": [
+    { "source": "/blog/blog/:slug*", "destination": "/blog/:slug*", "permanent": true },
+    { "source": "/blog/advisory/:slug*", "destination": "/advisory/:slug*", "permanent": true },
+    { "source": "/blog/solutions/:slug*", "destination": "/solutions/:slug*", "permanent": true },
+    { "source": "/blog/partners/:slug*", "destination": "/partners/:slug*", "permanent": true },
     { "source": "/blog/glossary/:slug*", "destination": "/glossary/:slug*", "permanent": true },
     { "source": "/blog/industries/:slug*", "destination": "/industries/:slug*", "permanent": true },
     { "source": "/blog/platform/:path*", "destination": "/platform/:path*", "permanent": true },
     { "source": "/blog/treasury-masterclass", "destination": "/treasury-masterclass", "permanent": true },
+    { "source": "/blog/treasury-health-check", "destination": "/treasury-health-check", "permanent": true },
     { "source": "/blog/index", "destination": "/blog", "permanent": true },
     { "source": "/blog/robots.txt", "destination": "/robots.txt", "permanent": true },
     { "source": "/blog/hs-fs/:path*", "destination": "/", "permanent": true },
